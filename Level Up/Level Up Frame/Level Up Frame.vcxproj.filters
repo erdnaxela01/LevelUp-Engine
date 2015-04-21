@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{04499191-5722-438d-982b-f1b85be488fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Headers">
+      <UniqueIdentifier>{1afa9dd0-0837-4a49-9ddf-4c3504182e2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Source">
+      <UniqueIdentifier>{d1de5d95-1216-4238-a4ad-b2faf461d2ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base Class">
+      <UniqueIdentifier>{59f3dab1-62fa-433f-a375-bfdfd38e5d7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base Class\Header">
+      <UniqueIdentifier>{246ba404-771f-426d-833b-60e99c846929}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base Class\Source">
+      <UniqueIdentifier>{890bb675-9ac8-46bf-88f7-d14b797bf9ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{6cfcca49-3faa-4cc9-9a8f-7d9b8ebcd6e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Header">
+      <UniqueIdentifier>{d60857fb-ec03-4ca3-8c5b-6f67deb24fb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Source">
+      <UniqueIdentifier>{056f7492-2d4f-4b85-8591-0d2683a8fd79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{6a4da564-7b36-4e6f-9d02-734cbb8bd977}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Headers">
+      <UniqueIdentifier>{1f669fc7-0cb2-4838-b7e8-22508ed3e898}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Source">
+      <UniqueIdentifier>{51b2de75-e556-40b2-9d41-01becf611613}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{6b7b4e3c-2923-4ee6-8df3-2f6a455bd0af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Headers">
+      <UniqueIdentifier>{1e65a690-9ddd-4829-9812-88dc83223297}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Source">
+      <UniqueIdentifier>{ebd59584-93ff-4701-8f3e-84e32cd0f787}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Services">
+      <UniqueIdentifier>{c47c1254-d873-4b78-8f50-c01933ba39d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\MVC">
+      <UniqueIdentifier>{ac5e9c77-1656-4879-a8e9-c2e3147adb86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\MVC\Headers">
+      <UniqueIdentifier>{f238f82a-daf8-420c-a4ad-5849df96e3ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\MVC\Source">
+      <UniqueIdentifier>{76c75cc9-608c-4cfa-88b8-2f2c4aa2f446}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\MVC\Headers\Controllers">
+      <UniqueIdentifier>{0a30167f-7123-4853-9934-6f4a23a0df92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\MVC\Source\Controllers">
+      <UniqueIdentifier>{f1f0ae4d-f69d-46bf-9346-521fb0e27d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\MVC\Headers\Models">
+      <UniqueIdentifier>{2493f514-a62a-4b6e-80c4-4aebe6d01855}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\MVC\Source\Models">
+      <UniqueIdentifier>{deabb073-7add-46eb-a512-93bf5c4184bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\MVC\Source\Views">
+      <UniqueIdentifier>{3efd25c4-e1c4-4289-b61f-9050cb986b87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\MVC\Headers\Views">
+      <UniqueIdentifier>{f08bee83-b25a-4faa-ab0f-1fe2d915b1b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{4f4e5c04-7171-48e1-944d-8bee4b7af17c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Cameras">
+      <UniqueIdentifier>{c0a047f8-2318-4e1f-9509-d1a9053f623f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Cameras\Headers">
+      <UniqueIdentifier>{b04b11e7-b54a-458e-8f56-7641222053ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Cameras\Source">
+      <UniqueIdentifier>{7e050487-72d1-40b3-a51c-2a9fbe1f1516}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\BasicLevelObject">
+      <UniqueIdentifier>{fe0741ab-7a3f-4c30-bd5e-1cbc0558a6c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\BasicLevelObject\Headers">
+      <UniqueIdentifier>{fadd1bf1-f0eb-4b4d-a35f-e04fa9a0c481}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\BasicLevelObject\Source">
+      <UniqueIdentifier>{b567461a-688b-44af-bb67-3d00a6afd862}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\MVC\Headers\Concrete Classes">
+      <UniqueIdentifier>{81c54409-aef5-4437-a0b9-fc724c590a85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\MVC\Headers\Concrete Classes\Models">
+      <UniqueIdentifier>{0d2744e9-842c-4f44-9514-7c13d5b8a743}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\MVC\Headers\Concrete Classes\Views">
+      <UniqueIdentifier>{8dabe1eb-af99-4d74-9702-c7a5180d8cfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\MVC\Headers\Concrete Classes\Controllers">
+      <UniqueIdentifier>{21bde64a-568e-42de-b48a-e89e7f58d7d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\MVC\Source\Concrete Classes">
+      <UniqueIdentifier>{0520b73e-800f-4179-b20e-94dcd1d29176}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\MVC\Source\Concrete Classes\Models">
+      <UniqueIdentifier>{c901a876-c7b5-4955-9431-a006d2052fd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\MVC\Source\Concrete Classes\Controllers">
+      <UniqueIdentifier>{f504fc91-d99c-44d0-8f7e-c90f10daaf61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\MVC\Source\Concrete Classes\Views">
+      <UniqueIdentifier>{0beba985-0f7b-4672-b2d0-5822560167bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Cameras\Special Cameras">
+      <UniqueIdentifier>{2c6c3825-91bb-49e4-ba93-a6927b69d4f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Cameras\Special Cameras\Headers">
+      <UniqueIdentifier>{e1756eec-1b9b-44aa-9a35-8bfb9d9e3eb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Cameras\Special Cameras\Source">
+      <UniqueIdentifier>{92b3bb31-2bfe-4ae5-8a12-de5103dad0b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Command">
+      <UniqueIdentifier>{3bf82921-06e1-473c-85a9-37e1a6f80164}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Command\Headers">
+      <UniqueIdentifier>{e8f93fe7-0b62-45bd-8292-3b6fc86bfac4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Command\Source">
+      <UniqueIdentifier>{952743e6-9a07-42b3-b363-21657ab8efb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Command\Concrete Classes">
+      <UniqueIdentifier>{6aec2f79-b6e8-4331-8cf8-3c3cf44a1152}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\ECS">
+      <UniqueIdentifier>{46ac35db-e898-41be-afda-dd1bc1d0b9fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\ECS\Headers">
+      <UniqueIdentifier>{40d8884f-851a-4afe-ab8d-a13593808d81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\ECS\Source">
+      <UniqueIdentifier>{9cbb79a7-006b-4af0-8fce-52759b07b437}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\ECS\Headers\System">
+      <UniqueIdentifier>{48d9c3b8-3887-4e73-b467-5a5f62d82941}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\ECS\Headers\Component">
+      <UniqueIdentifier>{8dc7d8dd-4395-446e-8f1c-33cce673813b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\ECS\Headers\Entity">
+      <UniqueIdentifier>{05840059-5bde-44ea-b939-4cc5e45c65bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\ECS\Source\Component">
+      <UniqueIdentifier>{997b3be8-2f82-422a-a583-5a4d42d9ab12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\ECS\Source\Entity">
+      <UniqueIdentifier>{d430df8d-ce3f-423a-8fec-cea3c4de6027}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\ECS\Source\System">
+      <UniqueIdentifier>{2b8fb923-ce79-43e5-ab83-1ad4977934f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Services\Service Locator">
+      <UniqueIdentifier>{42e2af38-29f7-4e7f-8884-69c90ffee334}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\SceneManager">
+      <UniqueIdentifier>{f16fae26-64e7-4a88-a0fb-40948f6270fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\SceneManager\Headers">
+      <UniqueIdentifier>{94e642d6-1093-4603-af1e-d3793146b71f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\SceneManager\Source">
+      <UniqueIdentifier>{25e8a2d0-2d96-4201-b894-c21edf866517}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\SceneManager\Scenes">
+      <UniqueIdentifier>{ec9b4472-e59a-429d-9578-6aeb7ce6d124}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\SceneManager\Scenes\Headers">
+      <UniqueIdentifier>{0f684cc7-c9fa-4ab2-bb8e-05650325c3ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\SceneManager\Scenes\Source">
+      <UniqueIdentifier>{e683ed43-5b85-4722-9036-5161564bf569}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\EventHandler">
+      <UniqueIdentifier>{b107f0f5-b0a6-4155-b56a-36c0e21ecb98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\EventHandler\Headers">
+      <UniqueIdentifier>{5b6f8fc3-0b98-455a-8c73-771f5c4a1df4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\EventHandler\Source">
+      <UniqueIdentifier>{11c678f4-86f9-4cdc-bd35-04172b5e9e85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Helper">
+      <UniqueIdentifier>{6b58bf3b-5170-4d59-89d4-66e1647cc38b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Helper\Timer">
+      <UniqueIdentifier>{c7f83edc-d67a-4313-aac0-904af8ce518f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Helper\Timer\Headers">
+      <UniqueIdentifier>{ad215e3b-accc-47db-aff5-13e37bc63622}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Helper\Timer\Source">
+      <UniqueIdentifier>{b29542c5-9ee7-4745-81bb-0a43221f2981}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Services\Math">
+      <UniqueIdentifier>{10acb5bf-bb2b-4526-9659-bc6e733f6c2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Services\Math\Headers">
+      <UniqueIdentifier>{1ebab386-3bfb-4923-bbd4-6c059b193c27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Services\Math\Source">
+      <UniqueIdentifier>{ee4c3548-60e0-4e3b-8e5e-142fadef2dd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Services\Math\MathAdapters">
+      <UniqueIdentifier>{a21c4a32-f838-44d7-b0d1-4e44b8acead6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Prebuilt Objects">
+      <UniqueIdentifier>{d82513bd-0553-4ddd-81dd-afcd57799a2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Prebuilt Objects\Headers">
+      <UniqueIdentifier>{f60d858f-afc1-4f43-b286-ef3a417733da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Prebuilt Objects\Source">
+      <UniqueIdentifier>{dd9ee849-5838-43dc-be45-362db55ff1ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Services\Math\MatrixContainer">
+      <UniqueIdentifier>{abe754fa-29de-4126-ae9c-2b75d4c7b812}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Core\GameSprite.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game\Game.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Core\Dx11Base.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Core\PerformanceCounter.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Base Class\GameObject.cpp">
+      <Filter>Base Class\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Services\WindowScreen.cpp">
+      <Filter>Services</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Graphics\Sprite.cpp">
+      <Filter>Graphics\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Core\stdafx.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\TheEngine.cpp">
+      <Filter>Engine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\MVC\MVCContainer.cpp">
+      <Filter>Engine\MVC\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\MVC\Controller.cpp">
+      <Filter>Engine\MVC\Source\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\MVC\KeyController.cpp">
+      <Filter>Engine\MVC\Source\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\MVC\MouseController.cpp">
+      <Filter>Engine\MVC\Source\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\MVC\TimerController.cpp">
+      <Filter>Engine\MVC\Source\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\MVC\View.cpp">
+      <Filter>Engine\MVC\Source\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UI\Cameras\Camera.cpp">
+      <Filter>UI\Cameras\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\BasicLevelObject\BaseLevelObject.cpp">
+      <Filter>Engine\BasicLevelObject\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\MVC\MovementModel.cpp">
+      <Filter>Engine\MVC\Source\Concrete Classes\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\MVC\MovementKeyController.cpp">
+      <Filter>Engine\MVC\Source\Concrete Classes\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Graphics\Rectangle.cpp">
+      <Filter>Graphics\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\MVC\Model.cpp">
+      <Filter>Engine\MVC\Source\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UI\Cameras\Special Cameras\TrackingCamera.cpp">
+      <Filter>UI\Cameras\Special Cameras\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\MVC\MovementSpriteView.cpp">
+      <Filter>Engine\MVC\Source\Concrete Classes\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Command\Command.cpp">
+      <Filter>Engine\Command\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\ECS\Component.cpp">
+      <Filter>Engine\ECS\Source\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\ECS\Entity.cpp">
+      <Filter>Engine\ECS\Source\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Services\ServiceLocator.cpp">
+      <Filter>Services\Service Locator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Core\RenderEngine.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\SceneManager\SceneManager.cpp">
+      <Filter>Engine\SceneManager\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\SceneManager\Scene.cpp">
+      <Filter>Engine\SceneManager\Scenes\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\EventHandler\EventHandler.cpp">
+      <Filter>Engine\EventHandler\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\EventHandler\EventDispatcher.cpp">
+      <Filter>Engine\EventHandler\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Helper\StopWatch.cpp">
+      <Filter>Engine\Helper\Timer\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\Helper\CountDown.cpp">
+      <Filter>Engine\Helper\Timer\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Services\Math\DataTypes.cpp">
+      <Filter>Services\Math\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Services\Math\MathAdapters\DirectXMathAdapter.cpp">
+      <Filter>Services\Math\MathAdapters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Services\Math\MathFunctions.cpp">
+      <Filter>Services\Math\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Prebuilt Objects\MovementLevelObject.cpp">
+      <Filter>Prebuilt Objects\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Services\Math\MatrixContainer\DirectXMatrixContainer.cpp">
+      <Filter>Services\Math\MatrixContainer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Core\GameSprite.h">
+      <Filter>Core\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\Game.h">
+      <Filter>Game\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Core\StandardTemplates.h">
+      <Filter>Core\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Core\Dx11Base.h">
+      <Filter>Core\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Core\PerformanceCounter.h">
+      <Filter>Core\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Base Class\GameObject.h">
+      <Filter>Base Class\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Services\WindowScreen.h">
+      <Filter>Services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Graphics\Sprite.h">
+      <Filter>Graphics\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Core\stdafx.h">
+      <Filter>Core\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\TheEngine.h">
+      <Filter>Engine\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\MVC\MVC.h">
+      <Filter>Engine\MVC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\MVC\MVCContainer.h">
+      <Filter>Engine\MVC\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\MVC\Controller.h">
+      <Filter>Engine\MVC\Headers\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\MVC\KeyController.h">
+      <Filter>Engine\MVC\Headers\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\MVC\MouseController.h">
+      <Filter>Engine\MVC\Headers\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\MVC\TimerController.h">
+      <Filter>Engine\MVC\Headers\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\MVC\View.h">
+      <Filter>Engine\MVC\Headers\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UI\Cameras\Camera.h">
+      <Filter>UI\Cameras\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\MVC\MovementModel.h">
+      <Filter>Engine\MVC\Headers\Concrete Classes\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\BasicLevelObject\BaseLevelObject.h">
+      <Filter>Engine\BasicLevelObject\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\MVC\MovementKeyController.h">
+      <Filter>Engine\MVC\Headers\Concrete Classes\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UI\Cameras\Special Cameras\TrackingCamera.h">
+      <Filter>UI\Cameras\Special Cameras\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Graphics\Rectangle.h">
+      <Filter>Graphics\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\MVC\Model.h">
+      <Filter>Engine\MVC\Headers\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\MVC\MovementSpriteView.h">
+      <Filter>Engine\MVC\Headers\Concrete Classes\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\Command\Command.h">
+      <Filter>Engine\Command\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\ECS\ECSTypes.h">
+      <Filter>Engine\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\ECS\Entity.h">
+      <Filter>Engine\ECS\Headers\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\ECS\Component.h">
+      <Filter>Engine\ECS\Headers\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Services\ServiceLocator.h">
+      <Filter>Services\Service Locator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Services\Renderer.h">
+      <Filter>Services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Core\RenderEngine.h">
+      <Filter>Core\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\SceneManager\SceneManager.h">
+      <Filter>Engine\SceneManager\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\SceneManager\SceneManagerHeaders.h">
+      <Filter>Engine\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\SceneManager\Scene.h">
+      <Filter>Engine\SceneManager\Scenes\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Services\ScreenSize.h">
+      <Filter>Services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\EventHandler\EventDispatcher.h">
+      <Filter>Engine\EventHandler\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\EventHandler\EventHandler.h">
+      <Filter>Engine\EventHandler\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\EventHandler\Events.h">
+      <Filter>Engine\EventHandler\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\Helper\StopWatch.h">
+      <Filter>Engine\Helper\Timer\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\Helper\CountDown.h">
+      <Filter>Engine\Helper\Timer\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\Helper\Helpers.h">
+      <Filter>Engine\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Services\Math\LevelUpMath.h">
+      <Filter>Services\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Services\Math\DataTypes.h">
+      <Filter>Services\Math\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Services\Math\MathAdapters\MathAdapter.h">
+      <Filter>Services\Math\MathAdapters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Services\Math\MathAdapters\DirectXMathAdapter.h">
+      <Filter>Services\Math\MathAdapters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Services\Math\MathFunctions.h">
+      <Filter>Services\Math\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Prebuilt Objects\MovementLevelObject.h">
+      <Filter>Prebuilt Objects\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Services\Math\MatrixContainer\MatrixContainer.h">
+      <Filter>Services\Math\MatrixContainer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Services\Math\MatrixContainer\DirectXMatrixContainer.h">
+      <Filter>Services\Math\MatrixContainer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

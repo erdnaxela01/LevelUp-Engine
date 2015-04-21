@@ -1,0 +1,6 @@
+#include "DataTypes.h"
+#include "MathAdapters\DirectXMathAdapter.h"
+#include "MathFunctions.h"
+#include "MathAdapters\MathAdapter.h"
+#include "../Math/MatrixContainer/MatrixContainer.h"
+#include "../Math/MatrixContainer/DirectXMatrixContainer.h"

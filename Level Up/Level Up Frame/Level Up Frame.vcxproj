@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\directxtk_desktop_2013.2015.2.25.1\build\native\directxtk_desktop_2013.props" Condition="Exists('..\packages\directxtk_desktop_2013.2015.2.25.1\build\native\directxtk_desktop_2013.props')" />
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D8D10727-6147-4419-B80C-9EDDD995A947}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>LevelUpFrame</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros">
+    <NuGetPackageImportStamp>7f95bcbb</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>D3D11.lib;D3DCompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Base Class\GameObject.cpp" />
+    <ClCompile Include="..\Core\Dx11Base.cpp" />
+    <ClCompile Include="..\Core\GameSprite.cpp" />
+    <ClCompile Include="..\Core\RenderEngine.cpp" />
+    <ClCompile Include="..\Core\PerformanceCounter.cpp" />
+    <ClCompile Include="..\Core\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="..\Engine\BasicLevelObject\BaseLevelObject.cpp" />
+    <ClCompile Include="..\Engine\Command\Command.cpp" />
+    <ClCompile Include="..\Engine\ECS\Component.cpp" />
+    <ClCompile Include="..\Engine\ECS\Entity.cpp" />
+    <ClCompile Include="..\Engine\EventHandler\EventDispatcher.cpp" />
+    <ClCompile Include="..\Engine\EventHandler\EventHandler.cpp" />
+    <ClCompile Include="..\Engine\Helper\CountDown.cpp" />
+    <ClCompile Include="..\Engine\Helper\StopWatch.cpp" />
+    <ClCompile Include="..\Engine\MVC\Controller.cpp" />
+    <ClCompile Include="..\Engine\MVC\KeyController.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="..\Engine\MVC\Model.cpp" />
+    <ClCompile Include="..\Engine\MVC\MouseController.cpp" />
+    <ClCompile Include="..\Engine\MVC\MovementKeyController.cpp" />
+    <ClCompile Include="..\Engine\MVC\MVCContainer.cpp" />
+    <ClCompile Include="..\Engine\MVC\MovementModel.cpp" />
+    <ClCompile Include="..\Engine\MVC\MovementSpriteView.cpp" />
+    <ClCompile Include="..\Engine\MVC\TimerController.cpp" />
+    <ClCompile Include="..\Engine\MVC\View.cpp" />
+    <ClCompile Include="..\Engine\SceneManager\Scene.cpp" />
+    <ClCompile Include="..\Engine\SceneManager\SceneManager.cpp" />
+    <ClCompile Include="..\Engine\TheEngine.cpp" />
+    <ClCompile Include="..\Game\Game.cpp" />
+    <ClCompile Include="..\Graphics\Rectangle.cpp" />
+    <ClCompile Include="..\Graphics\Sprite.cpp" />
+    <ClCompile Include="..\Prebuilt Objects\MovementLevelObject.cpp" />
+    <ClCompile Include="..\Services\Math\DataTypes.cpp" />
+    <ClCompile Include="..\Services\Math\MathAdapters\DirectXMathAdapter.cpp" />
+    <ClCompile Include="..\Services\Math\MathFunctions.cpp" />
+    <ClCompile Include="..\Services\Math\MatrixContainer\DirectXMatrixContainer.cpp" />
+    <ClCompile Include="..\Services\ServiceLocator.cpp" />
+    <ClCompile Include="..\Services\WindowScreen.cpp" />
+    <ClCompile Include="..\UI\Cameras\Camera.cpp" />
+    <ClCompile Include="..\UI\Cameras\Special Cameras\TrackingCamera.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Base Class\GameObject.h" />
+    <ClInclude Include="..\Core\Dx11Base.h" />
+    <ClInclude Include="..\Core\GameSprite.h" />
+    <ClInclude Include="..\Core\RenderEngine.h" />
+    <ClInclude Include="..\Core\PerformanceCounter.h" />
+    <ClInclude Include="..\Core\StandardTemplates.h" />
+    <ClInclude Include="..\Core\stdafx.h" />
+    <ClInclude Include="..\Engine\BasicLevelObject\BaseLevelObject.h" />
+    <ClInclude Include="..\Engine\Command\Command.h" />
+    <ClInclude Include="..\Engine\ECS\Component.h" />
+    <ClInclude Include="..\Engine\ECS\ECSTypes.h" />
+    <ClInclude Include="..\Engine\ECS\Entity.h" />
+    <ClInclude Include="..\Engine\EventHandler\EventDispatcher.h" />
+    <ClInclude Include="..\Engine\EventHandler\EventHandler.h" />
+    <ClInclude Include="..\Engine\EventHandler\Events.h" />
+    <ClInclude Include="..\Engine\Helper\CountDown.h" />
+    <ClInclude Include="..\Engine\Helper\Helpers.h" />
+    <ClInclude Include="..\Engine\Helper\StopWatch.h" />
+    <ClInclude Include="..\Engine\MVC\MovementKeyController.h" />
+    <ClInclude Include="..\Engine\MVC\Controller.h" />
+    <ClInclude Include="..\Engine\MVC\KeyController.h" />
+    <ClInclude Include="..\Engine\MVC\Model.h" />
+    <ClInclude Include="..\Engine\MVC\MouseController.h" />
+    <ClInclude Include="..\Engine\MVC\MVC.h" />
+    <ClInclude Include="..\Engine\MVC\MVCContainer.h" />
+    <ClInclude Include="..\Engine\MVC\MovementModel.h" />
+    <ClInclude Include="..\Engine\MVC\MovementSpriteView.h" />
+    <ClInclude Include="..\Engine\MVC\TimerController.h" />
+    <ClInclude Include="..\Engine\MVC\View.h" />
+    <ClInclude Include="..\Engine\SceneManager\Scene.h" />
+    <ClInclude Include="..\Engine\SceneManager\SceneManager.h" />
+    <ClInclude Include="..\Engine\SceneManager\SceneManagerHeaders.h" />
+    <ClInclude Include="..\Engine\TheEngine.h" />
+    <ClInclude Include="..\Game\Game.h" />
+    <ClInclude Include="..\Graphics\Sprite.h" />
+    <ClInclude Include="..\Graphics\Rectangle.h" />
+    <ClInclude Include="..\Prebuilt Objects\MovementLevelObject.h" />
+    <ClInclude Include="..\Services\Math\DataTypes.h" />
+    <ClInclude Include="..\Services\Math\LevelUpMath.h" />
+    <ClInclude Include="..\Services\Math\MathAdapters\DirectXMathAdapter.h" />
+    <ClInclude Include="..\Services\Math\MathAdapters\MathAdapter.h" />
+    <ClInclude Include="..\Services\Math\MathFunctions.h" />
+    <ClInclude Include="..\Services\Math\MatrixContainer\DirectXMatrixContainer.h" />
+    <ClInclude Include="..\Services\Math\MatrixContainer\MatrixContainer.h" />
+    <ClInclude Include="..\Services\Renderer.h" />
+    <ClInclude Include="..\Services\ScreenSize.h" />
+    <ClInclude Include="..\Services\ServiceLocator.h" />
+    <ClInclude Include="..\Services\WindowScreen.h" />
+    <ClInclude Include="..\UI\Cameras\Camera.h" />
+    <ClInclude Include="..\UI\Cameras\Special Cameras\TrackingCamera.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\directxtk_desktop_2013.2015.2.25.1\build\native\directxtk_desktop_2013.targets" Condition="Exists('..\packages\directxtk_desktop_2013.2015.2.25.1\build\native\directxtk_desktop_2013.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\directxtk_desktop_2013.2015.2.25.1\build\native\directxtk_desktop_2013.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\directxtk_desktop_2013.2015.2.25.1\build\native\directxtk_desktop_2013.props'))" />
+    <Error Condition="!Exists('..\packages\directxtk_desktop_2013.2015.2.25.1\build\native\directxtk_desktop_2013.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\directxtk_desktop_2013.2015.2.25.1\build\native\directxtk_desktop_2013.targets'))" />
+  </Target>
+</Project>

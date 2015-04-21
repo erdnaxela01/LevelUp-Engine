@@ -1,0 +1,66 @@
+﻿Build started 2015-04-10 9:34:48 AM.
+     1>Project "C:\Users\alexandre\Documents\Level Up Frame\Level Up Frame\Level Up Frame.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\alexandre\Documents\Level Up Frame\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/include/" /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D HAS_DIRECTXTK /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Release\Level Up Frame.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "..\Base Class\GameObject.cpp" ..\Core\Dx11Base.cpp ..\Core\GameSprite.cpp ..\Core\TheGameBase.cpp ..\Core\PerformanceCounter.cpp ..\Core\stdafx.cpp ..\Engine\BasicLevelObject\BaseLevelObject.cpp ..\Engine\Command\Command.cpp ..\Engine\MVC\Controller.cpp ..\Engine\MVC\KeyController.cpp ..\Engine\MVC\Model.cpp ..\Engine\MVC\MouseController.cpp ..\Engine\MVC\MovementKeyController.cpp ..\Engine\MVC\MVCContainer.cpp ..\Engine\MVC\MovementModel.cpp ..\Engine\MVC\MovementSpriteView.cpp ..\Engine\MVC\TimerController.cpp ..\Engine\MVC\View.cpp ..\Engine\TheEngine.cpp ..\Engine\TheSceneManager\Scene.cpp ..\Engine\TheSceneManager\TheSceneManager.cpp ..\Game\Game.cpp ..\Graphics\Rectangle.cpp ..\Graphics\Sprite.cpp ..\Services\WindowScreen.cpp ..\UI\Cameras\Camera.cpp "..\UI\Cameras\Special Cameras\TrackingCamera.cpp" main.cpp
+         GameObject.cpp
+     1>..\Base Class\GameObject.cpp(21): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         Dx11Base.cpp
+     1>..\Core\Dx11Base.cpp(172): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         GameSprite.cpp
+     1>..\Core\GameSprite.cpp(35): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         TheGameBase.cpp
+     1>..\Core\TheGameBase.cpp(144): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         PerformanceCounter.cpp
+     1>..\Core\PerformanceCounter.cpp(31): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         stdafx.cpp
+     1>..\Core\stdafx.cpp(1): fatal error C1083: Cannot open precompiled header file: 'Release\Level Up Frame.pch': No such file or directory
+         BaseLevelObject.cpp
+     1>..\Engine\BasicLevelObject\BaseLevelObject.cpp(66): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         Command.cpp
+     1>..\Engine\Command\Command.cpp(2): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         Controller.cpp
+     1>..\Engine\MVC\Controller.cpp(39): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         KeyController.cpp
+     1>..\Engine\MVC\KeyController.cpp(42): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         Model.cpp
+     1>..\Engine\MVC\Model.cpp(46): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         MouseController.cpp
+     1>..\Engine\MVC\MouseController.cpp(39): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         MovementKeyController.cpp
+     1>..\Engine\MVC\MovementKeyController.cpp(66): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         MVCContainer.cpp
+     1>..\Engine\MVC\MVCContainer.cpp(143): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         MovementModel.cpp
+     1>..\Engine\MVC\MovementModel.cpp(127): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         MovementSpriteView.cpp
+     1>..\Engine\MVC\MovementSpriteView.cpp(105): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         TimerController.cpp
+     1>..\Engine\MVC\TimerController.cpp(42): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         View.cpp
+     1>..\Engine\MVC\View.cpp(93): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         TheEngine.cpp
+     1>..\Engine\TheEngine.cpp(324): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         Scene.cpp
+     1>..\Engine\TheSceneManager\Scene.cpp(42): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         Compiling...
+         TheSceneManager.cpp
+     1>..\Engine\TheSceneManager\TheSceneManager.cpp(51): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         Game.cpp
+     1>..\Game\Game.cpp(40): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         Rectangle.cpp
+     1>..\Graphics\Rectangle.cpp(212): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         Sprite.cpp
+     1>..\Graphics\Sprite.cpp(276): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         WindowScreen.cpp
+     1>..\Services\WindowScreen.cpp(22): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         Camera.cpp
+     1>..\UI\Cameras\Camera.cpp(177): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         TrackingCamera.cpp
+     1>..\UI\Cameras\Special Cameras\TrackingCamera.cpp(44): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         main.cpp
+     1>main.cpp(62): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+     1>Done Building Project "C:\Users\alexandre\Documents\Level Up Frame\Level Up Frame\Level Up Frame.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.95
