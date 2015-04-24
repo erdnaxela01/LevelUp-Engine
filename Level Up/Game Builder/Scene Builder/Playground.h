@@ -7,6 +7,7 @@ namespace LevelUp
     {
     public:
         void SceneLayout();
+        void SystemAdd();
     };
 }
 

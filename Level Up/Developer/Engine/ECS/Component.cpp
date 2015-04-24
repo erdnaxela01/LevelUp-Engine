@@ -3,12 +3,15 @@
 
 namespace LevelUp
 {
-	Component::Component() :m_isActivated(true)
+    int Component::m_numberOfComponents = 0;
+    Component::Component() :m_isActivated(true), m_type("")
 	{
+        m_numberOfComponents++;
+        m_ID = "Component " + m_numberOfComponents;
 	}
 	Component::~Component()
 	{
-
+        m_numberOfComponents--;
 	}
 	bool Component::isType(std::string s)
 	{

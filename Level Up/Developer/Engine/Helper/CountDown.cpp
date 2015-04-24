@@ -2,7 +2,7 @@
 
 namespace LevelUp
 {
-    CountDown::CountDown() :m_time(0.0)
+    CountDown::CountDown() :m_time(0.0), m_startTime(0.0)
     {
 
     }
@@ -21,7 +21,9 @@ namespace LevelUp
     void CountDown::start(double startTime)
     {
         //start the countdown
+
         m_time = startTime;
+        m_startTime = startTime;
     }
     bool CountDown::isItDone()
     {
@@ -40,5 +42,9 @@ namespace LevelUp
     double CountDown::time()
     {
         return m_time;
+    }
+    double CountDown::getStartTime()
+    {
+        return m_startTime;
     }
 }

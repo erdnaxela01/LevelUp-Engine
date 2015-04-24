@@ -44,6 +44,10 @@ namespace LevelUp
 		float getWidth(){ return m_width; }
         //get the rectangles height
 		float getHeight(){ return m_height; }
+        //set the angle of the sprite
+        void setAngle(float a);
+        //set the color of the rectangle
+        void setColor(LVLfloat3 c);
 	private:
 		ID3D11Buffer* m_vertexBuffer;
 		ID3D11ShaderResourceView* m_colorMap;

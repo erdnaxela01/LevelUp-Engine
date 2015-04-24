@@ -116,7 +116,7 @@ namespace LevelUp
 
 		m_sleepTime = m_frameTime;
 
-
+        m_sceneBuilder.SystemAdd();
         m_sceneBuilder.SceneLayout();
 
 		return result;
@@ -357,5 +357,10 @@ namespace LevelUp
         ServiceLocator::provideRenderService(&m_render);
 
         return result;
+    }
+
+    SystemContainer* TheEngine::getSystems()
+    {
+        return &m_systems;
     }
 }

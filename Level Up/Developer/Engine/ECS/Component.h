@@ -23,10 +23,14 @@ namespace LevelUp
 		bool isActivated();
         //set the activation of the component
 		void setIsActivated(bool b);
-	private:
+        std::string componentID();
+    protected:
         //get the tyoe of component and if its activated
-		std::string m_type;
+        std::string m_type;
+        std::string m_ID;
+	private:
 		bool m_isActivated;
+        static int m_numberOfComponents;
 	};
 }
 

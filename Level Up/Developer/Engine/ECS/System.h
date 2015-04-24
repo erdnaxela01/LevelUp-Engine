@@ -26,7 +26,7 @@ namespace LevelUp
         void removeEntity(Entity* e);
 
         virtual bool isECSType(ECSType t);
-    private:
+    protected:
         std::vector<Entity*> m_entities;
 
     };

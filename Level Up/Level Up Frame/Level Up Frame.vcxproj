@@ -103,6 +103,7 @@
     <ClCompile Include="..\Developer\Engine\ECS\Component.cpp" />
     <ClCompile Include="..\Developer\Engine\ECS\Entity.cpp" />
     <ClCompile Include="..\Developer\Engine\ECS\System.cpp" />
+    <ClCompile Include="..\Developer\Engine\ECS\SystemContainer.cpp" />
     <ClCompile Include="..\Developer\Engine\EventHandler\EventDispatcher.cpp" />
     <ClCompile Include="..\Developer\Engine\EventHandler\EventHandler.cpp" />
     <ClCompile Include="..\Developer\Engine\Helper\CountDown.cpp" />
@@ -121,6 +122,7 @@
     <ClCompile Include="..\Developer\Engine\SceneManager\SceneManager.cpp" />
     <ClCompile Include="..\Developer\Engine\TheEngine.cpp" />
     <ClCompile Include="..\Developer\Enums\Keys.cpp" />
+    <ClCompile Include="..\Developer\Graphics\Color.cpp" />
     <ClCompile Include="..\Developer\Graphics\Rectangle.cpp" />
     <ClCompile Include="..\Developer\Graphics\Sprite.cpp" />
     <ClCompile Include="..\Developer\Services\Math\DataTypes.cpp" />
@@ -132,6 +134,9 @@
     <ClCompile Include="..\Developer\UI\Cameras\Camera.cpp" />
     <ClCompile Include="..\Developer\UI\Cameras\Special Cameras\TrackingCamera.cpp" />
     <ClCompile Include="..\Game Builder\Game\Game.cpp" />
+    <ClCompile Include="..\Game Builder\Prebuilt Objects\ECS\Particle.cpp" />
+    <ClCompile Include="..\Game Builder\Prebuilt Objects\ECS\ParticleComponent.cpp" />
+    <ClCompile Include="..\Game Builder\Prebuilt Objects\ECS\ParticleSystem.cpp" />
     <ClCompile Include="..\Game Builder\Prebuilt Objects\MovementLevelObject.cpp" />
     <ClCompile Include="..\Game Builder\Scene Builder\Playground.cpp" />
     <ClCompile Include="main.cpp" />
@@ -154,6 +159,7 @@
     <ClInclude Include="..\Developer\Engine\ECS\ECSTypes.h" />
     <ClInclude Include="..\Developer\Engine\ECS\Entity.h" />
     <ClInclude Include="..\Developer\Engine\ECS\System.h" />
+    <ClInclude Include="..\Developer\Engine\ECS\SystemContainer.h" />
     <ClInclude Include="..\Developer\Engine\EventHandler\EventDispatcher.h" />
     <ClInclude Include="..\Developer\Engine\EventHandler\EventHandler.h" />
     <ClInclude Include="..\Developer\Engine\EventHandler\Events.h" />
@@ -176,6 +182,7 @@
     <ClInclude Include="..\Developer\Engine\SceneManager\SceneManagerHeaders.h" />
     <ClInclude Include="..\Developer\Engine\TheEngine.h" />
     <ClInclude Include="..\Developer\Enums\Keys.h" />
+    <ClInclude Include="..\Developer\Graphics\Color.h" />
     <ClInclude Include="..\Developer\Graphics\Rectangle.h" />
     <ClInclude Include="..\Developer\Graphics\Sprite.h" />
     <ClInclude Include="..\Developer\Services\Math\DataTypes.h" />
@@ -192,6 +199,9 @@
     <ClInclude Include="..\Developer\UI\Cameras\Camera.h" />
     <ClInclude Include="..\Developer\UI\Cameras\Special Cameras\TrackingCamera.h" />
     <ClInclude Include="..\Game Builder\Game\Game.h" />
+    <ClInclude Include="..\Game Builder\Prebuilt Objects\ECS\Particle.h" />
+    <ClInclude Include="..\Game Builder\Prebuilt Objects\ECS\ParticleComponent.h" />
+    <ClInclude Include="..\Game Builder\Prebuilt Objects\ECS\ParticleSystem.h" />
     <ClInclude Include="..\Game Builder\Prebuilt Objects\MovementLevelObject.h" />
     <ClInclude Include="..\Game Builder\Scene Builder\Playground.h" />
   </ItemGroup>

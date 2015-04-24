@@ -19,9 +19,9 @@ namespace LevelUp
 	LVL4X4matrix GameSprite::GetWorldMatrix()
 	{
         //get the translation rotation and scaling matrices and return the world matrix
-        LVL4X4matrix translation = translationMatrix2D(LVLfloat2(getPosition().x, getPosition().y));
-        LVL4X4matrix rotationZ = zRotationMatrix(m_rotation);
-        LVL4X4matrix scale = scalingMatrix2D(LVLfloat2(m_scale.x, m_scale.y));
+        LVL4X4matrix translation = MathHelper::translationMatrix2D(LVLfloat2(getPosition().x, getPosition().y));
+        LVL4X4matrix rotationZ = MathHelper::zRotationMatrix(m_rotation);
+        LVL4X4matrix scale = MathHelper::scalingMatrix2D(LVLfloat2(m_scale.x, m_scale.y));
 
 
         LVL4X4matrix m = rotationZ *scale * translation;

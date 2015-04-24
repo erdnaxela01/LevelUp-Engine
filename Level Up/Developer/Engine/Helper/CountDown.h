@@ -23,8 +23,11 @@ namespace LevelUp
         void stop();
         //checks the current time
         double time();
+
+        double getStartTime();
     private:
-        float m_time;
+        double m_time;
+        double m_startTime;
     };
 }
 

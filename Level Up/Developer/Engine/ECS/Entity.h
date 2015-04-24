@@ -25,7 +25,16 @@ namespace LevelUp
         void addComponent(Component* c);
         //remove all the components of the same type
         void removeAllComponentsOfType(std::string s);
+
+        //check if it has any specific components
+        bool hasComponent(std::string s);
+
+        //check if the entity is active
+        bool isActive();
+        //set if the entity is active
+        void setIsActive(bool b);
 	private:
+        bool m_isActive;
 		std::vector<Component*> m_components;
 
 

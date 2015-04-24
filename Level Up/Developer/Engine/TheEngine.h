@@ -12,6 +12,7 @@
 #include "EventHandler\EventDispatcher.h"
 #include "../Services/Math/MathAdapters/DirectXMathAdapter.h"
 #include "../../Game Builder/Scene Builder/Playground.h"
+#include "ECS\SystemContainer.h"
 
 namespace LevelUp
 {
@@ -20,6 +21,7 @@ namespace LevelUp
 	class Model;
 	class View;
 	class Camera;
+
 
     //function used as a proxy to send to engines own wndproc
 	LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -81,6 +83,9 @@ namespace LevelUp
         //get the scene manager
 		SceneManager* getSceneManager();
 
+        //returns all the systems in the engine
+        SystemContainer* getSystems();
+
 	private:
         //singleton
 		static TheEngine* m_theEngine;
@@ -94,7 +99,9 @@ namespace LevelUp
 		SceneManager m_scenes;
 		WindowScreen* m_screenSize;
         DirectXMathAdapter m_adapter;
-		
+
+        SystemContainer m_systems;
+
         Playground m_sceneBuilder;
 
 		HWND m_windowHandle;

@@ -37,6 +37,12 @@ namespace LevelUp
         LVLfloat2 operator* (const LVLfloat2 &rhs);
         LVLfloat2 operator- (const LVLfloat2 &rhs);
         LVLfloat2 operator+ (const LVLfloat2 &rhs);
+        void operator*= (const float &rhs);
+        void operator/= (const float &rhs);
+        void operator+= (const LVLfloat2 &rhs);
+        void operator-= (const LVLfloat2 &rhs);
+        LVLfloat2 operator*(const float &rhs);
+        LVLfloat2 operator/ (const float &rhs);
         LVLfloat2(float tx, float ty);
         LVLfloat2();
 

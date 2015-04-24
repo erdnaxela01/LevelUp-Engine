@@ -111,7 +111,41 @@ namespace LevelUp
         return l;
     }
 
+    void LVLfloat2::operator*= (const float &rhs)
+    {
+        this->x *= rhs;
+        this->y *= rhs;
+    }
+    void LVLfloat2::operator/= (const float &rhs)
+    {
+        this->x /= rhs;
+        this->y /= rhs;
+    }
+    LVLfloat2 LVLfloat2::operator*(const float &rhs)
+    {
+        LVLfloat2 l;
+        l.x = this->x * rhs;
+        l.y = this->y * rhs;
+        return l;
+    }
+    LVLfloat2 LVLfloat2::operator/ (const float &rhs)
+    {
+        LVLfloat2 l;
+        l.x = this->x / rhs;
+        l.y = this->y / rhs;
+        return l;
+    }
 
+    void LVLfloat2::operator+= (const LVLfloat2 &rhs)
+    {
+        this->x += rhs.x;
+        this->y += rhs.y;
+    }
+    void LVLfloat2::operator-= (const LVLfloat2 &rhs)
+    {
+        this->x -= rhs.x;
+        this->y -= rhs.y;
+    }
 
     LVLfloat3::LVLfloat3(float tx, float ty, float tz)
     {

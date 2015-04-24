@@ -1,6 +1,7 @@
 #include "Entity.h"
 #include "ECSTypes.h"
 #include "../../Core/StandardTemplates.h"
+#include "../../Engine/TheEngine.h"
 
 
 namespace LevelUp
@@ -50,6 +51,7 @@ namespace LevelUp
     void Entity::addComponent(Component* c)
     {
         m_components.push_back(c);
+        TheEngine::getInstance()->getSystems()->addedComponent(this);
     }
     void Entity::removeAllComponentsOfType(std::string s)
     {
@@ -62,5 +64,39 @@ namespace LevelUp
             m_components.erase(std::find(m_components.begin(), m_components.end(), i));
             SafeDelete(i);
         }
+        TheEngine::getInstance()->getSystems()->removedComponent(this);
+    }
+    bool Entity::isActive()
+    {
+        return m_isActive;
+    }
+    //set if the entity is active
+    void Entity::setIsActive(bool b)
+    {
+        m_isActive = b;
+    }
+    bool Entity::hasComponent(std::string s)
+    {
+        std::vector<Component*> enty;
+        for (auto i : m_components)
+        {
+            if (i->isType(s))
+            {
+                return true;
+            }
+            //if the component is also an entity look into it too
+            if (i->isECSType(ECSType::ECSTYPE_ENTITY))
+            {
+                std::vector<Component*> temp;
+                //kindof recursion, we must go deeper
+                if (hasComponent(s))
+                {
+                    return true; 
+                }
+            }
+
+
+        }
+        return false;
     }
 }

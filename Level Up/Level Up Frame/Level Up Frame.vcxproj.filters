@@ -36,9 +36,6 @@
     <Filter Include="Developer\Engine">
       <UniqueIdentifier>{6b7b4e3c-2923-4ee6-8df3-2f6a455bd0af}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Developer\Engine\Headers">
-      <UniqueIdentifier>{1e65a690-9ddd-4829-9812-88dc83223297}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Developer\Engine\Source">
       <UniqueIdentifier>{ebd59584-93ff-4701-8f3e-84e32cd0f787}</UniqueIdentifier>
     </Filter>
@@ -246,31 +243,22 @@
     <Filter Include="Game Builder\Prebuilt Objects">
       <UniqueIdentifier>{d82513bd-0553-4ddd-81dd-afcd57799a2d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game Builder\Prebuilt Objects\Headers">
-      <UniqueIdentifier>{f60d858f-afc1-4f43-b286-ef3a417733da}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game Builder\Game">
       <UniqueIdentifier>{04499191-5722-438d-982b-f1b85be488fa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game Builder\Game\Headers">
-      <UniqueIdentifier>{1afa9dd0-0837-4a49-9ddf-4c3504182e2b}</UniqueIdentifier>
+    <Filter Include="Game Builder\Prebuilt Objects\ECS">
+      <UniqueIdentifier>{a08bba84-3baa-436d-ae4d-9480d1481347}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game Builder\Game\Source">
-      <UniqueIdentifier>{d1de5d95-1216-4238-a4ad-b2faf461d2ad}</UniqueIdentifier>
+    <Filter Include="Developer\Engine\Headers">
+      <UniqueIdentifier>{1e65a690-9ddd-4829-9812-88dc83223297}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game Builder\Prebuilt Objects\Source">
-      <UniqueIdentifier>{dd9ee849-5838-43dc-be45-362db55ff1ea}</UniqueIdentifier>
+    <Filter Include="Game Builder\Prebuilt Objects\ECS\Particles">
+      <UniqueIdentifier>{a5e9b5a9-250a-48d8-9ec4-f807efbd2dd4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Game Builder\Prebuilt Objects\MovementLevelObject.cpp">
-      <Filter>Game Builder\Prebuilt Objects\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Game Builder\Game\Game.cpp">
-      <Filter>Game Builder\Game\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Game Builder\Scene Builder\Playground.cpp">
       <Filter>Game Builder\Scene Builder</Filter>
@@ -398,14 +386,29 @@
     <ClCompile Include="..\Developer\UI\Cameras\Special Cameras\TrackingCamera.cpp">
       <Filter>Developer\UI\Cameras\Special Cameras\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\Game Builder\Game\Game.cpp">
+      <Filter>Game Builder\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game Builder\Prebuilt Objects\MovementLevelObject.cpp">
+      <Filter>Game Builder\Prebuilt Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Engine\ECS\SystemContainer.cpp">
+      <Filter>Developer\Engine\ECS\Source\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game Builder\Prebuilt Objects\ECS\Particle.cpp">
+      <Filter>Game Builder\Prebuilt Objects\ECS\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game Builder\Prebuilt Objects\ECS\ParticleComponent.cpp">
+      <Filter>Game Builder\Prebuilt Objects\ECS\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game Builder\Prebuilt Objects\ECS\ParticleSystem.cpp">
+      <Filter>Game Builder\Prebuilt Objects\ECS\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Graphics\Color.cpp">
+      <Filter>Developer\Graphics\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Game Builder\Prebuilt Objects\MovementLevelObject.h">
-      <Filter>Game Builder\Prebuilt Objects\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Game Builder\Game\Game.h">
-      <Filter>Game Builder\Game\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\Game Builder\Scene Builder\Playground.h">
       <Filter>Game Builder\Scene Builder</Filter>
     </ClInclude>
@@ -570,6 +573,27 @@
     </ClInclude>
     <ClInclude Include="..\Developer\UI\Cameras\Special Cameras\TrackingCamera.h">
       <Filter>Developer\UI\Cameras\Special Cameras\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game Builder\Game\Game.h">
+      <Filter>Game Builder\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game Builder\Prebuilt Objects\MovementLevelObject.h">
+      <Filter>Game Builder\Prebuilt Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Engine\ECS\SystemContainer.h">
+      <Filter>Developer\Engine\ECS\Headers\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game Builder\Prebuilt Objects\ECS\Particle.h">
+      <Filter>Game Builder\Prebuilt Objects\ECS\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game Builder\Prebuilt Objects\ECS\ParticleComponent.h">
+      <Filter>Game Builder\Prebuilt Objects\ECS\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game Builder\Prebuilt Objects\ECS\ParticleSystem.h">
+      <Filter>Game Builder\Prebuilt Objects\ECS\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Graphics\Color.h">
+      <Filter>Developer\Graphics\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

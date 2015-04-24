@@ -109,7 +109,7 @@ namespace LevelUp
         //if the view port has changed set it to the new values
         if (m_viewPortIsDirty)
         {
-            LVL4X4matrix view = LevelUp::identityMatrix();
+            LVL4X4matrix view = MathHelper::identityMatrix();
             LVL4X4matrix proj;
             ServiceLocator::getMathAdapter()->convertToLVLMatrix(&proj, &DirectXMatrixContainer(&DirectX::XMMatrixOrthographicOffCenterLH(0.0f, m_width, 0.0f, m_height, 0.1f, 100.0f)));
 

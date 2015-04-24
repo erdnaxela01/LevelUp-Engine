@@ -1,7 +1,7 @@
 #include "Rectangle.h"
 #include "../Core/StandardTemplates.h"
 #include "../Core/GameSprite.h"
-
+#include "../Services/Math/MathFunctions.h"
 #include "../Services/ServiceLocator.h"
 
 namespace LevelUp
@@ -225,10 +225,38 @@ namespace LevelUp
 	}
     void Rectangle::setAlpha(float a)
     {
+        a = MathHelper::Clamp(a, 0.0f, 1.0f);
         m_color.z = a;
     }
     float Rectangle::getAlpha()
     {
         return m_color.z;
+    }
+    void Rectangle::setColor(LVLfloat3 c)
+    {
+        m_color.x = c.x;
+        m_color.y = c.y;
+        m_color.z = c.z;
+        //get the half of the height and the width
+        float halfWidth = m_width * 0.5f;
+        float halfHeight = m_height * 0.5f;
+        //create a vector of the vertecx
+        ColorVertexPos vertices[] =
+        {
+            { LVLfloat3(halfWidth, halfHeight, 1.0f), m_color },
+            { LVLfloat3(halfWidth, -halfHeight, 1.0f), m_color },
+            { LVLfloat3(-halfWidth, -halfHeight, 1.0f), m_color },
+
+            { LVLfloat3(-halfWidth, -halfHeight, 1.0f), m_color },
+            { LVLfloat3(-halfWidth, halfHeight, 1.0f), m_color },
+            { LVLfloat3(halfWidth, halfHeight, 1.0f), m_color }
+        };
+
+        //set the vertec buffer
+        setVertexBuffer(vertices);
+    }
+    void Rectangle::setAngle(float a)
+    {
+        m_sprite.setRotation(a);
     }
 }
