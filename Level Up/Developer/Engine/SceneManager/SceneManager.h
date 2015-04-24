@@ -15,7 +15,7 @@ namespace LevelUp
 	public:
         //get a scene compared to the name
 		Scene* getScene(std::string s);
-        //add a scene
+        //add a scene this scene gets deleted by the scene manager
 		void addSceneToMap(Scene* s);
         //make this the active scene
 		void pushScene(std::string s);

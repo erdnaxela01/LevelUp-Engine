@@ -1,8 +1,28 @@
-﻿Build started 4/24/2015 12:46:42 PM.
+﻿Build started 4/24/2015 1:05:06 PM.
      1>Project "G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\Level Up Frame\Level Up Frame.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/include/" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D HAS_DIRECTXTK /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Level Up Frame.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /FIstdafx.h /analyze- /errorReport:prompt ..\Developer\Graphics\Sprite.cpp
-         Sprite.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/include/" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D HAS_DIRECTXTK /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Level Up Frame.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /FIstdafx.h /analyze- /errorReport:prompt ..\Developer\Engine\EventHandler\EventHandler.cpp ..\Developer\Engine\MVC\KeyController.cpp ..\Developer\Engine\MVC\Model.cpp ..\Developer\Engine\MVC\MouseController.cpp ..\Developer\Engine\MVC\MovementSpriteView.cpp ..\Developer\Engine\MVC\TimerController.cpp ..\Developer\Engine\MVC\View.cpp ..\Developer\Engine\SceneManager\SceneManager.cpp ..\Developer\Engine\TheEngine.cpp ..\Developer\Services\WindowScreen.cpp ..\Developer\UI\Cameras\Camera.cpp "..\Game Builder\Game\Game.cpp" "..\Game Builder\Scene Builder\Playground.cpp" main.cpp
+         Playground.cpp
+         TheEngine.cpp
+     1>g:\users\alexandre\most recent levelup\branch version\level up\developer\engine\theengine.cpp(300): warning C4244: 'initializing' : conversion from 'LONG' to 'float', possible loss of data
+     1>g:\users\alexandre\most recent levelup\branch version\level up\developer\engine\theengine.cpp(302): warning C4244: 'initializing' : conversion from 'LONG' to 'float', possible loss of data
+         Generating Code...
+         Compiling...
+         main.cpp
+         Camera.cpp
+         WindowScreen.cpp
+         SceneManager.cpp
+     1>g:\users\alexandre\most recent levelup\branch version\level up\developer\engine\scenemanager\scenemanager.cpp(63): warning C4018: '<' : signed/unsigned mismatch
+         View.cpp
+         TimerController.cpp
+         MovementSpriteView.cpp
+         MouseController.cpp
+         Model.cpp
+         KeyController.cpp
+         EventHandler.cpp
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         Game.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\Debug\Level Up Frame.exe" /INCREMENTAL /NOLOGO "G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/lib/Win32/Debug/DirectXTKAudioDX.lib" "G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/lib/Win32/Debug/DirectXTK.lib" D3D11.lib D3DCompiler.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\Debug\Level Up Frame.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\Debug\Level Up Frame.lib" /MACHINE:X86 Debug\GameObject.obj
          Debug\DirectXViewport.obj
@@ -54,4 +74,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.97
+Time Elapsed 00:00:03.19

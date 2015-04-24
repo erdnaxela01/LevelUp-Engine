@@ -117,8 +117,7 @@ namespace LevelUp
 		m_sleepTime = m_frameTime;
 
 
-		m_scenes.addSceneToMap(new Game());
-		m_scenes.pushScene("Game");
+        m_sceneBuilder.SceneLayout();
 
 		return result;
 	}

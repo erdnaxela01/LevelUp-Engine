@@ -1,5 +1,6 @@
 #include "SceneManager.h"
 #include "Scene.h"
+#include "../../Core/StandardTemplates.h"
 namespace LevelUp
 {
 	SceneManager::SceneManager() :m_activeScene(nullptr)
@@ -8,7 +9,22 @@ namespace LevelUp
 	}
 	SceneManager::~SceneManager()
 	{
-
+        typedef std::map<std::string, Scene*>::iterator it_type;
+        if (m_allScenes.size() > 1)
+        {
+            for (it_type iterator = m_allScenes.begin(); iterator != m_allScenes.end(); iterator++)
+            {
+                std::string id = iterator->second->sceneID();
+                SafeDelete(iterator->second);
+                m_allScenes.erase(id);
+            }
+        }
+        else
+        {
+            std::string id = m_allScenes.begin()->second->sceneID();
+            SafeDelete(m_allScenes.begin()->second);
+            m_allScenes.erase(id);
+        }
 	}
 
 	Scene* SceneManager::getScene(std::string s)

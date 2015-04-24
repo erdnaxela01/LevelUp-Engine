@@ -11,10 +11,10 @@
 #include "../Services/WindowScreen.h"
 #include "EventHandler\EventDispatcher.h"
 #include "../Services/Math/MathAdapters/DirectXMathAdapter.h"
+#include "../../Game Builder/Scene Builder/Playground.h"
 
 namespace LevelUp
 {
-	class Game;
 	class GameBase;
 	class Controller;
 	class Model;
@@ -95,7 +95,7 @@ namespace LevelUp
 		WindowScreen* m_screenSize;
         DirectXMathAdapter m_adapter;
 		
-
+        Playground m_sceneBuilder;
 
 		HWND m_windowHandle;
 
