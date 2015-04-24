@@ -1,5 +1,4 @@
 #include "RenderEngine.h"
-#include "../Game/Game.h"
 #include "../Core/StandardTemplates.h"
 #include "../Services/WindowScreen.h"
 #include "../Services/ServiceLocator.h"
@@ -149,6 +148,8 @@ namespace LevelUp
 
 		ID3DBlob* errorBuffer = 0;
 		HRESULT result;
+
+        filePath = L"../Developer/Shaders/" + filePath;
 
         //use the compile from file function to load a shader into the buffer
 		result = D3DCompileFromFile(filePath.c_str(), 0, 0, entry.c_str(), shaderModel.c_str(), shaderFlags, 0, buffer, &errorBuffer);

@@ -1,7 +1,7 @@
 #ifndef __GAME_H
 #define __GAME_H
 
-#include "../Engine/SceneManager/Scene.h"
+#include "../../Developer/Engine/SceneManager/SceneManagerHeaders.h"
 #include <string>
 
 namespace LevelUp

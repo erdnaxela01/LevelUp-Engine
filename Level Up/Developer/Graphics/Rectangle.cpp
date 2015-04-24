@@ -27,7 +27,7 @@ namespace LevelUp
 		ID3DBlob* vsBuffer = 0;
 
         //compile the shader
-		bool compileResult = ServiceLocator::getRenderService()->CompileD3DShader(L"../Shaders/SolidColorShader.fx", "VS_Main", "vs_4_0", &vsBuffer);
+		bool compileResult = ServiceLocator::getRenderService()->CompileD3DShader(L"SolidColorShader.fx", "VS_Main", "vs_4_0", &vsBuffer);
 
 		if (compileResult == false)
 		{
@@ -71,7 +71,7 @@ namespace LevelUp
         //create a pixel shader buffer
 		ID3DBlob* psBuffer = 0;
 
-		compileResult = ServiceLocator::getRenderService()->CompileD3DShader(L"../Shaders/SolidColorShader.fx", "PS_Main", "ps_4_0", &psBuffer);
+		compileResult = ServiceLocator::getRenderService()->CompileD3DShader(L"SolidColorShader.fx", "PS_Main", "ps_4_0", &psBuffer);
 
 		if (compileResult == false)
 		{

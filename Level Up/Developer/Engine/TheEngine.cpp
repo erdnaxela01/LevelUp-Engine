@@ -1,11 +1,12 @@
 #include "TheEngine.h"
 #include "../Core/RenderEngine.h"
-#include "../Game/Game.h"
+#include "../../Game Builder/Game/Game.h"
 #include "../Core/StandardTemplates.h"
 #include "../Core/PerformanceCounter.h"
 #include "../UI/Cameras/Camera.h"
 #include "../Engine/SceneManager/SceneManager.h"
 #include "../Services/ServiceLocator.h"
+#include "../Enums/Keys.h"
 #include "MVC/MVC.h"
 #include <Windows.h>
 #include <string>
@@ -29,7 +30,9 @@ namespace LevelUp
 
 	LRESULT TheEngine::handleMessages(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	{
-		Scene* s;
+        Scene* s;
+        LevelUpKeys downKey;
+        LevelUpKeys upKey;
 		switch (msg)
 		{
 
@@ -43,19 +46,21 @@ namespace LevelUp
 			EndPaint(hwnd, &paintStruct);
 			break;
 		case WM_KEYDOWN:
-			m_container.KeyDown(wParam);
+            downKey = convertToKey(wParam);
+            m_container.KeyDown(downKey);
 			s = m_scenes.getActiveScene();
 			if (s != nullptr)
 			{
-				s->getContainer()->KeyDown(wParam);
+                s->getContainer()->KeyDown(downKey);
 			}
 			break;
 		case WM_KEYUP:
-			m_container.KeyUp(wParam);
+            upKey = convertToKey(wParam);
+            m_container.KeyUp(upKey);
 			s = m_scenes.getActiveScene();
 			if (s != nullptr)
 			{
-				s->getContainer()->KeyUp(wParam);
+                s->getContainer()->KeyUp(upKey);
 			}
 			break;
 		case WM_MOUSEMOVE:
@@ -88,13 +93,14 @@ namespace LevelUp
 		{
 			return result;
 		}
+        //initialize the window
 		result = initializeWindow(h);
 		if (!result)
 		{
 			return result;
 		}
 
-
+        //display the window
         ShowWindow(m_windowHandle, showCmd);
 
         if (!(result = provideServices(h)))

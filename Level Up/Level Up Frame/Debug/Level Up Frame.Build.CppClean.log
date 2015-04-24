@@ -1,50 +1,104 @@
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\level up frame.pch
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\vc120.pdb
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\vc120.idb
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\stdafx.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\movementkeycontroller.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\mvccontainer.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\movementmodel.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\scene.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\scenemanager.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\game.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\datatypes.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\directxmathadapter.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\mathfunctions.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\servicelocator.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\trackingcamera.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\gameobject.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\dx11base.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\gamesprite.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\performancecounter.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\baselevelobject.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\command.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\component.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\entity.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\eventdispatcher.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\countdown.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\stopwatch.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\controller.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\renderengine.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\eventhandler.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\keycontroller.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\model.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\mousecontroller.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\movementspriteview.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\timercontroller.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\view.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\theengine.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\rectangle.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\sprite.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\windowscreen.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\main.obj
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\camera.obj
-g:\users\alexandre\most recent levelup\level up\debug\level up frame.ilk
-g:\users\alexandre\most recent levelup\level up\debug\level up frame.exe
-g:\users\alexandre\most recent levelup\level up\debug\level up frame.pdb
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\level up frame.tlog\cl.command.1.tlog
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\level up frame.tlog\cl.read.1.tlog
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\level up frame.tlog\cl.write.1.tlog
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\level up frame.tlog\link.command.1.tlog
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\level up frame.tlog\link.read.1.tlog
-g:\users\alexandre\most recent levelup\level up\level up frame\debug\level up frame.tlog\link.write.1.tlog
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\level up frame.pch
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\vc120.pdb
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\vc120.idb
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\stdafx.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\mvccontainer.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\movementmodel.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\movementspriteview.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\timercontroller.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\view.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\scene.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\scenemanager.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\theengine.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\game.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\rectangle.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\sprite.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\movementlevelobject.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\datatypes.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\directxmathadapter.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\mathfunctions.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\servicelocator.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\windowscreen.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\trackingcamera.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\main.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\gameobject.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\dx11base.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\gamesprite.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\renderengine.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\performancecounter.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\baselevelobject.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\command.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\component.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\entity.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\eventdispatcher.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\eventhandler.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\countdown.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\stopwatch.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\controller.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\keycontroller.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\model.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\mousecontroller.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\movementkeycontroller.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\camera.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\directxmatrixcontainer.obj
+g:\users\alexandre\most recent levelup\working version\level up\level up frame\debug\directxviewport.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\level up frame.pch
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\vc120.pdb
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\vc120.idb
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\stdafx.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\timercontroller.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\view.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\scene.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\scenemanager.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\theengine.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\keys.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\rectangle.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\sprite.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\datatypes.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\directxmathadapter.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\mathfunctions.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\directxmatrixcontainer.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\servicelocator.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\windowscreen.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\camera.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\trackingcamera.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\game.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\movementlevelobject.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\playground.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\main.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\performancecounter.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\renderengine.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\thegamebase.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\baselevelobject.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\command.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\component.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\entity.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\system.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\eventdispatcher.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\eventhandler.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\countdown.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\stopwatch.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\controller.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\keycontroller.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\model.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\mousecontroller.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\movementkeycontroller.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\movementmodel.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\movementspriteview.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\mvccontainer.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\gameobject.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\directxviewport.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\dx11base.obj
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\gamesprite.obj
+g:\users\alexandre\most recent levelup\working version\level up\debug\level up frame.ilk
+g:\users\alexandre\most recent levelup\working version\level up\debug\level up frame.exe
+g:\users\alexandre\most recent levelup\working version\level up\debug\level up frame.pdb
+g:\users\alexandre\most recent levelup\branch version\level up\debug\level up frame.ilk
+g:\users\alexandre\most recent levelup\branch version\level up\debug\level up frame.exe
+g:\users\alexandre\most recent levelup\branch version\level up\debug\level up frame.pdb
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\level up frame.tlog\cl.command.1.tlog
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\level up frame.tlog\cl.read.1.tlog
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\level up frame.tlog\cl.write.1.tlog
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\level up frame.tlog\link.command.1.tlog
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\level up frame.tlog\link.read.1.tlog
+g:\users\alexandre\most recent levelup\branch version\level up\level up frame\debug\level up frame.tlog\link.write.1.tlog

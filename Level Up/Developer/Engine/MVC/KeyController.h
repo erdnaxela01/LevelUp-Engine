@@ -2,6 +2,7 @@
 #define __KEYCONTROLLER_H
 
 #include "Controller.h"
+#include "../../Enums/Keys.h"
 #include <string>
 namespace LevelUp
 {
@@ -13,9 +14,9 @@ namespace LevelUp
 		KeyController();
 		virtual ~KeyController();
         //must be overriden, is used for kjey downs
-		virtual void handleKeyDown(unsigned int key) = 0;
+        virtual void handleKeyDown(LevelUpKeys key) = 0;
         //must be overidden is used for key ups
-		virtual void handleKeyUp(unsigned int key) = 0;
+        virtual void handleKeyUp(LevelUpKeys key) = 0;
         //get the controllers id
 		std::string keyControllerID();
 	protected:

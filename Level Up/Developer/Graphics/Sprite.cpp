@@ -38,7 +38,7 @@ namespace LevelUp
         //create the vertex buffer
 		ID3DBlob* vsBuffer = 0;
 		bool compileResult;
-		compileResult =ServiceLocator::getRenderService()->CompileD3DShader(L"../Shaders/SpriteShader.fx", "VS_Main", "vs_4_0", &vsBuffer);
+		compileResult =ServiceLocator::getRenderService()->CompileD3DShader(L"SpriteShader.fx", "VS_Main", "vs_4_0", &vsBuffer);
 		if (!compileResult)
 		{
 			MessageBox(0, L"Error loading vertex shader!", L"Compile error", MB_OK);
@@ -80,7 +80,7 @@ namespace LevelUp
 		ID3DBlob* psBuffer = 0;
 
         //compile the shader
-		compileResult = ServiceLocator::getRenderService()->CompileD3DShader(L"../Shaders/SpriteShader.fx", "PS_Main", "ps_4_0", &psBuffer);
+        compileResult = ServiceLocator::getRenderService()->CompileD3DShader(L"SpriteShader.fx", "PS_Main", "ps_4_0", &psBuffer);
 
 		if (!compileResult)
 		{

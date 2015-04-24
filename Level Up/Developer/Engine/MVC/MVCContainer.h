@@ -6,6 +6,7 @@
 #include <DirectXMath.h>
 #include "Controller.h"
 #include "../../Services/Math/LevelUpMath.h"
+#include "../../Enums/Keys.h"
 
 namespace LevelUp
 {
@@ -48,9 +49,9 @@ namespace LevelUp
         void removeFromCameraMap(Camera* c);
 
         //update all the key controllers
-		void KeyDown(int key);
+		void KeyDown(LevelUpKeys key);
         //update all the key controllers
-		void KeyUp(int key);
+        void KeyUp(LevelUpKeys key);
         //check the time elapsed for the controllers
 		void timeElapsed(double delta);
         //check the mouse for the mouse controllers

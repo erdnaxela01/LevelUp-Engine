@@ -48,7 +48,7 @@ namespace LevelUp
 		m_cameras[cam->CameraID()] = cam;
 	}
 
-	void MVCContainer::KeyDown(int key)
+    void MVCContainer::KeyDown(LevelUpKeys key)
 	{
 		KeyController* tempPtr;
 
@@ -65,7 +65,7 @@ namespace LevelUp
 		}
 	}
 
-	void MVCContainer::KeyUp(int key)
+    void MVCContainer::KeyUp(LevelUpKeys key)
 	{
 		KeyController* tempPtr;
         //run through the map and activate all the controllers

@@ -1,7 +1,7 @@
 #include "MovementLevelObject.h"
-#include "../Engine/MVC/MovementModel.h"
-#include "../Engine/MVC/MovementKeyController.h"
-#include "../Engine/MVC/MovementSpriteView.h"
+#include "../../Developer/Engine/MVC/MovementModel.h"
+#include "../../Developer/Engine/MVC/MovementKeyController.h"
+#include "../../Developer/Engine/MVC/MovementSpriteView.h"
 
 namespace LevelUp
 {

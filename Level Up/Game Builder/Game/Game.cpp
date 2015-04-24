@@ -1,10 +1,9 @@
 
 #include "Game.h"
-#include "../Core/StandardTemplates.h"
+#include "../../Developer/Core/StandardTemplates.h"
 #include "../Prebuilt Objects/MovementLevelObject.h"
-#include "../Services/ServiceLocator.h"
-#include "../Engine/MVC/MVC.h"
-
+#include "../../Developer/Services/ServiceLocator.h"
+#include "../../Developer/Engine/MVC/MVC.h"
 using namespace DirectX;
 
 namespace LevelUp

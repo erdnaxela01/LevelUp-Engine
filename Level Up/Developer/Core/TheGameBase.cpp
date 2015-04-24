@@ -1,7 +1,7 @@
 #include "TheGameBase.h"
-#include "../Game/Game.h"
 #include "../Core/StandardTemplates.h"
 #include "../Services/WindowScreen.h"
+#include "../Services/ServiceLocator.h"
 
 namespace LevelUp
 {
@@ -35,7 +35,7 @@ namespace LevelUp
 
 
 		DirectX::XMMATRIX view = DirectX::XMMatrixIdentity();
-		DirectX::XMMATRIX projection = DirectX::XMMatrixOrthographicOffCenterLH(0.0f, WindowScreen::getScreenSize().x, 0.0f, WindowScreen::getScreenSize().y, 0.1f, 100.0f);
+        DirectX::XMMATRIX projection = DirectX::XMMatrixOrthographicOffCenterLH(0.0f, ServiceLocator::getScreenSizeService()->getScreenSize().x, 0.0f, ServiceLocator::getScreenSizeService()->getScreenSize().y, 0.1f, 100.0f);
 
 		(m_vpMatrix) = DirectX::XMMatrixMultiply(view, projection);
 
@@ -57,8 +57,8 @@ namespace LevelUp
 		m_d3dContext->OMSetBlendState(m_alphaBlendState, blendFactor, 0xFFFFFFFF);
 
 		D3D11_VIEWPORT viewport;
-		viewport.Width = static_cast<float>(WindowScreen::getScreenSize().x);
-		viewport.Height = static_cast<float>(WindowScreen::getScreenSize().y);
+        viewport.Width = static_cast<float>(ServiceLocator::getScreenSizeService()->getScreenSize().x);
+        viewport.Height = static_cast<float>(ServiceLocator::getScreenSizeService()->getScreenSize().y);
 		viewport.MinDepth = 0.0f;
 		viewport.MaxDepth = 1.0f;
 		viewport.TopLeftX = 0.0f;

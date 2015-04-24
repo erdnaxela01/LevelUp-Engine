@@ -7,17 +7,17 @@ namespace LevelUp
 	{
 		m_model = m;
         //set the initial movement keys to WASD
-		m_movementKeys[0] = 'A';
-		m_movementKeys[1] = 'S';
-		m_movementKeys[2] = 'D';
-		m_movementKeys[3] = 'W';
+        m_movementKeys[0] = LevelUpKeys::KEY_A;
+        m_movementKeys[1] = LevelUpKeys::KEY_S;
+        m_movementKeys[2] = LevelUpKeys::KEY_D;
+        m_movementKeys[3] = LevelUpKeys::KEY_W;
 
 	}
 	MovementKeyController::~MovementKeyController()
 	{
 
 	}
-	void MovementKeyController::handleKeyDown(unsigned int key)
+    void MovementKeyController::handleKeyDown(LevelUpKeys key)
 	{
         //check the movement keys and do what they ask
 		if (key == m_movementKeys[0])
@@ -37,7 +37,7 @@ namespace LevelUp
 			m_model->setCanMoveForward(true);
 		}
 	}
-	void MovementKeyController::handleKeyUp(unsigned int key)
+    void MovementKeyController::handleKeyUp(LevelUpKeys key)
 	{
         //if a key is unpressed do something
 		if (key == m_movementKeys[0])
@@ -58,7 +58,7 @@ namespace LevelUp
 		}
 	}
 
-	void  MovementKeyController::setMovementKeys(unsigned int left, unsigned int down, unsigned int right, unsigned int up)
+    void  MovementKeyController::setMovementKeys(LevelUpKeys left, LevelUpKeys down, LevelUpKeys right, LevelUpKeys up)
 	{
         //set the movement keys
 		m_movementKeys[0] = left;

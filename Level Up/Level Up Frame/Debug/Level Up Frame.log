@@ -1,20 +1,22 @@
-﻿Build started 4/23/2015 12:02:04 PM.
-     1>Project "G:\Users\alexandre\Most Recent LevelUp\Working Version\Level Up\Level Up Frame\Level Up Frame.vcxproj" on node 2 (Build target(s)).
+﻿Build started 4/24/2015 12:46:42 PM.
+     1>Project "G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\Level Up Frame\Level Up Frame.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"G:\Users\alexandre\Most Recent LevelUp\Working Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/include/" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D HAS_DIRECTXTK /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Level Up Frame.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /FIstdafx.h /analyze- /errorReport:prompt ..\Game\Game.cpp
-         Game.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/include/" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D HAS_DIRECTXTK /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Level Up Frame.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /FIstdafx.h /analyze- /errorReport:prompt ..\Developer\Graphics\Sprite.cpp
+         Sprite.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\Users\alexandre\Most Recent LevelUp\Working Version\Level Up\Debug\Level Up Frame.exe" /INCREMENTAL /NOLOGO "G:\Users\alexandre\Most Recent LevelUp\Working Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/lib/Win32/Debug/DirectXTKAudioDX.lib" "G:\Users\alexandre\Most Recent LevelUp\Working Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/lib/Win32/Debug/DirectXTK.lib" D3D11.lib D3DCompiler.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:\Users\alexandre\Most Recent LevelUp\Working Version\Level Up\Debug\Level Up Frame.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\Users\alexandre\Most Recent LevelUp\Working Version\Level Up\Debug\Level Up Frame.lib" /MACHINE:X86 Debug\GameObject.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\Debug\Level Up Frame.exe" /INCREMENTAL /NOLOGO "G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/lib/Win32/Debug/DirectXTKAudioDX.lib" "G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/lib/Win32/Debug/DirectXTK.lib" D3D11.lib D3DCompiler.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\Debug\Level Up Frame.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\Debug\Level Up Frame.lib" /MACHINE:X86 Debug\GameObject.obj
          Debug\DirectXViewport.obj
          Debug\Dx11Base.obj
          Debug\GameSprite.obj
-         Debug\RenderEngine.obj
          Debug\PerformanceCounter.obj
+         Debug\RenderEngine.obj
          Debug\stdafx.obj
+         Debug\TheGameBase.obj
          Debug\BaseLevelObject.obj
          Debug\Command.obj
          Debug\Component.obj
          Debug\Entity.obj
+         Debug\System.obj
          Debug\EventDispatcher.obj
          Debug\EventHandler.obj
          Debug\CountDown.obj
@@ -24,18 +26,17 @@
          Debug\Model.obj
          Debug\MouseController.obj
          Debug\MovementKeyController.obj
-         Debug\MVCContainer.obj
          Debug\MovementModel.obj
          Debug\MovementSpriteView.obj
+         Debug\MVCContainer.obj
          Debug\TimerController.obj
          Debug\View.obj
          Debug\Scene.obj
          Debug\SceneManager.obj
          Debug\TheEngine.obj
-         Debug\Game.obj
+         Debug\Keys.obj
          Debug\Rectangle.obj
          Debug\Sprite.obj
-         Debug\MovementLevelObject.obj
          Debug\DataTypes.obj
          Debug\DirectXMathAdapter.obj
          Debug\MathFunctions.obj
@@ -44,10 +45,13 @@
          Debug\WindowScreen.obj
          Debug\Camera.obj
          Debug\TrackingCamera.obj
+         Debug\Game.obj
+         Debug\MovementLevelObject.obj
+         Debug\Playground.obj
          Debug\main.obj
-         Level Up Frame.vcxproj -> G:\Users\alexandre\Most Recent LevelUp\Working Version\Level Up\Debug\Level Up Frame.exe
-     1>Done Building Project "G:\Users\alexandre\Most Recent LevelUp\Working Version\Level Up\Level Up Frame\Level Up Frame.vcxproj" (Build target(s)).
+         Level Up Frame.vcxproj -> G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\Debug\Level Up Frame.exe
+     1>Done Building Project "G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\Level Up Frame\Level Up Frame.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.70
+Time Elapsed 00:00:00.97
