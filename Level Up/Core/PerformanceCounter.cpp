@@ -8,6 +8,7 @@ namespace LevelUp
 
 	bool PerformanceCounter::startCounter()
 	{
+        //get a windows specific large integer
 		LARGE_INTEGER li;
 		if (!QueryPerformanceFrequency(&li))
 		{
@@ -15,6 +16,7 @@ namespace LevelUp
 			return false;
 		}
 
+        //calculate the frequency and get the initial value
 		m_PCFreq = (double)(li.QuadPart) / 1000.0;
 
 		QueryPerformanceCounter(&li);
@@ -23,6 +25,7 @@ namespace LevelUp
 	}
 	double PerformanceCounter::getCounter()
 	{
+        //return the current delta based on the frequency
 		LARGE_INTEGER li;
 		QueryPerformanceCounter(&li);
 		return (double)(li.QuadPart - m_counterStart) / m_PCFreq;

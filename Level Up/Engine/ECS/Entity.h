@@ -21,7 +21,9 @@ namespace LevelUp
 		std::vector<Component*> getAllComponentsOfType(std::string s);
         //checks the type
 		virtual bool isECSType(ECSType t);
+        //add a component to the vector of components
         void addComponent(Component* c);
+        //remove all the components of the same type
         void removeAllComponentsOfType(std::string s);
 	private:
 		std::vector<Component*> m_components;

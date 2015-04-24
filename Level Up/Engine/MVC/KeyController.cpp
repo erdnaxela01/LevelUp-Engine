@@ -11,12 +11,14 @@ namespace LevelUp
 
 	KeyController::KeyController()
 	{
+        //increment the number of key controllers
 		m_numberOfKeyControllers++;
 		addToMap();
 	}
 
 	KeyController::~KeyController()
 	{
+        //decrement the number of controllers
 		m_numberOfKeyControllers--;
         removeFromMap();
 
@@ -24,11 +26,13 @@ namespace LevelUp
 
 	void KeyController::addToMap()
 	{
+        //add the key controller to the mpa of the active scene or the engine if there is none
 		m_ID = "KeyController " + std::to_string(m_numberOfKeyControllers);
 		m_type = KEYCONTROLLER;
 		Scene* s = TheEngine::getInstance()->getSceneManager()->getActiveScene();
 		if (s != nullptr)
 		{
+            m_parentScene = s->sceneID();
 			s->addController(this);
 		}
 		else
@@ -39,10 +43,14 @@ namespace LevelUp
 
     void KeyController::removeFromMap()
     {
-        Scene* s = TheEngine::getInstance()->getSceneManager()->getActiveScene();
-        if (s != nullptr)
+        //remove the controller from the scene
+        if (m_parentScene != "")
         {
-            s->removeController(this);
+            Scene* s = TheEngine::getInstance()->getSceneManager()->getScene(m_parentScene);
+            if (s != nullptr)
+            {
+                s->removeController(this);
+            }
         }
         else
         {

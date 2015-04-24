@@ -3,6 +3,10 @@
 
 namespace LevelUp
 {
+    /*
+    Events meant to be dispatched by the even dispatcher
+    Alex Sabourin April 2015
+    */
     enum DispatchEvents
     {
         DISPATCHEVENTS_SCREENRESIZE

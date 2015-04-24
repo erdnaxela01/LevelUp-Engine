@@ -13,7 +13,7 @@ namespace LevelUp
 	class SceneManager final
 	{
 	public:
-
+        //get a scene compared to the name
 		Scene* getScene(std::string s);
         //add a scene
 		void addSceneToMap(Scene* s);
@@ -21,6 +21,7 @@ namespace LevelUp
 		void pushScene(std::string s);
         //go back a scene
 		void popScene();
+        //get the current scene
 		Scene* getActiveScene();
         //set the scene to this scene
 		void resetTo(std::string s);

@@ -23,11 +23,13 @@ namespace LevelUp
 
 	void TimerController::addToMap()
 	{
+        //add the timer controller to the current scene or the engine
 		m_ID = "TimerController " + std::to_string(m_numberOfTimerControllers);
 		m_type = TIMERCONTROLLER;
 		Scene* s = TheEngine::getInstance()->getSceneManager()->getActiveScene();
 		if (s != nullptr)
 		{
+            m_parentScene = s->sceneID();
 			s->addController(this);
 		}
 		else
@@ -39,10 +41,14 @@ namespace LevelUp
 
     void TimerController::removeFromMap()
     {
-        Scene* s = TheEngine::getInstance()->getSceneManager()->getActiveScene();
-        if (s != nullptr)
+        //remove the timer controller to the current scene or the engine
+        if (m_parentScene != "")
         {
-            s->removeController(this);
+            Scene* s = TheEngine::getInstance()->getSceneManager()->getScene(m_parentScene);
+            if (s != nullptr)
+            {
+                s->removeController(this);
+            }
         }
         else
         {

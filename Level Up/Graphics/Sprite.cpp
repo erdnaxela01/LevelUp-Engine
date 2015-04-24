@@ -21,6 +21,7 @@ namespace LevelUp
 
 	Sprite::~Sprite()
 	{
+        //unload all the sprite content
 		unloadContent();
 	}
 
@@ -29,10 +30,12 @@ namespace LevelUp
 	{
 		//get dds
 
+        //get the device
 		ID3D11Device* device = ServiceLocator::getRenderService()->getDevice();
 
 		HRESULT d3dResult;
 
+        //create the vertex buffer
 		ID3DBlob* vsBuffer = 0;
 		bool compileResult;
 		compileResult =ServiceLocator::getRenderService()->CompileD3DShader(L"../Shaders/SpriteShader.fx", "VS_Main", "vs_4_0", &vsBuffer);
@@ -43,6 +46,7 @@ namespace LevelUp
 		}
 
 
+        //create the vertex shader
 		d3dResult = device->CreateVertexShader(vsBuffer->GetBufferPointer(), vsBuffer->GetBufferSize(), 0, &m_solidColorVS);
 
 		if (FAILED(d3dResult))
@@ -55,14 +59,17 @@ namespace LevelUp
 			return false;
 		}
 
+        //set the coor layout
 		D3D11_INPUT_ELEMENT_DESC solidColorLayout[] =
 		{
 			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 }
 		};
 
+
 		unsigned int totalLayoutElements = ARRAYSIZE(solidColorLayout);
 
+        //create the input layout
 		d3dResult = device->CreateInputLayout(solidColorLayout, totalLayoutElements, vsBuffer->GetBufferPointer(), vsBuffer->GetBufferSize(), &m_inputLayout);
 
 		if (FAILED(d3dResult))
@@ -72,6 +79,7 @@ namespace LevelUp
 
 		ID3DBlob* psBuffer = 0;
 
+        //compile the shader
 		compileResult = ServiceLocator::getRenderService()->CompileD3DShader(L"../Shaders/SpriteShader.fx", "PS_Main", "ps_4_0", &psBuffer);
 
 		if (!compileResult)
@@ -80,6 +88,7 @@ namespace LevelUp
 			return false;
 		}
 
+        //create the pixel shader
 		d3dResult = device->CreatePixelShader(psBuffer->GetBufferPointer(), psBuffer->GetBufferSize(), 0, &m_solidColorPS);
 
 		psBuffer->Release();
@@ -120,15 +129,18 @@ namespace LevelUp
 		ID3D11Resource* colorTex;
 		m_colorMap->GetResource(&colorTex);
 
+        //set the color description
 		D3D11_TEXTURE2D_DESC colorTexDesc;
 		((ID3D11Texture2D*)colorTex)->GetDesc(&colorTexDesc);
 		colorTex->Release();
 
+        //get the width, height and set the halfwidth and height
 		m_width = (float)colorTexDesc.Width;
 		float halfWidth = m_width * 0.5f;
 		m_height = (float)colorTexDesc.Height;
 		float halfHeight = m_height * 0.5f;
 
+        //set the vertices
 		VertexPos vertices[] =
 		{
             { LVLfloat3(halfWidth, halfHeight, 1.0f), LVLfloat2(1.0f, 0.0f) },
@@ -154,6 +166,7 @@ namespace LevelUp
 
 	void Sprite::unloadContent()
 	{
+        //release all the com objects
 		if (m_colorMap) m_colorMap->Release();
 		if (m_vertexBuffer) m_vertexBuffer->Release();
 		if (m_mvpCB) m_mvpCB->Release();
@@ -174,13 +187,17 @@ namespace LevelUp
 		unsigned int stride = sizeof(VertexPos);
 		unsigned int offset = 0;
 		//
+        //get the context
 		ID3D11DeviceContext* context = ServiceLocator::getRenderService()->getContext();
 
+        //set the shaders
 		context->VSSetShader(m_solidColorVS, 0, 0);
 		context->PSSetShader(m_solidColorPS, 0, 0);
 
+        //set the input layout
 		context->IASetInputLayout(m_inputLayout);
 
+        //set it as a triangle list
 		context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		//sprite specific code
 		context->IASetVertexBuffers(0, 1, &m_vertexBuffer, &stride, &offset);
@@ -189,9 +206,12 @@ namespace LevelUp
 		context->PSSetShaderResources(0, 1, &m_colorMap);
 		//
 		//sprite specific
+        //get the world matrix
         DirectX::XMMATRIX world;
         ServiceLocator::getMathAdapter()->get4x4Matrix(m_sprite.GetWorldMatrix(), &DirectXMatrixContainer(&world));
-		DirectX::XMMATRIX mvp = DirectX::XMMatrixMultiply(world, (ServiceLocator::getRenderService()->getVPMatrix()));
+        DirectX::XMMATRIX vp;
+        ServiceLocator::getMathAdapter()->get4x4Matrix(ServiceLocator::getRenderService()->getVPMatrix(), &DirectXMatrixContainer(&vp));
+		DirectX::XMMATRIX mvp = DirectX::XMMatrixMultiply(world, vp);
 		mvp = DirectX::XMMatrixTranspose(mvp);
 		//
 
@@ -199,12 +219,14 @@ namespace LevelUp
 		context->UpdateSubresource(m_mvpCB, 0, 0, &mvp, 0, 0);
 		context->VSSetConstantBuffers(0, 1, &m_mvpCB);
 
+        //draw the sprite
 		context->Draw(6, 0);
 		//
 	}
 
 	void Sprite::setPosition(float x, float y)
 	{
+        //set the position
 		LVLfloat2 sprite1Pos(x, y);
 		m_sprite.setPosition(sprite1Pos);
 
@@ -212,6 +234,7 @@ namespace LevelUp
 
 	bool Sprite::initialize(std::wstring fileName)
 	{
+        //create the sprite and load the content
 		m_fileName = L"../Assets/Images/" + fileName;
 		bool result = true;
 		result = loadContent();
@@ -229,6 +252,7 @@ namespace LevelUp
 
     LVLfloat2 Sprite::getPosition()
 	{
+        //get the sprites position
 		LVLfloat2 sprite1Pos = m_sprite.getPosition();
 		return sprite1Pos;
 	}
@@ -240,16 +264,19 @@ namespace LevelUp
 
 	bool Sprite::setVertexBuffer(VertexPos vertices[])
 	{
+        //create the vertex description
 		D3D11_BUFFER_DESC vertexDesc;
 		SecureZeroMemory(&vertexDesc, sizeof(vertexDesc));
 		vertexDesc.Usage = D3D11_USAGE_DEFAULT;
 		vertexDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 		vertexDesc.ByteWidth = sizeof(VertexPos) * 6;
 
+        //set the ressource data
 		D3D11_SUBRESOURCE_DATA resourceData;
 		SecureZeroMemory(&resourceData, sizeof(resourceData));
 		resourceData.pSysMem = vertices;
 		HRESULT d3dResult;
+        //create the constant buffer
 		d3dResult = ServiceLocator::getRenderService()->getDevice()->CreateBuffer(&vertexDesc, &resourceData, &m_vertexBuffer);
 
 		if (FAILED(d3dResult))

@@ -12,6 +12,7 @@ namespace LevelUp
     }
     void CountDown::update(double delta)
     {
+        //if the time is over 0.0 countdown
         if (m_time > 0.0)
         {
             m_time -= delta;
@@ -19,10 +20,12 @@ namespace LevelUp
     }
     void CountDown::start(double startTime)
     {
+        //start the countdown
         m_time = startTime;
     }
     bool CountDown::isItDone()
     {
+        //if the time is under or equal to 0.0 the countdown is done
         if (m_time <= 0.0)
         {
             return true;
@@ -31,6 +34,7 @@ namespace LevelUp
     }
     void CountDown::stop()
     {
+        //stop the countdown
         m_time = 0.0;
     }
     double CountDown::time()

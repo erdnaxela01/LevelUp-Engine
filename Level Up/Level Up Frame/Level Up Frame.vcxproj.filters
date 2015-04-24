@@ -243,6 +243,12 @@
     <Filter Include="Services\Math\MatrixContainer">
       <UniqueIdentifier>{abe754fa-29de-4126-ae9c-2b75d4c7b812}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Command\Concrete Classes\Headers">
+      <UniqueIdentifier>{6c67b4ad-75a3-46f1-a34c-508c5222215a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Command\Concrete Classes\Source">
+      <UniqueIdentifier>{e5cc401d-4bf7-48da-b206-925b9e4eaeea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -364,6 +370,12 @@
     </ClCompile>
     <ClCompile Include="..\Services\Math\MatrixContainer\DirectXMatrixContainer.cpp">
       <Filter>Services\Math\MatrixContainer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Core\DirectXViewport.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine\ECS\System.cpp">
+      <Filter>Engine\ECS\Source\System</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -516,6 +528,18 @@
     </ClInclude>
     <ClInclude Include="..\Services\Math\MatrixContainer\DirectXMatrixContainer.h">
       <Filter>Services\Math\MatrixContainer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Core\Viewport.h">
+      <Filter>Core\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Core\DirectXViewport.h">
+      <Filter>Core\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\ECS\System.h">
+      <Filter>Engine\ECS\Headers\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\Command\CameraResizeCommand.h">
+      <Filter>Engine\Command\Concrete Classes\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

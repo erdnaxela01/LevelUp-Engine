@@ -14,6 +14,7 @@ namespace LevelUp
 	public:
 		//gets the size of the screen
 		WindowScreen(HWND windowHandle);
+        //get the screen size
         LVLfloat2 getScreenSize();
 	private:
 		HWND m_windowHandle;

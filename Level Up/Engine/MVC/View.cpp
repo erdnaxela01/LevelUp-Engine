@@ -9,7 +9,7 @@ namespace LevelUp
 {
 	int View::m_numberOfViews = 0;
 
-	View::View(float z) : m_canView(true), m_useCameraVector(false), m_z(z)
+    View::View(float z) : m_canView(true), m_useCameraVector(false), m_z(z), m_parentScene("")
 	{
 		m_numberOfViews++;
 		addToMap();
@@ -32,10 +32,12 @@ namespace LevelUp
 
 	void View::addToMap()
 	{
+        //add the view to the current scene then the engine
 		m_ID = "View " + std::to_string(m_numberOfViews);
 		Scene* s = TheEngine::getInstance()->getSceneManager()->getActiveScene();
 		if (s != nullptr)
 		{
+            m_parentScene = s->sceneID();
 			s->addView(this);
 		}
 		else
@@ -46,10 +48,14 @@ namespace LevelUp
 
     void View::removeFromMap()
     {
-        Scene* s = TheEngine::getInstance()->getSceneManager()->getActiveScene();
-        if (s != nullptr)
+        //remove the scene from the parent scene or the engine
+        if (m_parentScene != "")
         {
-            s->removeView(this);
+            Scene* s = TheEngine::getInstance()->getSceneManager()->getScene(m_parentScene);
+            if (s != nullptr)
+            {
+                s->removeView(this);
+            }
         }
         else
         {
@@ -82,6 +88,7 @@ namespace LevelUp
 
 	bool View::isPartOfCameraVector(std::string cameraID)
 	{
+        //if the camera is part of the vector return true
 		if (m_useCameraVector == false)
 		{
 			return true;

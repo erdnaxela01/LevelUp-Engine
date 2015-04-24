@@ -3,6 +3,7 @@
 #include "../Services/ServiceLocator.h"
 namespace LevelUp
 {
+    //set all the initial values of the direct x
 	Dx11Base::Dx11Base() :m_driverType(D3D_DRIVER_TYPE_NULL),
 		m_featureLevel(D3D_FEATURE_LEVEL_11_0),
 		m_swapChain(0), m_backBufferTarget(0)
@@ -14,6 +15,8 @@ namespace LevelUp
 
 	Dx11Base::~Dx11Base()
 	{
+
+        //shut down all the stuff
 		shutdown();
 	}
 
@@ -30,6 +33,7 @@ namespace LevelUp
 
 	void Dx11Base::shutdown()
 	{
+        //unload all the content and release all the COMs
 		unloadContent();
 
 		if (m_backBufferTarget) m_backBufferTarget->Release();
@@ -44,13 +48,17 @@ namespace LevelUp
 
 	bool Dx11Base::initialize(HINSTANCE hInstance, HWND hWnd)
 	{
+        //initialize the base
+
+        //pass in the windows values
 		m_hInstance = hInstance;
 		m_hWnd = hWnd;
 
-
+        //get the width and the height of the screen
 		unsigned int width = ServiceLocator::getScreenSizeService()->getScreenSize().x;
 		unsigned int height = ServiceLocator::getScreenSizeService()->getScreenSize().y;
 
+        //determine all the driver types
 		D3D_DRIVER_TYPE driverTypes[] =
 		{
 			D3D_DRIVER_TYPE_HARDWARE,
@@ -59,8 +67,10 @@ namespace LevelUp
 			D3D_DRIVER_TYPE_SOFTWARE
 		};
 
+        //get the number of all the driver types
 		unsigned int totalDriverTypes = ARRAYSIZE(driverTypes);
 
+        //get all the feature levels of direct x
 		D3D_FEATURE_LEVEL featureLevels[] =
 		{
 			D3D_FEATURE_LEVEL_11_0,
@@ -68,8 +78,10 @@ namespace LevelUp
 			D3D_FEATURE_LEVEL_10_0
 		};
 
+        //set the number of feature levels
 		unsigned int totalFeatureLevels = ARRAYSIZE(featureLevels);
 
+        //set up the swapchain description with all the initial values
 		DXGI_SWAP_CHAIN_DESC swapChainDesc;
 		ZeroMemory(&swapChainDesc, sizeof(swapChainDesc));
 		swapChainDesc.BufferCount = 1;
@@ -90,9 +102,11 @@ namespace LevelUp
 		creationFlags |= D3D11_CREATE_DEVICE_DEBUG;
 #endif
 
+        //used for error checking
 		HRESULT result;
 		unsigned int driver = 0;
 
+        //go through all the diver types and break if one of them works
 		for (driver = 0; driver < totalDriverTypes; ++driver)
 		{
 			result = D3D11CreateDeviceAndSwapChain(0, driverTypes[driver], 0,
@@ -105,26 +119,31 @@ namespace LevelUp
 				break;
 			}
 		}
+        //if none of them worked set the error message and return false
 		if (FAILED(result))
 		{
 			m_errorMessage = "Failed to create the Direct3D device!";
 			return false;
 		}
+        //set the texture of the swap chain
 		ID3D11Texture2D* backBufferTexture;
 		result = m_swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D),
 			(LPVOID*)&backBufferTexture);
 
+        //error checking
 		if (FAILED(result))
 		{
 			m_errorMessage = "Failed to get the swap cahin buffer!";
 			return false;
 		}
-
+        //create a render target with the backbuffer
 		result = m_d3dDevice->CreateRenderTargetView(backBufferTexture, 0,
 			&m_backBufferTarget);
 
+        //release the texture
 		if (backBufferTexture) backBufferTexture->Release();
 
+        //error checking
 		if (FAILED(result))
 		{
 			m_errorMessage = "Failed to create the render target view!";
@@ -132,6 +151,7 @@ namespace LevelUp
 		}
 
 
+        //set the output merger's render targets
 		m_d3dContext->OMSetRenderTargets(1, &m_backBufferTarget, 0);
 
 

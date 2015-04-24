@@ -15,10 +15,15 @@ namespace LevelUp
 	public:
 		TrackingCamera(GameObject* go = nullptr);
 		virtual ~TrackingCamera();
+        //set the tracking object
 		void setTrackingObject(GameObject* go);
+        //set if it does track
 		void setIsTracking(bool b);
+        //check if it is tracking
 		bool isTracking();
+        //update the tracking
 		void update(double delta);
+        //set the location to track the object
 		void setOnScreenTrackingLocation(float x, float y);
 	private:
 		GameObject* m_trackingObject;

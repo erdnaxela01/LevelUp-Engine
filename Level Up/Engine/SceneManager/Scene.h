@@ -20,23 +20,37 @@ namespace LevelUp
 	public:
 		Scene(std::string sceneID);
 		virtual ~Scene();
+        //get the model view controller container
 		MVCContainer* getContainer();
+        //load the scenes content
 		virtual bool loadContent() = 0;
+        //unload the scenes content
 		virtual bool unloadContent() = 0;
+        //update the scene
 		virtual void update(double delta) = 0;
+        //render the scene
 		virtual void render() = 0;
         //get this scenes ID
 		std::string sceneID();
 
-        // adds to the mvc container
+        // adds the controller
 		void addController(Controller* c);
+        // adds the model
 		void addModel(Model* m);
+        // adds the view
 		void addView(View* v);
+        // adds the camera
 		void addCamera(Camera* c);
 
+        // adds the controller
         void removeController(Controller* c);
+
+        // adds the model
         void removeModel(Model* m);
+
+        // adds the view
         void removeView(View* v);
+        // adds the camera
         void removeCamera(Camera* c);
 
         //removes the starting camera

@@ -3,6 +3,11 @@
 
 namespace LevelUp
 {
+    /*
+    class used in order to count the time between frames
+    -Alex Sabourin April 2015
+    
+    */
 	class PerformanceCounter
 	{
 	public:

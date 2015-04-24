@@ -3,10 +3,11 @@
 #include "../Core/StandardTemplates.h"
 #include "../Services/WindowScreen.h"
 #include "../Services/ServiceLocator.h"
+#include "../Services/Math/LevelUpMath.h"
+#include "DirectXViewport.h"
 
 namespace LevelUp
 {
-	DirectX::XMMATRIX RenderEngine::m_vpMatrix = {};
 
 	RenderEngine::RenderEngine()
 	{
@@ -14,7 +15,7 @@ namespace LevelUp
 
 	bool RenderEngine::loadContent()
 	{
-
+        //set up the color mpa description
 		D3D11_SAMPLER_DESC colorMapDesc;
 		SecureZeroMemory(&colorMapDesc, sizeof(colorMapDesc));
 		colorMapDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
@@ -24,6 +25,7 @@ namespace LevelUp
 		colorMapDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
 		colorMapDesc.MaxLOD = D3D11_FLOAT32_MAX;
 
+        //create the sampler state using the color map dessc
 		HRESULT d3dResult = m_d3dDevice->CreateSamplerState(&colorMapDesc, &m_colorMapSampler);
 
 		if (FAILED(d3dResult))
@@ -32,13 +34,14 @@ namespace LevelUp
 			return false;
 		}
 
-
+        //set up the view projefction matrix for the first time
 		ScreenSize* window = ServiceLocator::getScreenSizeService();
 		DirectX::XMMATRIX view = DirectX::XMMatrixIdentity();
 		DirectX::XMMATRIX projection = DirectX::XMMatrixOrthographicOffCenterLH(0.0f, window->getScreenSize().x, 0.0f, window->getScreenSize().y, 0.1f, 100.0f);
 
-		(m_vpMatrix) = DirectX::XMMatrixMultiply(view, projection);
+        ServiceLocator::getMathAdapter()->convertToLVLMatrix(&(m_vpMatrix), &DirectXMatrixContainer(&DirectX::XMMatrixMultiply(view, projection)));
 
+        //set up the blend description for color blending
 		D3D11_BLEND_DESC blendDesc;
 		SecureZeroMemory(&blendDesc, sizeof(blendDesc));
 		blendDesc.RenderTarget[0].BlendEnable = TRUE;
@@ -51,11 +54,14 @@ namespace LevelUp
 		blendDesc.RenderTarget[0].RenderTargetWriteMask = 0x0F;
 
 
+        //set the blend factor
 		float blendFactor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
 
+        //create the blend state and set it to the output merger
 		m_d3dDevice->CreateBlendState(&blendDesc, &m_alphaBlendState);
 		m_d3dContext->OMSetBlendState(m_alphaBlendState, blendFactor, 0xFFFFFFFF);
 
+        //set up the intial viewport
 		D3D11_VIEWPORT viewport;
 		viewport.Width = static_cast<float>(window->getScreenSize().x);
 		viewport.Height = static_cast<float>(window->getScreenSize().y);
@@ -73,6 +79,7 @@ namespace LevelUp
 
 	void RenderEngine::unloadContent()
 	{
+        //release all the pointers
 		if (m_colorMapSampler)m_colorMapSampler->Release();
 		if (m_alphaBlendState) m_alphaBlendState->Release();
 
@@ -83,6 +90,7 @@ namespace LevelUp
 
 	void RenderEngine::beginRender()
 	{
+        //tell the engine to start rendering and to draw the background
 		if (m_d3dContext == 0)
 		{
 			return;
@@ -95,16 +103,15 @@ namespace LevelUp
 
 	}
 
-	void RenderEngine::update(float dt)
-	{
-	}
 
 	void RenderEngine::finishRender()
 	{
+        //present the rendering
 		m_swapChain->Present(0, 0);
 	}
 	void RenderEngine::shutdown()
 	{
+        //unload all the content and shutdown the  base class
 		unloadContent();
 		Dx11Base::shutdown();
 	}
@@ -119,21 +126,23 @@ namespace LevelUp
 		return m_d3dContext;
 	}
 
-	DirectX::XMMATRIX RenderEngine::getVPMatrix()
+    LVL4X4matrix RenderEngine::getVPMatrix()
 	{
 		return m_vpMatrix;
 	}
 
-	void RenderEngine::setVPMatrix(const DirectX::XMMATRIX &vp)
+    void RenderEngine::setVPMatrix(const LVL4X4matrix &vp)
 	{
 		m_vpMatrix = vp;
 	}
 	
 
-	bool RenderEngine::CompileD3DShader(std::wstring filePath, string entry, string shaderModel, ID3DBlob** buffer)
+	bool RenderEngine::CompileD3DShader(std::wstring filePath, std::string entry, std::string shaderModel, ID3DBlob** buffer)
 	{
+        //set tje shaderflags
 		DWORD shaderFlags = D3DCOMPILE_ENABLE_STRICTNESS;
 
+        //debugging code
 #if defined (DEBUG) || defined(_DEBUS)
 		shaderFlags |= D3DCompile_DEBUG;
 #endif
@@ -141,6 +150,7 @@ namespace LevelUp
 		ID3DBlob* errorBuffer = 0;
 		HRESULT result;
 
+        //use the compile from file function to load a shader into the buffer
 		result = D3DCompileFromFile(filePath.c_str(), 0, 0, entry.c_str(), shaderModel.c_str(), shaderFlags, 0, buffer, &errorBuffer);
 		if (FAILED(result))
 		{
@@ -158,4 +168,11 @@ namespace LevelUp
 		}
 		return true;
 	}
+
+    DirectXViewport* RenderEngine::produceViewport()
+    {
+        //factory to produce a viewport
+        DirectXViewport* v = new DirectXViewport();
+        return v;
+    }
 }

@@ -18,22 +18,30 @@ namespace LevelUp
 	public:
 		BaseLevelObject();
 		virtual ~BaseLevelObject();
-        //returns MVC components
+        //get the model
 		Model* getModel();
+        //get the view
 		View* getView();
+        //get the controller
 		Controller* getController();
 
-        //sets MVC components
+        //sets the model, it will be deleted
 		void setModel(Model* m);
+        //sets the view, it will be deleted
 		void setView(View* v);
+        //sets the controller, it will be deleted
 		void setController(Controller* c);
 
         //initialize the object with all MVC components
 		void initialize(Model* m, View* v, Controller* c);
+        //set the position of the object
 		void setPosition(float x, float y);
+        //set the position of the object
         void setPosition(LVLfloat2 pos);
+        //return the objects position
         LVLfloat2& getPosition();
 	private:
+        //MVC components
 		Model* m_model;
 		View* m_view;
 		Controller* m_controller;

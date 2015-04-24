@@ -32,6 +32,7 @@ namespace LevelUp
 		{
 			return;
 		}
+        //set the cameras location with the obbjects location
 		setX(m_trackingObject->getPosition().x - m_width * m_onScreenPos.x);
 		setY(m_trackingObject->getPosition().y - m_height * m_onScreenPos.y);
 	}

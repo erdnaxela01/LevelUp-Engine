@@ -4,7 +4,7 @@
 
 namespace LevelUp
 {
-	Controller::Controller() : m_canControl(true)
+    Controller::Controller() : m_canControl(true), m_parentScene("")
 	{
 	}
 

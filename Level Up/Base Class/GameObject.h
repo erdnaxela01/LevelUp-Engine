@@ -14,8 +14,10 @@ namespace LevelUp
 	class GameObject
 	{
 	public:
+        GameObject();
         //sets the position of the object
 		virtual void setPosition(float x, float y);
+        //sets the position of the object
         virtual void setPosition(LVLfloat2& pos);
 
         //return the object's position

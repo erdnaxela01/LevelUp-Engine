@@ -1,19 +1,9 @@
 
 #include "Game.h"
-#include "../Graphics/Sprite.h"
 #include "../Core/StandardTemplates.h"
-#include "../Services/WindowScreen.h"
-#include "../Engine/MVC/MVC.h"
-#include "../UI/Cameras/Camera.h"
-#include "../Graphics/Rectangle.h"
-#include "../Engine/BasicLevelObject/BaseLevelObject.h"
-#include "../UI/Cameras/Special Cameras/TrackingCamera.h"
-#include "../Engine/SceneManager/Scene.h"
-#include "../Services/ServiceLocator.h"
-#include "../Engine/Helper/Helpers.h"
-#include "../Services/Math/LevelUpMath.h"
-#include "../Services/Math/MathAdapters/MathAdapter.h"
 #include "../Prebuilt Objects/MovementLevelObject.h"
+#include "../Services/ServiceLocator.h"
+#include "../Engine/MVC/MVC.h"
 
 using namespace DirectX;
 
@@ -26,6 +16,7 @@ namespace LevelUp
 
 	Game::~Game()
 	{
+        SafeDelete(mlo);
 	}
 
 	void Game::update(double delta)
@@ -42,7 +33,9 @@ namespace LevelUp
 	bool Game::loadContent()
 	{
 		bool result = true;
+
         mlo = new MovementLevelObject(L"Ship.png");
+        mlo->setPosition(200.0f, 200.0f);
 		return result;
 	}
 }

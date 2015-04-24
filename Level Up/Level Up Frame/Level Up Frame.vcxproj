@@ -88,6 +88,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Base Class\GameObject.cpp" />
+    <ClCompile Include="..\Core\DirectXViewport.cpp" />
     <ClCompile Include="..\Core\Dx11Base.cpp" />
     <ClCompile Include="..\Core\GameSprite.cpp" />
     <ClCompile Include="..\Core\RenderEngine.cpp" />
@@ -102,6 +103,7 @@
     <ClCompile Include="..\Engine\Command\Command.cpp" />
     <ClCompile Include="..\Engine\ECS\Component.cpp" />
     <ClCompile Include="..\Engine\ECS\Entity.cpp" />
+    <ClCompile Include="..\Engine\ECS\System.cpp" />
     <ClCompile Include="..\Engine\EventHandler\EventDispatcher.cpp" />
     <ClCompile Include="..\Engine\EventHandler\EventHandler.cpp" />
     <ClCompile Include="..\Engine\Helper\CountDown.cpp" />
@@ -137,17 +139,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Base Class\GameObject.h" />
+    <ClInclude Include="..\Core\DirectXViewport.h" />
     <ClInclude Include="..\Core\Dx11Base.h" />
     <ClInclude Include="..\Core\GameSprite.h" />
     <ClInclude Include="..\Core\RenderEngine.h" />
     <ClInclude Include="..\Core\PerformanceCounter.h" />
     <ClInclude Include="..\Core\StandardTemplates.h" />
     <ClInclude Include="..\Core\stdafx.h" />
+    <ClInclude Include="..\Core\Viewport.h" />
     <ClInclude Include="..\Engine\BasicLevelObject\BaseLevelObject.h" />
+    <ClInclude Include="..\Engine\Command\CameraResizeCommand.h" />
     <ClInclude Include="..\Engine\Command\Command.h" />
     <ClInclude Include="..\Engine\ECS\Component.h" />
     <ClInclude Include="..\Engine\ECS\ECSTypes.h" />
     <ClInclude Include="..\Engine\ECS\Entity.h" />
+    <ClInclude Include="..\Engine\ECS\System.h" />
     <ClInclude Include="..\Engine\EventHandler\EventDispatcher.h" />
     <ClInclude Include="..\Engine\EventHandler\EventHandler.h" />
     <ClInclude Include="..\Engine\EventHandler\Events.h" />

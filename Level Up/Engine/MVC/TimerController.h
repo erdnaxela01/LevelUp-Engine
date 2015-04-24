@@ -11,7 +11,9 @@ namespace LevelUp
 	public:
 		TimerController();
 		virtual ~TimerController();
+        //check the time elapsed of the controller
 		virtual void timeElapsed(double delta) = 0;
+        //get the controller's ID
 		std::string TimerControllerID();
 
 	protected:

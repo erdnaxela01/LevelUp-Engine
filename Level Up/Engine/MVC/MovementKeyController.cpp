@@ -6,6 +6,7 @@ namespace LevelUp
 	MovementKeyController::MovementKeyController(MovementModel* m)
 	{
 		m_model = m;
+        //set the initial movement keys to WASD
 		m_movementKeys[0] = 'A';
 		m_movementKeys[1] = 'S';
 		m_movementKeys[2] = 'D';
@@ -18,6 +19,7 @@ namespace LevelUp
 	}
 	void MovementKeyController::handleKeyDown(unsigned int key)
 	{
+        //check the movement keys and do what they ask
 		if (key == m_movementKeys[0])
 		{
 			m_model->setIsRotatingLeft(true);
@@ -37,6 +39,7 @@ namespace LevelUp
 	}
 	void MovementKeyController::handleKeyUp(unsigned int key)
 	{
+        //if a key is unpressed do something
 		if (key == m_movementKeys[0])
 		{
 			m_model->setIsRotatingLeft(false);
@@ -57,6 +60,7 @@ namespace LevelUp
 
 	void  MovementKeyController::setMovementKeys(unsigned int left, unsigned int down, unsigned int right, unsigned int up)
 	{
+        //set the movement keys
 		m_movementKeys[0] = left;
 		m_movementKeys[1] = down;
 		m_movementKeys[2] = right;

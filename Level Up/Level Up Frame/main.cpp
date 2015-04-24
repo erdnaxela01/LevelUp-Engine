@@ -55,7 +55,7 @@ int WINAPI WinMain(HINSTANCE hInstance, //is a handle to the current instance of
 		
 	}
 
-	LevelUp::TheEngine::getInstance()->shutdown();
+	LevelUp::TheEngine::getInstance()->shutdown(); //shutdown the engine
 
 	return static_cast<int>(msg.wParam);
 }

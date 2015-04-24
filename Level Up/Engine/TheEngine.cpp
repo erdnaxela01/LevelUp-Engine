@@ -94,20 +94,13 @@ namespace LevelUp
 			return result;
 		}
 
-        ServiceLocator::provideMathAdapter(&m_adapter);
 
-		m_screenSize = new WindowScreen(m_windowHandle);
-		ServiceLocator::provideScreenSizeService(m_screenSize);
+        ShowWindow(m_windowHandle, showCmd);
 
-		ShowWindow(m_windowHandle, showCmd);
-
-		result = m_render.initialize(h, m_windowHandle);
-		ServiceLocator::provideRenderService(&m_render);
-		if (!result)
-		{
-			return result;
-		}
-
+        if (!(result = provideServices(h)))
+        {
+            return result;
+        }
 
 		m_frameTime = (unsigned long)((1.0 / 60.0) * 1000.0);
 
@@ -117,8 +110,6 @@ namespace LevelUp
 
 		m_sleepTime = m_frameTime;
 
-		//initialize the model view controller holder
-		m_container.initializeContainer();
 
 		m_scenes.addSceneToMap(new Game());
 		m_scenes.pushScene("Game");
@@ -348,5 +339,18 @@ namespace LevelUp
     void TheEngine::addEventHandler(EventHandler* e)
     {
         m_dispatcher.addHandler(e);
+    }
+    bool TheEngine::provideServices(HINSTANCE h)
+    {
+        bool result = true;
+        ServiceLocator::provideMathAdapter(&m_adapter);
+
+        m_screenSize = new WindowScreen(m_windowHandle);
+        ServiceLocator::provideScreenSizeService(m_screenSize);
+
+        result = m_render.initialize(h, m_windowHandle);
+        ServiceLocator::provideRenderService(&m_render);
+
+        return result;
     }
 }

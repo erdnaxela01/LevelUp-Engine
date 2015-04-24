@@ -21,8 +21,10 @@ namespace LevelUp
 		virtual bool isECSType(ECSType t);
         //can be deactivated
 		bool isActivated();
+        //set the activation of the component
 		void setIsActivated(bool b);
 	private:
+        //get the tyoe of component and if its activated
 		std::string m_type;
 		bool m_isActivated;
 	};

@@ -3,6 +3,9 @@
 #include "../../Engine/TheEngine.h"
 #include "../../Services/WindowScreen.h"
 #include "../../Services/ServiceLocator.h"
+#include "../../Core/StandardTemplates.h"
+#include "../../Services/Math/LevelUpMath.h"
+#include "../../Engine/Command/CameraResizeCommand.h"
 
 #include <string>
 #include <map>
@@ -16,10 +19,13 @@ namespace LevelUp
 {
 	int Camera::m_numberOfCameras = 0;
 
-	Camera::Camera() :m_x(0.0f), m_y(0.0f), m_canView(true), m_parentScene("")
+    Camera::Camera() :m_x(0.0f), m_y(0.0f), m_canView(true), m_parentScene(""), m_command(nullptr)
 	{
+        //add to the number of cameras
 		m_numberOfCameras++;
+        //set the cameras isd
 		m_ID = "Camera " + std::to_string(m_numberOfCameras);
+        //set the camera to a scene or an engine
 		Scene* s = TheEngine::getInstance()->getSceneManager()->getActiveScene();
 		if (s != nullptr)
 		{
@@ -30,26 +36,27 @@ namespace LevelUp
 		{
 			TheEngine::getInstance()->addCamera(this);
 		}
+        //set the width height and positions of the camera
 		m_height = ServiceLocator::getScreenSizeService()->getScreenSize().y;
 		m_width = ServiceLocator::getScreenSizeService()->getScreenSize().x;
 		m_x = 0.0f;
 		m_y = 0.0f;
         m_screenPos = (LVLfloat2(0.0f, 0.0f));
-		SecureZeroMemory(&m_viewport, sizeof(D3D11_VIEWPORT));
-		m_viewport.TopLeftX = 0.0f;
-        m_viewport.TopLeftY = 0.0f;
-        m_viewport.Width = ServiceLocator::getScreenSizeService()->getScreenSize().x;
-        m_viewport.Height = ServiceLocator::getScreenSizeService()->getScreenSize().y;
-        m_viewport.MinDepth = 0.0f;
-        m_viewport.MaxDepth = 1.0f;
 
+        //get a viewport for the camera
+        m_viewport = ServiceLocator::getRenderService()->produceViewport();
+
+        //get the current screen size
         m_currentScreenSize = ServiceLocator::getScreenSizeService()->getScreenSize();
 	}
 
-    Camera::Camera(Scene* s)
+    Camera::Camera(Scene* s) : m_canView(true), m_command(nullptr)
     {
+        // add to the number of cameras
         m_numberOfCameras++;
         m_ID = "Camera " + std::to_string(m_numberOfCameras);
+        //set the cameras isd
+        //set the camera to a scene or an engine
         if (s != nullptr)
         {
             s->addCamera(this);
@@ -59,33 +66,35 @@ namespace LevelUp
         {
             TheEngine::getInstance()->addCamera(this);
         }
+        //set the width height and positions of the camera
         m_height = ServiceLocator::getScreenSizeService()->getScreenSize().y;
         m_width = ServiceLocator::getScreenSizeService()->getScreenSize().x;
         m_x = 0.0f;
         m_y = 0.0f;
         m_screenPos = (LVLfloat2(0.0f, 0.0f));
-        SecureZeroMemory(&m_viewport, sizeof(D3D11_VIEWPORT));
-        m_viewport.TopLeftX = 0.0f;
-        m_viewport.TopLeftY = 0.0f;
-        m_viewport.Width = ServiceLocator::getScreenSizeService()->getScreenSize().x;
-        m_viewport.Height = ServiceLocator::getScreenSizeService()->getScreenSize().y;
-        m_viewport.MinDepth = 0.0f;
-        m_viewport.MaxDepth = 1.0f;
-
+        //get a viewport for the camera
+        m_viewport = ServiceLocator::getRenderService()->produceViewport();
+        //get the current screen size
         m_currentScreenSize = ServiceLocator::getScreenSizeService()->getScreenSize();
     }
 	Camera::~Camera()
 	{
+        //decrement the number of cameras
 		m_numberOfCameras--;
-        Scene* s = TheEngine::getInstance()->getSceneManager()->getActiveScene();
-        if (s != nullptr)
+        if (m_parentScene != "")
         {
-            s->removeCamera(this);
+            Scene* s = TheEngine::getInstance()->getSceneManager()->getScene(m_parentScene);
+            if (s != nullptr)
+            {
+                s->removeCamera(this);
+            }
         }
         else
         {
             TheEngine::getInstance()->removeCamera(this);
         }
+        //delete the viewport
+        SafeDelete(m_viewport);
 	}
 	std::string Camera::CameraID()
 	{
@@ -94,20 +103,24 @@ namespace LevelUp
 
     void Camera::render()
     {
-        ServiceLocator::getRenderService()->getContext()->RSSetViewports(1, &m_viewport);
+        //set the viewport as the rendering one
+        m_viewport->setViewPort();
 
-
+        //if the view port has changed set it to the new values
         if (m_viewPortIsDirty)
         {
-            DirectX::XMMATRIX view = DirectX::XMMatrixIdentity();
-            DirectX::XMMATRIX projection = DirectX::XMMatrixOrthographicOffCenterLH(0.0f, m_width, 0.0f, m_height, 0.1f, 100.0f);
+            LVL4X4matrix view = LevelUp::identityMatrix();
+            LVL4X4matrix proj;
+            ServiceLocator::getMathAdapter()->convertToLVLMatrix(&proj, &DirectXMatrixContainer(&DirectX::XMMatrixOrthographicOffCenterLH(0.0f, m_width, 0.0f, m_height, 0.1f, 100.0f)));
 
-            (ServiceLocator::getRenderService()->setVPMatrix(DirectX::XMMatrixMultiply(view, projection)));
+            (ServiceLocator::getRenderService()->setVPMatrix(view * proj));
         }
 
+        //get a sorted views for z sorting
         std::vector<View*> sortedViews;
 
         std::map<std::string, View*> views;
+        //if there is no parent scene get the engines view map else get the scene
         if (m_parentScene == "")
         {
             views = TheEngine::getInstance()->getContainer()->getViewMap();
@@ -116,6 +129,7 @@ namespace LevelUp
         {
             views = TheEngine::getInstance()->getSceneManager()->getScene(m_parentScene)->getContainer()->getViewMap();
         }
+        //iterate through the map and get all the views that can be seen
         typedef std::map<std::string, View* > ::iterator it_type;
         for (it_type iterator = views.begin(); iterator != views.end(); iterator++)
         {
@@ -144,13 +158,13 @@ namespace LevelUp
 	void Camera::setH(float h)
 	{
 		m_height = h;
-		m_viewport.Height = h;
+		m_viewport->setHeight(h);
         m_viewPortIsDirty = true;
 	}
 	void Camera::setW(float w)
 	{
 		m_width = w;
-		m_viewport.Width = w;
+        m_viewport->setWidth(w);
         m_viewPortIsDirty = true;
 	}
     LVLfloat2 Camera::getPos()
@@ -182,12 +196,12 @@ namespace LevelUp
 	void Camera::setScreenX(float x)
 	{
 		m_screenPos.x = x;
-		m_viewport.TopLeftX = x;
+        m_viewport->setTopX(x);
 	}
 	void Camera::setScreenY(float y)
 	{
 		m_screenPos.y = y;
-		m_viewport.TopLeftY = y;
+        m_viewport->setTopY(y);
 	}
 	float Camera::getScreenX()
 	{
@@ -204,19 +218,34 @@ namespace LevelUp
 	}
     void Camera::handleEvent(DispatchEvents e)
     {
+        //if the screen is resized set it to the screen resizing
+
         if (e == DispatchEvents::DISPATCHEVENTS_SCREENRESIZE)
         {
-            float percentageX = m_width / m_currentScreenSize.x;
-            float percentageY = m_height / m_currentScreenSize.y;
+            ///if there is no callback for resizing go to default
+            if (m_command == nullptr)
+            {
+                float percentageX = m_width / m_currentScreenSize.x;
+                float percentageY = m_height / m_currentScreenSize.y;
 
-            m_width = ServiceLocator::getScreenSizeService()->getScreenSize().x * percentageX;
-            m_height = ServiceLocator::getScreenSizeService()->getScreenSize().y * percentageY;
+                m_width = ServiceLocator::getScreenSizeService()->getScreenSize().x * percentageX;
+                m_height = ServiceLocator::getScreenSizeService()->getScreenSize().y * percentageY;
 
-            m_currentScreenSize.x = ServiceLocator::getScreenSizeService()->getScreenSize().x;
-            m_currentScreenSize.y = ServiceLocator::getScreenSizeService()->getScreenSize().y;
-
+                m_currentScreenSize.x = ServiceLocator::getScreenSizeService()->getScreenSize().x;
+                m_currentScreenSize.y = ServiceLocator::getScreenSizeService()->getScreenSize().y;
+            }
+            else
+            {
+                m_command->execute(this);
+            }
             m_viewPortIsDirty = true;
         }
 
+
+    }
+    void Camera::setResizeMethod(CameraResizeCommand* c)
+    {
+        //set the resizing method
+        m_command = c;
     }
 }

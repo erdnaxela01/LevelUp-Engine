@@ -31,14 +31,18 @@ namespace LevelUp
 		//use classType:: to remove ambiguouty
 		virtual bool canControl();
 
+        //get what kind of controller it is
 		virtual controllerType getType();
 
+        //add it to the map of controllers
 		virtual void addToMap() = 0;
+        virtual void removeFromMap() = 0;
 
 	protected:
 		std::string m_ID;
 		bool m_canControl;
 		controllerType m_type;
+        std::string m_parentScene;
 	};
 }
 

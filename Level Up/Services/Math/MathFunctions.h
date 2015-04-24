@@ -10,7 +10,7 @@ namespace LevelUp
     Alex Sabourin
     */
 
-    //row major (can be changes by adapter)
+    //row major (can be changed by adapter)
     LVL4X4matrix translationMatrix2D(LVLfloat2 f);
     LVL4X4matrix translationMatrix3D(LVLfloat3 f);
 
@@ -23,8 +23,10 @@ namespace LevelUp
 
     LVL4X4matrix identityMatrix();
 
+    //get a factorial value
     LVLfloat factorial(unsigned int digit);
 
+    //get the power of a base value
     LVLfloat power(LVLfloat base, int exponant);
 
 

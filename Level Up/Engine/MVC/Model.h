@@ -11,11 +11,13 @@ namespace LevelUp
 	public:
 		Model();
 		virtual ~Model();
+        //get the model's ID
 		std::string ModelID();
-        //can it update?
+        //can it update? you decide
 		void setCanUpdate(bool b);
         //must be overriden for the logic of the object
 		virtual void update(double delta) = 0;
+        //check if it can update
 		bool canUpdate();
 	protected:
 		virtual void addToMap();
@@ -24,6 +26,7 @@ namespace LevelUp
 		std::string m_ID;
 		static int m_numberOfModels;
 		bool m_canUpdate;
+        std::string m_parentScene;
 	};
 }
 

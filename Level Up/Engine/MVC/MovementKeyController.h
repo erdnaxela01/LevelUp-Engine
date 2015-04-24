@@ -12,7 +12,9 @@ namespace LevelUp
 	public:
 		MovementKeyController(MovementModel* m);
 		virtual ~MovementKeyController();
+        //handle key down events
 		void handleKeyDown(unsigned int key);
+        //handle key up events
 		void handleKeyUp(unsigned int key);
         //you can change the keys
 		void setMovementKeys(unsigned int left = 'A', unsigned int down = 'S', unsigned int right = 'D', unsigned int up = 'W');

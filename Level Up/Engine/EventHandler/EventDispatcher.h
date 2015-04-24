@@ -11,6 +11,7 @@ namespace LevelUp
 
     /*
     Handy function to dispatch events to multiple people at once in case of noteworthy events
+    -Alex Sabourin April 2015
     */
 	class EventDispatcher
 	{

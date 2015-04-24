@@ -26,20 +26,28 @@ namespace LevelUp
 		//initializes the sprite and its values
 		bool initialize(std::wstring fileName);
 
+        //load the sprites content
 		bool loadContent();
+        //unload the sprites content
 		void unloadContent();
 
+        //get the sprites position
         LVLfloat2 getPosition();
+        //set the sprites positions
 		void setPosition(float x, float y);
+        //set the sprites scale
 		void setScale(float x, float y);
 
+        //get the sprites width
 		float getWidth(){ return m_width; }
+        //set the spries width
 		float getHeight(){ return m_height; }
 
+        //roate the sprite
 		void rotate(float angle);
 		//display the sprite
 		void render();
-
+        //set the vertext buffer
 		bool setVertexBuffer(VertexPos vertices[]);
 
 	private:

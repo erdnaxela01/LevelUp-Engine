@@ -15,13 +15,19 @@ namespace LevelUp
 		ServiceLocator();
 		~ServiceLocator();
 
+        //provide a render service
 		static void provideRenderService(Renderer* render);
+        //get a render service
 		static Renderer* getRenderService();
 
+        //provide a screen size service
 		static void provideScreenSizeService(ScreenSize* size);
+        //get a screen size service
 		static ScreenSize* getScreenSizeService();
 
+        //provide a math adapter 
         static void provideMathAdapter(MathAdapter* ada);
+        //get a math adapter
         static MathAdapter* getMathAdapter();
 
 	private:

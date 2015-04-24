@@ -5,6 +5,10 @@
 
 namespace LevelUp
 {
+    /*
+    Class meant to handle the events sent by the event dispatcher
+    -Alex Sabourin April 2015
+    */
 	class EventHandler
 	{
     public:

@@ -21,7 +21,7 @@ namespace LevelUp
 	class View;
 	class Camera;
 
-
+    //function used as a proxy to send to engines own wndproc
 	LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
     /*
@@ -51,30 +51,44 @@ namespace LevelUp
 		//get the window handle
 		HWND getHWND();
 
-        //add stuff to the model view controller container
+        //add a controller to the mvc container
 		void addController(Controller* c);
+        //add a model to the mvc container
 		void addModel(Model* m);
+        //add a view to the mvc container
 		void addView(View* v);
+        //add a camera to the mvc container
 		void addCamera(Camera* c);
 
+        //remove a controller
         void removeController(Controller* c);
+        //remove a model
         void removeModel(Model* m);
+        //remove a view
         void removeView(View* v);
+        //remove a camera
         void removeCamera(Camera* c);
 
+        //add an event handle to the event dispatcher
         void addEventHandler(EventHandler* e);
 
         //get the current elapsed if necessary
 		double delta();
 
+        //get the mvc container
 		MVCContainer* getContainer();
+
+        //get the scene manager
 		SceneManager* getSceneManager();
 
 	private:
+        //singleton
 		static TheEngine* m_theEngine;
 
+        //initialize the window
 		bool initializeWindow(HINSTANCE hInstance);
 
+        
 		MVCContainer m_container;
 		RenderEngine m_render;
 		SceneManager m_scenes;
@@ -98,6 +112,8 @@ namespace LevelUp
 		LVLfloat2 getMousePos();
 
         EventDispatcher m_dispatcher;
+
+        bool provideServices(HINSTANCE h);
 
 		//no copies
 		TheEngine();

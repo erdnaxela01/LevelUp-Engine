@@ -16,9 +16,12 @@ namespace LevelUp
         void update(double delta);
         //get the current stopwatch time
         double getTime();
+        //starts the watch from scratch
         void start();
         //pauses the stop watch
         void pause();
+        //unpauses the watch
+        void unPause();
         //returns the time as it stopped
         double stop();
     private:

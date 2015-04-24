@@ -18,11 +18,13 @@ namespace LevelUp
         //returns the world matrix
 		LVL4X4matrix GetWorldMatrix();
 
-        //sets the rotation and scale of the sprite
+        //sets the rotation
 		void setRotation(float rotation);
+        //sets the scale of the sprite
 		void setScale(LVLfloat2 &scale);
 
 	private:
+        //used for rotation and scale
 		float m_rotation;
 		LVLfloat2 m_scale;
 

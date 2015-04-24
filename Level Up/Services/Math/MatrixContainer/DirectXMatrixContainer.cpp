@@ -1,5 +1,6 @@
 #include "DirectXMatrixContainer.h"
 #include  <DirectXMath.h>
+#include <cassert>
 
 namespace LevelUp
 {
@@ -13,9 +14,12 @@ namespace LevelUp
     }
     void DirectXMatrixContainer::setFloatAt(int r, int c, LVLfloat f)
     {
+        assert(r < 4 && r >= 0);
+        assert(c < 4 && c >= 0);
         DirectX::XMFLOAT4X4 m2;
         DirectX::XMStoreFloat4x4(&m2, *m_matrix);
 
+        //set all the specific values
         switch (r)
         {
         case 0:
@@ -91,6 +95,9 @@ namespace LevelUp
     }
     LVLfloat DirectXMatrixContainer::getFloatAt(int r, int c)
     {
+        //get the speicifc values at a location
+        assert(r < 4 && r >= 0);
+        assert(c < 4 && c >= 0);
         DirectX::XMFLOAT4X4 m2;
         DirectX::XMStoreFloat4x4(&m2, *m_matrix);
 
@@ -165,5 +172,6 @@ namespace LevelUp
             }
             break;
         }
+        return 0.0f;
     }
 }

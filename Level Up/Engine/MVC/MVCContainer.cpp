@@ -15,11 +15,6 @@ namespace LevelUp
 	{
 	}
 
-	void MVCContainer::initializeContainer()
-	{
-
-	}
-
 	std::map<controllerType, std::map<std::string, Controller*>> MVCContainer::getControllerMap()
 	{
 		return m_controllers;
@@ -57,6 +52,7 @@ namespace LevelUp
 	{
 		KeyController* tempPtr;
 
+        //run through the map and activate all the controllers
 		typedef std::map<std::string, Controller* > ::iterator it_type;
 		std::map < std::string, Controller* > keyController = m_controllers[controllerType::KEYCONTROLLER];
 		for (it_type iterator = keyController.begin(); iterator != keyController.end(); iterator++)
@@ -72,7 +68,7 @@ namespace LevelUp
 	void MVCContainer::KeyUp(int key)
 	{
 		KeyController* tempPtr;
-
+        //run through the map and activate all the controllers
 		typedef std::map<std::string, Controller* > ::iterator it_type;
 		std::map < std::string, Controller* > keyController = m_controllers[controllerType::KEYCONTROLLER];
 		for (it_type iterator = keyController.begin(); iterator != keyController.end(); iterator++)
@@ -88,7 +84,7 @@ namespace LevelUp
 	void MVCContainer::timeElapsed(double delta)
 	{
 		TimerController* tempPtr;
-
+        //run through the map and activate all the controllers
 		typedef std::map<std::string, Controller* > ::iterator it_type;
 		std::map < std::string, Controller* > timerController = m_controllers[controllerType::TIMERCONTROLLER];
 		for (it_type iterator = timerController.begin(); iterator != timerController.end(); iterator++)
@@ -103,7 +99,7 @@ namespace LevelUp
 	void MVCContainer::mouseMove(LVLfloat2 pos)
 	{
 		MouseController* tempPtr;
-
+        //run through the map and activate all the controllers
 		typedef std::map<std::string, Controller* > ::iterator it_type;
 		std::map < std::string, Controller* > mouseController = m_controllers[controllerType::TIMERCONTROLLER];
 		for (it_type iterator = mouseController.begin(); iterator != mouseController.end(); iterator++)
@@ -118,6 +114,7 @@ namespace LevelUp
 
 	void MVCContainer::updateModels(double delta)
 	{
+        //run through the models and update them
 		typedef std::map<std::string, Model* > ::iterator it_type;
 		for (it_type iterator = m_models.begin(); iterator != m_models.end(); iterator++)
 		{
@@ -130,6 +127,7 @@ namespace LevelUp
 
 	void MVCContainer::renderViewsWithCamera()
 	{
+        //render all the cameras
 		typedef std::map<std::string, Camera* > ::iterator it_type;
 		for (it_type iterator = m_cameras.begin(); iterator != m_cameras.end(); iterator++)
 		{

@@ -50,6 +50,7 @@ namespace LevelUp
 
 	void MovementModel::update(double delta)
 	{
+        //update the model // this will be abstracted away with a command message queue
 		if (m_canMoveForward)
 		{
 			m_x += (std::cos(m_angle) * m_speed) * delta;

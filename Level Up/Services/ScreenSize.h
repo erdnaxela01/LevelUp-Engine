@@ -10,6 +10,7 @@ namespace LevelUp
 	class ScreenSize
 	{
 	public:
+        //get the screens size
         virtual LVLfloat2 getScreenSize() = 0;
 	};
 }

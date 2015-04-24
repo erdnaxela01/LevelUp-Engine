@@ -22,25 +22,43 @@ namespace LevelUp
 	public:
 		MVCContainer();
 		~MVCContainer();
-		void initializeContainer();
+        //get all the controllers
 		std::map<controllerType, std::map<std::string, Controller*>> getControllerMap();
+        //get all the models
 		std::map<std::string, Model*> getModelMap();
+        //get all the views
 		std::map<std::string, View*> getViewMap();
+
+        //add a controller to the map
 		void addToControllerMap(Controller* controller);
+        //add a model to the map
 		void addToModelMap(Model* model);
+        //add a view to the map
 		void addToViewMap(View* view);
+        //add a camera to the map
 		void addToCameraMap(Camera* cam);
 
+        //remove a controller from the map
         void removeFromControllerMap(Controller* c);
+        //remove a model from the map
         void removeFromModelMap(Model* m);
+        //remove a view from the map
         void removeFromViewMap(View* v);
+        //remove a camera from the map
         void removeFromCameraMap(Camera* c);
 
+        //update all the key controllers
 		void KeyDown(int key);
+        //update all the key controllers
 		void KeyUp(int key);
+        //check the time elapsed for the controllers
 		void timeElapsed(double delta);
+        //check the mouse for the mouse controllers
 		void mouseMove(LVLfloat2 pos);
+        //update all the models
 		void updateModels(double delta);
+
+        //render all the views with the cameras
 		void renderViewsWithCamera();
 
 

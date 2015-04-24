@@ -19,7 +19,9 @@ namespace LevelUp
         //get the controllers id
 		std::string keyControllerID();
 	protected:
+        //add it to the map of controllers
 		virtual void addToMap();
+        //remove it from the map of controllers
         virtual void removeFromMap();
 	private:
 		static int m_numberOfKeyControllers;
