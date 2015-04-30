@@ -6,7 +6,7 @@
 
 namespace LevelUp
 {
-    Rectangle::Rectangle(LVLfloat4 color, float width, float height) : m_color(color), m_width(width), m_height(height)
+	Rectangle::Rectangle(LVLfloat4 color, float width, float height) : m_color(color), m_width(width), m_height(height), m_verticesAreDirty(true)
 	{
         //load the rectangles content
 		loadContent();
@@ -104,27 +104,7 @@ namespace LevelUp
 			return false;
 		}
 
-        //get the half of the height and the width
-		float halfWidth = m_width * 0.5f;
-		float halfHeight = m_height * 0.5f;
-        //create a vector of the vertecx
-		ColorVertexPos vertices[] =
-		{
-            { LVLfloat3(halfWidth, halfHeight, 1.0f), m_color },
-            { LVLfloat3(halfWidth, -halfHeight, 1.0f), m_color },
-            { LVLfloat3(-halfWidth, -halfHeight, 1.0f), m_color },
-
-            { LVLfloat3(-halfWidth, -halfHeight, 1.0f), m_color },
-            { LVLfloat3(-halfWidth, halfHeight, 1.0f), m_color },
-            { LVLfloat3(halfWidth, halfHeight, 1.0f), m_color }
-		};
-
-        //set the vertec buffer
-		bool result = setVertexBuffer(vertices);
-		if (!result)
-		{
-			return false;
-		}
+		m_verticesAreDirty = true;
 		return true;
 	}
 	void Rectangle::unloadContent()
@@ -161,6 +141,10 @@ namespace LevelUp
 
 	void Rectangle::render()
 	{//sprite specific
+		if (m_verticesAreDirty)
+		{
+			resetVertices();
+		}
 		unsigned int stride = sizeof(ColorVertexPos);
 		unsigned int offset = 0;
 
@@ -168,12 +152,12 @@ namespace LevelUp
 		ID3D11DeviceContext* context = ServiceLocator::getRenderService()->getContext();
 		//
         //set the shaders
+
 		context->VSSetShader(m_solidColorVS, 0, 0);
 		context->PSSetShader(m_solidColorPS, 0, 0);
 
 		context->IASetInputLayout(m_inputLayout);
 
-		context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		//sprite specific code
 		context->IASetVertexBuffers(0, 1, &m_vertexBuffer, &stride, &offset);
 		//
@@ -226,7 +210,8 @@ namespace LevelUp
     void Rectangle::setAlpha(float a)
     {
         a = MathHelper::Clamp(a, 0.0f, 1.0f);
-        m_color.z = a;
+        m_color.w = a;
+		m_verticesAreDirty = true;
     }
     float Rectangle::getAlpha()
     {
@@ -237,26 +222,30 @@ namespace LevelUp
         m_color.x = c.x;
         m_color.y = c.y;
         m_color.z = c.z;
-        //get the half of the height and the width
-        float halfWidth = m_width * 0.5f;
-        float halfHeight = m_height * 0.5f;
-        //create a vector of the vertecx
-        ColorVertexPos vertices[] =
-        {
-            { LVLfloat3(halfWidth, halfHeight, 1.0f), m_color },
-            { LVLfloat3(halfWidth, -halfHeight, 1.0f), m_color },
-            { LVLfloat3(-halfWidth, -halfHeight, 1.0f), m_color },
-
-            { LVLfloat3(-halfWidth, -halfHeight, 1.0f), m_color },
-            { LVLfloat3(-halfWidth, halfHeight, 1.0f), m_color },
-            { LVLfloat3(halfWidth, halfHeight, 1.0f), m_color }
-        };
-
-        //set the vertec buffer
-        setVertexBuffer(vertices);
+		m_verticesAreDirty = true;
     }
     void Rectangle::setAngle(float a)
     {
         m_sprite.setRotation(a);
     }
+
+	void Rectangle::resetVertices()
+	{
+		float halfWidth = m_width * 0.5f;
+		float halfHeight = m_height * 0.5f;
+		//create a vector of the vertecx
+		ColorVertexPos vertices[] =
+		{
+			{ LVLfloat3(halfWidth, halfHeight, 1.0f), m_color },
+			{ LVLfloat3(halfWidth, -halfHeight, 1.0f), m_color },
+			{ LVLfloat3(-halfWidth, -halfHeight, 1.0f), m_color },
+
+			{ LVLfloat3(-halfWidth, -halfHeight, 1.0f), m_color },
+			{ LVLfloat3(-halfWidth, halfHeight, 1.0f), m_color },
+			{ LVLfloat3(halfWidth, halfHeight, 1.0f), m_color }
+		};
+
+		//set the vertec buffer
+		setVertexBuffer(vertices);
+	}
 }

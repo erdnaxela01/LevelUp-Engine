@@ -17,7 +17,6 @@ namespace LevelUp
 
 	TimerController::~TimerController()
 	{
-		m_numberOfTimerControllers--;
         removeFromMap();
 	}
 

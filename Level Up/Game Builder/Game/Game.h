@@ -19,6 +19,8 @@ namespace LevelUp
 		bool unloadContent() { return true; };
 	private:
         MovementLevelObject *mlo;
+		MovementLevelObject* mlo2;
+		TrackingCamera* t;
 		
 	};
 }

@@ -1,7 +1,6 @@
 #ifndef __GAME_SPRITE_H
 #define __GAME_SPRITE_H
 
-#include "../Base Class/GameObject.h"
 #include "../Services/Math/LevelUpMath.h"
 namespace LevelUp
 {
@@ -10,7 +9,7 @@ namespace LevelUp
     - Alex Sabourin
     */
 
-	class GameSprite : public GameObject
+	class GameSprite
 	{
 	public:
 		GameSprite();
@@ -23,10 +22,15 @@ namespace LevelUp
         //sets the scale of the sprite
 		void setScale(LVLfloat2 &scale);
 
+		LVLfloat2 getPosition();
+
+		void setPosition(LVLfloat2 l);
+
 	private:
         //used for rotation and scale
 		float m_rotation;
 		LVLfloat2 m_scale;
+		LVLfloat2 m_position;
 
 	};
 }

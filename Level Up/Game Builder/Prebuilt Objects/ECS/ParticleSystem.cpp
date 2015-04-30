@@ -1,6 +1,7 @@
 #include "ParticleSystem.h"
 #include "../../../Developer/Engine/ECS/Entity.h"
 #include "ParticleComponent.h"
+#include "../../../Developer/Engine/BasicLevelObject/BaseLevelObject.h"
 
 namespace LevelUp
 {
@@ -75,10 +76,10 @@ namespace LevelUp
                     }
                 }
             }
-            for (unsigned int i = 0; i < e->m_particles.size(); i++)
-            {
-                e->m_particles[i]->update(delta);
-            }
         }
+		for (unsigned int i = 0; i < e->m_particles.size(); i++)
+		{
+			e->m_particles[i]->update(delta);
+		}
     }
 }

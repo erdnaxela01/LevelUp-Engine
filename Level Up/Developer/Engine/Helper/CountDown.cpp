@@ -39,7 +39,7 @@ namespace LevelUp
         //stop the countdown
         m_time = 0.0;
     }
-    double CountDown::time()
+    double CountDown::getTime()
     {
         return m_time;
     }

@@ -5,6 +5,8 @@
 #include "../../Developer/Engine/MVC/MVC.h"
 #include "../Prebuilt Objects/ECS/ParticleComponent.h"
 #include "../../Developer/Graphics/Color.h"
+#include "../../Developer/UI/Cameras/Special Cameras/TrackingCamera.h"
+#include "../../Developer/Engine/TheEngine.h"
 
 namespace LevelUp
 {
@@ -21,6 +23,7 @@ namespace LevelUp
 	void Game::update(double delta)
 	{
         //if created with MVC you dont need to update or render your objects, thats taken care of
+
 	}
 
 	void Game::render()
@@ -33,12 +36,21 @@ namespace LevelUp
 	{
 		bool result = true;
 
+
         mlo = new MovementLevelObject(L"Ship.png");
-        mlo->getView()->setZ(0.5f);
+        mlo->getView()->setZ(1.5f);
+		//mlo->getController()->stopControl();
+
+		mlo2 = new MovementLevelObject(L"Ship.png");
+		mlo2->getController()->stopControl();
         ParticleComponent* p = new ParticleComponent(200, Color::getForestGreen());
         p->trackObject(mlo);
-        p->activate(1.0, 0.001, 30.0f, 90.0f, 200.0f, 300.0f);
+        p->activate(1.0, 0.001);
         mlo->addComponent(p);
+		p->setCanFade(true);
+
+		t = new TrackingCamera(mlo);
+		//removeInitialCamera();
         
         mlo->setPosition(200.0f, 200.0f);
 		return result;

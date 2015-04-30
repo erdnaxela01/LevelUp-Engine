@@ -108,13 +108,15 @@ namespace LevelUp
             return result;
         }
 
-		m_frameTime = (unsigned long)((1.0 / 60.0) * 1000.0);
+		m_frameTime = ((1.0 / 60.0));
 
 		//Cache the last tick count, and calculate the next tick count.
-		m_lastTickCount = PerformanceCounter::getCounter();
-		m_nextTickCount = PerformanceCounter::getCounter() + m_frameTime;
+		m_lastTickCount = PerformanceCounter::getCounter() * 0.001;
+		m_nextTickCount = PerformanceCounter::getCounter() * 0.001 + m_frameTime;
 
 		m_sleepTime = m_frameTime;
+
+		m_canUpdate = true;
 
         m_sceneBuilder.SystemAdd();
         m_sceneBuilder.SceneLayout();
@@ -135,17 +137,20 @@ namespace LevelUp
 
 		m_render.finishRender();
 	}
-	void TheEngine::update(double delta)
+	void TheEngine::update()
 	{
-		//model view controller specific
-		m_container.timeElapsed(delta);
-		m_container.updateModels(delta);
-
-		Scene* s = m_scenes.getActiveScene();
-		if (s != nullptr)
+		if (m_canUpdate)
 		{
-			s->getContainer()->updateModels(delta);
-			s->update(delta);
+			//model view controller specific
+			m_container.timeElapsed(m_delta);
+			m_container.updateModels(m_delta);
+
+			Scene* s = m_scenes.getActiveScene();
+			if (s != nullptr)
+			{
+				s->getContainer()->updateModels(m_delta);
+				s->update(m_delta);
+			}
 		}
 	}
 
@@ -233,25 +238,38 @@ namespace LevelUp
 		return true;
 	}
 
-	double TheEngine::updateTimer()
+	void TheEngine::updateTimer()
 	{
-		double currentTickCount = PerformanceCounter::getCounter();
-		double deltaTime = (currentTickCount - m_lastTickCount) / 1000.0;
 
+		if (PerformanceCounter::getCounter() * 0.001 >= m_nextTickCount)
+		{
+			m_canUpdate = true;
+		}
+		else
+		{
+			m_canUpdate = false;
+		}
 
-		m_lastTickCount = currentTickCount;
-		m_nextTickCount = m_nextTickCount + m_frameTime;
+		if (m_canUpdate)
+		{
+			double currentTickCount = PerformanceCounter::getCounter() * 0.001; // /1000.0;
+			double deltaTime = (currentTickCount - m_lastTickCount);
+			m_lastTickCount = currentTickCount;
+			m_nextTickCount = m_nextTickCount + m_frameTime;
+			if (deltaTime > 0.2)
+			{
+				deltaTime = 0.2;
+			}
+			m_delta = deltaTime;
+		}
 
-		m_sleepTime = m_nextTickCount - PerformanceCounter::getCounter();
+		m_sleepTime = PerformanceCounter::getCounter() * 0.001 - m_nextTickCount;
 
 		if (m_sleepTime > m_frameTime)
 		{
 			m_sleepTime = m_frameTime;
-			m_nextTickCount = PerformanceCounter::getCounter() + m_frameTime;
+			m_nextTickCount = PerformanceCounter::getCounter() * 0.001 + m_frameTime;
 		}
-		m_delta = deltaTime;
-
-		return deltaTime;
 	}
 
 	HWND TheEngine::getHWND()

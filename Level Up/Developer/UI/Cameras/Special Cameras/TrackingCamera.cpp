@@ -1,11 +1,10 @@
 #include "TrackingCamera.h"
 #include "../Camera.h"
-#include "../../../Base Class/GameObject.h"
-#include <DirectXMath.h>
+#include "../../../Engine/BasicLevelObject/BaseLevelObject.h"
 
 namespace LevelUp
 {
-	TrackingCamera::TrackingCamera(GameObject* go) :m_isTracking(false)
+	TrackingCamera::TrackingCamera(BaseLevelObject* go) :m_isTracking(false)
 	{
 		m_trackingObject = go;
         m_onScreenPos = LVLfloat2(0.5f, 0.5f);
@@ -14,7 +13,7 @@ namespace LevelUp
 	{
 
 	}
-	void TrackingCamera::setTrackingObject(GameObject* go)
+	void TrackingCamera::setTrackingObject(BaseLevelObject* go)
 	{
 		m_trackingObject = go;
 	}

@@ -14,7 +14,6 @@ namespace LevelUp
 	}
 	MouseController::~MouseController()
 	{
-		m_numberOfMouseControllers--;
         removeFromMap();
 	}
 

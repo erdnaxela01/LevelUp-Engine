@@ -10,7 +10,6 @@ namespace LevelUp
         MovementModel* m = new MovementModel(speed, spinSpeed);
         MovementSpriteView* v = new MovementSpriteView(fname, m, 1.0f);
         MovementKeyController* c = new MovementKeyController(m);
-
         initialize(m, v, c);
     }
     MovementLevelObject::~MovementLevelObject()

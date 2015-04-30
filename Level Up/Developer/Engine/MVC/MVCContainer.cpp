@@ -40,7 +40,7 @@ namespace LevelUp
 
 	void MVCContainer::addToViewMap(View* view)
 	{
-		m_views[view->ViewID()] = view;
+		m_views[view->viewID()] = view;
 	}
 
 	void MVCContainer::addToCameraMap(Camera* cam)
@@ -147,7 +147,7 @@ namespace LevelUp
     }
     void MVCContainer::removeFromViewMap(View* v)
     {
-        m_views.erase(v->ViewID());
+        m_views.erase(v->viewID());
     }
     void MVCContainer::removeFromCameraMap(Camera* c)
     {

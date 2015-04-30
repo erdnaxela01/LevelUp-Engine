@@ -61,6 +61,10 @@ namespace LevelUp
 		ID3D11Buffer* m_mvpCB;
         LVLfloat4 m_color;
         float m_alpha;
+
+		void resetVertices();
+
+		bool m_verticesAreDirty;
 	};
 }
 

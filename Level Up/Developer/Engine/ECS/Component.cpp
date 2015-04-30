@@ -11,7 +11,6 @@ namespace LevelUp
 	}
 	Component::~Component()
 	{
-        m_numberOfComponents--;
 	}
 	bool Component::isType(std::string s)
 	{

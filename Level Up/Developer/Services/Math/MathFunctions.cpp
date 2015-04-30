@@ -1,5 +1,5 @@
 #include "MathFunctions.h"
-#include "../../Base Class/GameObject.h"
+#include "../../Engine/BasicLevelObject/BaseLevelObject.h"
 #include <random>
 #include <ctime>
 #include <math.h>
@@ -172,14 +172,14 @@ namespace LevelUp
         return LVLfloat2(vX, vY);
     }
 
-    void MathHelper::Translate(GameObject* gameObject, LVLfloat2 velocity, double delta)
+	void MathHelper::Translate(BaseLevelObject* gameObject, LVLfloat2 velocity, double delta)
     {
         LVLfloat2 position = gameObject->getPosition();
         position += LVLfloat2(velocity.x * delta, velocity.y * delta);
         gameObject->setPosition(position);
     }
 
-    void MathHelper::Orbit(GameObject* gameObject, float radius, float angle, LVLfloat2 pivot)
+	void MathHelper::Orbit(BaseLevelObject* gameObject, float radius, float angle, LVLfloat2 pivot)
     {
         float angleRadians = DegreesToRadians(angle);
         float x = (pivot.x + radius * cosf(angleRadians));
@@ -217,95 +217,109 @@ namespace LevelUp
         float opposite = a.y - b.y;
         float angleRadians = atan2f(opposite, adjacent);
         return RadiansToDegrees(angleRadians);
-    }
+	}
 
-    void MathHelper::ApplyGravityForce(GameObject* a, float massA, GameObject* b, float massB, float radiusB, double delta)
-    {
-        //Calculate the distance between the two game objects
-        float distance = MathHelper::Distance(a->getPosition(), b->getPosition());
+	void MathHelper::ApplyGravityForce(BaseLevelObject* a, float massA, BaseLevelObject* b, float massB, float radiusB, double delta)
+	{
+		//Calculate the distance between the two game objects
+		float distance = MathHelper::Distance(a->getPosition(), b->getPosition());
 
-        //If the distance is greater than the desired radius, apply the universal gravitation equation
-        if (distance > radiusB)
-        {
-            //Compute the Gravitational Force
-            LVLfloat2 velocityDueToGravity = ComputeGravitationalForce(a->getPosition(), massA, b->getPosition(), massB, distance);
+		//If the distance is greater than the desired radius, apply the universal gravitation equation
+		if (distance > radiusB)
+		{
+			//Compute the Gravitational Force
+			LVLfloat2 velocityDueToGravity = ComputeGravitationalForce(a->getPosition(), massA, b->getPosition(), massB, distance);
 
-            //Translate game object a, based on the velocity vector
-            MathHelper::Translate(a, velocityDueToGravity, delta);
-        }
-    }
+			//Translate game object a, based on the velocity vector
+			MathHelper::Translate(a, velocityDueToGravity, delta);
+		}
+	}
 
-    LVLfloat2 MathHelper::ComputeGravitationalForce(LVLfloat2 a, float massA, LVLfloat2 b, float massB, float distance)
-    {
-        //Calculate the gravity force based on the unverisal gravitation equation
-        float gravityForce = GRAVITY_CONSTANT * massA * massB / (distance * distance);
+	LVLfloat2 MathHelper::ComputeGravitationalForce(LVLfloat2 a, float massA, LVLfloat2 b, float massB, float distance)
+	{
+		//Calculate the gravity force based on the unverisal gravitation equation
+		float gravityForce = GRAVITY_CONSTANT * massA * massB / (distance * distance);
 
-        //Calculate the acceleration due to gravity based on the force of gravity and object a's mass
-        float gravityAcceleration = gravityForce / massA;
+		//Calculate the acceleration due to gravity based on the force of gravity and object a's mass
+		float gravityAcceleration = gravityForce / massA;
 
-        //Calculate the angle between the two game objects
-        float angleBetweenMissileAndPlanet = MathHelper::AngleBetweenVectors(a, b);
+		//Calculate the angle between the two game objects
+		float angleBetweenMissileAndPlanet = MathHelper::AngleBetweenVectors(a, b);
 
-        //Using the angle and the acceleration due to gravity calculate the velocity vector for gravity
-        LVLfloat2 velocityDueToGravity = MathHelper::CalculateVelocity(angleBetweenMissileAndPlanet, gravityAcceleration);
-        velocityDueToGravity *= -1.0f;
+		//Using the angle and the acceleration due to gravity calculate the velocity vector for gravity
+		LVLfloat2 velocityDueToGravity = MathHelper::CalculateVelocity(angleBetweenMissileAndPlanet, gravityAcceleration);
+		velocityDueToGravity *= -1.0f;
 
-        return velocityDueToGravity;
-    }
+		return velocityDueToGravity;
+	}
 
-    void MathHelper::RandomizeSeed()
-    {
-        srand(time(nullptr));
-    }
+	void MathHelper::RandomizeSeed()
+	{
+		srand(time(nullptr));
+	}
 
-    unsigned int MathHelper::RandomNumber(unsigned int max)
-    {
-        return (rand() % max);
-    }
+	unsigned int MathHelper::RandomNumber(unsigned int max)
+	{
+		return (rand() % max);
+	}
 
-    unsigned int MathHelper::RandomRange(unsigned int min, unsigned int max)
-    {
-        return min + RandomNumber(max - min);
-    }
+	unsigned int MathHelper::RandomRange(unsigned int min, unsigned int max)
+	{
+		return min + RandomNumber(max - min);
+	}
 
-    bool MathHelper::lineToCircleCollision(LVLfloat2 linePointStop, LVLfloat2 linePointStart, LVLfloat2 circlePos, float circleRadius)
-    {
-        LVLfloat2 circleV = circlePos - linePointStart;
+	bool MathHelper::lineToCircleCollision(LVLfloat2 linePointStop, LVLfloat2 linePointStart, LVLfloat2 circlePos, float circleRadius)
+	{
+		LVLfloat2 circleV = circlePos - linePointStart;
 
-        LVLfloat2 lineV = linePointStop - linePointStart;
+		LVLfloat2 lineV = linePointStop - linePointStart;
 
-        LVLfloat2 normalLineV = MathHelper::Normalize(lineV);
+		LVLfloat2 normalLineV = MathHelper::Normalize(lineV);
 
-        float dot = circleV.x * normalLineV.x + circleV.y * normalLineV.y;
+		float dot = circleV.x * normalLineV.x + circleV.y * normalLineV.y;
 
-        LVLfloat2 projection = normalLineV * dot;
+		LVLfloat2 projection = normalLineV * dot;
 
-        LVLfloat2 closestPoint = projection + linePointStart;
+		LVLfloat2 closestPoint = projection + linePointStart;
 
-        //this code is added to limit the distance of the ray cast to the lasers length.
-        if (dot <= 0)
-        {
-            closestPoint = linePointStart;
-        }
-        else if (dot >= MathHelper::Length(lineV))
-        {
-            closestPoint = linePointStop;
-        }
+		//this code is added to limit the distance of the ray cast to the lasers length.
+		if (dot <= 0)
+		{
+			closestPoint = linePointStart;
+		}
+		else if (dot >= MathHelper::Length(lineV))
+		{
+			closestPoint = linePointStop;
+		}
 
 
-        float d = MathHelper::Distance(closestPoint, circlePos);
+		float d = MathHelper::Distance(closestPoint, circlePos);
 
-        return d <= circleRadius;
+		return d <= circleRadius;
 
-    }
-    bool MathHelper::circleToCircleCollision(LVLfloat2 positionA, float radiusA, LVLfloat2 positionB, float radiusB)
-    {
-        float distance = ((positionB.x - positionA.x) * (positionB.x - positionA.x) + (positionB.y - positionA.y) * (positionB.y - positionA.y));
+	}
 
-        if (distance < (radiusA + radiusB) * (radiusA + radiusB))
-        {
-            return true;
-        }
-        return false;
-    }
+
+	bool MathHelper::circleToCircleCollision(LVLfloat2 positionA, float radiusA, LVLfloat2 positionB, float radiusB)
+	{
+		float distance = ((positionB.x - positionA.x) * (positionB.x - positionA.x) + (positionB.y - positionA.y) * (positionB.y - positionA.y));
+
+		if (distance < (radiusA + radiusB) * (radiusA + radiusB))
+		{
+			return true;
+		}
+		return false;
+	}
+
+	bool MathHelper::rectangleToRectangleCollision(LVLrect rectA, LVLrect rectB)
+	{
+		if ((rectA.top < rectB.bot) ||
+			(rectA.bot > rectB.top) ||
+			(rectA.left > rectB.right) ||
+			(rectA.right < rectB.left))
+		{
+			return false;
+		}
+		return true;
+	}
 }

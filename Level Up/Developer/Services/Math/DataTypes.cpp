@@ -338,4 +338,15 @@ namespace LevelUp
         return m;
     }
 
+	void LVLrect::operator=(const LVLrect& rhs)
+	{
+		top = rhs.top;
+		bot = rhs.bot;
+		left = rhs.left;
+		right = rhs.right;
+	}
+	LVLrect::LVLrect(float l, float b, float r, float t) :top(t), bot(b), left(l), right(r)
+	{
+	}
+
 }

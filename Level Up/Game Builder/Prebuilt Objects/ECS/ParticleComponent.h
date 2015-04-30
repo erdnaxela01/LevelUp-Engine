@@ -12,6 +12,7 @@ namespace LevelUp
     const std::string PARTICLE_COMPONENT_TYPE = "ParticleComponentType";
 
     class ParticleSystem;
+	class BaseLevelObject;
 
     class ParticleComponent : public Component
     {
@@ -22,7 +23,7 @@ namespace LevelUp
         void deactivate();
         void setPosition(LVLfloat2 pos);
         std::vector <Particle*> getParticles();
-        void trackObject(GameObject* object);
+        void trackObject(BaseLevelObject* object);
         void setColor(LVLfloat3 c);
         void setMultipleColors(std::vector<LVLfloat3> colors);
 
@@ -34,13 +35,15 @@ namespace LevelUp
         virtual void releaseTracking();
         void setAlpha(float a);
 
+		void setCanFade(bool b);
+
         bool isTracking();
         bool isPaused();
 
         double getElapsed();
         void setElapsed(double elapsed);
 
-        GameObject* getGameObject();
+		BaseLevelObject* getBLO();
 
         void pause();
         //restart emiting
@@ -60,7 +63,7 @@ namespace LevelUp
         std::vector <Particle*> m_particles;
 
         LVLfloat2 m_position;
-        GameObject* m_trackingObject;
+		BaseLevelObject* m_trackingObject;
 
     };
 }

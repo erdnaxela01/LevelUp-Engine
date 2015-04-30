@@ -14,7 +14,6 @@ namespace LevelUp
 	}
 	Model::~Model()
 	{
-		m_numberOfModels--;
         removeFromMap();
 	}
 	std::string Model::ModelID()

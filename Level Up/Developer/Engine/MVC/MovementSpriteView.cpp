@@ -39,7 +39,7 @@ namespace LevelUp
 		{
             //if there is a model rotate the sprite according to the angle
 			m_sprite->rotate(m_movementModel->getAngle());
-            m_sprite->setPosition(m_movementModel->getX(), m_movementModel->getY());
+            //m_sprite->setPosition(m_movementModel->getX(), m_movementModel->getY());
 		}
         //render the sprite
 		m_sprite->render();
@@ -100,10 +100,7 @@ namespace LevelUp
 		{
 			m_movementModel->setX(x);
 		}
-        else
-        {
-            m_sprite->setPosition(x, m_sprite->getPosition().y);
-        }
+        m_sprite->setPosition(x, m_sprite->getPosition().y);
 	}
 	void  MovementSpriteView::setY(float y)
 	{
@@ -112,9 +109,7 @@ namespace LevelUp
 		{
 			m_movementModel->setY(y);
 		}
-        else
-        {
-            m_sprite->setPosition(m_sprite->getPosition().x, y);
-        }
+        m_sprite->setPosition(m_sprite->getPosition().x, y);
+
 	}
 }

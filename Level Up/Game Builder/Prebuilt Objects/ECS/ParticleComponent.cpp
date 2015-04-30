@@ -2,10 +2,12 @@
 #include "Particle.h"
 #include "ParticleSystem.h"
 #include "../../../Developer/Core/StandardTemplates.h"
+#include "../../../Developer/Engine/BasicLevelObject/BaseLevelObject.h"
+
 
 namespace LevelUp
 {
-    ParticleComponent::ParticleComponent(unsigned int size, LVLfloat3 color) : m_frequency(0.1f)
+	ParticleComponent::ParticleComponent(unsigned int size, LVLfloat3 color) : m_frequency(0.1f), m_paused(false)
     {
         for (unsigned int i = 0; i < size; i++)
         {
@@ -49,7 +51,7 @@ namespace LevelUp
     {
         return m_particles;
     }
-    void ParticleComponent::trackObject(GameObject* object)
+	void ParticleComponent::trackObject(BaseLevelObject* object)
     {
         m_tracking = true;
         m_trackingObject = object;
@@ -97,6 +99,8 @@ namespace LevelUp
         m_tracking = false;
         m_trackingObject = nullptr;
     }
+
+
     void ParticleComponent::setAlpha(float a)
     {
         for (unsigned int i = 0; i < m_particles.size(); i++)
@@ -104,6 +108,14 @@ namespace LevelUp
             m_particles[i]->setAlpha(a);
         }
     }
+
+	void ParticleComponent::setCanFade(bool b)
+	{
+		for (unsigned int i = 0; i < m_particles.size(); i++)
+		{
+			m_particles[i]->setFade(b);
+		}
+	}
 
     void ParticleComponent::pause()
     {
@@ -133,7 +145,7 @@ namespace LevelUp
         m_elapsed = elapsed;
     }
 
-    GameObject* ParticleComponent::getGameObject()
+    BaseLevelObject* ParticleComponent::getBLO()
     {
         return m_trackingObject;
     }

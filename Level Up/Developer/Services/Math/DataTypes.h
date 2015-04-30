@@ -93,6 +93,17 @@ namespace LevelUp
         LVL4X4matrix();
     };
 
+	struct LVLrect
+	{
+		float top;
+		float bot;
+		float left;
+		float right;
+
+		void operator=(const LVLrect& rhs);
+		LVLrect(float l = 0.0f, float b = 0.0f, float r = 0.0f, float t = 0.0f);
+	};
+
 
 
 

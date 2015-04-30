@@ -87,7 +87,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Developer\Base Class\GameObject.cpp" />
     <ClCompile Include="..\Developer\Core\DirectXViewport.cpp" />
     <ClCompile Include="..\Developer\Core\Dx11Base.cpp" />
     <ClCompile Include="..\Developer\Core\GameSprite.cpp" />
@@ -98,7 +97,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\Developer\Core\TheGameBase.cpp" />
+    <ClCompile Include="..\Developer\Engine\Attributes\Agent.cpp" />
+    <ClCompile Include="..\Developer\Engine\Attributes\Attributes.cpp" />
     <ClCompile Include="..\Developer\Engine\BasicLevelObject\BaseLevelObject.cpp" />
+    <ClCompile Include="..\Developer\Engine\BasicLevelObject\BaseMVCObject.cpp" />
+    <ClCompile Include="..\Developer\Engine\BasicLevelObject\GameObject.cpp" />
     <ClCompile Include="..\Developer\Engine\Command\Command.cpp" />
     <ClCompile Include="..\Developer\Engine\ECS\Component.cpp" />
     <ClCompile Include="..\Developer\Engine\ECS\Entity.cpp" />
@@ -142,7 +145,6 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Developer\Base Class\GameObject.h" />
     <ClInclude Include="..\Developer\Core\DirectXViewport.h" />
     <ClInclude Include="..\Developer\Core\Dx11Base.h" />
     <ClInclude Include="..\Developer\Core\GameSprite.h" />
@@ -152,7 +154,11 @@
     <ClInclude Include="..\Developer\Core\stdafx.h" />
     <ClInclude Include="..\Developer\Core\TheGameBase.h" />
     <ClInclude Include="..\Developer\Core\Viewport.h" />
+    <ClInclude Include="..\Developer\Engine\Attributes\Agent.h" />
+    <ClInclude Include="..\Developer\Engine\Attributes\Attributes.h" />
     <ClInclude Include="..\Developer\Engine\BasicLevelObject\BaseLevelObject.h" />
+    <ClInclude Include="..\Developer\Engine\BasicLevelObject\BaseMVCObject.h" />
+    <ClInclude Include="..\Developer\Engine\BasicLevelObject\GameObject.h" />
     <ClInclude Include="..\Developer\Engine\Command\CameraResizeCommand.h" />
     <ClInclude Include="..\Developer\Engine\Command\Command.h" />
     <ClInclude Include="..\Developer\Engine\ECS\Component.h" />

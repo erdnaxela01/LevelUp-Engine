@@ -15,7 +15,7 @@ namespace LevelUp
     const float GRAVITY_CONSTANT = 1000.0f;
 
     //Forward Declaration
-    class GameObject;
+	class BaseLevelObject;
 
     class MathHelper
     {
@@ -46,10 +46,10 @@ namespace LevelUp
         static LVLfloat2 CalculateVelocity(float angle, float speed);
 
         //Translates a GameObject by the velocity amount
-        static void Translate(GameObject* gameObject, LVLfloat2 velocity, double delta);
+		static void Translate(BaseLevelObject* gameObject, LVLfloat2 velocity, double delta);
 
         //Orbits a GameOjbect around a pivot point at a given radius away for a given angle
-        static void Orbit(GameObject* gameObject, float radius, float angle, LVLfloat2 pivot);
+		static void Orbit(BaseLevelObject* gameObject, float radius, float angle, LVLfloat2 pivot);
 
         //Function that calculates the distance between two points
         static float Distance(LVLfloat2 a, LVLfloat2 b);
@@ -64,7 +64,7 @@ namespace LevelUp
         static float AngleBetweenVectors(LVLfloat2 a, LVLfloat2 b);
 
         //Function to apply the universal gravition equation between two game objects. Object B should be the heavier object
-        static void ApplyGravityForce(GameObject* a, float massA, GameObject* b, float massB, float radiusB, double delta);
+		static void ApplyGravityForce(BaseLevelObject* a, float massA, BaseLevelObject* b, float massB, float radiusB, double delta);
 
         //Function to calculate the universal gravition force between two objects
         static LVLfloat2 ComputeGravitationalForce(LVLfloat2 a, float massA, LVLfloat2 b, float massB, float distance);
@@ -83,6 +83,9 @@ namespace LevelUp
 
         //check if a circle and a circle collide
         static bool circleToCircleCollision(LVLfloat2 positionA, float radiusA, LVLfloat2 positionB, float radiusB);
+
+		//check if a square collides with a square
+		static bool rectangleToRectangleCollision(LVLrect rectA, LVLrect rectB);
 
         //row major (can be changed by adapter)
         static LVL4X4matrix translationMatrix2D(LVLfloat2 f);

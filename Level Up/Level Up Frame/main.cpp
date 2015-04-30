@@ -47,8 +47,8 @@ int WINAPI WinMain(HINSTANCE hInstance, //is a handle to the current instance of
 		else
 		{
 			//updates delta time and passes it to update and render
-			double deltaTime = LevelUp::TheEngine::getInstance()->updateTimer();
-			LevelUp::TheEngine::getInstance()->update(deltaTime);
+			LevelUp::TheEngine::getInstance()->updateTimer();
+			LevelUp::TheEngine::getInstance()->update();
 			LevelUp::TheEngine::getInstance()->render();
 			//draw
 		}

@@ -15,15 +15,6 @@
     <Filter Include="Developer">
       <UniqueIdentifier>{b2d19cb0-d578-41c7-ac13-dcecbf763cbc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Developer\Base Class">
-      <UniqueIdentifier>{59f3dab1-62fa-433f-a375-bfdfd38e5d7f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Developer\Base Class\Header">
-      <UniqueIdentifier>{246ba404-771f-426d-833b-60e99c846929}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Developer\Base Class\Source">
-      <UniqueIdentifier>{890bb675-9ac8-46bf-88f7-d14b797bf9ae}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Developer\Core">
       <UniqueIdentifier>{6cfcca49-3faa-4cc9-9a8f-7d9b8ebcd6e0}</UniqueIdentifier>
     </Filter>
@@ -255,6 +246,18 @@
     <Filter Include="Game Builder\Prebuilt Objects\ECS\Particles">
       <UniqueIdentifier>{a5e9b5a9-250a-48d8-9ec4-f807efbd2dd4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Developer\Engine\Attributes">
+      <UniqueIdentifier>{1eee3236-27bd-4bb0-8c9c-10919276b825}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Engine\Attributes\Headers">
+      <UniqueIdentifier>{82b654ce-240d-4eb3-8a82-65cd0856dec4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Engine\Attributes\Source">
+      <UniqueIdentifier>{01653441-f7e5-48e9-a1e1-5cbb4b90b0db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Builder\Prebuilt Objects\Attributes">
+      <UniqueIdentifier>{faebf8c6-c84e-4c72-92f1-46d796b8c064}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -262,9 +265,6 @@
     </ClCompile>
     <ClCompile Include="..\Game Builder\Scene Builder\Playground.cpp">
       <Filter>Game Builder\Scene Builder</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Developer\Base Class\GameObject.cpp">
-      <Filter>Developer\Base Class\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Developer\Core\DirectXViewport.cpp">
       <Filter>Developer\Core\Source</Filter>
@@ -407,13 +407,22 @@
     <ClCompile Include="..\Developer\Graphics\Color.cpp">
       <Filter>Developer\Graphics\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\Developer\Engine\Attributes\Attributes.cpp">
+      <Filter>Developer\Engine\Attributes\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Engine\Attributes\Agent.cpp">
+      <Filter>Developer\Engine\Attributes\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Engine\BasicLevelObject\BaseMVCObject.cpp">
+      <Filter>Developer\Engine\BasicLevelObject\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Engine\BasicLevelObject\GameObject.cpp">
+      <Filter>Developer\Engine\BasicLevelObject\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Game Builder\Scene Builder\Playground.h">
       <Filter>Game Builder\Scene Builder</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Developer\Base Class\GameObject.h">
-      <Filter>Developer\Base Class\Header</Filter>
     </ClInclude>
     <ClInclude Include="..\Developer\Core\DirectXViewport.h">
       <Filter>Developer\Core\Header</Filter>
@@ -594,6 +603,18 @@
     </ClInclude>
     <ClInclude Include="..\Developer\Graphics\Color.h">
       <Filter>Developer\Graphics\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Engine\Attributes\Attributes.h">
+      <Filter>Developer\Engine\Attributes\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Engine\Attributes\Agent.h">
+      <Filter>Developer\Engine\Attributes\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Engine\BasicLevelObject\BaseMVCObject.h">
+      <Filter>Developer\Engine\BasicLevelObject\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Engine\BasicLevelObject\GameObject.h">
+      <Filter>Developer\Engine\BasicLevelObject\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

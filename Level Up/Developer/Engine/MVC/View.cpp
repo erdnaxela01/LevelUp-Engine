@@ -16,7 +16,6 @@ namespace LevelUp
 	}
 	View::~View()
 	{
-		m_numberOfViews--;
         removeFromMap();
 	}
 
@@ -25,7 +24,7 @@ namespace LevelUp
 		m_canView = b;
 	}
 
-	std::string View::ViewID()
+	std::string View::viewID()
 	{
 		return m_ID;
 	}

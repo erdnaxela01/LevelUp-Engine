@@ -18,8 +18,6 @@ namespace LevelUp
 
 	KeyController::~KeyController()
 	{
-        //decrement the number of controllers
-		m_numberOfKeyControllers--;
         removeFromMap();
 
 	}

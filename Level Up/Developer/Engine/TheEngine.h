@@ -3,8 +3,6 @@
 
 #include <Windows.h>
 #include <string>
-#include <map>
-#include <DirectXMath.h>
 #include "../Core/RenderEngine.h"
 #include "../Engine/MVC/MVCContainer.h"
 #include "SceneManager\SceneManager.h"
@@ -38,14 +36,14 @@ namespace LevelUp
 
 		//game loop specific
 		void render();
-		void update(double delta);
+		void update();
 
 		//shut down all components of the engine
 		void shutdown();
 		//singleton specific
 		static TheEngine* getInstance();
 		//update the timer at the pass through
-		double updateTimer();
+		void updateTimer();
 
 		//wrap wndproc engine singleton
 		LRESULT handleMessages(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -85,6 +83,8 @@ namespace LevelUp
 
         //returns all the systems in the engine
         SystemContainer* getSystems();
+
+
 
 	private:
         //singleton
@@ -126,6 +126,8 @@ namespace LevelUp
 		TheEngine();
 		TheEngine(TheEngine& e) {};
 		TheEngine& operator= (TheEngine& rhs) { return rhs; }
+
+		bool m_canUpdate;
 
 	};
 }

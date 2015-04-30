@@ -95,7 +95,7 @@ namespace LevelUp
 			return;
 		}
 
-		float clearColor[4] = { 0.30f, 0.0f, 0.30f, 1.0f };
+		float clearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 		m_d3dContext->ClearRenderTargetView(m_backBufferTarget, clearColor);
 
 		m_d3dContext->PSSetSamplers(0, 1, &m_colorMapSampler);

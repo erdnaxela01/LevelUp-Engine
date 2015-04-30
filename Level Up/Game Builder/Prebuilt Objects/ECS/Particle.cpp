@@ -24,22 +24,21 @@ namespace LevelUp
     }
     void Particle::activate()
     {
-        m_isActivated = false;
-        m_time.unPause();
+        m_isActivated = true;
     }
     void Particle::deActivate()
     {
         m_isActivated = false; 
-        m_time.pause();
     }
 
     void Particle::update(double delta)
     {
         if (!m_isActivated)
         {
-            return;
             m_time.stop();
+			return;
         }
+		m_time.update(delta);
         LVLfloat2 velo = MathHelper::CalculateVelocity(m_angle, m_speed);
         //MathHelper::Translate(rect, velo, delta);
         LVLfloat2 position = m_rect->getPosition();
@@ -55,7 +54,7 @@ namespace LevelUp
 
         if (m_canFade)
         {
-            m_alpha = (m_time.getStartTime() - (m_time.getStartTime() - m_time.getTime())) / m_time.getStartTime();
+            m_alpha = (float)(m_time.getTime() / m_time.getStartTime());
             m_rect->setAlpha(m_alpha);
         }
 
@@ -99,12 +98,15 @@ namespace LevelUp
     }
     void Particle::render(float x, float y)
     {
-        LVLfloat2 pastPos;
-        pastPos.x = x;
-        pastPos.y = y;
-        setPosition(LVLfloat2(x, y));
-        m_rect->render();
-        setPosition(pastPos);
+		if (m_isActivated)
+		{
+			LVLfloat2 pastPos;
+			pastPos.x = getX();
+			pastPos.y = getY();
+			setPosition(LVLfloat2(x, y));
+			m_rect->render();
+			setPosition(pastPos);
+		}
     }
     float Particle::getX()
     {

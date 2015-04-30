@@ -1,14 +1,13 @@
 #ifndef __COUNTDOWN_H
 #define __COUNTDOWN_H
 
-#include "StopWatch.h"
 namespace LevelUp
 {
     /*
     Handy class for countdowns instead of having to make code over and over
     -Alex Sabourin April 2015
     */
-    class CountDown : public StopWatch
+    class CountDown
     {
     public:
         CountDown();
@@ -22,7 +21,7 @@ namespace LevelUp
         //stop it and set the time to 0
         void stop();
         //checks the current time
-        double time();
+        double getTime();
 
         double getStartTime();
     private:

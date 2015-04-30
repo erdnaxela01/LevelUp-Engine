@@ -41,4 +41,13 @@ namespace LevelUp
         //set the scale of the matrix
 		m_scale = scale;
 	}
+	LVLfloat2 GameSprite::getPosition()
+	{
+		return m_position;
+	}
+
+	void GameSprite::setPosition(LVLfloat2 l)
+	{
+		m_position = l;
+	}
 }

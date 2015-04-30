@@ -1,50 +1,34 @@
 #ifndef __BASELEVELOBJECT_H
 #define __BASELEVELOBJECT_H
-#include "../../Base Class/GameObject.h"
 #include "../ECS/Entity.h"
-#include <DirectXMath.h>
+#include "../Attributes/Agent.h"
+#include "../../Services/Math/LevelUpMath.h"
 
 namespace LevelUp
 {
 	class Model;
 	class View;
 	class Controller;
+	class Attribute;
     /*
-    Basic container for MVC safely deletes objects passed into it and ability to change components
+    Basic object for the whole engine
     -Alex April 2015
     */
-	class BaseLevelObject : public GameObject, public Entity
+	class BaseLevelObject : public Entity, public Agent
 	{
 	public:
 		BaseLevelObject();
 		virtual ~BaseLevelObject();
-        //get the model
-		Model* getModel();
-        //get the view
-		View* getView();
-        //get the controller
-		Controller* getController();
-
-        //sets the model, it will be deleted
-		void setModel(Model* m);
-        //sets the view, it will be deleted
-		void setView(View* v);
-        //sets the controller, it will be deleted
-		void setController(Controller* c);
-
-        //initialize the object with all MVC components
-		void initialize(Model* m, View* v, Controller* c);
+        
         //set the position of the object
-		void setPosition(float x, float y);
+		virtual void setPosition(float x, float y) = 0;
         //set the position of the object
-        void setPosition(LVLfloat2 pos);
+        virtual void setPosition(LVLfloat2 pos) = 0;
         //return the objects position
-        LVLfloat2& getPosition();
-	private:
-        //MVC components
-		Model* m_model;
-		View* m_view;
-		Controller* m_controller;
+        virtual LVLfloat2 getPosition() = 0;
+
+		//adds attributes to its vector of attributes base level object adds the attribute so it can set the parent as itself
+		void addAttribute(Attribute* a);
 
 	};
 }

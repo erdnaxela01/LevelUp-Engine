@@ -1,13 +1,12 @@
 #ifndef __STOPWATCH_H
 #define __STOPWATCH_H
 
-#include "../MVC/MVC.h"
 
 namespace LevelUp
 {
     //handy function to have a stopwatch to time something
     //Alex Sabourin April 2015
-    class StopWatch : public Model
+    class StopWatch
     {
     public:
         StopWatch();
@@ -15,7 +14,7 @@ namespace LevelUp
         //increment the sopwatch
         void update(double delta);
         //get the current stopwatch time
-        double getTime();
+        virtual double getTime();
         //starts the watch from scratch
         void start();
         //pauses the stop watch

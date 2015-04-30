@@ -17,7 +17,7 @@ namespace LevelUp
 		virtual ~View();
 		virtual void render() = 0;
         //what is the views id
-		std::string ViewID();
+		std::string viewID();
         //set if it can be seen
 		void setCanView(bool b);
         //can you see it?
