@@ -13,6 +13,10 @@ namespace LevelUp
 		m_ID = "Attribute " + m_numberOfAttributes;
 	}
 
+	Attribute::~Attribute()
+	{
+	}
+
 	bool Attribute::isType(std::string t)
 	{
 		return m_type == t;
@@ -25,7 +29,7 @@ namespace LevelUp
 
 	void Attribute::setParent(BaseLevelObject* blo)
 	{
-		m_parent == blo;
+		m_parent = blo;
 	}
 
 	

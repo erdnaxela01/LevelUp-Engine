@@ -137,6 +137,7 @@
     <ClCompile Include="..\Developer\UI\Cameras\Camera.cpp" />
     <ClCompile Include="..\Developer\UI\Cameras\Special Cameras\TrackingCamera.cpp" />
     <ClCompile Include="..\Game Builder\Game\Game.cpp" />
+    <ClCompile Include="..\Game Builder\Prebuilt Objects\Attributes\CollisionAttribute.cpp" />
     <ClCompile Include="..\Game Builder\Prebuilt Objects\ECS\Particle.cpp" />
     <ClCompile Include="..\Game Builder\Prebuilt Objects\ECS\ParticleComponent.cpp" />
     <ClCompile Include="..\Game Builder\Prebuilt Objects\ECS\ParticleSystem.cpp" />
@@ -205,6 +206,7 @@
     <ClInclude Include="..\Developer\UI\Cameras\Camera.h" />
     <ClInclude Include="..\Developer\UI\Cameras\Special Cameras\TrackingCamera.h" />
     <ClInclude Include="..\Game Builder\Game\Game.h" />
+    <ClInclude Include="..\Game Builder\Prebuilt Objects\Attributes\CollisionAttribute.h" />
     <ClInclude Include="..\Game Builder\Prebuilt Objects\ECS\Particle.h" />
     <ClInclude Include="..\Game Builder\Prebuilt Objects\ECS\ParticleComponent.h" />
     <ClInclude Include="..\Game Builder\Prebuilt Objects\ECS\ParticleSystem.h" />

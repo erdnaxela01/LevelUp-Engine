@@ -1,24 +1,109 @@
-﻿Build started 4/24/2015 12:47:21 PM.
-     1>Project "G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\Level Up Frame\Level Up Frame.vcxproj" on node 2 (Build target(s)).
+﻿Build started 2015-05-01 10:04:16 AM.
+     1>Project "C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Level Up Frame\Level Up Frame.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/include/" /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D HAS_DIRECTXTK /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Release\Level Up Frame.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /FIstdafx.h /analyze- /errorReport:prompt ..\Developer\Core\RenderEngine.cpp ..\Developer\Graphics\Rectangle.cpp ..\Developer\Graphics\Sprite.cpp
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/include/" /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D HAS_DIRECTXTK /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Release\Level Up Frame.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /FIstdafx.h /analyze- /errorReport:prompt ..\Developer\Core\stdafx.cpp
+         stdafx.cpp
+         Compiling precompiled headers.
+         
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/include/" /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D HAS_DIRECTXTK /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Release\Level Up Frame.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /FIstdafx.h /analyze- /errorReport:prompt ..\Developer\Core\DirectXViewport.cpp ..\Developer\Core\Dx11Base.cpp ..\Developer\Core\GameSprite.cpp ..\Developer\Core\PerformanceCounter.cpp ..\Developer\Core\RenderEngine.cpp ..\Developer\Core\TheGameBase.cpp ..\Developer\Engine\Attributes\Agent.cpp ..\Developer\Engine\Attributes\Attributes.cpp ..\Developer\Engine\BasicLevelObject\BaseLevelObject.cpp ..\Developer\Engine\BasicLevelObject\BaseMVCObject.cpp ..\Developer\Engine\BasicLevelObject\GameObject.cpp ..\Developer\Engine\Command\Command.cpp ..\Developer\Engine\ECS\Component.cpp ..\Developer\Engine\ECS\Entity.cpp ..\Developer\Engine\ECS\System.cpp ..\Developer\Engine\ECS\SystemContainer.cpp ..\Developer\Engine\EventHandler\EventDispatcher.cpp ..\Developer\Engine\EventHandler\EventHandler.cpp ..\Developer\Engine\Helper\CountDown.cpp ..\Developer\Engine\Helper\StopWatch.cpp ..\Developer\Engine\MVC\Controller.cpp ..\Developer\Engine\MVC\KeyController.cpp ..\Developer\Engine\MVC\Model.cpp ..\Developer\Engine\MVC\MouseController.cpp ..\Developer\Engine\MVC\MovementKeyController.cpp ..\Developer\Engine\MVC\MovementModel.cpp ..\Developer\Engine\MVC\MovementSpriteView.cpp ..\Developer\Engine\MVC\MVCContainer.cpp ..\Developer\Engine\MVC\TimerController.cpp ..\Developer\Engine\MVC\View.cpp ..\Developer\Engine\SceneManager\Scene.cpp ..\Developer\Engine\SceneManager\SceneManager.cpp ..\Developer\Engine\TheEngine.cpp ..\Developer\Enums\Keys.cpp ..\Developer\Graphics\Color.cpp ..\Developer\Graphics\Rectangle.cpp ..\Developer\Graphics\Sprite.cpp ..\Developer\Services\Math\DataTypes.cpp ..\Developer\Services\Math\MathAdapters\DirectXMathAdapter.cpp ..\Developer\Services\Math\MathFunctions.cpp ..\Developer\Services\Math\MatrixContainer\DirectXMatrixContainer.cpp ..\Developer\Services\ServiceLocator.cpp ..\Developer\Services\WindowScreen.cpp ..\Developer\UI\Cameras\Camera.cpp "..\Developer\UI\Cameras\Special Cameras\TrackingCamera.cpp" "..\Game Builder\Game\Game.cpp" "..\Game Builder\Prebuilt Objects\Attributes\CollisionAttribute.cpp" "..\Game Builder\Prebuilt Objects\ECS\Particle.cpp" "..\Game Builder\Prebuilt Objects\ECS\ParticleComponent.cpp" "..\Game Builder\Prebuilt Objects\ECS\ParticleSystem.cpp" "..\Game Builder\Prebuilt Objects\MovementLevelObject.cpp" "..\Game Builder\Scene Builder\Playground.cpp" main.cpp
+         DirectXViewport.cpp
+         Dx11Base.cpp
+     1>..\Developer\Core\Dx11Base.cpp(58): warning C4244: 'initializing' : conversion from 'float' to 'unsigned int', possible loss of data
+     1>..\Developer\Core\Dx11Base.cpp(59): warning C4244: 'initializing' : conversion from 'float' to 'unsigned int', possible loss of data
+         GameSprite.cpp
+         PerformanceCounter.cpp
          RenderEngine.cpp
+         TheGameBase.cpp
+         Agent.cpp
+         Attributes.cpp
+         BaseLevelObject.cpp
+         BaseMVCObject.cpp
+         GameObject.cpp
+         Command.cpp
+         Component.cpp
+         Entity.cpp
+         System.cpp
+         SystemContainer.cpp
+         EventDispatcher.cpp
+         EventHandler.cpp
+         CountDown.cpp
+         StopWatch.cpp
+         Compiling...
+         Controller.cpp
+         KeyController.cpp
+         Model.cpp
+         MouseController.cpp
+         MovementKeyController.cpp
+         MovementModel.cpp
+     1>..\Developer\Engine\MVC\MovementModel.cpp(56): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>..\Developer\Engine\MVC\MovementModel.cpp(57): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>..\Developer\Engine\MVC\MovementModel.cpp(61): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>..\Developer\Engine\MVC\MovementModel.cpp(62): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>..\Developer\Engine\MVC\MovementModel.cpp(66): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>..\Developer\Engine\MVC\MovementModel.cpp(70): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+         MovementSpriteView.cpp
+         MVCContainer.cpp
+         TimerController.cpp
+         View.cpp
+         Scene.cpp
+         SceneManager.cpp
+     1>..\Developer\Engine\SceneManager\SceneManager.cpp(63): warning C4018: '<' : signed/unsigned mismatch
+         TheEngine.cpp
+     1>..\Developer\Engine\TheEngine.cpp(318): warning C4244: 'initializing' : conversion from 'LONG' to 'float', possible loss of data
+     1>..\Developer\Engine\TheEngine.cpp(320): warning C4244: 'initializing' : conversion from 'LONG' to 'float', possible loss of data
+         Keys.cpp
+         Color.cpp
          Rectangle.cpp
          Sprite.cpp
+         DataTypes.cpp
+         DirectXMathAdapter.cpp
+         MathFunctions.cpp
+     1>..\Developer\Services\Math\MathFunctions.cpp(85): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
+     1>..\Developer\Services\Math\MathFunctions.cpp(92): warning C4244: 'argument' : conversion from 'int' to 'const float', possible loss of data
+     1>..\Developer\Services\Math\MathFunctions.cpp(116): warning C4244: 'return' : conversion from 'const long double' to 'float', possible loss of data
+     1>..\Developer\Services\Math\MathFunctions.cpp(122): warning C4244: 'return' : conversion from 'const long double' to 'float', possible loss of data
+     1>..\Developer\Services\Math\MathFunctions.cpp(147): warning C4244: 'argument' : conversion from 'const long double' to 'float', possible loss of data
+     1>..\Developer\Services\Math\MathFunctions.cpp(164): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>..\Developer\Services\Math\MathFunctions.cpp(178): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>..\Developer\Services\Math\MathFunctions.cpp(258): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+         Compiling...
+         DirectXMatrixContainer.cpp
+         ServiceLocator.cpp
+         WindowScreen.cpp
+         Camera.cpp
+         TrackingCamera.cpp
+         Game.cpp
+         CollisionAttribute.cpp
+         Particle.cpp
+     1>..\Game Builder\Prebuilt Objects\ECS\Particle.cpp(45): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+         ParticleComponent.cpp
+         ParticleSystem.cpp
+     1>..\Game Builder\Prebuilt Objects\ECS\ParticleSystem.cpp(70): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
+     1>..\Game Builder\Prebuilt Objects\ECS\ParticleSystem.cpp(70): warning C4244: 'initializing' : conversion from 'unsigned int' to 'float', possible loss of data
+     1>..\Game Builder\Prebuilt Objects\ECS\ParticleSystem.cpp(71): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
+     1>..\Game Builder\Prebuilt Objects\ECS\ParticleSystem.cpp(71): warning C4244: 'initializing' : conversion from 'unsigned int' to 'float', possible loss of data
+     1>..\Game Builder\Prebuilt Objects\ECS\ParticleSystem.cpp(73): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+         MovementLevelObject.cpp
+         Playground.cpp
+         main.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\Release\Level Up Frame.exe" /INCREMENTAL:NO /NOLOGO "G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/lib/Win32/Release/DirectXTKAudioDX.lib" "G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/lib/Win32/Release/DirectXTK.lib" D3D11.lib D3dcompiler.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\Release\Level Up Frame.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\Release\Level Up Frame.lib" /MACHINE:X86 /SAFESEH Release\GameObject.obj
-         Release\DirectXViewport.obj
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Release\Level Up Frame.exe" /INCREMENTAL:NO /NOLOGO "C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/lib/Win32/Release/DirectXTKAudioDX.lib" "C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/lib/Win32/Release/DirectXTK.lib" D3D11.lib D3dcompiler.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Release\Level Up Frame.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Release\Level Up Frame.lib" /MACHINE:X86 /SAFESEH Release\DirectXViewport.obj
          Release\Dx11Base.obj
          Release\GameSprite.obj
          Release\PerformanceCounter.obj
          Release\RenderEngine.obj
          Release\stdafx.obj
          Release\TheGameBase.obj
+         Release\Agent.obj
+         Release\Attributes.obj
          Release\BaseLevelObject.obj
+         Release\BaseMVCObject.obj
+         Release\GameObject.obj
          Release\Command.obj
          Release\Component.obj
          Release\Entity.obj
          Release\System.obj
+         Release\SystemContainer.obj
          Release\EventDispatcher.obj
          Release\EventHandler.obj
          Release\CountDown.obj
@@ -37,6 +122,7 @@
          Release\SceneManager.obj
          Release\TheEngine.obj
          Release\Keys.obj
+         Release\Color.obj
          Release\Rectangle.obj
          Release\Sprite.obj
          Release\DataTypes.obj
@@ -48,14 +134,18 @@
          Release\Camera.obj
          Release\TrackingCamera.obj
          Release\Game.obj
+         Release\CollisionAttribute.obj
+         Release\Particle.obj
+         Release\ParticleComponent.obj
+         Release\ParticleSystem.obj
          Release\MovementLevelObject.obj
          Release\Playground.obj
          Release\main.obj
          Generating code
          Finished generating code
-         Level Up Frame.vcxproj -> G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\Release\Level Up Frame.exe
-     1>Done Building Project "G:\Users\alexandre\Most Recent LevelUp\Branch Version\Level Up\Level Up Frame\Level Up Frame.vcxproj" (Build target(s)).
+         Level Up Frame.vcxproj -> C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Release\Level Up Frame.exe
+     1>Done Building Project "C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Level Up Frame\Level Up Frame.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.11
+Time Elapsed 00:00:34.95

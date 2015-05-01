@@ -18,6 +18,7 @@ namespace LevelUp
 	{
 	public:
 		Attribute();
+		virtual ~Attribute();
 
 		//check the type of the attribute
 		bool isType(std::string t);
@@ -28,11 +29,12 @@ namespace LevelUp
 
 		//base level object is friend to access setParent and removeParent
 		friend BaseLevelObject;
+	protected:
+		BaseLevelObject* m_parent;
+		std::string m_type;
 	private:
 		static int m_numberOfAttributes;
-		std::string m_type;
 		std::string m_ID;
-		BaseLevelObject* m_parent;
 
 		//only base level objects should be able to add themselves to an attribute
 		void setParent(BaseLevelObject* blo);

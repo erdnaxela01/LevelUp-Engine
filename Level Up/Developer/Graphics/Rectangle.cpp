@@ -144,6 +144,7 @@ namespace LevelUp
 		if (m_verticesAreDirty)
 		{
 			resetVertices();
+			m_verticesAreDirty = false;
 		}
 		unsigned int stride = sizeof(ColorVertexPos);
 		unsigned int offset = 0;
@@ -248,4 +249,12 @@ namespace LevelUp
 		//set the vertec buffer
 		setVertexBuffer(vertices);
 	}
+	void Rectangle::setRect(LVLrect r)
+	{
+		m_sprite.setPosition(LVLfloat2((r.left + r.right)*0.5f, (r.bot + r.top)*0.5f));
+		m_width = (r.right - m_sprite.getPosition().x) * 2;
+		m_height = (r.top - m_sprite.getPosition().y) * 2;
+		m_verticesAreDirty = true;
+	}
+
 }

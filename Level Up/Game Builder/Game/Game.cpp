@@ -7,6 +7,8 @@
 #include "../../Developer/Graphics/Color.h"
 #include "../../Developer/UI/Cameras/Special Cameras/TrackingCamera.h"
 #include "../../Developer/Engine/TheEngine.h"
+#include "../Prebuilt Objects/Attributes/CollisionAttribute.h"
+#include "../../Developer/Graphics/Rectangle.h"
 
 namespace LevelUp
 {
@@ -23,6 +25,22 @@ namespace LevelUp
 	void Game::update(double delta)
 	{
         //if created with MVC you dont need to update or render your objects, thats taken care of
+		std::vector<CollisionAttribute*> box1;
+		box1.push_back((CollisionAttribute*)(mlo->getAttributesOfType("CollisionAttribute")[0]));
+		std::vector<CollisionAttribute*> box2;
+		box2.push_back((CollisionAttribute*)(mlo2->getAttributesOfType("CollisionAttribute")[0]));
+
+
+		for (auto i : box1)
+		{
+			for (auto j : box2)
+			{
+				if (i->doesCollide(j->getCollisionRect()))
+				{
+				}
+			}
+		}
+
 
 	}
 
@@ -30,6 +48,7 @@ namespace LevelUp
 	{
         //focus more on making a game
         //go go go!
+		
 	}
 
 	bool Game::loadContent()
@@ -48,8 +67,9 @@ namespace LevelUp
         p->activate(1.0, 0.001);
         mlo->addComponent(p);
 		p->setCanFade(true);
-
-		t = new TrackingCamera(mlo);
+		mlo->addAttribute(new CollisionAttribute(mlo->getView()->getW(), mlo->getView()->getH()));
+		mlo2->addAttribute(new CollisionAttribute(mlo2->getView()->getW(), mlo2->getView()->getH()));
+		//t = new TrackingCamera(mlo);
 		//removeInitialCamera();
         
         mlo->setPosition(200.0f, 200.0f);

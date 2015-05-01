@@ -258,6 +258,9 @@
     <Filter Include="Game Builder\Prebuilt Objects\Attributes">
       <UniqueIdentifier>{faebf8c6-c84e-4c72-92f1-46d796b8c064}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Builder\Prebuilt Objects\Attributes\Collision">
+      <UniqueIdentifier>{299333ee-4bbb-4d6d-97b3-32d0ce2a5395}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -418,6 +421,9 @@
     </ClCompile>
     <ClCompile Include="..\Developer\Engine\BasicLevelObject\GameObject.cpp">
       <Filter>Developer\Engine\BasicLevelObject\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game Builder\Prebuilt Objects\Attributes\CollisionAttribute.cpp">
+      <Filter>Game Builder\Prebuilt Objects\Attributes\Collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -615,6 +621,9 @@
     </ClInclude>
     <ClInclude Include="..\Developer\Engine\BasicLevelObject\GameObject.h">
       <Filter>Developer\Engine\BasicLevelObject\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game Builder\Prebuilt Objects\Attributes\CollisionAttribute.h">
+      <Filter>Game Builder\Prebuilt Objects\Attributes\Collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

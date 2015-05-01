@@ -48,6 +48,8 @@ namespace LevelUp
         void setAngle(float a);
         //set the color of the rectangle
         void setColor(LVLfloat3 c);
+		//set the rectangle
+		void setRect(LVLrect r);
 	private:
 		ID3D11Buffer* m_vertexBuffer;
 		ID3D11ShaderResourceView* m_colorMap;
