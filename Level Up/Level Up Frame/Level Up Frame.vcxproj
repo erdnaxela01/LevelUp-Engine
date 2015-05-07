@@ -115,9 +115,6 @@
     <ClCompile Include="..\Developer\Engine\MVC\KeyController.cpp" />
     <ClCompile Include="..\Developer\Engine\MVC\Model.cpp" />
     <ClCompile Include="..\Developer\Engine\MVC\MouseController.cpp" />
-    <ClCompile Include="..\Developer\Engine\MVC\MovementKeyController.cpp" />
-    <ClCompile Include="..\Developer\Engine\MVC\MovementModel.cpp" />
-    <ClCompile Include="..\Developer\Engine\MVC\MovementSpriteView.cpp" />
     <ClCompile Include="..\Developer\Engine\MVC\MVCContainer.cpp" />
     <ClCompile Include="..\Developer\Engine\MVC\TimerController.cpp" />
     <ClCompile Include="..\Developer\Engine\MVC\View.cpp" />
@@ -125,6 +122,7 @@
     <ClCompile Include="..\Developer\Engine\SceneManager\SceneManager.cpp" />
     <ClCompile Include="..\Developer\Engine\TheEngine.cpp" />
     <ClCompile Include="..\Developer\Enums\Keys.cpp" />
+    <ClCompile Include="..\Developer\Graphics\AnimatedSprite.cpp" />
     <ClCompile Include="..\Developer\Graphics\Color.cpp" />
     <ClCompile Include="..\Developer\Graphics\Rectangle.cpp" />
     <ClCompile Include="..\Developer\Graphics\Sprite.cpp" />
@@ -141,7 +139,10 @@
     <ClCompile Include="..\Game Builder\Prebuilt Objects\ECS\Particle.cpp" />
     <ClCompile Include="..\Game Builder\Prebuilt Objects\ECS\ParticleComponent.cpp" />
     <ClCompile Include="..\Game Builder\Prebuilt Objects\ECS\ParticleSystem.cpp" />
-    <ClCompile Include="..\Game Builder\Prebuilt Objects\MovementLevelObject.cpp" />
+    <ClCompile Include="..\Game Builder\Prebuilt Objects\MVC\MovementKeyController.cpp" />
+    <ClCompile Include="..\Game Builder\Prebuilt Objects\MVC\MovementLevelObject.cpp" />
+    <ClCompile Include="..\Game Builder\Prebuilt Objects\MVC\MovementModel.cpp" />
+    <ClCompile Include="..\Game Builder\Prebuilt Objects\MVC\MovementSpriteView.cpp" />
     <ClCompile Include="..\Game Builder\Scene Builder\Playground.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -177,9 +178,6 @@
     <ClInclude Include="..\Developer\Engine\MVC\KeyController.h" />
     <ClInclude Include="..\Developer\Engine\MVC\Model.h" />
     <ClInclude Include="..\Developer\Engine\MVC\MouseController.h" />
-    <ClInclude Include="..\Developer\Engine\MVC\MovementKeyController.h" />
-    <ClInclude Include="..\Developer\Engine\MVC\MovementModel.h" />
-    <ClInclude Include="..\Developer\Engine\MVC\MovementSpriteView.h" />
     <ClInclude Include="..\Developer\Engine\MVC\MVC.h" />
     <ClInclude Include="..\Developer\Engine\MVC\MVCContainer.h" />
     <ClInclude Include="..\Developer\Engine\MVC\TimerController.h" />
@@ -189,6 +187,7 @@
     <ClInclude Include="..\Developer\Engine\SceneManager\SceneManagerHeaders.h" />
     <ClInclude Include="..\Developer\Engine\TheEngine.h" />
     <ClInclude Include="..\Developer\Enums\Keys.h" />
+    <ClInclude Include="..\Developer\Graphics\AnimatedSprite.h" />
     <ClInclude Include="..\Developer\Graphics\Color.h" />
     <ClInclude Include="..\Developer\Graphics\Rectangle.h" />
     <ClInclude Include="..\Developer\Graphics\Sprite.h" />
@@ -210,7 +209,10 @@
     <ClInclude Include="..\Game Builder\Prebuilt Objects\ECS\Particle.h" />
     <ClInclude Include="..\Game Builder\Prebuilt Objects\ECS\ParticleComponent.h" />
     <ClInclude Include="..\Game Builder\Prebuilt Objects\ECS\ParticleSystem.h" />
-    <ClInclude Include="..\Game Builder\Prebuilt Objects\MovementLevelObject.h" />
+    <ClInclude Include="..\Game Builder\Prebuilt Objects\MVC\MovementKeyController.h" />
+    <ClInclude Include="..\Game Builder\Prebuilt Objects\MVC\MovementLevelObject.h" />
+    <ClInclude Include="..\Game Builder\Prebuilt Objects\MVC\MovementModel.h" />
+    <ClInclude Include="..\Game Builder\Prebuilt Objects\MVC\MovementSpriteView.h" />
     <ClInclude Include="..\Game Builder\Scene Builder\Playground.h" />
   </ItemGroup>
   <ItemGroup>

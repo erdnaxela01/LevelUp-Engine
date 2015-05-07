@@ -45,18 +45,6 @@
     <Filter Include="Developer\Engine\MVC\Headers\Views">
       <UniqueIdentifier>{f08bee83-b25a-4faa-ab0f-1fe2d915b1b2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Developer\Engine\MVC\Headers\Concrete Classes">
-      <UniqueIdentifier>{81c54409-aef5-4437-a0b9-fc724c590a85}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Developer\Engine\MVC\Headers\Concrete Classes\Models">
-      <UniqueIdentifier>{0d2744e9-842c-4f44-9514-7c13d5b8a743}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Developer\Engine\MVC\Headers\Concrete Classes\Views">
-      <UniqueIdentifier>{8dabe1eb-af99-4d74-9702-c7a5180d8cfb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Developer\Engine\MVC\Headers\Concrete Classes\Controllers">
-      <UniqueIdentifier>{21bde64a-568e-42de-b48a-e89e7f58d7d1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Developer\Engine\MVC\Source">
       <UniqueIdentifier>{76c75cc9-608c-4cfa-88b8-2f2c4aa2f446}</UniqueIdentifier>
     </Filter>
@@ -68,18 +56,6 @@
     </Filter>
     <Filter Include="Developer\Engine\MVC\Source\Views">
       <UniqueIdentifier>{3efd25c4-e1c4-4289-b61f-9050cb986b87}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Developer\Engine\MVC\Source\Concrete Classes">
-      <UniqueIdentifier>{0520b73e-800f-4179-b20e-94dcd1d29176}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Developer\Engine\MVC\Source\Concrete Classes\Models">
-      <UniqueIdentifier>{c901a876-c7b5-4955-9431-a006d2052fd6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Developer\Engine\MVC\Source\Concrete Classes\Controllers">
-      <UniqueIdentifier>{f504fc91-d99c-44d0-8f7e-c90f10daaf61}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Developer\Engine\MVC\Source\Concrete Classes\Views">
-      <UniqueIdentifier>{0beba985-0f7b-4672-b2d0-5822560167bf}</UniqueIdentifier>
     </Filter>
     <Filter Include="Developer\Engine\BasicLevelObject">
       <UniqueIdentifier>{fe0741ab-7a3f-4c30-bd5e-1cbc0558a6c1}</UniqueIdentifier>
@@ -261,6 +237,9 @@
     <Filter Include="Game Builder\Prebuilt Objects\Attributes\Collision">
       <UniqueIdentifier>{299333ee-4bbb-4d6d-97b3-32d0ce2a5395}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Builder\Prebuilt Objects\MVC">
+      <UniqueIdentifier>{2e21b0b0-6802-427a-93c3-52ac2c981915}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -329,15 +308,6 @@
     <ClCompile Include="..\Developer\Engine\MVC\MouseController.cpp">
       <Filter>Developer\Engine\MVC\Source\Controllers</Filter>
     </ClCompile>
-    <ClCompile Include="..\Developer\Engine\MVC\MovementKeyController.cpp">
-      <Filter>Developer\Engine\MVC\Source\Concrete Classes\Controllers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Developer\Engine\MVC\MovementModel.cpp">
-      <Filter>Developer\Engine\MVC\Source\Concrete Classes\Models</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Developer\Engine\MVC\MovementSpriteView.cpp">
-      <Filter>Developer\Engine\MVC\Source\Concrete Classes\Views</Filter>
-    </ClCompile>
     <ClCompile Include="..\Developer\Engine\MVC\MVCContainer.cpp">
       <Filter>Developer\Engine\MVC\Source</Filter>
     </ClCompile>
@@ -392,9 +362,6 @@
     <ClCompile Include="..\Game Builder\Game\Game.cpp">
       <Filter>Game Builder\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\Game Builder\Prebuilt Objects\MovementLevelObject.cpp">
-      <Filter>Game Builder\Prebuilt Objects</Filter>
-    </ClCompile>
     <ClCompile Include="..\Developer\Engine\ECS\SystemContainer.cpp">
       <Filter>Developer\Engine\ECS\Source\System</Filter>
     </ClCompile>
@@ -424,6 +391,21 @@
     </ClCompile>
     <ClCompile Include="..\Game Builder\Prebuilt Objects\Attributes\CollisionAttribute.cpp">
       <Filter>Game Builder\Prebuilt Objects\Attributes\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Graphics\AnimatedSprite.cpp">
+      <Filter>Developer\Graphics\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game Builder\Prebuilt Objects\MVC\MovementKeyController.cpp">
+      <Filter>Game Builder\Prebuilt Objects\MVC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game Builder\Prebuilt Objects\MVC\MovementLevelObject.cpp">
+      <Filter>Game Builder\Prebuilt Objects\MVC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game Builder\Prebuilt Objects\MVC\MovementModel.cpp">
+      <Filter>Game Builder\Prebuilt Objects\MVC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Game Builder\Prebuilt Objects\MVC\MovementSpriteView.cpp">
+      <Filter>Game Builder\Prebuilt Objects\MVC</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -514,15 +496,6 @@
     <ClInclude Include="..\Developer\Engine\MVC\MouseController.h">
       <Filter>Developer\Engine\MVC\Headers\Controllers</Filter>
     </ClInclude>
-    <ClInclude Include="..\Developer\Engine\MVC\MovementKeyController.h">
-      <Filter>Developer\Engine\MVC\Headers\Concrete Classes\Controllers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Developer\Engine\MVC\MovementModel.h">
-      <Filter>Developer\Engine\MVC\Headers\Concrete Classes\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Developer\Engine\MVC\MovementSpriteView.h">
-      <Filter>Developer\Engine\MVC\Headers\Concrete Classes\Views</Filter>
-    </ClInclude>
     <ClInclude Include="..\Developer\Engine\MVC\MVCContainer.h">
       <Filter>Developer\Engine\MVC\Headers</Filter>
     </ClInclude>
@@ -592,9 +565,6 @@
     <ClInclude Include="..\Game Builder\Game\Game.h">
       <Filter>Game Builder\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\Game Builder\Prebuilt Objects\MovementLevelObject.h">
-      <Filter>Game Builder\Prebuilt Objects</Filter>
-    </ClInclude>
     <ClInclude Include="..\Developer\Engine\ECS\SystemContainer.h">
       <Filter>Developer\Engine\ECS\Headers\System</Filter>
     </ClInclude>
@@ -624,6 +594,21 @@
     </ClInclude>
     <ClInclude Include="..\Game Builder\Prebuilt Objects\Attributes\CollisionAttribute.h">
       <Filter>Game Builder\Prebuilt Objects\Attributes\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Graphics\AnimatedSprite.h">
+      <Filter>Developer\Graphics\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game Builder\Prebuilt Objects\MVC\MovementKeyController.h">
+      <Filter>Game Builder\Prebuilt Objects\MVC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game Builder\Prebuilt Objects\MVC\MovementLevelObject.h">
+      <Filter>Game Builder\Prebuilt Objects\MVC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game Builder\Prebuilt Objects\MVC\MovementModel.h">
+      <Filter>Game Builder\Prebuilt Objects\MVC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game Builder\Prebuilt Objects\MVC\MovementSpriteView.h">
+      <Filter>Game Builder\Prebuilt Objects\MVC</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

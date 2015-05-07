@@ -5,6 +5,3 @@
 #include "MouseController.h"
 #include "../MVC/Model.h"
 #include "View.h"
-#include "MovementSpriteView.h"
-#include "MovementModel.h"
-#include "MovementKeyController.h"

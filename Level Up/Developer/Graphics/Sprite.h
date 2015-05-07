@@ -49,7 +49,12 @@ namespace LevelUp
 		void render();
         //set the vertext buffer
 		bool setVertexBuffer(VertexPos vertices[]);
-
+		
+		//sets the vertices
+		virtual bool setVertices(float halfWidth, float halfHeight);
+	protected:
+		float m_width;
+		float m_height;
 	private:
 		ID3D11Buffer* m_vertexBuffer;
 		ID3D11ShaderResourceView* m_colorMap;
@@ -59,8 +64,6 @@ namespace LevelUp
 
 		ID3D11InputLayout* m_inputLayout;
 		std::wstring m_fileName;
-		float m_width;
-		float m_height;
 		bool m_dds;
 		ID3D11Buffer* m_mvpCB;
 	};

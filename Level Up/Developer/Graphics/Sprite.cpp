@@ -140,24 +140,14 @@ namespace LevelUp
 		m_height = (float)colorTexDesc.Height;
 		float halfHeight = m_height * 0.5f;
 
-        //set the vertices
-		VertexPos vertices[] =
-		{
-            { LVLfloat3(halfWidth, halfHeight, 1.0f), LVLfloat2(1.0f, 0.0f) },
-            { LVLfloat3(halfWidth, -halfHeight, 1.0f), LVLfloat2(1.0f, 1.0f) },
-            { LVLfloat3(-halfWidth, -halfHeight, 1.0f), LVLfloat2(0.0f, 1.0f) },
-
-            { LVLfloat3(-halfWidth, -halfHeight, 1.0f), LVLfloat2(0.0f, 1.0f) },
-            { LVLfloat3(-halfWidth, halfHeight, 1.0f), LVLfloat2(0.0f, 0.0f) },
-            { LVLfloat3(halfWidth, halfHeight, 1.0f), LVLfloat2(1.0f, 0.0f) }
-		};
-
-
-		bool result = setVertexBuffer(vertices);
+		bool result = setVertices(halfWidth, halfHeight);
 		if (!result)
 		{
 			return false;
 		}
+
+
+
 
 		//load sprite ends
 		//
@@ -285,5 +275,25 @@ namespace LevelUp
 			return false;
 		}
         return true;
+	}
+	bool  Sprite::setVertices(float halfWidth, float halfHeight)
+	{
+		//set the vertices
+		VertexPos vertices[] =
+		{
+			{ LVLfloat3(halfWidth, halfHeight, 1.0f), LVLfloat2(1.0f, 0.0f) },
+			{ LVLfloat3(halfWidth, -halfHeight, 1.0f), LVLfloat2(1.0f, 1.0f) },
+			{ LVLfloat3(-halfWidth, -halfHeight, 1.0f), LVLfloat2(0.0f, 1.0f) },
+
+			{ LVLfloat3(-halfWidth, -halfHeight, 1.0f), LVLfloat2(0.0f, 1.0f) },
+			{ LVLfloat3(-halfWidth, halfHeight, 1.0f), LVLfloat2(0.0f, 0.0f) },
+			{ LVLfloat3(halfWidth, halfHeight, 1.0f), LVLfloat2(1.0f, 0.0f) }
+		};
+
+		bool result = setVertexBuffer(vertices);
+		if (!result)
+		{
+			return false;
+		}
 	}
 }

@@ -1,6 +1,6 @@
 #include "Game.h"
 #include "../../Developer/Core/StandardTemplates.h"
-#include "../Prebuilt Objects/MovementLevelObject.h"
+#include "../Prebuilt Objects/MVC/MovementLevelObject.h"
 #include "../../Developer/Services/ServiceLocator.h"
 #include "../../Developer/Engine/MVC/MVC.h"
 #include "../Prebuilt Objects/ECS/ParticleComponent.h"
