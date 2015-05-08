@@ -9,6 +9,7 @@
 #include "../../Developer/Engine/TheEngine.h"
 #include "../Prebuilt Objects/Attributes/CollisionAttribute.h"
 #include "../../Developer/Graphics/Rectangle.h"
+#include "../../Developer/Audio/AudioHeaders.h"
 
 namespace LevelUp
 {
@@ -40,8 +41,6 @@ namespace LevelUp
 				}
 			}
 		}
-
-
 	}
 
 	void Game::render()
@@ -54,8 +53,8 @@ namespace LevelUp
 	bool Game::loadContent()
 	{
 		bool result = true;
-
-
+		mus = new SoundEffect("Eagle_Call.wav");
+		mus->play();
         mlo = new MovementLevelObject(L"Ship.png");
         mlo->getView()->setZ(1.5f);
 		//mlo->getController()->stopControl();
@@ -72,7 +71,7 @@ namespace LevelUp
 		//t = new TrackingCamera(mlo);
 		//removeInitialCamera();
         
-        mlo->setPosition(200.0f, 200.0f);
+		mlo->setPosition(200.0f, 200.0f);
 		return result;
 	}
 }

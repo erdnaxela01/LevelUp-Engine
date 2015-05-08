@@ -9,19 +9,23 @@
 
 namespace LevelUp
 {
+	class MVCContainer;
 	class AnimatedSprite : public Sprite, public Model
 	{
 	public:
+		//give the sprite fileName, the frame specs
 		AnimatedSprite(std::wstring fileName,float widthOfFrame, float heightOfFrame, bool dds = false);
 		virtual ~AnimatedSprite();
+		//set the sprite sheet values
 		void setSpriteSheet(float widthOfFrames, float heightOfFrames);
+		//add an animation to this sprite
 		void addAnimation(std::string animationName, std::vector<int> frames = {}, float framesPerSecond = 0.0f, bool looped = false);
+		//play the animation
 		void play(std::string animation, bool looped = false);
 
-		void update(double delta);
-
-		bool setVertices(float halfWidth, float halfHeight, float positionX, float positionY);
+		friend MVCContainer;
 	private:
+		//struct to hold animations
 		struct AnimationValues
 		{
 			std::vector<int> frames;
@@ -30,6 +34,11 @@ namespace LevelUp
 			bool isLooped;
 			int numberOfFrames;
 		};
+		//update the animation
+		void update(double delta);
+
+		//set the vertices for the animation
+		bool setVertices(float halfWidth, float halfHeight, float positionX, float positionY);
 
 		std::map<std::string, AnimationValues> m_animations;
 		float m_framesPerSecond;

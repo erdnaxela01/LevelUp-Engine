@@ -40,6 +40,7 @@ namespace LevelUp
 				return i;
 			}
 		}
+		return nullptr;
 	}
 	void Agent::removeAttribute(std::string ID)
 	{

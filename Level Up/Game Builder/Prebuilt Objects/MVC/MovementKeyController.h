@@ -17,6 +17,8 @@ namespace LevelUp
         void handleKeyDown(LevelUpKeys key);
         //handle key up events
         void handleKeyUp(LevelUpKeys key);
+
+		void justPressed(LevelUpKeys key) {};
         //you can change the keys
         void setMovementKeys(LevelUpKeys left = LevelUpKeys::KEY_A, LevelUpKeys down = LevelUpKeys::KEY_S, LevelUpKeys right = LevelUpKeys::KEY_D, LevelUpKeys up = LevelUpKeys::KEY_W);
 	private:

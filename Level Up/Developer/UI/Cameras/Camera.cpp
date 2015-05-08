@@ -26,7 +26,7 @@ namespace LevelUp
         //set the cameras isd
 		m_ID = "Camera " + std::to_string(m_numberOfCameras);
         //set the camera to a scene or an engine
-		Scene* s = TheEngine::getInstance()->getSceneManager()->getActiveScene();
+		Scene* s = getEngine()->getSceneManager()->getActiveScene();
 		if (s != nullptr)
 		{
 			s->addCamera(this);
@@ -34,7 +34,7 @@ namespace LevelUp
 		}
 		else
 		{
-			TheEngine::getInstance()->addCamera(this);
+			getEngine()->addCamera(this);
 		}
         //set the width height and positions of the camera
 		m_height = ServiceLocator::getScreenSizeService()->getScreenSize().y;
@@ -64,7 +64,7 @@ namespace LevelUp
         }
         else
         {
-            TheEngine::getInstance()->addCamera(this);
+            getEngine()->addCamera(this);
         }
         //set the width height and positions of the camera
         m_height = ServiceLocator::getScreenSizeService()->getScreenSize().y;
@@ -83,7 +83,7 @@ namespace LevelUp
 		m_numberOfCameras--;
         if (m_parentScene != "")
         {
-            Scene* s = TheEngine::getInstance()->getSceneManager()->getScene(m_parentScene);
+            Scene* s = getEngine()->getSceneManager()->getScene(m_parentScene);
             if (s != nullptr)
             {
                 s->removeCamera(this);
@@ -91,7 +91,7 @@ namespace LevelUp
         }
         else
         {
-            TheEngine::getInstance()->removeCamera(this);
+            getEngine()->removeCamera(this);
         }
         //delete the viewport
         SafeDelete(m_viewport);
@@ -123,11 +123,11 @@ namespace LevelUp
         //if there is no parent scene get the engines view map else get the scene
         if (m_parentScene == "")
         {
-            views = TheEngine::getInstance()->getContainer()->getViewMap();
+            views = getEngine()->getContainer()->getViewMap();
         }
         else
         {
-            views = TheEngine::getInstance()->getSceneManager()->getScene(m_parentScene)->getContainer()->getViewMap();
+            views = getEngine()->getSceneManager()->getScene(m_parentScene)->getContainer()->getViewMap();
         }
         //iterate through the map and get all the views that can be seen
         typedef std::map<std::string, View* > ::iterator it_type;

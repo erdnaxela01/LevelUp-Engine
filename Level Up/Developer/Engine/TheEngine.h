@@ -84,9 +84,36 @@ namespace LevelUp
         //returns all the systems in the engine
         SystemContainer* getSystems();
 
+		//handle keys just pressed and released
+		bool justPressed(LevelUpKeys key);
+		bool justReleased(LevelUpKeys key);
 
+		//handle held down keys
+		bool keyDown(LevelUpKeys key);
+
+		//get the mouse position
+		LVLfloat2 getMousePos();
 
 	private:
+		struct ControllerVals
+		{
+			LevelUpKeys down;
+			LevelUpKeys up;
+			LevelUpKeys justPressed;
+			LevelUpKeys justReleased;
+			void resetKeys()
+			{
+				if (down == justReleased)
+				{
+					down = KEY_NULL;
+				}
+				justPressed = KEY_NULL;
+				justReleased = KEY_NULL;
+			}
+		};
+
+		ControllerVals controllers;
+
         //singleton
 		static TheEngine* m_theEngine;
 
@@ -116,7 +143,6 @@ namespace LevelUp
 		const int WINDOW_WIDTH = 800;
 		const int WINDOW_HEIGHT = 600;
 
-		LVLfloat2 getMousePos();
 
         EventDispatcher m_dispatcher;
 
@@ -130,7 +156,8 @@ namespace LevelUp
 		bool m_canUpdate;
 
 	};
-}
 
+	TheEngine* getEngine();
+}
 
 #endif

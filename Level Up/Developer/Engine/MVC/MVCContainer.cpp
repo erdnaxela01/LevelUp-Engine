@@ -48,7 +48,7 @@ namespace LevelUp
 		m_cameras[cam->CameraID()] = cam;
 	}
 
-    void MVCContainer::KeyDown(LevelUpKeys key)
+    void MVCContainer::keyDown(LevelUpKeys key)
 	{
 		KeyController* tempPtr;
 
@@ -65,7 +65,7 @@ namespace LevelUp
 		}
 	}
 
-    void MVCContainer::KeyUp(LevelUpKeys key)
+    void MVCContainer::keyUp(LevelUpKeys key)
 	{
 		KeyController* tempPtr;
         //run through the map and activate all the controllers
@@ -77,6 +77,23 @@ namespace LevelUp
 			if (tempPtr->canControl())
 			{
 				tempPtr->handleKeyUp(key);
+			}
+		}
+	}
+
+	//update all key controllers
+	void MVCContainer::justPressed(LevelUpKeys key)
+	{
+		KeyController* tempPtr;
+		//run through the map and activate all the controllers
+		typedef std::map<std::string, Controller* > ::iterator it_type;
+		std::map < std::string, Controller* > keyController = m_controllers[controllerType::KEYCONTROLLER];
+		for (it_type iterator = keyController.begin(); iterator != keyController.end(); iterator++)
+		{
+			tempPtr = (KeyController*)(iterator->second);
+			if (tempPtr->canControl())
+			{
+				tempPtr->justPressed(key);
 			}
 		}
 	}

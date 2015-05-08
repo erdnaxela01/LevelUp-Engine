@@ -25,7 +25,7 @@ namespace LevelUp
 	{
 
 		//wrapped wnd proc inside the engine object
-		return TheEngine::getInstance()->handleMessages(hwnd, msg, wParam, lParam);
+		return getEngine()->handleMessages(hwnd, msg, wParam, lParam);
 	}
 
 	LRESULT TheEngine::handleMessages(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -47,21 +47,28 @@ namespace LevelUp
 			break;
 		case WM_KEYDOWN:
             downKey = convertToKey(wParam);
-            m_container.KeyDown(downKey);
+            m_container.keyDown(downKey);
 			s = m_scenes.getActiveScene();
 			if (s != nullptr)
 			{
-                s->getContainer()->KeyDown(downKey);
+                s->getContainer()->keyDown(downKey);
 			}
+			if (downKey != controllers.down)
+			{
+				controllers.justPressed = downKey;
+				s->getContainer()->justPressed(downKey);
+			}
+			controllers.down = downKey;
 			break;
 		case WM_KEYUP:
             upKey = convertToKey(wParam);
-            m_container.KeyUp(upKey);
+            m_container.keyUp(upKey);
 			s = m_scenes.getActiveScene();
 			if (s != nullptr)
 			{
-                s->getContainer()->KeyUp(upKey);
+                s->getContainer()->keyUp(upKey);
 			}
+			controllers.justReleased = upKey;
 			break;
 		case WM_MOUSEMOVE:
 			m_container.mouseMove(getMousePos());
@@ -152,6 +159,7 @@ namespace LevelUp
 				s->update(m_delta);
 			}
 		}
+		controllers.resetKeys();
 	}
 
 	void TheEngine::shutdown()
@@ -381,4 +389,33 @@ namespace LevelUp
     {
         return &m_systems;
     }
+	TheEngine* getEngine()
+	{
+		return TheEngine::getInstance();
+	}
+
+	bool TheEngine::justPressed(LevelUpKeys key)
+	{
+		if (key == controllers.justPressed)
+		{
+			return true;
+		}
+		return false;
+	}
+	bool TheEngine::justReleased(LevelUpKeys key)
+	{
+		if (key == controllers.justReleased)
+		{
+			return true;
+		}
+		return false;
+	}
+	bool TheEngine::keyDown(LevelUpKeys key)
+	{
+		if (key == controllers.down)
+		{
+			return true;
+		}
+		return false;
+	}
 }

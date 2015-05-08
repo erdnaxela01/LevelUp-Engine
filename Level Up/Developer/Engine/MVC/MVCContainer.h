@@ -49,9 +49,12 @@ namespace LevelUp
         void removeFromCameraMap(Camera* c);
 
         //update all the key controllers
-		void KeyDown(LevelUpKeys key);
+		void keyDown(LevelUpKeys key);
         //update all the key controllers
-        void KeyUp(LevelUpKeys key);
+        void keyUp(LevelUpKeys key);
+		//update all key controllers
+		void justPressed(LevelUpKeys key);
+
         //check the time elapsed for the controllers
 		void timeElapsed(double delta);
         //check the mouse for the mouse controllers

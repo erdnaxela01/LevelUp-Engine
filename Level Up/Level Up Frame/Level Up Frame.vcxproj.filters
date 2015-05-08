@@ -240,6 +240,15 @@
     <Filter Include="Game Builder\Prebuilt Objects\MVC">
       <UniqueIdentifier>{2e21b0b0-6802-427a-93c3-52ac2c981915}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Developer\Audio">
+      <UniqueIdentifier>{9cad8d5c-da65-4ab9-a5a9-d26bf6c344f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Audio\Headers">
+      <UniqueIdentifier>{2b21c1af-a298-487f-ab58-750ada6a78e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Audio\Source">
+      <UniqueIdentifier>{3a967c39-6516-4ecf-ac5a-ded2a4946b61}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -406,6 +415,15 @@
     </ClCompile>
     <ClCompile Include="..\Game Builder\Prebuilt Objects\MVC\MovementSpriteView.cpp">
       <Filter>Game Builder\Prebuilt Objects\MVC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Audio\Audio.cpp">
+      <Filter>Developer\Audio\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Audio\SoundEffect.cpp">
+      <Filter>Developer\Audio\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Audio\Music.cpp">
+      <Filter>Developer\Audio\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -609,6 +627,18 @@
     </ClInclude>
     <ClInclude Include="..\Game Builder\Prebuilt Objects\MVC\MovementSpriteView.h">
       <Filter>Game Builder\Prebuilt Objects\MVC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Audio\Audio.h">
+      <Filter>Developer\Audio\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Audio\SoundEffect.h">
+      <Filter>Developer\Audio\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Audio\Music.h">
+      <Filter>Developer\Audio\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Audio\AudioHeaders.h">
+      <Filter>Developer\Audio</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

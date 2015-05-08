@@ -8,14 +8,14 @@ namespace LevelUp
 {
     void Playground::SystemAdd()
     {
-        TheEngine::getInstance()->getSystems()->addSystem(new ParticleSystem);
+        getEngine()->getSystems()->addSystem(new ParticleSystem);
     }
 
     void Playground::SceneLayout()
     {
         //set up your scenes here and start them
-        TheEngine::getInstance()->getSceneManager()->addSceneToMap(new Game);
-        TheEngine::getInstance()->getSceneManager()->pushScene("Game");
+        getEngine()->getSceneManager()->addSceneToMap(new Game);
+        getEngine()->getSceneManager()->pushScene("Game");
 
 
 

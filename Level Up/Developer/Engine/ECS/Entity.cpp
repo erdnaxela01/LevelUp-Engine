@@ -51,7 +51,7 @@ namespace LevelUp
     void Entity::addComponent(Component* c)
     {
         m_components.push_back(c);
-        TheEngine::getInstance()->getSystems()->addedComponent(this);
+        getEngine()->getSystems()->addedComponent(this);
     }
     void Entity::removeAllComponentsOfType(std::string s)
     {
@@ -64,7 +64,7 @@ namespace LevelUp
             m_components.erase(std::find(m_components.begin(), m_components.end(), i));
             SafeDelete(i);
         }
-        TheEngine::getInstance()->getSystems()->removedComponent(this);
+        getEngine()->getSystems()->removedComponent(this);
     }
     bool Entity::isActive()
     {

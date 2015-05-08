@@ -14,5 +14,6 @@
 #include <map>
 #include <DDSTextureLoader.h>
 #include <WICTextureLoader.h>
+#include <SFML/Audio.hpp>
 
 #endif

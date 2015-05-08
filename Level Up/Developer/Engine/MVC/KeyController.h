@@ -17,6 +17,9 @@ namespace LevelUp
         virtual void handleKeyDown(LevelUpKeys key) = 0;
         //must be overidden is used for key ups
         virtual void handleKeyUp(LevelUpKeys key) = 0;
+
+		//must be overriden for stuff just pressed
+		virtual void justPressed(LevelUpKeys key) = 0;
         //get the controllers id
 		std::string keyControllerID();
 	protected:

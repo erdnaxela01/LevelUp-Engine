@@ -295,5 +295,6 @@ namespace LevelUp
 		{
 			return false;
 		}
+		return true;
 	}
 }

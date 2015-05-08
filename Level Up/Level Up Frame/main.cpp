@@ -17,7 +17,7 @@ int WINAPI WinMain(HINSTANCE hInstance, //is a handle to the current instance of
 	UNREFERENCED_PARAMETER(cmdLine);
 
 	//initialize the internal engine, including window logic and render
-	if (!LevelUp::TheEngine::getInstance()->initialize(hInstance, showCmd))
+	if (!LevelUp::getEngine()->initialize(hInstance, showCmd))
 	{
 		return -1;
 	}
@@ -47,15 +47,15 @@ int WINAPI WinMain(HINSTANCE hInstance, //is a handle to the current instance of
 		else
 		{
 			//updates delta time and passes it to update and render
-			LevelUp::TheEngine::getInstance()->updateTimer();
-			LevelUp::TheEngine::getInstance()->update();
-			LevelUp::TheEngine::getInstance()->render();
+			LevelUp::getEngine()->updateTimer();
+			LevelUp::getEngine()->update();
+			LevelUp::getEngine()->render();
 			//draw
 		}
 		
 	}
 
-	LevelUp::TheEngine::getInstance()->shutdown(); //shutdown the engine
+	LevelUp::getEngine()->shutdown(); //shutdown the engine
 
 	return static_cast<int>(msg.wParam);
 }

@@ -47,7 +47,7 @@ namespace LevelUp
         //make push the active scene to the active scenes stack
 		m_activeScenes.push(m_allScenes[s]);
         //load the scenes contenmt
-		m_activeScene->loadContent();
+		bool result = m_activeScene->loadContent();
 	}
 	void SceneManager::popScene()
 	{
