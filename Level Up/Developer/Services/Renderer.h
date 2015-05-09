@@ -29,6 +29,11 @@ namespace LevelUp
 		virtual bool CompileD3DShader(std::wstring filePath, std::string entry, std::string shaderModel, ID3DBlob** buffer) = 0;
         //factory to produce a viewport
         virtual Viewport* produceViewport() = 0;
+		//set the screen to full screen
+		virtual void setFullScreenMode(bool b) = 0;
+		//resize buffer
+		virtual void resizeBuffer(LVLfloat2 size) = 0;
+
 
 	};
 }

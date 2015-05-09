@@ -79,7 +79,11 @@ namespace LevelUp
 			}
 			break;
         case WM_SIZE:
-            m_dispatcher.dispatchEvent(DispatchEvents::DISPATCHEVENTS_SCREENRESIZE);
+			if (m_screenSize != nullptr)
+			{
+				ServiceLocator::getRenderService()->resizeBuffer(ServiceLocator::getScreenSizeService()->getScreenSize());
+			}
+			m_dispatcher.dispatchEvent(DispatchEvents::DISPATCHEVENTS_SCREENRESIZE);
             break;
 		default:
 			//go to the default window's processing for other messages
@@ -371,6 +375,10 @@ namespace LevelUp
     {
         m_dispatcher.addHandler(e);
     }
+	void TheEngine::removeEventHandler(EventHandler* e)
+	{
+		m_dispatcher.removeHandler(e);
+	}
     bool TheEngine::provideServices(HINSTANCE h)
     {
         bool result = true;

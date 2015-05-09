@@ -95,6 +95,7 @@ namespace LevelUp
 		swapChainDesc.Windowed = true;
 		swapChainDesc.SampleDesc.Count = 1;
 		swapChainDesc.SampleDesc.Quality = 0;
+		swapChainDesc.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH; // allows full screen mode switching
 
 		unsigned int creationFlags = 0;
 

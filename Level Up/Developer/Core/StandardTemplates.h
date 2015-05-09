@@ -5,7 +5,7 @@
 namespace LevelUp
 {
 	template<typename T>
-	void SafeDelete(T* t)
+	void SafeDelete(T*& t)
 	{
 		if (t != nullptr)
 		{

@@ -1,10 +1,14 @@
-﻿Build started 2015-05-08 9:45:54 AM.
+﻿Build started 2015-05-08 10:29:05 PM.
      1>Project "C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Level Up Frame\Level Up Frame.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/include/" /I"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\SFML\SFML-2.2\include" /I"../SFML/SFML-2.2/include" /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D HAS_DIRECTXTK /D SFML_STATIC /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Release\Level Up Frame.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /FIstdafx.h /analyze- /errorReport:prompt "..\Game Builder\Game\Game.cpp"
-         Game.cpp
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/include/" /I"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\SFML\SFML-2.2\include" /I"../SFML/SFML-2.2/include" /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D HAS_DIRECTXTK /D SFML_STATIC /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Release\Level Up Frame.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /FIstdafx.h /analyze- /errorReport:prompt ..\Developer\UI\Cameras\Camera.cpp
+         Camera.cpp
        Link:
-         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Release\Level Up Frame.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\SFML\SFML-2.2\lib" /LIBPATH:"../SFML/SFML-2.2/lib" "C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/lib/Win32/Release/DirectXTKAudioDX.lib" "C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/lib/Win32/Release/DirectXTK.lib" D3D11.lib "sfml-audio-s.lib" "sfml-system-s.lib" sndfile.lib openal32.lib D3dcompiler.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Release\Level Up Frame.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Release\Level Up Frame.lib" /MACHINE:X86 /SAFESEH Release\DirectXViewport.obj
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Release\Level Up Frame.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\SFML\SFML-2.2\lib" /LIBPATH:"../SFML/SFML-2.2/lib" "C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/lib/Win32/Release/DirectXTKAudioDX.lib" "C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/lib/Win32/Release/DirectXTK.lib" Winmm.lib D3D11.lib "sfml-audio-s.lib" "sfml-system-s.lib" sndfile.lib openal32.lib D3dcompiler.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Release\Level Up Frame.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Release\Level Up Frame.lib" /MACHINE:X86 /SAFESEH Release\Audio.obj
+         Release\Listener.obj
+         Release\Music.obj
+         Release\SoundEffect.obj
+         Release\DirectXViewport.obj
          Release\Dx11Base.obj
          Release\GameSprite.obj
          Release\PerformanceCounter.obj
@@ -36,6 +40,9 @@
          Release\SceneManager.obj
          Release\TheEngine.obj
          Release\Keys.obj
+         Release\ITextFileStream.obj
+         Release\OTextFileStream.obj
+         Release\TextFileStream.obj
          Release\AnimatedSprite.obj
          Release\Color.obj
          Release\Rectangle.obj
@@ -66,4 +73,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:05.22
+Time Elapsed 00:00:06.28

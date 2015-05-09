@@ -112,7 +112,6 @@ namespace LevelUp
 	{
         //unload all the content and shutdown the  base class
 		unloadContent();
-		Dx11Base::shutdown();
 	}
 
 	ID3D11Device* RenderEngine::getDevice()
@@ -176,4 +175,59 @@ namespace LevelUp
         DirectXViewport* v = new DirectXViewport();
         return v;
     }
+	//set the screen to full screen
+	void RenderEngine::setFullScreenMode(bool b)
+	{
+		m_swapChain->SetFullscreenState(b, nullptr);
+	}
+	//resize buffer
+	void RenderEngine::resizeBuffer(LVLfloat2 size)
+	{
+		//resizes the whole buffer
+		HRESULT result;
+		ID3D11DeviceContext* con;
+		m_d3dDevice->GetImmediateContext(&con);
+		con->ClearState();
+
+		//release the current buffer
+		if(m_backBufferTarget)m_backBufferTarget->Release();
+
+		//resize the buffer
+		result = m_swapChain->ResizeBuffers(2, size.x, size.y, DXGI_FORMAT_R8G8B8A8_UNORM, DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH);
+		if (FAILED(result))
+		{
+			throw(std::runtime_error("buffer resize fail"));
+		}
+
+		//set the texture of the swap chain
+		ID3D11Texture2D* backBufferTexture;
+		result = m_swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D),
+			(LPVOID*)&backBufferTexture);
+
+		//error checking
+		if (FAILED(result))
+		{
+			throw(std::runtime_error("buffer resize fail"));
+		}
+		//create a render target with the backbuffer
+		result = m_d3dDevice->CreateRenderTargetView(backBufferTexture, 0,
+			&m_backBufferTarget);
+
+		//release the texture
+		if (backBufferTexture) backBufferTexture->Release();
+
+		//error checking
+		if (FAILED(result))
+		{
+			throw(std::runtime_error("buffer resize fail"));
+		}
+
+
+		////set the output merger's render targets
+		m_d3dContext->OMSetRenderTargets(1, &m_backBufferTarget, 0);
+
+		//set the alpha blending
+		float blendFactor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
+		m_d3dContext->OMSetBlendState(m_alphaBlendState, blendFactor, 0xFFFFFFFF);
+	}
 }

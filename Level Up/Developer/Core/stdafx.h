@@ -15,5 +15,9 @@
 #include <DDSTextureLoader.h>
 #include <WICTextureLoader.h>
 #include <SFML/Audio.hpp>
+#include <iostream>
+#include <fstream>
+#include <ostream>
+#include <istream>
 
 #endif

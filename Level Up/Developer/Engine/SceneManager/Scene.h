@@ -55,6 +55,8 @@ namespace LevelUp
 
         //removes the starting camera
         void removeInitialCamera();
+
+		Camera* getInitialCamera();
 	private:
 		MVCContainer* m_mvc;
 		std::string m_ID;

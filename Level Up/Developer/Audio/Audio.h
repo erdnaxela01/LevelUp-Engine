@@ -4,6 +4,10 @@
 #include <string>
 namespace LevelUp
 {
+	/*
+	Parent class for sound effects and music
+	- Alex Sabourin May 2015
+	*/
 	class Audio
 	{
 	public:

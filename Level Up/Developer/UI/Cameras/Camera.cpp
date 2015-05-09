@@ -19,7 +19,7 @@ namespace LevelUp
 {
 	int Camera::m_numberOfCameras = 0;
 
-    Camera::Camera() :m_x(0.0f), m_y(0.0f), m_canView(true), m_parentScene(""), m_command(nullptr)
+	Camera::Camera() :m_x(0.0f), m_y(0.0f), m_canView(true), m_parentScene(""), m_command(nullptr), m_zoom(1.0f)
 	{
         //add to the number of cameras
 		m_numberOfCameras++;
@@ -48,9 +48,11 @@ namespace LevelUp
 
         //get the current screen size
         m_currentScreenSize = ServiceLocator::getScreenSizeService()->getScreenSize();
+
+		m_viewPortIsDirty = true;
 	}
 
-    Camera::Camera(Scene* s) : m_canView(true), m_command(nullptr)
+	Camera::Camera(Scene* s) : m_canView(true), m_command(nullptr), m_zoom(1.0f)
     {
         // add to the number of cameras
         m_numberOfCameras++;
@@ -76,11 +78,10 @@ namespace LevelUp
         m_viewport = ServiceLocator::getRenderService()->produceViewport();
         //get the current screen size
         m_currentScreenSize = ServiceLocator::getScreenSizeService()->getScreenSize();
+		m_viewPortIsDirty = true;
     }
 	Camera::~Camera()
 	{
-        //decrement the number of cameras
-		m_numberOfCameras--;
         if (m_parentScene != "")
         {
             Scene* s = getEngine()->getSceneManager()->getScene(m_parentScene);
@@ -112,8 +113,8 @@ namespace LevelUp
             LVL4X4matrix view = MathHelper::identityMatrix();
             LVL4X4matrix proj;
             ServiceLocator::getMathAdapter()->convertToLVLMatrix(&proj, &DirectXMatrixContainer(&DirectX::XMMatrixOrthographicOffCenterLH(0.0f, m_width, 0.0f, m_height, 0.1f, 100.0f)));
-
             (ServiceLocator::getRenderService()->setVPMatrix(view * proj));
+			m_viewPortIsDirty = false;
         }
 
         //get a sorted views for z sorting
@@ -157,13 +158,13 @@ namespace LevelUp
 	}
 	void Camera::setH(float h)
 	{
-		m_height = h;
+		m_height = h / m_zoom;
 		m_viewport->setHeight(h);
         m_viewPortIsDirty = true;
 	}
 	void Camera::setW(float w)
 	{
-		m_width = w;
+		m_width = w / m_zoom;
         m_viewport->setWidth(w);
         m_viewPortIsDirty = true;
 	}
@@ -225,14 +226,8 @@ namespace LevelUp
             ///if there is no callback for resizing go to default
             if (m_command == nullptr)
             {
-                float percentageX = m_width / m_currentScreenSize.x;
-                float percentageY = m_height / m_currentScreenSize.y;
-
-                m_width = ServiceLocator::getScreenSizeService()->getScreenSize().x * percentageX;
-                m_height = ServiceLocator::getScreenSizeService()->getScreenSize().y * percentageY;
-
-                m_currentScreenSize.x = ServiceLocator::getScreenSizeService()->getScreenSize().x;
-                m_currentScreenSize.y = ServiceLocator::getScreenSizeService()->getScreenSize().y;
+				setW(ServiceLocator::getScreenSizeService()->getScreenSize().x);
+				setH(ServiceLocator::getScreenSizeService()->getScreenSize().y);
             }
             else
             {
@@ -248,4 +243,16 @@ namespace LevelUp
         //set the resizing method
         m_command = c;
     }
+	void Camera::setZoom(float zoom)
+	{
+		m_zoom = zoom;
+		m_width = m_width / m_zoom;
+		m_height = m_height / m_zoom;
+		m_viewPortIsDirty = true;
+	}
+	//get the zoom of the camera
+	float Camera::getZoom()
+	{
+		return m_zoom;
+	}
 }

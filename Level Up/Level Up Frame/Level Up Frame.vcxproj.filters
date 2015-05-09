@@ -249,6 +249,15 @@
     <Filter Include="Developer\Audio\Source">
       <UniqueIdentifier>{3a967c39-6516-4ecf-ac5a-ded2a4946b61}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Developer\File Streams">
+      <UniqueIdentifier>{59331251-536a-4b8e-8343-b5c530dd0768}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\File Streams\Headers">
+      <UniqueIdentifier>{b015efb5-ec3d-4f31-98dc-3b7ce72ac521}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\File Streams\Source">
+      <UniqueIdentifier>{5174274a-d1d5-4c0d-9b28-b4d01e6cdd94}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -424,6 +433,18 @@
     </ClCompile>
     <ClCompile Include="..\Developer\Audio\Music.cpp">
       <Filter>Developer\Audio\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Audio\Listener.cpp">
+      <Filter>Developer\Audio\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\File Streams\TextFileStream.cpp">
+      <Filter>Developer\File Streams\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\File Streams\ITextFileStream.cpp">
+      <Filter>Developer\File Streams\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\File Streams\OTextFileStream.cpp">
+      <Filter>Developer\File Streams\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -639,6 +660,21 @@
     </ClInclude>
     <ClInclude Include="..\Developer\Audio\AudioHeaders.h">
       <Filter>Developer\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Audio\Listener.h">
+      <Filter>Developer\Audio\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\File Streams\TextFileStream.h">
+      <Filter>Developer\File Streams\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\File Streams\ITextFileStream.h">
+      <Filter>Developer\File Streams\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\File Streams\OTextFileStream.h">
+      <Filter>Developer\File Streams\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\File Streams\FileStreams.h">
+      <Filter>Developer\File Streams</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

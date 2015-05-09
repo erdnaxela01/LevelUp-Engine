@@ -10,6 +10,8 @@
 #include "../Prebuilt Objects/Attributes/CollisionAttribute.h"
 #include "../../Developer/Graphics/Rectangle.h"
 #include "../../Developer/Audio/AudioHeaders.h"
+#include "../Prebuilt Objects/MVC/MovementSpriteView.h"
+#include "../../Developer/File Streams/FileStreams.h"
 
 namespace LevelUp
 {
@@ -53,13 +55,14 @@ namespace LevelUp
 	bool Game::loadContent()
 	{
 		bool result = true;
+		getInitialCamera()->setZoom(3.0f);
 		mus = new SoundEffect("Eagle_Call.wav");
 		mus->play();
         mlo = new MovementLevelObject(L"Ship.png");
         mlo->getView()->setZ(1.5f);
 		//mlo->getController()->stopControl();
 
-		mlo2 = new MovementLevelObject(L"Ship.png");
+		mlo2 = new MovementLevelObject(L"HatShip.png");
 		mlo2->getController()->stopControl();
         ParticleComponent* p = new ParticleComponent(200, Color::getForestGreen());
         p->trackObject(mlo);
@@ -68,10 +71,21 @@ namespace LevelUp
 		p->setCanFade(true);
 		mlo->addAttribute(new CollisionAttribute(mlo->getView()->getW(), mlo->getView()->getH()));
 		mlo2->addAttribute(new CollisionAttribute(mlo2->getView()->getW(), mlo2->getView()->getH()));
-		//t = new TrackingCamera(mlo);
-		//removeInitialCamera();
+		t = new TrackingCamera(mlo);
+		removeInitialCamera();
+		t->setZoom(2.0f);
         
 		mlo->setPosition(200.0f, 200.0f);
+
+		TextFileStream stream("Test.txt");
+		std::vector<std::string> text;
+		text = stream.getFileTo(5);
+		text = stream.getFileFrom(5);
+		text = stream.getFileFromTo(3, 6);
+		text.push_back(stream.getLine(5));
+
+		OTextFileStream ostream("Test.txt");
+		stream.writeToFile("11 \n");
 		return result;
 	}
 }

@@ -1,10 +1,11 @@
-﻿Build started 2015-05-08 11:06:35 AM.
+﻿Build started 2015-05-09 1:31:03 PM.
      1>Project "C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Level Up Frame\Level Up Frame.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/include/" /I"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\SFML\SFML-2.2\include" /I"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\SFML\SFML-2.2\include" /I"../SFML/SFML-2.2/include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D HAS_DIRECTXTK /D SFML_STATIC /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Level Up Frame.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /FIstdafx.h /analyze- /errorReport:prompt "..\Game Builder\Prebuilt Objects\MVC\MovementSpriteView.cpp"
-         MovementSpriteView.cpp
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/include/" /I"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\SFML\SFML-2.2\include" /I"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\SFML\SFML-2.2\include" /I"../SFML/SFML-2.2/include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D HAS_DIRECTXTK /D SFML_STATIC /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Level Up Frame.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /FIstdafx.h /analyze- /errorReport:prompt ..\Developer\UI\Cameras\Camera.cpp
+         Camera.cpp
        Link:
          C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\Level Up Frame.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\SFML\SFML-2.2\lib" /LIBPATH:"../SFML/SFML-2.2/lib" "C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/lib/Win32/Debug/DirectXTKAudioDX.lib" "C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\packages\directxtk_desktop_2013.2015.2.25.1\build\native\../../build/native/lib/Win32/Debug/DirectXTK.lib" Winmm.lib D3D11.lib "sfml-audio-s-d.lib" "sfml-system-s-d.lib" sndfile.lib openal32.lib D3DCompiler.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\Level Up Frame.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\Level Up Frame.lib" /MACHINE:X86 Debug\Audio.obj
+         Debug\Listener.obj
          Debug\Music.obj
          Debug\SoundEffect.obj
          Debug\DirectXViewport.obj
@@ -39,6 +40,9 @@
          Debug\SceneManager.obj
          Debug\TheEngine.obj
          Debug\Keys.obj
+         Debug\ITextFileStream.obj
+         Debug\OTextFileStream.obj
+         Debug\TextFileStream.obj
          Debug\AnimatedSprite.obj
          Debug\Color.obj
          Debug\Rectangle.obj
@@ -67,4 +71,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.52
+Time Elapsed 00:00:01.40

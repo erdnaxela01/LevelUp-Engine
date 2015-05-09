@@ -6,7 +6,7 @@ namespace LevelUp
 	{
 		if (!m_buffer.loadFromFile(m_fileName))
 		{
-			throw (std::runtime_error("Could not open sound effect file"));
+			throw (std::runtime_error("Could not open sound effect file in Assets/Audio"));
 		}
 		m_sound.setBuffer(m_buffer);
 	}

@@ -90,6 +90,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Developer\Audio\Audio.cpp" />
+    <ClCompile Include="..\Developer\Audio\Listener.cpp" />
     <ClCompile Include="..\Developer\Audio\Music.cpp" />
     <ClCompile Include="..\Developer\Audio\SoundEffect.cpp" />
     <ClCompile Include="..\Developer\Core\DirectXViewport.cpp" />
@@ -127,6 +128,9 @@
     <ClCompile Include="..\Developer\Engine\SceneManager\SceneManager.cpp" />
     <ClCompile Include="..\Developer\Engine\TheEngine.cpp" />
     <ClCompile Include="..\Developer\Enums\Keys.cpp" />
+    <ClCompile Include="..\Developer\File Streams\ITextFileStream.cpp" />
+    <ClCompile Include="..\Developer\File Streams\OTextFileStream.cpp" />
+    <ClCompile Include="..\Developer\File Streams\TextFileStream.cpp" />
     <ClCompile Include="..\Developer\Graphics\AnimatedSprite.cpp" />
     <ClCompile Include="..\Developer\Graphics\Color.cpp" />
     <ClCompile Include="..\Developer\Graphics\Rectangle.cpp" />
@@ -154,6 +158,7 @@
   <ItemGroup>
     <ClInclude Include="..\Developer\Audio\Audio.h" />
     <ClInclude Include="..\Developer\Audio\AudioHeaders.h" />
+    <ClInclude Include="..\Developer\Audio\Listener.h" />
     <ClInclude Include="..\Developer\Audio\Music.h" />
     <ClInclude Include="..\Developer\Audio\SoundEffect.h" />
     <ClInclude Include="..\Developer\Core\DirectXViewport.h" />
@@ -196,6 +201,10 @@
     <ClInclude Include="..\Developer\Engine\SceneManager\SceneManagerHeaders.h" />
     <ClInclude Include="..\Developer\Engine\TheEngine.h" />
     <ClInclude Include="..\Developer\Enums\Keys.h" />
+    <ClInclude Include="..\Developer\File Streams\FileStreams.h" />
+    <ClInclude Include="..\Developer\File Streams\ITextFileStream.h" />
+    <ClInclude Include="..\Developer\File Streams\OTextFileStream.h" />
+    <ClInclude Include="..\Developer\File Streams\TextFileStream.h" />
     <ClInclude Include="..\Developer\Graphics\AnimatedSprite.h" />
     <ClInclude Include="..\Developer\Graphics\Color.h" />
     <ClInclude Include="..\Developer\Graphics\Rectangle.h" />

@@ -5,10 +5,23 @@
 #include "../Engine/MVC/Model.h"
 #include "../Engine/Helper/CountDown.h"
 #include <vector>
+#include <string>
 #include <map>
 
 namespace LevelUp
 {
+	/*
+	Animated sprite to animate a sprite
+	Alex Sabourin May 2015
+	*/
+	struct AnimationVals
+	{
+		std::string animationName;
+		std::vector<int> frames;
+		float frameRate;
+		bool looped;
+	};
+
 	class MVCContainer;
 	class AnimatedSprite : public Sprite, public Model
 	{

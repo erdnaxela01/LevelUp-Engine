@@ -10,5 +10,6 @@ namespace LevelUp
     }
     EventHandler::~EventHandler()
     {
+		getEngine()->removeEventHandler(this);
     }
 }

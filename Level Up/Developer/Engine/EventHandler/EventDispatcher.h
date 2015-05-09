@@ -22,6 +22,8 @@ namespace LevelUp
 		void addHandler(EventHandler* h);
         //tell all handlers about an eventr
 		void dispatchEvent(DispatchEvents e);
+		//remove an event handler
+		void removeHandler(EventHandler* h);
 	private: 
 		std::vector<EventHandler*> m_handlers;
 	};

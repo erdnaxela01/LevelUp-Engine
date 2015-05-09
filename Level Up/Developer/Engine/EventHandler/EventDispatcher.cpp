@@ -1,5 +1,6 @@
 #include "EventDispatcher.h"
 #include "EventHandler.h"
+#include <algorithm>
 
 namespace LevelUp
 {
@@ -17,12 +18,17 @@ namespace LevelUp
         //add a handler
         m_handlers.push_back(h);
     }
+
+	void EventDispatcher::removeHandler(EventHandler* h)
+	{
+		m_handlers.erase(std::find(m_handlers.begin(), m_handlers.end(), h));
+	}
     void EventDispatcher::dispatchEvent(DispatchEvents e)
     {
         for (auto i : m_handlers)
         {
             //send a notification to all your handlers
-            i->handleEvent(e);
+            dynamic_cast<EventHandler*>(i)->handleEvent(e);
         }
     }
 }

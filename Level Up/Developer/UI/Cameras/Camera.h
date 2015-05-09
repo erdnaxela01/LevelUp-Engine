@@ -59,7 +59,11 @@ namespace LevelUp
 		float getScreenX();
         //get the cameras y position on the screen
 		float getscreenY();
-        
+        //set the zoom of the camera
+		void setZoom(float zoom);
+		//get the zoom of the camera
+		float getZoom();
+
         //its an event handler to handle screen size events
         void handleEvent(DispatchEvents e);
 
@@ -79,6 +83,8 @@ namespace LevelUp
         LVLfloat2 m_currentScreenSize;
         bool m_viewPortIsDirty;
         Viewport* m_viewport;
+
+		float m_zoom;
 
         CameraResizeCommand* m_command;
 	};

@@ -5,6 +5,7 @@
 #include "../../../Developer/Graphics/AnimatedSprite.h"
 
 #include <string>
+#include <vector>
 namespace LevelUp
 {
 	class MovementModel;
@@ -12,6 +13,12 @@ namespace LevelUp
 	{
 	public:
 		MovementSpriteView(std::wstring fName, MovementModel* sm, float z = 1.0f);
+		//Adds animations to the animated sprite
+		void addAnimation(std::vector<AnimationVals> values);
+		//Adds animations to the animated sprite
+		void addAnimation(std::string animationName, std::vector<int> frames, float frameRate, bool looped);
+		//play a specific animation
+		void play(std::string animationName, bool looped = false);
         //set the views sprite
 		void setSprite(std::wstring fName);
         //descructior

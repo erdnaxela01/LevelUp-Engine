@@ -8,10 +8,8 @@ namespace LevelUp
 {
 	MovementSpriteView::MovementSpriteView(std::wstring fName, MovementModel* mm, float z) : View(z)
 	{
-		m_sprite = new AnimatedSprite(fName, 75 / 2, 99);
+		m_sprite = new AnimatedSprite(fName, 16, 16);
         //initialize the sprite
-		m_sprite->addAnimation("animation", { 0, 1 }, 30, true);
-		m_sprite->play("animation", true);
 		m_movementModel = mm;
 		if (m_movementModel != nullptr)
 		{
@@ -20,6 +18,24 @@ namespace LevelUp
 			m_movementModel->setWidth(m_sprite->getWidth());
 		}
 	}
+	//Adds animations to the animated sprite
+	void MovementSpriteView::addAnimation(std::vector<AnimationVals> values)
+	{
+		for (auto i : values)
+		{
+			m_sprite->addAnimation(i.animationName, i.frames, i.frameRate, i.looped);
+		}
+	}
+	void MovementSpriteView::addAnimation(std::string animationName, std::vector<int> frames, float frameRate, bool looped)
+	{
+		m_sprite->addAnimation(animationName, frames, frameRate, looped);
+	}
+
+	void MovementSpriteView::play(std::string animationName, bool looped)
+	{
+		m_sprite->play(animationName, looped);
+	}
+
 	void MovementSpriteView::setSprite(std::wstring fName)
 	{
         //get a new sprite

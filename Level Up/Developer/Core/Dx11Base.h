@@ -25,6 +25,9 @@ namespace LevelUp
         //unload all the content
 		virtual void unloadContent();
 
+		//sets the screen to full screen
+		void setFullScreen(bool b);
+
 	protected:
         //used for error checking the constructor
 		std::string m_errorMessage;

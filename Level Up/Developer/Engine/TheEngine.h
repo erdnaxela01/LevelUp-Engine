@@ -72,6 +72,9 @@ namespace LevelUp
         //add an event handle to the event dispatcher
         void addEventHandler(EventHandler* e);
 
+		//remove an event handler
+		void removeEventHandler(EventHandler* e);
+
         //get the current elapsed if necessary
 		double delta();
 

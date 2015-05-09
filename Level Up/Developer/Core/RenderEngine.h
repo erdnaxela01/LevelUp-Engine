@@ -46,6 +46,11 @@ namespace LevelUp
         //factory function to create a view port
         DirectXViewport* produceViewport();
 
+		//set the screen to full screen
+		void setFullScreenMode(bool b);
+		//resize buffer
+		void resizeBuffer(LVLfloat2 size);
+
         //constructor and destructor
 		RenderEngine();
 		~RenderEngine() {};

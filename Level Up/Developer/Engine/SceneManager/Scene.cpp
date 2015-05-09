@@ -2,6 +2,7 @@
 #include "../MVC/MVCContainer.h"
 #include "../MVC/MVC.h"
 #include "../../UI/Cameras/Camera.h"
+#include "../../Core/StandardTemplates.h"
 
 namespace LevelUp
 {
@@ -13,7 +14,8 @@ namespace LevelUp
 	}
 	Scene::~Scene()
 	{
-
+		SafeDelete(m_initialCamera);
+		SafeDelete(m_mvc);
 	}
 	MVCContainer* Scene::getContainer()
 	{
@@ -61,6 +63,10 @@ namespace LevelUp
     void Scene::removeInitialCamera()
     {
         m_mvc->removeFromCameraMap(m_initialCamera);
-        m_initialCamera = nullptr;
+		SafeDelete(m_initialCamera);
     }
+	Camera* Scene::getInitialCamera()
+	{
+		return m_initialCamera;
+	}
 }
