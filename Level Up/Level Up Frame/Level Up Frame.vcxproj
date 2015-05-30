@@ -56,7 +56,7 @@
       <PreprocessorDefinitions>SFML_STATIC;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\SFML\SFML-2.2\include;C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\SFML\SFML-2.2\include;../SFML/SFML-2.2/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\SFML\SFML-2.2\include;../SFML/SFML-2.2/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
@@ -102,12 +102,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\Developer\Core\TheGameBase.cpp" />
     <ClCompile Include="..\Developer\Engine\Attributes\Agent.cpp" />
     <ClCompile Include="..\Developer\Engine\Attributes\Attributes.cpp" />
     <ClCompile Include="..\Developer\Engine\BasicLevelObject\BaseLevelObject.cpp" />
     <ClCompile Include="..\Developer\Engine\BasicLevelObject\BaseMVCObject.cpp" />
     <ClCompile Include="..\Developer\Engine\BasicLevelObject\GameObject.cpp" />
+    <ClCompile Include="..\Developer\Engine\Command\CameraResizeCommand.cpp" />
     <ClCompile Include="..\Developer\Engine\Command\Command.cpp" />
     <ClCompile Include="..\Developer\Engine\ECS\Component.cpp" />
     <ClCompile Include="..\Developer\Engine\ECS\Entity.cpp" />
@@ -132,9 +132,14 @@
     <ClCompile Include="..\Developer\File Streams\OTextFileStream.cpp" />
     <ClCompile Include="..\Developer\File Streams\TextFileStream.cpp" />
     <ClCompile Include="..\Developer\Graphics\AnimatedSprite.cpp" />
+    <ClCompile Include="..\Developer\Graphics\Circle.cpp" />
     <ClCompile Include="..\Developer\Graphics\Color.cpp" />
+    <ClCompile Include="..\Developer\Graphics\PixelShader.cpp" />
     <ClCompile Include="..\Developer\Graphics\Rectangle.cpp" />
+    <ClCompile Include="..\Developer\Graphics\RenderObject.cpp" />
+    <ClCompile Include="..\Developer\Graphics\Shape.cpp" />
     <ClCompile Include="..\Developer\Graphics\Sprite.cpp" />
+    <ClCompile Include="..\Developer\Graphics\VertexShader.cpp" />
     <ClCompile Include="..\Developer\Services\Math\DataTypes.cpp" />
     <ClCompile Include="..\Developer\Services\Math\MathAdapters\DirectXMathAdapter.cpp" />
     <ClCompile Include="..\Developer\Services\Math\MathFunctions.cpp" />
@@ -168,7 +173,6 @@
     <ClInclude Include="..\Developer\Core\RenderEngine.h" />
     <ClInclude Include="..\Developer\Core\StandardTemplates.h" />
     <ClInclude Include="..\Developer\Core\stdafx.h" />
-    <ClInclude Include="..\Developer\Core\TheGameBase.h" />
     <ClInclude Include="..\Developer\Core\Viewport.h" />
     <ClInclude Include="..\Developer\Engine\Attributes\Agent.h" />
     <ClInclude Include="..\Developer\Engine\Attributes\Attributes.h" />
@@ -206,9 +210,15 @@
     <ClInclude Include="..\Developer\File Streams\OTextFileStream.h" />
     <ClInclude Include="..\Developer\File Streams\TextFileStream.h" />
     <ClInclude Include="..\Developer\Graphics\AnimatedSprite.h" />
+    <ClInclude Include="..\Developer\Graphics\Circle.h" />
     <ClInclude Include="..\Developer\Graphics\Color.h" />
+    <ClInclude Include="..\Developer\Graphics\PixelShader.h" />
     <ClInclude Include="..\Developer\Graphics\Rectangle.h" />
+    <ClInclude Include="..\Developer\Graphics\RenderObject.h" />
+    <ClInclude Include="..\Developer\Graphics\Shader.h" />
+    <ClInclude Include="..\Developer\Graphics\Shape.h" />
     <ClInclude Include="..\Developer\Graphics\Sprite.h" />
+    <ClInclude Include="..\Developer\Graphics\VertexShader.h" />
     <ClInclude Include="..\Developer\Services\Math\DataTypes.h" />
     <ClInclude Include="..\Developer\Services\Math\LevelUpMath.h" />
     <ClInclude Include="..\Developer\Services\Math\MathAdapters\DirectXMathAdapter.h" />

@@ -28,6 +28,7 @@ namespace LevelUp
         void operator/= (const LVLfloat &rhs);
         LVLfloat(float tx);
         LVLfloat();
+		~LVLfloat() {};
     };
 
     struct LVLfloat2
@@ -45,6 +46,7 @@ namespace LevelUp
         LVLfloat2 operator/ (const float &rhs);
         LVLfloat2(float tx, float ty);
         LVLfloat2();
+		~LVLfloat2() {};
 
     };
 
@@ -58,6 +60,7 @@ namespace LevelUp
         LVLfloat3 operator+ (const LVLfloat3 &rhs);
         LVLfloat3(float tx, float ty, float tz);
         LVLfloat3();
+		~LVLfloat3() {};
     };
 
     struct LVLfloat4
@@ -71,6 +74,7 @@ namespace LevelUp
         LVLfloat4 operator+ (const LVLfloat4 &rhs);
         LVLfloat4(float tx, float ty, float tz, float tw);
         LVLfloat4();
+		~LVLfloat4() {};
     };
 
     struct LVLmatrixRow4
@@ -81,6 +85,7 @@ namespace LevelUp
         LVLmatrixRow4 operator+ (LVLmatrixRow4 &rhs);
         float& operator[](const int &index);
         LVLmatrixRow4();
+		~LVLmatrixRow4() {};
     };
     
     struct LVL4X4matrix
@@ -90,7 +95,8 @@ namespace LevelUp
         LVL4X4matrix operator+ (LVL4X4matrix &rhs);
         LVL4X4matrix operator- (LVL4X4matrix &rhs);
         LVLmatrixRow4& operator[](const int &index);
-        LVL4X4matrix();
+		LVL4X4matrix();
+		~LVL4X4matrix() {};
     };
 
 	struct LVLrect
@@ -102,6 +108,7 @@ namespace LevelUp
 
 		void operator=(const LVLrect& rhs);
 		LVLrect(float l = 0.0f, float b = 0.0f, float r = 0.0f, float t = 0.0f);
+		~LVLrect() {};
 	};
 
 

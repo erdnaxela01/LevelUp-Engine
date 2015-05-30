@@ -15,49 +15,47 @@ namespace LevelUp
 	{
 	}
 
-	std::map<controllerType, std::map<std::string, Controller*>> MVCContainer::getControllerMap()
+	std::map<controllerType, std::vector<Controller*>> MVCContainer::getControllers() const
 	{
 		return m_controllers;
 	}
 
-	std::map<std::string, Model*> MVCContainer::getModelMap()
+	std::vector<Model*> MVCContainer::getModels() const
 	{
 		return m_models;
 	}
-	std::map<std::string, View*> MVCContainer::getViewMap()
+	std::vector<View*> MVCContainer::getViews() const
 	{
 		return m_views;
 	}
 	void MVCContainer::addToControllerMap(Controller* controller)
 	{
-		m_controllers[controller->getType()][controller->ControllerID()] = controller;
+		m_controllers[controller->getType()].push_back(controller);
 	}
 
 	void MVCContainer::addToModelMap(Model* model)
 	{
-		m_models[model->ModelID()] = model;
+		m_models.push_back(model);
 	}
 
 	void MVCContainer::addToViewMap(View* view)
 	{
-		m_views[view->viewID()] = view;
+		m_views.push_back(view);
 	}
 
 	void MVCContainer::addToCameraMap(Camera* cam)
 	{
-		m_cameras[cam->CameraID()] = cam;
+		m_cameras.push_back(cam);
 	}
 
     void MVCContainer::keyDown(LevelUpKeys key)
 	{
-		KeyController* tempPtr;
 
-        //run through the map and activate all the controllers
-		typedef std::map<std::string, Controller* > ::iterator it_type;
-		std::map < std::string, Controller* > keyController = m_controllers[controllerType::KEYCONTROLLER];
-		for (it_type iterator = keyController.begin(); iterator != keyController.end(); iterator++)
+        //run through thevecotr and activate all the controllers
+		std::vector < Controller* > keyController = m_controllers[controllerType::KEYCONTROLLER];
+		for (auto i:keyController)
 		{
-			tempPtr = (KeyController*)(iterator->second);
+			auto tempPtr = dynamic_cast<KeyController*>(i);
 			if (tempPtr->canControl())
 			{
 				tempPtr->handleKeyDown(key);
@@ -67,13 +65,11 @@ namespace LevelUp
 
     void MVCContainer::keyUp(LevelUpKeys key)
 	{
-		KeyController* tempPtr;
-        //run through the map and activate all the controllers
-		typedef std::map<std::string, Controller* > ::iterator it_type;
-		std::map < std::string, Controller* > keyController = m_controllers[controllerType::KEYCONTROLLER];
-		for (it_type iterator = keyController.begin(); iterator != keyController.end(); iterator++)
+		//run through thevecotr and activate all the controllers
+		std::vector < Controller* > keyController = m_controllers[controllerType::KEYCONTROLLER];
+		for (auto i : keyController)
 		{
-			tempPtr = (KeyController*)(iterator->second);
+			auto tempPtr = dynamic_cast<KeyController*>(i);
 			if (tempPtr->canControl())
 			{
 				tempPtr->handleKeyUp(key);
@@ -84,13 +80,11 @@ namespace LevelUp
 	//update all key controllers
 	void MVCContainer::justPressed(LevelUpKeys key)
 	{
-		KeyController* tempPtr;
-		//run through the map and activate all the controllers
-		typedef std::map<std::string, Controller* > ::iterator it_type;
-		std::map < std::string, Controller* > keyController = m_controllers[controllerType::KEYCONTROLLER];
-		for (it_type iterator = keyController.begin(); iterator != keyController.end(); iterator++)
+		//run through thevecotr and activate all the controllers
+		std::vector < Controller* > keyController = m_controllers[controllerType::KEYCONTROLLER];
+		for (auto i : keyController)
 		{
-			tempPtr = (KeyController*)(iterator->second);
+			auto tempPtr = dynamic_cast<KeyController*>(i);
 			if (tempPtr->canControl())
 			{
 				tempPtr->justPressed(key);
@@ -100,13 +94,11 @@ namespace LevelUp
 
 	void MVCContainer::timeElapsed(double delta)
 	{
-		TimerController* tempPtr;
-        //run through the map and activate all the controllers
-		typedef std::map<std::string, Controller* > ::iterator it_type;
-		std::map < std::string, Controller* > timerController = m_controllers[controllerType::TIMERCONTROLLER];
-		for (it_type iterator = timerController.begin(); iterator != timerController.end(); iterator++)
+		//run through thevecotr and activate all the controllers
+		std::vector < Controller* > keyController = m_controllers[controllerType::TIMERCONTROLLER];
+		for (auto i : keyController)
 		{
-			tempPtr = (TimerController*)(iterator->second);
+			auto tempPtr = dynamic_cast<TimerController*>(i);
 			if (tempPtr->canControl())
 			{
 				tempPtr->timeElapsed(delta);
@@ -117,11 +109,10 @@ namespace LevelUp
 	{
 		MouseController* tempPtr;
         //run through the map and activate all the controllers
-		typedef std::map<std::string, Controller* > ::iterator it_type;
-		std::map < std::string, Controller* > mouseController = m_controllers[controllerType::TIMERCONTROLLER];
-		for (it_type iterator = mouseController.begin(); iterator != mouseController.end(); iterator++)
+		std::vector<Controller*> mouseController = m_controllers[controllerType::TIMERCONTROLLER];
+		for (auto i : mouseController)
 		{
-			tempPtr = (MouseController*)(iterator->second);
+			tempPtr = (MouseController*)(i);
 			if (tempPtr->canControl())
 			{
 				tempPtr->mouseMove(pos);
@@ -132,12 +123,11 @@ namespace LevelUp
 	void MVCContainer::updateModels(double delta)
 	{
         //run through the models and update them
-		typedef std::map<std::string, Model* > ::iterator it_type;
-		for (it_type iterator = m_models.begin(); iterator != m_models.end(); iterator++)
+		for (auto i : m_models)
 		{
-			if (iterator->second->canUpdate())
+			if (i->canUpdate())
 			{
-				iterator->second->update(delta);
+				i->update(delta);
 			}
 		}
 	}
@@ -145,29 +135,29 @@ namespace LevelUp
 	void MVCContainer::renderViewsWithCamera()
 	{
         //render all the cameras
-		typedef std::map<std::string, Camera* > ::iterator it_type;
-		for (it_type iterator = m_cameras.begin(); iterator != m_cameras.end(); iterator++)
+		for (auto i : m_cameras)
 		{
-			if (iterator->second->canView())
+			if (i->canView())
 			{
-				iterator->second->render();
+				i->render();
 			}
 		}
 	}
     void MVCContainer::removeFromControllerMap(Controller* c)
     {
-        m_controllers[c->getType()].erase(c->ControllerID());
+		std::vector<Controller*> controllers = m_controllers[c->getType()];
+        controllers.erase(std::find(controllers.begin(), controllers.end(), c));
     }
     void MVCContainer::removeFromModelMap(Model* m)
     {
-        m_models.erase(m->ModelID());
+        m_models.erase(std::find(m_models.begin(), m_models.end(), m));
     }
     void MVCContainer::removeFromViewMap(View* v)
     {
-        m_views.erase(v->viewID());
+        m_views.erase(std::find(m_views.begin(), m_views.end(), v));
     }
     void MVCContainer::removeFromCameraMap(Camera* c)
     {
-        m_cameras.erase(c->CameraID());
+        m_cameras.erase(std::find(m_cameras.begin(), m_cameras.end(), c));
     }
 }

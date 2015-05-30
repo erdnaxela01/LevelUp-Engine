@@ -16,14 +16,14 @@ namespace LevelUp
 		Component();
 		virtual ~Component();
         //checks the type
-		bool isType(std::string s);
+		bool isType(std::string s) const;
         //checks the entity component system type
-		virtual bool isECSType(ECSType t);
+		virtual bool isECSType(ECSType t) const;
         //can be deactivated
-		bool isActivated();
+		bool isActivated() const;
         //set the activation of the component
 		void setIsActivated(bool b);
-        std::string componentID();
+        std::string componentID() const;
     protected:
         //get the tyoe of component and if its activated
         std::string m_type;

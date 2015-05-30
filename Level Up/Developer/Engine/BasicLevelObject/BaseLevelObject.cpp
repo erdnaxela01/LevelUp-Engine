@@ -3,7 +3,7 @@
 
 namespace LevelUp
 {
-	BaseLevelObject::BaseLevelObject()
+	BaseLevelObject::BaseLevelObject() :Entity(), Agent()
 	{
 
 	}

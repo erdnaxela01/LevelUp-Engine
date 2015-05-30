@@ -50,7 +50,7 @@ namespace LevelUp
             getEngine()->removeController(this);
         }
     }
-	std::string MouseController::mouseControllerID()
+	std::string MouseController::mouseControllerID() const
 	{
 		return m_ID;
 	}

@@ -1,12 +1,24 @@
 #include "AnimatedSprite.h"
-
+#include "../Services/ServiceLocator.h"
 namespace LevelUp
 {
 	AnimatedSprite::AnimatedSprite(std::wstring fileName, float widthOfFrame, float heightOfFrame, bool dds) :m_currentAnimation(nullptr), m_isPlaying(false), Sprite(dds)
 	{
 		//initialize the sprite
 		initialize(fileName);
+		if (widthOfFrame == 0.0f)
+		{
+			widthOfFrame = m_width;
+		}
+		if (heightOfFrame == 0.0f)
+		{
+			heightOfFrame = m_height;
+		}
 		setSpriteSheet(widthOfFrame, heightOfFrame);
+
+		VertexPos* vertices = getUnalteredVertices(m_width, m_height);
+		setVertexBuffer(vertices);
+		delete[] vertices;
 	}
 	AnimatedSprite::~AnimatedSprite()
 	{
@@ -24,7 +36,7 @@ namespace LevelUp
 		//if there are too many frames throw
 		if (frames.size() * m_frameSpecs.x > m_width)
 		{
-			throw (std::runtime_error("Too many frames in animated sprite"));
+			throw std::runtime_error("Too many frames in animated sprite");
 		}
 		//set all the values
 		m_animations[animationName].frames = frames;
@@ -50,8 +62,6 @@ namespace LevelUp
 			return;
 		}
 
-		//update the timer
-		m_time.update(delta);
 
 		//if the timer is done
 		if (m_time.isItDone())
@@ -82,6 +92,7 @@ namespace LevelUp
 
 	bool AnimatedSprite::setVertices(float halfWidth, float halfHeight, float positionX, float positionY)
 	{
+		ID3D11DeviceContext* context = ServiceLocator::getRenderService()->getContext();
 		//set the vertices
 		float percentageX = (halfWidth * 2) / m_width;
 		float percentageY = (halfHeight * 2) / m_height;
@@ -96,10 +107,38 @@ namespace LevelUp
 			{ LVLfloat3(-halfWidth, halfHeight, 1.0f), LVLfloat2(positionX, 0.0f) },
 			{ LVLfloat3(halfWidth, halfHeight, 1.0f), LVLfloat2(positionX + percentageX, 0.0f) }
 		};
+		D3D11_MAPPED_SUBRESOURCE mappedResource;
+		VertexPos* p;
 
-		bool result = setVertexBuffer(vertices);
-		if (!result)
+		context->Map(m_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
+
+		p = (VertexPos*)mappedResource.pData;
+
+		memcpy(p, (void*)vertices, (sizeof(VertexPos) * 6));
+		context->Unmap(m_vertexBuffer, 0);
+
+		return true;
+	}
+	bool AnimatedSprite::setVertexBuffer(VertexPos vertices[])
+	{
+		//create the vertex description
+		D3D11_BUFFER_DESC vertexDesc;
+		SecureZeroMemory(&vertexDesc, sizeof(vertexDesc));
+		vertexDesc.Usage = D3D11_USAGE_DYNAMIC;
+		vertexDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+		vertexDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+		vertexDesc.ByteWidth = sizeof(VertexPos) * 6;
+		//set the ressource data
+		D3D11_SUBRESOURCE_DATA resourceData;
+		SecureZeroMemory(&resourceData, sizeof(resourceData));
+		resourceData.pSysMem = vertices;
+		HRESULT d3dResult;
+		//create the constant buffer
+		d3dResult = ServiceLocator::getRenderService()->getDevice()->CreateBuffer(&vertexDesc, &resourceData, &m_vertexBuffer);
+
+		if (FAILED(d3dResult))
 		{
+			MessageBox(0, L"Failed to create vertex buffer!", L"Error creating vertex buffer", MB_OK);
 			return false;
 		}
 		return true;

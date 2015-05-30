@@ -20,7 +20,7 @@ namespace LevelUp
 		virtual ~Controller();
 		//gets the controller's ID
 		//use classType:: to remove ambiguouty
-		virtual std::string ControllerID();
+		virtual std::string ControllerID() const;
 		//stops the controller from updating
 		//use classType:: to remove ambiguouty
 		virtual void stopControl();
@@ -29,10 +29,10 @@ namespace LevelUp
 		virtual void startControl();
 
 		//use classType:: to remove ambiguouty
-		virtual bool canControl();
+		virtual bool canControl() const;
 
         //get what kind of controller it is
-		virtual controllerType getType();
+		virtual controllerType getType() const;
 
         //add it to the map of controllers
 		virtual void addToMap() = 0;

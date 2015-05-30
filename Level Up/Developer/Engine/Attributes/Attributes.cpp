@@ -22,7 +22,7 @@ namespace LevelUp
 		return m_type == t;
 	}
 
-	BaseLevelObject* Attribute::getParent()
+	BaseLevelObject* Attribute::getParent() const
 	{
 		return m_parent;
 	}

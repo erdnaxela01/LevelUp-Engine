@@ -28,7 +28,7 @@ namespace LevelUp
         for (auto i : m_handlers)
         {
             //send a notification to all your handlers
-            dynamic_cast<EventHandler*>(i)->handleEvent(e);
+            (i)->handleEvent(e);
         }
     }
 }

@@ -28,21 +28,21 @@ namespace LevelUp
 		//plays the audio at a specific location
 		virtual void setPlayingOffset(float seconds) = 0;
 		//get the volume
-		virtual float getVolume() = 0;
+		virtual float getVolume() const = 0;
 		//get the pitch
-		virtual float getPitch() = 0;
+		virtual float getPitch() const = 0;
 		//get the playing offset in seconds
-		virtual float getPlayingOffset() = 0;
+		virtual float getPlayingOffset() const = 0;
 		//check if it's playing
-		virtual bool isPlaying() = 0;
+		virtual bool isPlaying() const = 0;
 		//check if its stopped
-		virtual bool isStopped() = 0;
+		virtual bool isStopped() const = 0;
 		//check if its paused
-		virtual bool isPaused() = 0;
+		virtual bool isPaused() const = 0;
 		//set if the audio loops
 		virtual void setLoop(bool loop) = 0;
 		//get if the audio loops
-		virtual bool getLoop() = 0;
+		virtual bool getLoop() const = 0;
 	protected:
 		std::string m_fileName;
 	};

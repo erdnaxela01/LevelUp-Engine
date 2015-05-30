@@ -26,7 +26,7 @@ namespace LevelUp
         //set the scene to this scene
 		void resetTo(std::string s);
 		SceneManager();
-		~SceneManager();
+		virtual ~SceneManager();
 	private:
 		Scene* m_activeScene;
 		std::stack<Scene*> m_activeScenes;

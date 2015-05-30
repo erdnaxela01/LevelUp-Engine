@@ -35,27 +35,27 @@ namespace LevelUp
 	{
 		m_music.setPlayingOffset(sf::seconds(seconds));
 	}
-	float Music::getVolume()
+	float Music::getVolume() const
 	{
 		return m_music.getVolume();
 	}
-	float Music::getPitch()
+	float Music::getPitch() const
 	{
 		return m_music.getPitch();
 	}
-	float Music::getPlayingOffset()
+	float Music::getPlayingOffset() const
 	{
 		return m_music.getPlayingOffset().asSeconds();
 	}
-	bool Music::isPlaying()
+	bool Music::isPlaying() const
 	{
 		return m_music.getStatus() == m_music.Playing;
 	}
-	bool Music::isPaused()
+	bool Music::isPaused() const
 	{
 		return m_music.getStatus() == m_music.Paused;
 	}
-	bool Music::isStopped()
+	bool Music::isStopped() const
 	{
 		return m_music.getStatus() == m_music.Stopped;
 	}
@@ -63,7 +63,7 @@ namespace LevelUp
 	{
 		m_music.setLoop(loop);
 	}
-	bool Music::getLoop()
+	bool Music::getLoop() const
 	{
 		return m_music.getLoop();
 	}

@@ -17,6 +17,10 @@ namespace LevelUp
         //and have them do nothing in the future. Thought of void pointers but thats a bad idea
 
         //FIXED IT
+
+		MathAdapter() {};
+		virtual ~MathAdapter() {};
+
         //convert to a speicfic matrix
         virtual void get4x4Matrix(LVL4X4matrix& m, MatrixContainer* con) = 0;
         //convert to a lvl matrix

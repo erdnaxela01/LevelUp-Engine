@@ -55,7 +55,7 @@ namespace LevelUp
             getEngine()->removeController(this);
         }
     }
-	std::string KeyController::keyControllerID()
+	std::string KeyController::keyControllerID() const
 	{
 		return m_ID;
 	}

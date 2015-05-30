@@ -3,6 +3,7 @@
 
 #include <map>
 #include <string>
+#include <vector>
 #include <DirectXMath.h>
 #include "Controller.h"
 #include "../../Services/Math/LevelUpMath.h"
@@ -22,13 +23,13 @@ namespace LevelUp
 	{
 	public:
 		MVCContainer();
-		~MVCContainer();
+		virtual ~MVCContainer();
         //get all the controllers
-		std::map<controllerType, std::map<std::string, Controller*>> getControllerMap();
+		std::map<controllerType, std::vector<Controller*>> getControllers() const;
         //get all the models
-		std::map<std::string, Model*> getModelMap();
+		std::vector<Model*> getModels() const;
         //get all the views
-		std::map<std::string, View*> getViewMap();
+		std::vector<View*> getViews() const;
 
         //add a controller to the map
 		void addToControllerMap(Controller* controller);
@@ -67,10 +68,10 @@ namespace LevelUp
 
 
 	private:
-		std::map<controllerType, std::map<std::string, Controller*>> m_controllers;
-		std::map<std::string, Model*> m_models;
-		std::map<std::string, View*> m_views;
-		std::map<std::string, Camera*> m_cameras;
+		std::map<controllerType, std::vector<Controller*>> m_controllers;
+		std::vector<Model*> m_models;
+		std::vector<View*> m_views;
+		std::vector<Camera*> m_cameras;
 
 	};
 }

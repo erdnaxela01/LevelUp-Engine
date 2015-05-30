@@ -25,7 +25,7 @@ namespace LevelUp
         m_time = startTime;
         m_startTime = startTime;
     }
-    bool CountDown::isItDone()
+    bool CountDown::isItDone() const
     {
         //if the time is under or equal to 0.0 the countdown is done
         if (m_time <= 0.0)
@@ -39,11 +39,11 @@ namespace LevelUp
         //stop the countdown
         m_time = 0.0;
     }
-    double CountDown::getTime()
+    double CountDown::getTime() const
     {
         return m_time;
     }
-    double CountDown::getStartTime()
+    double CountDown::getStartTime() const
     {
         return m_startTime;
     }

@@ -49,7 +49,8 @@ namespace LevelUp
         KEY_TAB,
         KEY_LSHIFT,
         KEY_RSHIFT,
-        KEY_ENTER
+        KEY_ENTER,
+		KEY_SPACE
     };
 
 #ifdef WIN32

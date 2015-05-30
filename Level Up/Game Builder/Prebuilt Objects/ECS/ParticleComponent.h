@@ -18,7 +18,7 @@ namespace LevelUp
     {
     public:
         ParticleComponent(unsigned int size = 0, LVLfloat3 color = LVLfloat3(0.25f, 0.75f, 0.30f));
-        ~ParticleComponent();
+        virtual ~ParticleComponent();
         void activate(double lifespan = 2.0, double frequency = 0.1, float minAngle = 0.0f, float maxAngle = 360.0f, float minSpeed = 10.0f, float maxSpeed = 300.0f);
         void deactivate();
         void setPosition(LVLfloat2 pos);

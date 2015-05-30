@@ -4,16 +4,28 @@
 
 namespace LevelUp
 {
-	BaseMVCObject::BaseMVCObject() : m_model(nullptr), m_view(nullptr), m_controller(nullptr)
+	BaseMVCObject::BaseMVCObject() : m_model(nullptr), m_view(nullptr), m_controller(nullptr), BaseLevelObject()
 	{
 
 	}
 	BaseMVCObject::~BaseMVCObject()
 	{
 		//deletes all the objects
-		SafeDelete(m_controller);
-		SafeDelete(m_model);
-		SafeDelete(m_view);
+		if (m_controller != nullptr)
+		{
+			delete m_controller;
+			m_controller = nullptr;
+		}
+		if (m_model != nullptr)
+		{
+			delete m_model;
+			m_model = nullptr;
+		}
+		if (m_view != nullptr)
+		{
+			delete m_view;
+			m_view = nullptr;
+		}
 	}
 	Model* BaseMVCObject::getModel()
 	{
@@ -57,13 +69,22 @@ namespace LevelUp
 		m_view->setX(pos.x);
 		m_view->setY(pos.y);
 	}
-	LVLfloat2 BaseMVCObject::getPosition()
+	LVLfloat2 BaseMVCObject::getPosition() const
 	{
 		//set the position to the game objet if it changed and return the position
 		LVLfloat2 pos;
 		pos.x = m_view->getX();
 		pos.y = m_view->getY();
 		return pos;
+	}
+	float BaseMVCObject::getZ() const
+	{
+		return m_view->getZ();
+	}
+
+	void BaseMVCObject::setZ(float z)
+	{
+		m_view->setZ(z);
 	}
 
 }

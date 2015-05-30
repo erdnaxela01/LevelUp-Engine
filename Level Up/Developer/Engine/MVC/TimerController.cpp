@@ -54,7 +54,7 @@ namespace LevelUp
             getEngine()->removeController(this);
         }
     }
-	std::string TimerController::TimerControllerID()
+	std::string TimerController::TimerControllerID() const
 	{
 		return m_ID;
 	}

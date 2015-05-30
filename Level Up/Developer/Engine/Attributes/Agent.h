@@ -19,9 +19,9 @@ namespace LevelUp
 		Agent();
 		virtual ~Agent();
 		//get all the attributes of a specified type
-		std::vector<Attribute*> getAttributesOfType(std::string type);
+		std::vector<Attribute*> getAttributesOfType(std::string type) const;
 		//get a specific attribute
-		Attribute* getAttribute(std::string ID);
+		Attribute* getAttribute(std::string ID) const;
 		//remove a specific attribute
 		void removeAttribute(std::string ID);
 		//remove all the attributes of a specified type

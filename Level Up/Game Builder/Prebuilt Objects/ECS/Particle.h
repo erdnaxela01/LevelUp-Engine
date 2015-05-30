@@ -31,13 +31,13 @@ namespace LevelUp
         void activate();
         void deActivate();
 
-        float getX();
+        float getX() const;
         //get the y
-        float getY();
+        float getY() const;
         //get the height
-        float getH();
+        float getH() const;
         //get the width
-        float getW();
+        float getW() const;
         void setX(float x);
         //set the y
         void setY(float y);
@@ -50,7 +50,6 @@ namespace LevelUp
         float m_speed;
         Rectangle* m_rect;
         bool m_isActivated;
-        void render(float x, float y);
 
     };
 }

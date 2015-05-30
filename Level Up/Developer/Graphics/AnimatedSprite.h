@@ -11,7 +11,7 @@
 namespace LevelUp
 {
 	/*
-	Animated sprite to animate a sprite
+	Animated sprite to animate a sprite use with game object to work with camera
 	Alex Sabourin May 2015
 	*/
 	struct AnimationVals
@@ -27,7 +27,7 @@ namespace LevelUp
 	{
 	public:
 		//give the sprite fileName, the frame specs
-		AnimatedSprite(std::wstring fileName,float widthOfFrame, float heightOfFrame, bool dds = false);
+		AnimatedSprite(std::wstring fileName,float widthOfFrame = 0.0f, float heightOfFrame = 0.0f, bool dds = false);
 		virtual ~AnimatedSprite();
 		//set the sprite sheet values
 		void setSpriteSheet(float widthOfFrames, float heightOfFrames);
@@ -37,6 +37,8 @@ namespace LevelUp
 		void play(std::string animation, bool looped = false);
 
 		friend MVCContainer;
+	protected:
+		bool setVertexBuffer(VertexPos vertices[]);
 	private:
 		//struct to hold animations
 		struct AnimationValues

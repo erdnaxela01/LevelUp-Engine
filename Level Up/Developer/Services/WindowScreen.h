@@ -12,6 +12,8 @@ namespace LevelUp
 	class WindowScreen : public ScreenSize
 	{
 	public:
+		WindowScreen() {};
+		virtual ~WindowScreen() {};
 		//gets the size of the screen
 		WindowScreen(HWND windowHandle);
         //get the screen size

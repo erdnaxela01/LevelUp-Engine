@@ -14,7 +14,7 @@ namespace LevelUp
         //check the time elapsed of the controller
 		virtual void timeElapsed(double delta) = 0;
         //get the controller's ID
-		std::string TimerControllerID();
+		std::string TimerControllerID() const;
 
 	protected:
 		double m_elapsed;

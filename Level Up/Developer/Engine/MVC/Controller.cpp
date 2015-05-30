@@ -12,7 +12,7 @@ namespace LevelUp
 	{
 	}
 
-	std::string Controller::ControllerID()
+	std::string Controller::ControllerID() const
 	{
 		return m_ID;
 	}
@@ -26,12 +26,12 @@ namespace LevelUp
 		m_canControl = true;
 	}
 
-	controllerType Controller::getType()
+	controllerType Controller::getType() const
 	{
 		return m_type;
 	}
 
-	bool Controller::canControl()
+	bool Controller::canControl() const
 	{
 		return m_canControl;
 	}

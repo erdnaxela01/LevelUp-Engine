@@ -12,16 +12,16 @@ namespace LevelUp
 	Component::~Component()
 	{
 	}
-	bool Component::isType(std::string s)
+	bool Component::isType(std::string s) const
 	{
 		return (s == m_type);
 	}
-	bool Component::isECSType(ECSType t)
+	bool Component::isECSType(ECSType t) const
 	{
         //it is a component
 		return ECSType::ECSTYPE_COMPONENT == t;
 	}
-	bool Component::isActivated()
+	bool Component::isActivated() const
 	{
 		return m_isActivated;
 	}

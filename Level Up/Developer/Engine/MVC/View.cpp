@@ -24,7 +24,7 @@ namespace LevelUp
 		m_canView = b;
 	}
 
-	std::string View::viewID()
+	std::string View::viewID() const
 	{
 		return m_ID;
 	}
@@ -62,12 +62,12 @@ namespace LevelUp
         }
     }
 
-	bool View::canView()
+	bool View::canView() const
 	{
 		return m_canView;
 	}
 
-	bool View::usesCameraVector()
+	bool View::usesCameraVector() const
 	{
 		return m_useCameraVector;
 	}
@@ -85,7 +85,7 @@ namespace LevelUp
 		m_useCameraVector = b;
 	}
 
-	bool View::isPartOfCameraVector(std::string cameraID)
+	bool View::isPartOfCameraVector(std::string cameraID) const
 	{
         //if the camera is part of the vector return true
 		if (m_useCameraVector == false)
@@ -101,7 +101,7 @@ namespace LevelUp
 		}
 		return false;
 	}
-	float View::getZ()
+	float View::getZ() const
 	{
 		return m_z;
 	}

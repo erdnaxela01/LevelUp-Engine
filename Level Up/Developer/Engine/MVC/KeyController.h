@@ -21,7 +21,7 @@ namespace LevelUp
 		//must be overriden for stuff just pressed
 		virtual void justPressed(LevelUpKeys key) = 0;
         //get the controllers id
-		std::string keyControllerID();
+		std::string keyControllerID() const;
 	protected:
         //add it to the map of controllers
 		virtual void addToMap();

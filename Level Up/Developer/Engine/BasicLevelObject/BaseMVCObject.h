@@ -30,7 +30,10 @@ namespace LevelUp
 		//set the position of the object
 		void setPosition(LVLfloat2 pos);
 		//return the objects position
-		LVLfloat2 getPosition();
+		LVLfloat2 getPosition() const;
+
+		float getZ() const;
+		void setZ(float z);
 	private:
 		//MVC components
 		Model* m_model;

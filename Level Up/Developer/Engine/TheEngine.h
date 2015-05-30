@@ -11,6 +11,7 @@
 #include "../Services/Math/MathAdapters/DirectXMathAdapter.h"
 #include "../../Game Builder/Scene Builder/Playground.h"
 #include "ECS\SystemContainer.h"
+#include <memory>
 
 namespace LevelUp
 {
@@ -97,6 +98,8 @@ namespace LevelUp
 		//get the mouse position
 		LVLfloat2 getMousePos();
 
+		~TheEngine();
+
 	private:
 		struct ControllerVals
 		{
@@ -123,7 +126,8 @@ namespace LevelUp
         //initialize the window
 		bool initializeWindow(HINSTANCE hInstance);
 
-        
+		EventDispatcher m_dispatcher;
+
 		MVCContainer m_container;
 		RenderEngine m_render;
 		SceneManager m_scenes;
@@ -147,7 +151,6 @@ namespace LevelUp
 		const int WINDOW_HEIGHT = 600;
 
 
-        EventDispatcher m_dispatcher;
 
         bool provideServices(HINSTANCE h);
 
@@ -156,7 +159,6 @@ namespace LevelUp
 		TheEngine(TheEngine& e) {};
 		TheEngine& operator= (TheEngine& rhs) { return rhs; }
 
-		bool m_canUpdate;
 
 	};
 

@@ -258,6 +258,24 @@
     <Filter Include="Developer\File Streams\Source">
       <UniqueIdentifier>{5174274a-d1d5-4c0d-9b28-b4d01e6cdd94}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Developer\Graphics\Headers\Shaders">
+      <UniqueIdentifier>{c4364343-049e-42df-aab6-220b6392f342}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Graphics\Source\Shaders">
+      <UniqueIdentifier>{73a3d67b-371c-40c2-9ca5-c9833eb5d346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Graphics\Headers\Primitives">
+      <UniqueIdentifier>{08351785-5eef-4cb5-a6d3-445e6d653d61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Graphics\Source\Primitives">
+      <UniqueIdentifier>{a1a1da44-eef2-440d-9043-f1ad2feeec86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Graphics\Source\Sprites">
+      <UniqueIdentifier>{157827e5-5da5-4d72-ad88-d01283fc4a60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Graphics\Headers\Sprites">
+      <UniqueIdentifier>{f3b805c6-7515-4f6d-85d6-d3407ff69ac7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -282,9 +300,6 @@
       <Filter>Developer\Core\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Developer\Core\stdafx.cpp">
-      <Filter>Developer\Core\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Developer\Core\TheGameBase.cpp">
       <Filter>Developer\Core\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Developer\Engine\BasicLevelObject\BaseLevelObject.cpp">
@@ -347,12 +362,6 @@
     <ClCompile Include="..\Developer\Enums\Keys.cpp">
       <Filter>Developer\Enums</Filter>
     </ClCompile>
-    <ClCompile Include="..\Developer\Graphics\Rectangle.cpp">
-      <Filter>Developer\Graphics\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Developer\Graphics\Sprite.cpp">
-      <Filter>Developer\Graphics\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\Developer\Services\WindowScreen.cpp">
       <Filter>Developer\Services</Filter>
     </ClCompile>
@@ -410,9 +419,6 @@
     <ClCompile Include="..\Game Builder\Prebuilt Objects\Attributes\CollisionAttribute.cpp">
       <Filter>Game Builder\Prebuilt Objects\Attributes\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="..\Developer\Graphics\AnimatedSprite.cpp">
-      <Filter>Developer\Graphics\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\Game Builder\Prebuilt Objects\MVC\MovementKeyController.cpp">
       <Filter>Game Builder\Prebuilt Objects\MVC</Filter>
     </ClCompile>
@@ -446,6 +452,33 @@
     <ClCompile Include="..\Developer\File Streams\OTextFileStream.cpp">
       <Filter>Developer\File Streams\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\Developer\Graphics\RenderObject.cpp">
+      <Filter>Developer\Graphics\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Graphics\VertexShader.cpp">
+      <Filter>Developer\Graphics\Source\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Graphics\PixelShader.cpp">
+      <Filter>Developer\Graphics\Source\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Graphics\Rectangle.cpp">
+      <Filter>Developer\Graphics\Source\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Graphics\Shape.cpp">
+      <Filter>Developer\Graphics\Source\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Graphics\AnimatedSprite.cpp">
+      <Filter>Developer\Graphics\Source\Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Graphics\Sprite.cpp">
+      <Filter>Developer\Graphics\Source\Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Engine\Command\CameraResizeCommand.cpp">
+      <Filter>Developer\Engine\Command\Concrete Classes\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Graphics\Circle.cpp">
+      <Filter>Developer\Graphics\Source\Primitives</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Game Builder\Scene Builder\Playground.h">
@@ -472,9 +505,6 @@
     <ClInclude Include="..\Developer\Core\stdafx.h">
       <Filter>Developer\Core\Header</Filter>
     </ClInclude>
-    <ClInclude Include="..\Developer\Core\TheGameBase.h">
-      <Filter>Developer\Core\Header</Filter>
-    </ClInclude>
     <ClInclude Include="..\Developer\Core\Viewport.h">
       <Filter>Developer\Core\Header</Filter>
     </ClInclude>
@@ -495,9 +525,6 @@
     </ClInclude>
     <ClInclude Include="..\Developer\Engine\ECS\Entity.h">
       <Filter>Developer\Engine\ECS\Headers\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Developer\Engine\ECS\System.h">
-      <Filter>Developer\Engine\ECS\Headers\System</Filter>
     </ClInclude>
     <ClInclude Include="..\Developer\Engine\EventHandler\Events.h">
       <Filter>Developer\Engine\EventHandler</Filter>
@@ -555,12 +582,6 @@
     </ClInclude>
     <ClInclude Include="..\Developer\Enums\Keys.h">
       <Filter>Developer\Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Developer\Graphics\Rectangle.h">
-      <Filter>Developer\Graphics\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Developer\Graphics\Sprite.h">
-      <Filter>Developer\Graphics\Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\Developer\Services\Renderer.h">
       <Filter>Developer\Services</Filter>
@@ -634,9 +655,6 @@
     <ClInclude Include="..\Game Builder\Prebuilt Objects\Attributes\CollisionAttribute.h">
       <Filter>Game Builder\Prebuilt Objects\Attributes\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="..\Developer\Graphics\AnimatedSprite.h">
-      <Filter>Developer\Graphics\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\Game Builder\Prebuilt Objects\MVC\MovementKeyController.h">
       <Filter>Game Builder\Prebuilt Objects\MVC</Filter>
     </ClInclude>
@@ -675,6 +693,36 @@
     </ClInclude>
     <ClInclude Include="..\Developer\File Streams\FileStreams.h">
       <Filter>Developer\File Streams</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Graphics\RenderObject.h">
+      <Filter>Developer\Graphics\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Engine\ECS\System.h">
+      <Filter>Developer\Engine\ECS\Headers\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Graphics\Shader.h">
+      <Filter>Developer\Graphics\Headers\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Graphics\VertexShader.h">
+      <Filter>Developer\Graphics\Headers\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Graphics\PixelShader.h">
+      <Filter>Developer\Graphics\Headers\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Graphics\Rectangle.h">
+      <Filter>Developer\Graphics\Headers\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Graphics\Shape.h">
+      <Filter>Developer\Graphics\Headers\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Graphics\AnimatedSprite.h">
+      <Filter>Developer\Graphics\Headers\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Graphics\Sprite.h">
+      <Filter>Developer\Graphics\Headers\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Graphics\Circle.h">
+      <Filter>Developer\Graphics\Headers\Primitives</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

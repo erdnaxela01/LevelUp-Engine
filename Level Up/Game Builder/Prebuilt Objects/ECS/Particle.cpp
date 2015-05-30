@@ -16,7 +16,12 @@ namespace LevelUp
     Particle::~Particle()
     {
         //delete the shape
-        SafeDelete(m_rect);
+		if (m_rect != nullptr)
+		{
+			delete m_rect;
+			m_rect = nullptr;
+		}
+
     }
     bool Particle::isActive()
     {
@@ -38,7 +43,6 @@ namespace LevelUp
             m_time.stop();
 			return;
         }
-		m_time.update(delta);
         LVLfloat2 velo = MathHelper::CalculateVelocity(m_angle, m_speed);
         //MathHelper::Translate(rect, velo, delta);
         LVLfloat2 position = m_rect->getPosition();
@@ -82,7 +86,7 @@ namespace LevelUp
         m_isActivated = true;
         m_speed = speed;
         m_angle = angle;
-        m_rect->setAngle(angle);
+        m_rect->rotate(angle);
         m_rect->setPosition(pos.x, pos.y);
         m_alpha = 1.0f;
     }
@@ -96,35 +100,23 @@ namespace LevelUp
     {
         m_canFade = b;
     }
-    void Particle::render(float x, float y)
-    {
-		if (m_isActivated)
-		{
-			LVLfloat2 pastPos;
-			pastPos.x = getX();
-			pastPos.y = getY();
-			setPosition(LVLfloat2(x, y));
-			m_rect->render();
-			setPosition(pastPos);
-		}
-    }
-    float Particle::getX()
+    float Particle::getX() const
     {
         return m_rect->getPosition().x;
     }
     //get the y
-    float Particle::getY()
+    float Particle::getY() const
     {
         return m_rect->getPosition().y;
     }
     //get the height
-    float Particle::getH()
+    float Particle::getH() const
     {
 
         return m_rect->getHeight();
     }
     //get the width
-    float Particle::getW()
+    float Particle::getW() const
     {
         return m_rect->getWidth();
 

@@ -3,10 +3,11 @@
 
 #include <string>
 #include "../MVC/MVCContainer.h"
+#include "../../UI/Cameras/Camera.h"
+#include <memory>
 
 namespace LevelUp
 {
-	class Camera;
 	class Model;
 	class View;
 	class Controller;
@@ -21,7 +22,7 @@ namespace LevelUp
 		Scene(std::string sceneID);
 		virtual ~Scene();
         //get the model view controller container
-		MVCContainer* getContainer();
+		MVCContainer* getContainer() const;
         //load the scenes content
 		virtual bool loadContent() = 0;
         //unload the scenes content
@@ -31,7 +32,7 @@ namespace LevelUp
         //render the scene
 		virtual void render() = 0;
         //get this scenes ID
-		std::string sceneID();
+		std::string sceneID() const;
 
         // adds the controller
 		void addController(Controller* c);

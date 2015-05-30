@@ -95,7 +95,17 @@ namespace LevelUp
             getEngine()->removeCamera(this);
         }
         //delete the viewport
-        SafeDelete(m_viewport);
+		if (m_viewport != nullptr)
+		{
+			delete m_viewport;
+			m_viewport = nullptr;
+		}
+
+		if (m_command != nullptr)
+		{
+			delete m_command;
+			m_command = nullptr;
+		}
 	}
 	std::string Camera::CameraID()
 	{
@@ -120,25 +130,14 @@ namespace LevelUp
         //get a sorted views for z sorting
         std::vector<View*> sortedViews;
 
-        std::map<std::string, View*> views;
         //if there is no parent scene get the engines view map else get the scene
         if (m_parentScene == "")
         {
-            views = getEngine()->getContainer()->getViewMap();
+            sortedViews = getEngine()->getContainer()->getViews();
         }
         else
         {
-            views = getEngine()->getSceneManager()->getScene(m_parentScene)->getContainer()->getViewMap();
-        }
-        //iterate through the map and get all the views that can be seen
-        typedef std::map<std::string, View* > ::iterator it_type;
-        for (it_type iterator = views.begin(); iterator != views.end(); iterator++)
-        {
-            View *v = iterator->second;
-            if (v->canView() && v->isPartOfCameraVector(m_ID))
-            {
-                sortedViews.push_back(v);
-            }
+            sortedViews = getEngine()->getSceneManager()->getScene(m_parentScene)->getContainer()->getViews();
         }
         //lambda function for sorting algorithm callback
         std::sort(sortedViews.begin(), sortedViews.end(), [](View* a, View* b)->bool{return a->getZ() < b->getZ(); });
@@ -147,7 +146,13 @@ namespace LevelUp
         {
             float x = (i->getX() - m_x);
             float y = (i->getY() - m_y);
-            i->render(x + m_screenPos.x, y);
+			float prevX = i->getX();
+			float prevY = i->getY();
+			i->setX(x);
+			i->setY(y);
+            i->render();
+			i->setX(prevX);
+			i->setY(prevY);
         }
     }
 
@@ -231,7 +236,7 @@ namespace LevelUp
             }
             else
             {
-                m_command->execute(this);
+                m_command->execute();
             }
             m_viewPortIsDirty = true;
         }

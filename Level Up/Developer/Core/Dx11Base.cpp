@@ -1,6 +1,7 @@
 
 #include "Dx11Base.h"
 #include "../Services/ServiceLocator.h"
+#include <objbase.h>
 namespace LevelUp
 {
     //set all the initial values of the direct x
@@ -8,7 +9,11 @@ namespace LevelUp
 		m_featureLevel(D3D_FEATURE_LEVEL_11_0),
 		m_swapChain(0), m_backBufferTarget(0)
 	{
-
+		HRESULT result = CoInitialize(NULL);
+		if (FAILED(result))
+		{
+			throw (std::runtime_error("could not co initialize"));
+		}
 		m_errorMessage = "";
 	}
 
@@ -159,5 +164,7 @@ namespace LevelUp
 		return loadContent();
 
 	}
+
+
 
 }

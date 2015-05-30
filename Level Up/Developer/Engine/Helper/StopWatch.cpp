@@ -20,7 +20,7 @@ namespace LevelUp
         //add time to the stopwatch
         m_currentTime += delta;
     }
-    double StopWatch::getTime()
+    double StopWatch::getTime() const
     {
         //get the current time
         return m_currentTime;

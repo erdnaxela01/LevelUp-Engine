@@ -15,14 +15,22 @@ namespace LevelUp
             for (it_type iterator = m_allScenes.begin(); iterator != m_allScenes.end(); iterator++)
             {
                 std::string id = iterator->second->sceneID();
-                SafeDelete(iterator->second);
+				if (iterator->second!= nullptr)
+				{
+					delete iterator->second;
+					iterator->second = nullptr;
+				}
                 m_allScenes.erase(id);
             }
         }
-        else
+		else if (m_allScenes.size() == 1)
         {
             std::string id = m_allScenes.begin()->second->sceneID();
-            SafeDelete(m_allScenes.begin()->second);
+			if (m_allScenes.begin()->second != nullptr)
+			{
+				delete m_allScenes.begin()->second;
+				m_allScenes.begin()->second = nullptr;
+			}
             m_allScenes.erase(id);
         }
 	}

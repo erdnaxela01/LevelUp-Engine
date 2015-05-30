@@ -13,7 +13,7 @@ namespace LevelUp
 	{
 	public:
 		ServiceLocator();
-		~ServiceLocator();
+		virtual ~ServiceLocator();
 
         //provide a render service
 		static void provideRenderService(Renderer* render);

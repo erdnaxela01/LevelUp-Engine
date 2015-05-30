@@ -13,7 +13,7 @@ namespace LevelUp
 	{
 	public:
 		Game();
-		~Game();
+		virtual ~Game();
 		void update(double delta);
 		void render();
 		bool loadContent();

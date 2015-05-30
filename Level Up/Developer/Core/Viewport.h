@@ -11,7 +11,8 @@ namespace LevelUp
     {
     public:
         //pure virtuals
-
+		Viewport() {};
+		virtual ~Viewport() {};
         //set the width of the viewport
         virtual void setWidth(float w) = 0;
 
@@ -24,16 +25,16 @@ namespace LevelUp
         virtual void setTopY(float y) = 0;
 
         //get the width of the viewport
-        virtual float getWidth() = 0;
+        virtual float getWidth() const = 0;
         
         //get the height of the view port
-        virtual float getHeight() = 0;
+        virtual float getHeight() const = 0;
 
         //get the onscreen x position of the viewport
-        virtual float getX() = 0;
+        virtual float getX() const = 0;
 
         //get the onscreen y position of the viewport
-        virtual float getY() = 0;
+        virtual float getY() const = 0;
 
         //set the screen to the current viewport
         virtual void setViewPort() = 0;

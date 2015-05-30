@@ -16,7 +16,7 @@ namespace LevelUp
 	{
         removeFromMap();
 	}
-	std::string Model::ModelID()
+	std::string Model::ModelID() const
 	{
 		return m_ID;
 	}
@@ -57,7 +57,7 @@ namespace LevelUp
         }
     }
 
-	bool Model::canUpdate()
+	bool Model::canUpdate() const
 	{
 		return m_canUpdate;
 	}

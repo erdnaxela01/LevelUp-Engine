@@ -8,7 +8,7 @@
 namespace LevelUp
 {
 
-	RenderEngine::RenderEngine()
+	RenderEngine::RenderEngine() : Renderer()
 	{
 	}
 
@@ -114,17 +114,17 @@ namespace LevelUp
 		unloadContent();
 	}
 
-	ID3D11Device* RenderEngine::getDevice()
+	ID3D11Device* RenderEngine::getDevice() const
 	{
 		return m_d3dDevice;
 	}
 
-	ID3D11DeviceContext* RenderEngine::getContext()
+	ID3D11DeviceContext* RenderEngine::getContext() const
 	{
 		return m_d3dContext;
 	}
 
-    LVL4X4matrix RenderEngine::getVPMatrix()
+    LVL4X4matrix RenderEngine::getVPMatrix() const
 	{
 		return m_vpMatrix;
 	}

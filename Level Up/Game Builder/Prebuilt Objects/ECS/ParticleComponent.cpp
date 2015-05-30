@@ -22,7 +22,11 @@ namespace LevelUp
     {
         for (auto i : m_particles)
         {
-            SafeDelete(i);
+			if (i != nullptr)
+			{
+				delete i;
+				i = nullptr;
+			}
         }
     }
 
@@ -69,10 +73,7 @@ namespace LevelUp
         {
             unsigned int num = MathHelper::RandomNumber(colors.size());
 
-            for (unsigned int i = 0; i < m_particles.size(); i++)
-            {
-                m_particles[i]->setColor(colors[num]);
-            }
+            m_particles[i]->setColor(colors[num]);
         }
     }
 

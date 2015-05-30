@@ -27,7 +27,7 @@ namespace LevelUp
 	}
 	void TrackingCamera::update(double delta)
 	{
-		if (m_trackingObject == nullptr)
+		if (m_trackingObject == nullptr || m_isTracking == false)
 		{
 			return;
 		}

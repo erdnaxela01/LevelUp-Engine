@@ -36,27 +36,27 @@ namespace LevelUp
 	{
 		m_sound.setPlayingOffset(sf::seconds(seconds));
 	}
-	float SoundEffect::getVolume()
+	float SoundEffect::getVolume() const
 	{
 		return m_sound.getVolume();
 	}
-	float SoundEffect::getPitch()
+	float SoundEffect::getPitch() const
 	{
 		return m_sound.getPitch();
 	}
-	float SoundEffect::getPlayingOffset()
+	float SoundEffect::getPlayingOffset() const
 	{
 		return m_sound.getPlayingOffset().asSeconds();
 	}
-	bool SoundEffect::isPlaying()
+	bool SoundEffect::isPlaying() const
 	{
 		return m_sound.getStatus() == m_sound.Playing;
 	}
-	bool SoundEffect::isPaused()
+	bool SoundEffect::isPaused() const
 	{
 		return m_sound.getStatus() == m_sound.Paused;
 	}
-	bool SoundEffect::isStopped()
+	bool SoundEffect::isStopped() const
 	{
 		return m_sound.getStatus() == m_sound.Stopped;
 	}
@@ -64,7 +64,7 @@ namespace LevelUp
 	{
 		m_sound.setLoop(loop);
 	}
-	bool SoundEffect::getLoop()
+	bool SoundEffect::getLoop() const
 	{
 		return m_sound.getLoop();
 	}

@@ -6,6 +6,8 @@ namespace LevelUp
     class Playground
     {
     public:
+		Playground() {};
+		virtual ~Playground() {};
         void SceneLayout();
         void SystemAdd();
     };

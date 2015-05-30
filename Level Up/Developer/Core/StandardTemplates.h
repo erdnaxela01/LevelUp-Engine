@@ -1,6 +1,5 @@
 #ifndef __STANDARD_TEMPLATES_H
 #define __STANDARD_TEMPLATES_H
-
 //safely delete raw pointers
 namespace LevelUp
 {

@@ -15,14 +15,14 @@ namespace LevelUp
 		GameSprite();
 		virtual ~GameSprite();
         //returns the world matrix
-		LVL4X4matrix GetWorldMatrix();
+		LVL4X4matrix GetWorldMatrix() const;
 
         //sets the rotation
 		void setRotation(float rotation);
         //sets the scale of the sprite
 		void setScale(LVLfloat2 &scale);
 
-		LVLfloat2 getPosition();
+		LVLfloat2 getPosition() const;
 
 		void setPosition(LVLfloat2 l);
 

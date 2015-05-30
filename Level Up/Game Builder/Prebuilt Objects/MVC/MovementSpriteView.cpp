@@ -8,7 +8,7 @@ namespace LevelUp
 {
 	MovementSpriteView::MovementSpriteView(std::wstring fName, MovementModel* mm, float z) : View(z)
 	{
-		m_sprite = new AnimatedSprite(fName, 16, 16);
+		m_sprite = new AnimatedSprite(fName);
         //initialize the sprite
 		m_movementModel = mm;
 		if (m_movementModel != nullptr)
@@ -39,7 +39,11 @@ namespace LevelUp
 	void MovementSpriteView::setSprite(std::wstring fName)
 	{
         //get a new sprite
-		SafeDelete(m_sprite);
+		if (m_sprite != nullptr)
+		{
+			delete m_sprite;
+			m_sprite = nullptr;
+		}
 		m_sprite = new AnimatedSprite(fName, 75 / 2, 99);
 		m_sprite->setSpriteSheet(75 / 2, 99);
 		m_sprite->addAnimation("animation", { 0, 1 }, 2, true);
@@ -49,7 +53,11 @@ namespace LevelUp
 	MovementSpriteView::~MovementSpriteView()
 	{
         //delete the sprite
-		SafeDelete(m_sprite);
+		if (m_sprite != nullptr)
+		{
+			delete m_sprite;
+			m_sprite = nullptr;
+		}
 	}
 	void MovementSpriteView::render()
 	{
@@ -64,7 +72,7 @@ namespace LevelUp
 		m_sprite->render();
 	}
 
-	float MovementSpriteView::getX()
+	float MovementSpriteView::getX() const
 	{
         //if thre is a movement model then get that x if not get the sprites x
 		if (m_movementModel != nullptr)
@@ -73,7 +81,7 @@ namespace LevelUp
 		}
 		return m_sprite->getPosition().x;
 	}
-	float MovementSpriteView::getY()
+	float MovementSpriteView::getY() const
 	{
         //if thre is a movement model then get that y if not get the sprites y
 		if (m_movementModel != nullptr)
@@ -82,24 +90,15 @@ namespace LevelUp
 		}
         return m_sprite->getPosition().y;
 	}
-	float MovementSpriteView::getH()
+	float MovementSpriteView::getH() const
 	{
         //get the sprites height
 		return m_sprite->getHeight();
 	}
-	float MovementSpriteView::getW()
+	float MovementSpriteView::getW() const
 	{
         //get the sprites width
 		return m_sprite->getWidth();
-	}
-
-	void MovementSpriteView::render(float x, float y)
-	{
-        //render the sprite at a specific positions
-        LVLfloat2 pastPos = m_sprite->getPosition();
-		m_sprite->setPosition(x, y);
-		render();
-		m_sprite->setPosition(pastPos.x, pastPos.y);
 	}
 
 	void MovementSpriteView::setScale(float x, float y)

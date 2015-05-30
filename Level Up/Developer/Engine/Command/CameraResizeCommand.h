@@ -13,8 +13,11 @@ namespace LevelUp
     class CameraResizeCommand :public Command
     {
     public:
-        virtual void execute(Camera* c) = 0;
-        virtual void initialize() {};
+		CameraResizeCommand(Camera* c);
+		virtual ~CameraResizeCommand() {};
+        virtual void execute() = 0;
+	private:
+		Camera* m_cam;
     };
 
 }

@@ -144,6 +144,9 @@ namespace LevelUp
         case VK_DOWN:
             return KEY_ARROW_DOWN;
             break;
+		case VK_SPACE:
+			return KEY_SPACE;
+			break;
 
         }
         return KEY_NULL;

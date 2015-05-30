@@ -19,7 +19,7 @@ namespace LevelUp
         //pass the mouse parameters as it moves
 		virtual void mouseMove(LVLfloat2 pos) = 0;
         //get the controller's id
-		std::string mouseControllerID();
+		std::string mouseControllerID() const;
 	protected:
 		virtual void addToMap();
         virtual void removeFromMap();

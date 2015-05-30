@@ -13,11 +13,15 @@ namespace LevelUp
 		//delete all the attributes
 		for (auto i : m_attributes)
 		{
-			SafeDelete(i);
+			if (i != nullptr)
+			{
+				delete i;
+				i = nullptr;
+			};
 		}
 	}
 
-	std::vector<Attribute*> Agent::getAttributesOfType(std::string type)
+	std::vector<Attribute*> Agent::getAttributesOfType(std::string type) const
 	{
 		//loop through all the attributes and push back all the attributes with a specified type
 		std::vector<Attribute*> attrib;
@@ -30,7 +34,7 @@ namespace LevelUp
 		}
 		return attrib;
 	}
-	Attribute* Agent::getAttribute(std::string ID)
+	Attribute* Agent::getAttribute(std::string ID) const
 	{
 		//llop through all the attributes and check if it has the specified ID
 		for (auto i : m_attributes)
@@ -49,7 +53,11 @@ namespace LevelUp
 		{
 			if (i->hasID(ID))
 			{
-				SafeDelete(i);
+				if (i != nullptr)
+				{
+					delete i;
+					i = nullptr;
+				}
 				m_attributes.erase(std::find(m_attributes.begin(), m_attributes.end(), i));
 			}
 		}
@@ -61,7 +69,11 @@ namespace LevelUp
 		{
 			if (i->isType(type))
 			{
-				SafeDelete(i);
+				if (i != nullptr)
+				{
+					delete i;
+					i = nullptr;
+				};
 				m_attributes.erase(std::find(m_attributes.begin(), m_attributes.end(), i));
 			}
 		}

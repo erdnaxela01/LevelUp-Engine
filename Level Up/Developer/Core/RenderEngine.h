@@ -30,11 +30,11 @@ namespace LevelUp
         void finishRender();
 
         //get the device
-		ID3D11Device* getDevice();
+		ID3D11Device* getDevice() const;
         //get the context
-		ID3D11DeviceContext* getContext();
+		ID3D11DeviceContext* getContext() const;
         //get matrices
-        LVL4X4matrix getVPMatrix();
+        LVL4X4matrix getVPMatrix() const;
         //set the view point matrix
         void setVPMatrix(const LVL4X4matrix &vp);
         //shutdown render engine - MUST be shutdown
@@ -47,7 +47,7 @@ namespace LevelUp
         DirectXViewport* produceViewport();
 
 		//set the screen to full screen
-		void setFullScreenMode(bool b);
+		inline void setFullScreenMode(bool b);
 		//resize buffer
 		void resizeBuffer(LVLfloat2 size);
 

@@ -24,22 +24,22 @@ namespace LevelUp
 		//set the location in the music to play
 		void setPlayingOffset(float seconds);
 		//get the volume of the music
-		float getVolume();
+		float getVolume() const;
 		//get the pitch of the music
-		float getPitch();
+		float getPitch() const;
 		//get the location in the music
-		float getPlayingOffset();
+		float getPlayingOffset() const;
 
 		//is it playing?
-		bool isPlaying();
+		bool isPlaying() const;
 		//is it paused?
-		bool isPaused();
+		bool isPaused() const;
 		//is it stopped?
-		bool isStopped();
+		bool isStopped() const;
 		//set if the music loops
 		void setLoop(bool loop);
 		//get if the music is looping
-		bool getLoop();
+		bool getLoop() const;
 	private:
 		sf::SoundBuffer m_buffer;
 		sf::Sound m_sound;

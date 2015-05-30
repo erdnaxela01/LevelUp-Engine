@@ -25,7 +25,11 @@ namespace LevelUp
         //set the position of the object
         virtual void setPosition(LVLfloat2 pos) = 0;
         //return the objects position
-        virtual LVLfloat2 getPosition() = 0;
+        virtual LVLfloat2 getPosition() const = 0;
+
+		virtual float getZ() const = 0;
+
+		virtual void setZ(float z) = 0;
 
 		//adds attributes to its vector of attributes base level object adds the attribute so it can set the parent as itself
 		void addAttribute(Attribute* a);

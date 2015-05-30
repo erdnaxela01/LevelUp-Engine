@@ -16,6 +16,8 @@ namespace LevelUp
     class System
     {
     public:
+		System() {};
+		virtual ~System() {};
         //add an entity to the vector
         void addEntity(Entity* e);
         //notify the system that someone has a new component check if he wants it
@@ -25,7 +27,7 @@ namespace LevelUp
         //remove an entity from the vecotr
         void removeEntity(Entity* e);
 
-        virtual bool isECSType(ECSType t);
+        virtual bool isECSType(ECSType t) const;
     protected:
         std::vector<Entity*> m_entities;
 

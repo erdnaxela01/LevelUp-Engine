@@ -95,6 +95,15 @@ namespace LevelUp
 	TheEngine::TheEngine()
 	{
 	}
+
+	TheEngine::~TheEngine()
+	{
+		if (m_screenSize != nullptr)
+		{
+			delete m_screenSize;
+			m_screenSize = nullptr;
+		}
+	}
 	bool TheEngine::initialize(HINSTANCE h, int showCmd)
 	{
 
@@ -127,7 +136,6 @@ namespace LevelUp
 
 		m_sleepTime = m_frameTime;
 
-		m_canUpdate = true;
 
         m_sceneBuilder.SystemAdd();
         m_sceneBuilder.SceneLayout();
@@ -150,18 +158,15 @@ namespace LevelUp
 	}
 	void TheEngine::update()
 	{
-		if (m_canUpdate)
-		{
-			//model view controller specific
-			m_container.timeElapsed(m_delta);
-			m_container.updateModels(m_delta);
+		//model view controller specific
+		m_container.timeElapsed(m_delta);
+		m_container.updateModels(m_delta);
 
-			Scene* s = m_scenes.getActiveScene();
-			if (s != nullptr)
-			{
-				s->getContainer()->updateModels(m_delta);
-				s->update(m_delta);
-			}
+		Scene* s = m_scenes.getActiveScene();
+		if (s != nullptr)
+		{
+			s->getContainer()->updateModels(m_delta);
+			s->update(m_delta);
 		}
 		controllers.resetKeys();
 	}
@@ -170,11 +175,14 @@ namespace LevelUp
 	{
 
 		m_render.shutdown();
-		SafeDelete(m_screenSize);
 
 
 		//this has to stay last
-		SafeDelete(m_theEngine);
+		if (m_theEngine != nullptr)
+		{
+			delete m_theEngine;
+			m_theEngine = nullptr;
+		}
 
 	}
 
@@ -204,7 +212,7 @@ namespace LevelUp
 		wc.cbWndExtra = 0; //teh extra bytes to be allocated after the window instance, system sets it to 0
 		wc.hInstance = hInstance; //a handle to the instance that contains the window's wndProc
 		wc.hCursor = LoadCursor(0, IDC_ARROW); // cursor to use for the class
-		wc.hbrBackground = CreateSolidBrush(0xFFFFFF); //used to determine the background's color, takes an HBRUSH
+		//wc.hbrBackground = CreateSolidBrush(0xFFFFFF); //used to determine the background's color, takes an HBRUSH
 
 		wc.lpszMenuName = 0; // specifies the ressource menu associated with the window class 
 		wc.lpszClassName = L"Level Up window"; //specifies the window class' name registered with RegisterClass or Register Class EX for findinge later
@@ -252,28 +260,15 @@ namespace LevelUp
 
 	void TheEngine::updateTimer()
 	{
-
-		if (PerformanceCounter::getCounter() * 0.001 >= m_nextTickCount)
+		double currentTickCount = PerformanceCounter::getCounter() * 0.001; // /1000.0;
+		double deltaTime = (currentTickCount - m_lastTickCount);
+		m_lastTickCount = currentTickCount;
+		m_nextTickCount = m_nextTickCount + m_frameTime;
+		if (deltaTime > 0.2)
 		{
-			m_canUpdate = true;
+			deltaTime = 0.2;
 		}
-		else
-		{
-			m_canUpdate = false;
-		}
-
-		if (m_canUpdate)
-		{
-			double currentTickCount = PerformanceCounter::getCounter() * 0.001; // /1000.0;
-			double deltaTime = (currentTickCount - m_lastTickCount);
-			m_lastTickCount = currentTickCount;
-			m_nextTickCount = m_nextTickCount + m_frameTime;
-			if (deltaTime > 0.2)
-			{
-				deltaTime = 0.2;
-			}
-			m_delta = deltaTime;
-		}
+		m_delta = deltaTime;
 
 		m_sleepTime = PerformanceCounter::getCounter() * 0.001 - m_nextTickCount;
 
@@ -384,7 +379,7 @@ namespace LevelUp
         bool result = true;
         ServiceLocator::provideMathAdapter(&m_adapter);
 
-        m_screenSize = new WindowScreen(m_windowHandle);
+        m_screenSize = (new WindowScreen(m_windowHandle));
         ServiceLocator::provideScreenSizeService(m_screenSize);
 
         result = m_render.initialize(h, m_windowHandle);

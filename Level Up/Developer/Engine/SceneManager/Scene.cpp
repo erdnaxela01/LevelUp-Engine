@@ -10,18 +10,26 @@ namespace LevelUp
 	{
 		m_mvc = new MVCContainer();
 		m_ID = sceneID;
-        m_initialCamera = new Camera(this);
+        m_initialCamera = (new Camera(this));
 	}
 	Scene::~Scene()
 	{
-		SafeDelete(m_initialCamera);
-		SafeDelete(m_mvc);
+		if (m_initialCamera != nullptr)
+		{
+			delete m_initialCamera;
+			m_initialCamera = nullptr;
+		}
+		if (m_mvc != nullptr)
+		{
+			delete m_mvc;
+			m_mvc = nullptr;
+		}
 	}
-	MVCContainer* Scene::getContainer()
+	MVCContainer* Scene::getContainer() const
 	{
 		return m_mvc;
 	}
-	std::string  Scene::sceneID()
+	std::string  Scene::sceneID() const
 	{
 		return m_ID;
 	}
@@ -62,8 +70,11 @@ namespace LevelUp
     }
     void Scene::removeInitialCamera()
     {
-        m_mvc->removeFromCameraMap(m_initialCamera);
-		SafeDelete(m_initialCamera);
+		if (m_initialCamera != nullptr)
+		{
+			delete m_initialCamera;
+			m_initialCamera = nullptr;
+		}
     }
 	Camera* Scene::getInitialCamera()
 	{

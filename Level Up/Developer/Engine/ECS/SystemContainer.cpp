@@ -9,7 +9,11 @@ namespace LevelUp
     {
         for (auto i : m_systems)
         {
-            SafeDelete(i);
+			if (i != nullptr)
+			{
+				delete i;
+				i = nullptr;
+			}
         }
     }
     void SystemContainer::removedComponent(Entity* e)

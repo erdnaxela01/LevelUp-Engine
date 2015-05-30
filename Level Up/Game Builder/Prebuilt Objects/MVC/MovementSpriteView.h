@@ -26,16 +26,16 @@ namespace LevelUp
         //render the sprite
         void render();
         //get the x
-		float getX();
+		float getX() const;
 
         //get the y
-		float getY();
+		float getY() const;
 
         //get the height
-		float getH();
+		float getH() const;
 
         //get the width
-		float getW();
+		float getW() const;
 
         //set the x
 		void setX(float x);
@@ -47,13 +47,9 @@ namespace LevelUp
 		void rotate(float angle);
         //set the scale of the sprite
 		void setScale(float x, float y);
-        //camera is a friend to be able to access the location render
-        friend Camera;
 	private:
 		AnimatedSprite* m_sprite;
 		MovementModel* m_movementModel;
-        //object must be able to get drawn somewhere else for the camera
-        void render(float x, float y);
 
 	};
 }

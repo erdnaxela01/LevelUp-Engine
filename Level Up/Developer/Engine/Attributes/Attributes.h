@@ -23,7 +23,7 @@ namespace LevelUp
 		//check the type of the attribute
 		bool isType(std::string t);
 		//get the parent of the attribute
-		BaseLevelObject* getParent();
+		BaseLevelObject* getParent() const;
 
 		bool hasID(std::string ID);
 

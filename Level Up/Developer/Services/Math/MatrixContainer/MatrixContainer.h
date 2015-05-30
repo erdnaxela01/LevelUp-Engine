@@ -11,6 +11,8 @@ namespace LevelUp
     class MatrixContainer
     {
     public:
+		MatrixContainer() {};
+		virtual ~MatrixContainer() {};
         //set a float at a specific location
         virtual void setFloatAt(int r, int c, LVLfloat f) = 0;
         //get the float at a specific location

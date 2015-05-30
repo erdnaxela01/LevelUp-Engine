@@ -2,9 +2,7 @@
 #include "../Developer/Engine/TheEngine.h"
 #include <Windows.h>
 
-
 using namespace std;
-
 
 
 int WINAPI WinMain(HINSTANCE hInstance, //is a handle to the current instance of the application
@@ -12,7 +10,6 @@ int WINAPI WinMain(HINSTANCE hInstance, //is a handle to the current instance of
 	PSTR cmdLine, // is the command line of the application except for the name
 	int showCmd) //controls how the window is show, it can be changed using a SW_ enum, is set at SW_SHOWNORMAL at begining of program
 {
-
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(cmdLine);
 

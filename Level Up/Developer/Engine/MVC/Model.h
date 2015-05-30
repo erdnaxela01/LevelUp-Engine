@@ -12,13 +12,13 @@ namespace LevelUp
 		Model();
 		virtual ~Model();
         //get the model's ID
-		std::string ModelID();
+		std::string ModelID() const;
         //can it update? you decide
 		void setCanUpdate(bool b);
         //must be overriden for the logic of the object
 		virtual void update(double delta) = 0;
         //check if it can update
-		bool canUpdate();
+		bool canUpdate() const;
 	protected:
 		virtual void addToMap();
         virtual void removeFromMap();

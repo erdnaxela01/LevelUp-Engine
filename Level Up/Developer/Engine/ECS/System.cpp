@@ -11,7 +11,7 @@ namespace LevelUp
         //using an algorithm rease the entity
         m_entities.erase(std::find(m_entities.begin(), m_entities.end(), e));
     }
-    bool System::isECSType(ECSType t)
+    bool System::isECSType(ECSType t) const
     {
         return ECSType::ECSTYPE_SYSTEM == t;
     }

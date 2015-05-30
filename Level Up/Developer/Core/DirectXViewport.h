@@ -17,6 +17,8 @@ namespace LevelUp
 
         //constructor
         DirectXViewport();
+
+		virtual ~DirectXViewport() {};
         //set the width of the viewport
         void setWidth(float w);
         //set the height of the viewport
@@ -27,13 +29,13 @@ namespace LevelUp
         void setTopY(float y);
 
         //return the width of the viewport
-        float getWidth();
+        float getWidth() const;
         //return the heigh of the viewport
-        float getHeight();
+        float getHeight() const;
         //get the viewports x position on the screen
-        float getX();
+        float getX() const;
         //get the viewports y position on the screenm
-        float getY();
+        float getY() const;
 
 
         //set the views current viewports

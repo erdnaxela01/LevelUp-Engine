@@ -15,6 +15,8 @@ namespace LevelUp
     class DirectXMathAdapter : public MathAdapter
     {
     public:
+		DirectXMathAdapter() {};
+		virtual ~DirectXMathAdapter() {};
         //convert the LVL matrix to a specific matrix
         void get4x4Matrix(LVL4X4matrix& m, MatrixContainer* con);
         //convert the specifc matrix to a level matrix

@@ -3,7 +3,7 @@
 
 namespace LevelUp
 {
-    DirectXViewport::DirectXViewport()
+	DirectXViewport::DirectXViewport() : Viewport()
     {
         //create the directX viewport with all the intial values
         SecureZeroMemory(&m_viewport, sizeof(D3D11_VIEWPORT));
@@ -33,19 +33,19 @@ namespace LevelUp
         m_viewport.TopLeftY = y;
     }
 
-    float  DirectXViewport::getWidth()
+    float  DirectXViewport::getWidth() const
     {
         return m_viewport.Width;
     }
-    float  DirectXViewport::getHeight()
+    float  DirectXViewport::getHeight() const
     {
         return m_viewport.Height;
     }
-    float  DirectXViewport::getX()
+    float  DirectXViewport::getX() const
     {
         return m_viewport.TopLeftX;
     }
-    float  DirectXViewport::getY()
+    float  DirectXViewport::getY() const
     {
         return m_viewport.TopLeftY;
     }

@@ -5,6 +5,9 @@
 
 namespace LevelUp
 {
+	ParticleSystem::~ParticleSystem()
+	{
+	}
     //notify the system that someone has a new component check if he wants it
     void ParticleSystem::notifyHasNewComponent(Entity* e)
     {

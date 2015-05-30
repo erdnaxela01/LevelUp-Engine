@@ -15,7 +15,11 @@ namespace LevelUp
         for (auto i : m_components)
         {
             //safely delete all the components
-            SafeDelete(i);
+			if (i != nullptr)
+			{
+				delete i;
+				i = nullptr;
+			}
         }
 	}
 	std::vector<Component*> Entity::getAllComponentsOfType(std::string s)
@@ -33,7 +37,7 @@ namespace LevelUp
 			{
 				std::vector<Component*> temp;
                 //kindof recursion, we must go deeper
-				temp = getAllComponentsOfType(s);
+				temp = ((Entity*)(i))->getAllComponentsOfType(s);
 				for (auto j : temp)
 				{
 					enty.push_back(j);
@@ -62,7 +66,11 @@ namespace LevelUp
         {
             //safely delete all the components and remove them from the vector
             m_components.erase(std::find(m_components.begin(), m_components.end(), i));
-            SafeDelete(i);
+			if (i != nullptr)
+			{
+				delete i;
+				i = nullptr;
+			}
         }
         getEngine()->getSystems()->removedComponent(this);
     }
@@ -89,7 +97,7 @@ namespace LevelUp
             {
                 std::vector<Component*> temp;
                 //kindof recursion, we must go deeper
-                if (hasComponent(s))
+				if (((Entity*)(i))->hasComponent(s))
                 {
                     return true; 
                 }
