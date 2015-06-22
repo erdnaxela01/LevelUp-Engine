@@ -3,6 +3,7 @@
 
 #include "../Camera.h"
 #include "../../../Engine/MVC/Model.h"
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 
 namespace LevelUp
 {
@@ -12,10 +13,10 @@ namespace LevelUp
 	class TrackingCamera : public Camera, public Model
 	{
 	public:
-		TrackingCamera(BaseLevelObject* go = nullptr);
+		TrackingCamera(APT::WeakPointer<BaseLevelObject> go = nullptr);
 		virtual ~TrackingCamera();
         //set the tracking object
-		void setTrackingObject(BaseLevelObject* go);
+		void setTrackingObject(APT::WeakPointer<BaseLevelObject> go);
         //set if it does track
 		void setIsTracking(bool b);
         //check if it is tracking
@@ -25,7 +26,7 @@ namespace LevelUp
         //set the location to track the object
 		void setOnScreenTrackingLocation(float x, float y);
 	private:
-		BaseLevelObject* m_trackingObject;
+		APT::WeakPointer<BaseLevelObject> m_trackingObject;
 		bool m_isTracking;
         LVLfloat2 m_onScreenPos;
 	};

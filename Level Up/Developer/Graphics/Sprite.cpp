@@ -4,18 +4,26 @@
 #include "../Core/GameSprite.h"
 #include "../Services/ServiceLocator.h"
 #include "../Services/Math/LevelUpMath.h"
+#include "TextureManager.h"
 #include <Windows.h>
 #include <d3d11.h>
 #include <DirectXMath.h>
 #include <string>
-#include <DDSTextureLoader.h>
-#include <WICTextureLoader.h>
+
 
 namespace LevelUp
 {
+
+	//declaration of statics
+	TextureManager Sprite::m_manager;
+
 	Sprite::Sprite(bool dds) : m_dds(dds)
 	{
-
+		m_colorMap.setDeleteFunc([](ID3D11ShaderResourceView*& p)
+		{
+			if (p) p->Release();
+			p = nullptr;
+		});
 	}
 
 
@@ -40,8 +48,8 @@ namespace LevelUp
 			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 }
 		};
-		m_vertexShader = new VertexShader(L"SpriteShader.fx", "VS_Main", "vs_4_0", solidColorLayout, ARRAYSIZE(solidColorLayout), &m_inputLayout);
-		m_pixelShader = new PixelShader(L"SpriteShader.fx", "PS_Main", "ps_4_0");
+		m_vertexShader.setPtr(new VertexShader(L"SpriteShader.fx", "VS_Main", "vs_4_0", solidColorLayout, ARRAYSIZE(solidColorLayout), &m_inputLayout.getPtrRef()));
+		m_pixelShader.setPtr(new PixelShader(L"SpriteShader.fx", "PS_Main", "ps_4_0"));
 
 
 		bool result = setConstantBuffer();
@@ -50,23 +58,10 @@ namespace LevelUp
 			return result;
 		}
 
-		//get the image in the assets folder
-		if (m_dds == true)
-		{
-			d3dResult = DirectX::CreateDDSTextureFromFile(ServiceLocator::getRenderService()->getDevice(), m_fileName.c_str(), nullptr, &m_colorMap);
-		}
-		else
-		{
-			d3dResult = DirectX::CreateWICTextureFromFile(ServiceLocator::getRenderService()->getDevice(), m_fileName.c_str(), nullptr, &m_colorMap);
-		}
-		if (FAILED(d3dResult))
-		{
-			MessageBox(0, L"Failed to load texture", L"Error", MB_OK);
-			return false;
-		}
+		m_colorMap = m_manager.getTexture(m_fileName, m_dds);
 		//load sprite starts
 		ID3D11Resource* colorTex;
-		m_colorMap->GetResource(&colorTex);
+		m_colorMap.getter()->GetResource(&colorTex);
 
         //set the color description
 		D3D11_TEXTURE2D_DESC colorTexDesc;
@@ -90,8 +85,7 @@ namespace LevelUp
 	void Sprite::unloadContent()
 	{
         //release all the com objects
-		if (m_colorMap) m_colorMap->Release();
-		m_colorMap = nullptr;
+		//releases the texture if its the last one from the texture manager
 	}
 
 	void Sprite::render()
@@ -99,20 +93,20 @@ namespace LevelUp
 		//sprite specific
 		unsigned int stride = sizeof(VertexPos);
 		unsigned int offset = 0;
-		ID3D11DeviceContext* context = ServiceLocator::getRenderService()->getContext();
+		APT::WeakPointer<ID3D11DeviceContext> context = ServiceLocator::getRenderService()->getContext();
 		//set the input layout
 		
 		m_vertexShader->setActiveShader();
 		m_pixelShader->setActiveShader();
-		context->IASetInputLayout(m_inputLayout);
+		context->IASetInputLayout(m_inputLayout.getPtr());
 		//set it as a triangle list
 		context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		//sprite specific code
-		context->IASetVertexBuffers(0, 1, &m_vertexBuffer, &stride, &offset);
+		context->IASetVertexBuffers(0, 1, &m_vertexBuffer.getPtrRef(), &stride, &offset);
 
 		//
 		//sprite specific
-		context->PSSetShaderResources(0, 1, &m_colorMap);
+		context->PSSetShaderResources(0, 1, &m_colorMap.getPtrRef());
 		//
 		//sprite specific
 		setMatrix();
@@ -146,7 +140,7 @@ namespace LevelUp
 		resourceData.pSysMem = vertices;
 		HRESULT d3dResult;
 		//create the constant buffer
-		d3dResult = ServiceLocator::getRenderService()->getDevice()->CreateBuffer(&vertexDesc, &resourceData, &m_vertexBuffer);
+		d3dResult = ServiceLocator::getRenderService()->getDevice()->CreateBuffer(&vertexDesc, &resourceData, &m_vertexBuffer.getPtrRef());
 
 		if (FAILED(d3dResult))
 		{
@@ -157,7 +151,7 @@ namespace LevelUp
 	}
 	bool  Sprite::setVertices(float halfWidth, float halfHeight)
 	{
-		ID3D11DeviceContext* context = ServiceLocator::getRenderService()->getContext();
+		APT::WeakPointer<ID3D11DeviceContext> context = ServiceLocator::getRenderService()->getContext();
 		//set the vertices
 		VertexPos* vert = getUnalteredVertices(halfWidth * 2, halfHeight * 2);
 		

@@ -4,7 +4,7 @@
 
 namespace LevelUp
 {
-    DirectXMatrixContainer::DirectXMatrixContainer(DirectX::XMMATRIX* m)
+	DirectXMatrixContainer::DirectXMatrixContainer(APT::WeakPointer<DirectX::XMMATRIX> m)
     {
         m_matrix = m;
     }
@@ -17,7 +17,7 @@ namespace LevelUp
         assert(r < 4 && r >= 0);
         assert(c < 4 && c >= 0);
         DirectX::XMFLOAT4X4 m2;
-        DirectX::XMStoreFloat4x4(&m2, *m_matrix);
+        DirectX::XMStoreFloat4x4(&m2, *m_matrix.getPtr());
 
         //set all the specific values
         switch (r)
@@ -91,7 +91,7 @@ namespace LevelUp
             }
             break;
         }
-        *m_matrix = DirectX::XMLoadFloat4x4(&m2);
+        *m_matrix.getPtr() = DirectX::XMLoadFloat4x4(&m2);
     }
     LVLfloat DirectXMatrixContainer::getFloatAt(int r, int c)
     {
@@ -99,7 +99,7 @@ namespace LevelUp
         assert(r < 4 && r >= 0);
         assert(c < 4 && c >= 0);
         DirectX::XMFLOAT4X4 m2;
-        DirectX::XMStoreFloat4x4(&m2, *m_matrix);
+        DirectX::XMStoreFloat4x4(&m2, *m_matrix.getPtr());
 
         switch (r)
         {

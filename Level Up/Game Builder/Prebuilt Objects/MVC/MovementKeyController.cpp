@@ -3,7 +3,7 @@
 #include "MovementSpriteView.h"
 namespace LevelUp
 {
-	MovementKeyController::MovementKeyController(MovementModel* m)
+	MovementKeyController::MovementKeyController(APT::WeakPointer<MovementModel> m)
 	{
 		m_model = m;
         //set the initial movement keys to WASD

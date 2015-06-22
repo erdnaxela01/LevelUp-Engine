@@ -8,19 +8,13 @@ namespace LevelUp
     {
         deActivate();
         m_alpha = 1.0f;
-        m_rect = new Rectangle(LVLfloat4(0.25f, 0.25f, 0.25f, 1.0f), width, width);
+        m_rect.setPtr(new Rectangle(LVLfloat4(0.25f, 0.25f, 0.25f, 1.0f), width, width));
         m_rect->setPosition(-100.0f, -100.0f);
        
         
     }
     Particle::~Particle()
-    {
-        //delete the shape
-		if (m_rect != nullptr)
-		{
-			delete m_rect;
-			m_rect = nullptr;
-		}
+	{
 
     }
     bool Particle::isActive()
@@ -46,7 +40,7 @@ namespace LevelUp
         LVLfloat2 velo = MathHelper::CalculateVelocity(m_angle, m_speed);
         //MathHelper::Translate(rect, velo, delta);
         LVLfloat2 position = m_rect->getPosition();
-        position += LVLfloat2(velo.x * delta, velo.y * delta);
+		position += LVLfloat2(velo.x * static_cast<float>(delta), velo.y * static_cast<float>(delta));
         m_rect->setPosition(position.x, position.y);
 
         if (m_time.isItDone())

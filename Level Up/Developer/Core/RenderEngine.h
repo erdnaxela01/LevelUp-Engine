@@ -3,6 +3,7 @@
 #include "Dx11Base.h"
 #include "../Services/Renderer.h"
 #include "../Services/Math/DataTypes.h"
+#include "../../Addons/AutomaticPointers/AutomaticPointers.h"
 #include "DirectXViewport.h"
 #include <DirectXMath.h>
 #include <d3dcompiler.h>
@@ -30,9 +31,9 @@ namespace LevelUp
         void finishRender();
 
         //get the device
-		ID3D11Device* getDevice() const;
+		APT::WeakPointer<ID3D11Device> getDevice() const;
         //get the context
-		ID3D11DeviceContext* getContext() const;
+		APT::WeakPointer<ID3D11DeviceContext> getContext() const;
         //get matrices
         LVL4X4matrix getVPMatrix() const;
         //set the view point matrix
@@ -44,7 +45,7 @@ namespace LevelUp
 		bool CompileD3DShader(std::wstring filePath, std::string entry, std::string shaderModel, ID3DBlob** buffer);
 
         //factory function to create a view port
-        DirectXViewport* produceViewport();
+		DirectXViewport* produceViewport();
 
 		//set the screen to full screen
 		inline void setFullScreenMode(bool b);
@@ -55,13 +56,19 @@ namespace LevelUp
 		RenderEngine();
 		~RenderEngine() {};
 
+		void setBgColor(LVLfloat3 color);
+		LVLfloat3 getBgColor();
+
+
 	private:
         //the color map map sampler
-		ID3D11SamplerState* m_colorMapSampler;
+		APT::StrongPointer<ID3D11SamplerState> m_colorMapSampler;
         //the state of the alpha blend
-		ID3D11BlendState* m_alphaBlendState;
+		APT::StrongPointer<ID3D11BlendState> m_alphaBlendState;
         //the view point matrix
         LVL4X4matrix m_vpMatrix;
+
+		LVLfloat3 m_bgColor;
 
 	};
 }

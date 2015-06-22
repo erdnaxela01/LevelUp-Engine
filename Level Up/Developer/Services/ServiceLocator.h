@@ -4,6 +4,7 @@
 #include "Renderer.h"
 #include "ScreenSize.h"
 #include "Math\MathAdapters\MathAdapter.h"
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 
 namespace LevelUp
 {
@@ -16,25 +17,25 @@ namespace LevelUp
 		virtual ~ServiceLocator();
 
         //provide a render service
-		static void provideRenderService(Renderer* render);
+		static void provideRenderService(APT::WeakPointer<Renderer> render);
         //get a render service
-		static Renderer* getRenderService();
+		static APT::WeakPointer<Renderer> getRenderService();
 
         //provide a screen size service
-		static void provideScreenSizeService(ScreenSize* size);
+		static void provideScreenSizeService(APT::WeakPointer<ScreenSize> size);
         //get a screen size service
-		static ScreenSize* getScreenSizeService();
+		static APT::WeakPointer<ScreenSize> getScreenSizeService();
 
         //provide a math adapter 
-        static void provideMathAdapter(MathAdapter* ada);
+		static void provideMathAdapter(APT::WeakPointer<MathAdapter> ada);
         //get a math adapter
-        static MathAdapter* getMathAdapter();
+		static APT::WeakPointer<MathAdapter> getMathAdapter();
 
 	private:
 		//all services
-		static Renderer* m_renderService;
-		static ScreenSize* m_screenSizeService;
-        static MathAdapter* m_mathAdapter;
+		static APT::WeakPointer<Renderer> m_renderService;
+		static APT::WeakPointer<ScreenSize> m_screenSizeService;
+		static APT::WeakPointer<MathAdapter> m_mathAdapter;
 	};
 }
 

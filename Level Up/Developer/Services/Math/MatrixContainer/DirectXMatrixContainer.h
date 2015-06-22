@@ -3,7 +3,7 @@
 
 #include "MatrixContainer.h"
 #include <DirectXMath.h>
-
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 namespace LevelUp
 {
     /*
@@ -14,12 +14,12 @@ namespace LevelUp
     {
     public:
 
-        DirectXMatrixContainer(DirectX::XMMATRIX* m);
+        DirectXMatrixContainer(APT::WeakPointer<DirectX::XMMATRIX> m);
         virtual ~DirectXMatrixContainer();
         void setFloatAt(int r, int c, LVLfloat f);
         LVLfloat getFloatAt(int r, int c);
     private:
-        DirectX::XMMATRIX* m_matrix;
+		APT::WeakPointer<DirectX::XMMATRIX> m_matrix;
     };
 }
 

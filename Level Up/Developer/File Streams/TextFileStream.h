@@ -16,7 +16,7 @@ namespace LevelUp
 	{
 	public:
 		//opens a text file for i/o
-		TextFileStream(std::string fileName);
+		TextFileStream(std::string fileName, bool overrideDefaultPath = false);
 		//closes the text file
 		virtual ~TextFileStream();
 	};

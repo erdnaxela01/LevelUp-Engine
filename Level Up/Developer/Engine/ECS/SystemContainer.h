@@ -3,7 +3,7 @@
 
 #include "System.h"
 #include <vector>
-#include <memory>
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 
 namespace LevelUp
 {
@@ -11,13 +11,13 @@ namespace LevelUp
     class SystemContainer
     {
     public:
-		SystemContainer() {};
+		SystemContainer();
         virtual ~SystemContainer();
-        void removedComponent(Entity* e);
-        void addedComponent(Entity* e);
-        void addSystem(System* s);
+        void removedComponent(APT::WeakPointer<Entity> e);
+		void addedComponent(APT::WeakPointer<Entity> e);
+		void addSystem(APT::StrongPointer<System> s);
     private:
-        std::vector<System*> m_systems;
+		std::vector<APT::StrongPointer<System>> m_systems;
     };
 }
 

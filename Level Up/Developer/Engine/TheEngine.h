@@ -11,7 +11,7 @@
 #include "../Services/Math/MathAdapters/DirectXMathAdapter.h"
 #include "../../Game Builder/Scene Builder/Playground.h"
 #include "ECS\SystemContainer.h"
-#include <memory>
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 
 namespace LevelUp
 {
@@ -42,7 +42,7 @@ namespace LevelUp
 		//shut down all components of the engine
 		void shutdown();
 		//singleton specific
-		static TheEngine* getInstance();
+		static APT::WeakPointer<TheEngine> getInstance();
 		//update the timer at the pass through
 		void updateTimer();
 
@@ -53,40 +53,40 @@ namespace LevelUp
 		HWND getHWND();
 
         //add a controller to the mvc container
-		void addController(Controller* c);
+		void addController(APT::WeakPointer<Controller> c);
         //add a model to the mvc container
-		void addModel(Model* m);
+		void addModel(APT::WeakPointer<Model> m);
         //add a view to the mvc container
-		void addView(View* v);
+		void addView(APT::WeakPointer<View> v);
         //add a camera to the mvc container
-		void addCamera(Camera* c);
+		void addCamera(APT::WeakPointer<Camera> c);
 
         //remove a controller
-        void removeController(Controller* c);
+		void removeController(APT::WeakPointer<Controller> c);
         //remove a model
-        void removeModel(Model* m);
+		void removeModel(APT::WeakPointer<Model> m);
         //remove a view
-        void removeView(View* v);
+		void removeView(APT::WeakPointer<View> v);
         //remove a camera
-        void removeCamera(Camera* c);
+		void removeCamera(APT::WeakPointer<Camera> c);
 
         //add an event handle to the event dispatcher
-        void addEventHandler(EventHandler* e);
+		void addEventHandler(APT::WeakPointer<EventHandler> e);
 
 		//remove an event handler
-		void removeEventHandler(EventHandler* e);
+		void removeEventHandler(APT::WeakPointer<EventHandler> e);
 
         //get the current elapsed if necessary
 		double delta();
 
         //get the mvc container
-		MVCContainer* getContainer();
+		APT::WeakPointer<MVCContainer> getContainer();
 
         //get the scene manager
-		SceneManager* getSceneManager();
+		APT::WeakPointer<SceneManager> getSceneManager();
 
         //returns all the systems in the engine
-        SystemContainer* getSystems();
+		APT::WeakPointer<SystemContainer> getSystems();
 
 		//handle keys just pressed and released
 		bool justPressed(LevelUpKeys key);
@@ -121,7 +121,7 @@ namespace LevelUp
 		ControllerVals controllers;
 
         //singleton
-		static TheEngine* m_theEngine;
+		static APT::StrongPointer<TheEngine> m_theEngine;
 
         //initialize the window
 		bool initializeWindow(HINSTANCE hInstance);
@@ -131,7 +131,7 @@ namespace LevelUp
 		MVCContainer m_container;
 		RenderEngine m_render;
 		SceneManager m_scenes;
-		WindowScreen* m_screenSize;
+		APT::StrongPointer<WindowScreen> m_screenSize;
         DirectXMathAdapter m_adapter;
 
         SystemContainer m_systems;
@@ -162,7 +162,7 @@ namespace LevelUp
 
 	};
 
-	TheEngine* getEngine();
+	APT::WeakPointer<TheEngine> getEngine();
 }
 
 #endif

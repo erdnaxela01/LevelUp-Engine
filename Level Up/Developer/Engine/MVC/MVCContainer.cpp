@@ -15,35 +15,36 @@ namespace LevelUp
 	{
 	}
 
-	std::map<controllerType, std::vector<Controller*>> MVCContainer::getControllers() const
+	std::map<controllerType, std::vector<APT::WeakPointer<Controller>>> MVCContainer::getControllers() const
 	{
 		return m_controllers;
 	}
 
-	std::vector<Model*> MVCContainer::getModels() const
+	std::vector<APT::WeakPointer<Model>> MVCContainer::getModels() const
 	{
 		return m_models;
 	}
-	std::vector<View*> MVCContainer::getViews() const
+	std::vector<APT::WeakPointer<View>> MVCContainer::getViews() const
 	{
 		return m_views;
 	}
-	void MVCContainer::addToControllerMap(Controller* controller)
+	void MVCContainer::addToControllerMap(APT::WeakPointer<Controller> controller)
 	{
 		m_controllers[controller->getType()].push_back(controller);
 	}
 
-	void MVCContainer::addToModelMap(Model* model)
+	void MVCContainer::addToModelMap(APT::WeakPointer<Model> model)
 	{
+		
 		m_models.push_back(model);
 	}
 
-	void MVCContainer::addToViewMap(View* view)
+	void MVCContainer::addToViewMap(APT::WeakPointer<View> view)
 	{
 		m_views.push_back(view);
 	}
 
-	void MVCContainer::addToCameraMap(Camera* cam)
+	void MVCContainer::addToCameraMap(APT::WeakPointer<Camera> cam)
 	{
 		m_cameras.push_back(cam);
 	}
@@ -52,10 +53,10 @@ namespace LevelUp
 	{
 
         //run through thevecotr and activate all the controllers
-		std::vector < Controller* > keyController = m_controllers[controllerType::KEYCONTROLLER];
+		std::vector < APT::WeakPointer<Controller> > keyController = m_controllers[controllerType::KEYCONTROLLER];
 		for (auto i:keyController)
 		{
-			auto tempPtr = dynamic_cast<KeyController*>(i);
+			auto tempPtr = dynamic_cast<KeyController*>(i.getPtr());
 			if (tempPtr->canControl())
 			{
 				tempPtr->handleKeyDown(key);
@@ -66,10 +67,10 @@ namespace LevelUp
     void MVCContainer::keyUp(LevelUpKeys key)
 	{
 		//run through thevecotr and activate all the controllers
-		std::vector < Controller* > keyController = m_controllers[controllerType::KEYCONTROLLER];
+		std::vector < APT::WeakPointer<Controller> > keyController = m_controllers[controllerType::KEYCONTROLLER];
 		for (auto i : keyController)
 		{
-			auto tempPtr = dynamic_cast<KeyController*>(i);
+			auto tempPtr = dynamic_cast<KeyController*>(i.getPtr());
 			if (tempPtr->canControl())
 			{
 				tempPtr->handleKeyUp(key);
@@ -81,10 +82,10 @@ namespace LevelUp
 	void MVCContainer::justPressed(LevelUpKeys key)
 	{
 		//run through thevecotr and activate all the controllers
-		std::vector < Controller* > keyController = m_controllers[controllerType::KEYCONTROLLER];
+		std::vector < APT::WeakPointer<Controller> > keyController = m_controllers[controllerType::KEYCONTROLLER];
 		for (auto i : keyController)
 		{
-			auto tempPtr = dynamic_cast<KeyController*>(i);
+			auto tempPtr = dynamic_cast<KeyController*>(i.getPtr());
 			if (tempPtr->canControl())
 			{
 				tempPtr->justPressed(key);
@@ -95,10 +96,10 @@ namespace LevelUp
 	void MVCContainer::timeElapsed(double delta)
 	{
 		//run through thevecotr and activate all the controllers
-		std::vector < Controller* > keyController = m_controllers[controllerType::TIMERCONTROLLER];
+		std::vector < APT::WeakPointer<Controller> > keyController = m_controllers[controllerType::TIMERCONTROLLER];
 		for (auto i : keyController)
 		{
-			auto tempPtr = dynamic_cast<TimerController*>(i);
+			auto tempPtr = dynamic_cast<TimerController*>(i.getPtr());
 			if (tempPtr->canControl())
 			{
 				tempPtr->timeElapsed(delta);
@@ -109,10 +110,10 @@ namespace LevelUp
 	{
 		MouseController* tempPtr;
         //run through the map and activate all the controllers
-		std::vector<Controller*> mouseController = m_controllers[controllerType::TIMERCONTROLLER];
+		std::vector<APT::WeakPointer<Controller>> mouseController = m_controllers[controllerType::TIMERCONTROLLER];
 		for (auto i : mouseController)
 		{
-			tempPtr = (MouseController*)(i);
+			tempPtr = (MouseController*)(i.getPtr());
 			if (tempPtr->canControl())
 			{
 				tempPtr->mouseMove(pos);
@@ -143,21 +144,49 @@ namespace LevelUp
 			}
 		}
 	}
-    void MVCContainer::removeFromControllerMap(Controller* c)
+	void MVCContainer::removeFromControllerMap(APT::WeakPointer<Controller> c)
     {
-		std::vector<Controller*> controllers = m_controllers[c->getType()];
-        controllers.erase(std::find(controllers.begin(), controllers.end(), c));
+		std::vector<APT::WeakPointer<Controller>>& controllers = m_controllers[c->getType()];
+		for (unsigned int i = 0; i < controllers.size(); i++)
+		{
+			if (controllers[i]->ControllerID() == c->ControllerID())
+			{
+				controllers.erase(controllers.begin() + i);
+				break;
+			}
+		}
     }
-    void MVCContainer::removeFromModelMap(Model* m)
+	void MVCContainer::removeFromModelMap(APT::WeakPointer<Model> m)
     {
-        m_models.erase(std::find(m_models.begin(), m_models.end(), m));
+		for (unsigned int i = 0; i < m_models.size(); i++)
+		{
+			if(m_models[i]->ModelID() == m->ModelID())
+			{
+				m_models.erase(m_models.begin() + i);
+				break;
+			}
+		}
     }
-    void MVCContainer::removeFromViewMap(View* v)
+	void MVCContainer::removeFromViewMap(APT::WeakPointer<View> v)
     {
-        m_views.erase(std::find(m_views.begin(), m_views.end(), v));
+		for (unsigned int i = 0; i < m_views.size(); i++)
+		{
+			if (m_views[i]->viewID() == v->viewID())
+			{
+				m_views.erase(m_views.begin() + i);
+				break;
+			}
+		}
     }
-    void MVCContainer::removeFromCameraMap(Camera* c)
+	void MVCContainer::removeFromCameraMap(APT::WeakPointer<Camera> c)
     {
-        m_cameras.erase(std::find(m_cameras.begin(), m_cameras.end(), c));
+		for (unsigned int i = 0; i < m_cameras.size(); i++)
+		{
+			if (m_cameras[i]->CameraID() == c->CameraID())
+			{
+				m_cameras.erase(m_cameras.begin() + i);
+				break;
+			}
+		}
     }
 }

@@ -6,20 +6,27 @@ namespace LevelUp
 	RenderObject::~RenderObject()
 	{
 		unloadContent();
+		m_vertexBuffer.setDeleteFunc([](ID3D11Buffer*& p)
+		{
+			if (p) p->Release();
+			p = nullptr;
+		});
+
+		m_mvpCB.setDeleteFunc([](ID3D11Buffer*& p)
+		{
+			if (p) p->Release();
+			p = nullptr;
+		});
+
+		m_inputLayout.setDeleteFunc([](ID3D11InputLayout*& p)
+		{
+			if (p) p->Release();
+			p = nullptr;
+		});
 	}
 
 	void RenderObject::unloadContent()
 	{
-		if (m_vertexBuffer) m_vertexBuffer->Release();
-		if (m_mvpCB) m_mvpCB->Release();
-		if (m_inputLayout) m_inputLayout->Release();
-		if (m_vertexShader) delete m_vertexShader;
-		if (m_pixelShader) delete m_pixelShader;
-		m_pixelShader = nullptr;
-		m_vertexShader = nullptr;
-		m_vertexBuffer = nullptr;
-		m_mvpCB = nullptr;
-		m_inputLayout = nullptr;
 	}
 	void RenderObject::setPosition(float x, float y)
 	{
@@ -49,7 +56,7 @@ namespace LevelUp
 
 	void RenderObject::setMatrix()
 	{
-		ID3D11DeviceContext* context = ServiceLocator::getRenderService()->getContext();
+		APT::WeakPointer<ID3D11DeviceContext> context = ServiceLocator::getRenderService()->getContext();
 		//get the world matrix
 		DirectX::XMMATRIX world;
 		ServiceLocator::getMathAdapter()->get4x4Matrix(m_sprite.GetWorldMatrix(), &DirectXMatrixContainer(&world));
@@ -60,13 +67,13 @@ namespace LevelUp
 		//
 
 		//sprite specific
-		context->UpdateSubresource(m_mvpCB, 0, 0, &mvp, 0, 0);
-		context->VSSetConstantBuffers(0, 1, &m_mvpCB);
+		context->UpdateSubresource(m_mvpCB.getPtr(), 0, 0, &mvp, 0, 0);
+		context->VSSetConstantBuffers(0, 1, &m_mvpCB.getPtrRef());
 	}
 
 	bool RenderObject::setConstantBuffer()
 	{
-		ID3D11Device* device = ServiceLocator::getRenderService()->getDevice();
+		APT::WeakPointer<ID3D11Device> device = ServiceLocator::getRenderService()->getDevice();
 		//create a constant buffer description and set the model view projection buffer for the sprite
 		D3D11_BUFFER_DESC constDesc;
 		SecureZeroMemory(&constDesc, sizeof(constDesc));
@@ -74,7 +81,7 @@ namespace LevelUp
 		constDesc.ByteWidth = sizeof(DirectX::XMMATRIX);
 		constDesc.Usage = D3D11_USAGE_DEFAULT;
 		HRESULT d3dResult;
-		d3dResult = device->CreateBuffer(&constDesc, 0, &m_mvpCB);
+		d3dResult = device->CreateBuffer(&constDesc, 0, &m_mvpCB.getPtrRef());
 
 		if (FAILED(d3dResult))
 		{

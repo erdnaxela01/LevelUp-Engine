@@ -3,7 +3,7 @@
 
 #include <DirectXMath.h>
 #include "../MatrixContainer/MatrixContainer.h"
-
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 namespace LevelUp
 {
     struct LVL4X4matrix;
@@ -22,9 +22,9 @@ namespace LevelUp
 		virtual ~MathAdapter() {};
 
         //convert to a speicfic matrix
-        virtual void get4x4Matrix(LVL4X4matrix& m, MatrixContainer* con) = 0;
+		virtual void get4x4Matrix(LVL4X4matrix& m, APT::WeakPointer<MatrixContainer> con) = 0;
         //convert to a lvl matrix
-        virtual void convertToLVLMatrix(LVL4X4matrix* mat, MatrixContainer* con) = 0;
+		virtual void convertToLVLMatrix(APT::WeakPointer<LVL4X4matrix> mat, APT::WeakPointer<MatrixContainer> con) = 0;
     };
 }
 

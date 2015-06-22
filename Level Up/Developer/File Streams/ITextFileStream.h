@@ -11,7 +11,7 @@ namespace LevelUp
 	{
 	public:
 		//opens a text file for i/o
-		ITextFileStream(std::string fileName);
+		ITextFileStream(std::string fileName, bool overrideDefaultPath = false);
 		//closes the text file
 		virtual ~ITextFileStream();
 		std::string getLine(int lineNum);
@@ -21,6 +21,12 @@ namespace LevelUp
 		std::vector<std::string> getFileFromTo(int lineStart, int lineEnd);
 		//read to a line from the start
 		std::vector<std::string> getFileTo(int lineEnd);
+
+		template<typename T>
+		friend ITextFileStream& operator>> (ITextFileStream& i, T obj)
+		{
+			i.m_file << obj;
+		}
 	private:
 		std::ifstream m_file;
 

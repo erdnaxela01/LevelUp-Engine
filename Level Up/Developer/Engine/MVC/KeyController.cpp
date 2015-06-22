@@ -27,8 +27,8 @@ namespace LevelUp
         //add the key controller to the mpa of the active scene or the engine if there is none
 		m_ID = "KeyController " + std::to_string(m_numberOfKeyControllers);
 		m_type = KEYCONTROLLER;
-		Scene* s = getEngine()->getSceneManager()->getActiveScene();
-		if (s != nullptr)
+		APT::WeakPointer<Scene> s = getEngine()->getSceneManager()->getActiveScene();
+		if (s.getPtr() != nullptr)
 		{
             m_parentScene = s->sceneID();
 			s->addController(this);
@@ -44,8 +44,8 @@ namespace LevelUp
         //remove the controller from the scene
         if (m_parentScene != "")
         {
-            Scene* s = getEngine()->getSceneManager()->getScene(m_parentScene);
-            if (s != nullptr)
+            APT::WeakPointer<Scene> s = getEngine()->getSceneManager()->getScene(m_parentScene);
+            if (s.getPtr() != nullptr)
             {
                 s->removeController(this);
             }

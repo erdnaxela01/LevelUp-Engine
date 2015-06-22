@@ -22,12 +22,12 @@ namespace LevelUp
 		return m_type == t;
 	}
 
-	BaseLevelObject* Attribute::getParent() const
+	APT::WeakPointer<BaseLevelObject> Attribute::getParent() const
 	{
 		return m_parent;
 	}
 
-	void Attribute::setParent(BaseLevelObject* blo)
+	void Attribute::setParent(APT::WeakPointer<BaseLevelObject> blo)
 	{
 		m_parent = blo;
 	}

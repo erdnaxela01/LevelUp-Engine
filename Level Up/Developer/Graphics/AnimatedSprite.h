@@ -7,6 +7,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include "../../Addons/AutomaticPointers/AutomaticPointers.h"
 
 namespace LevelUp
 {
@@ -44,7 +45,7 @@ namespace LevelUp
 		struct AnimationValues
 		{
 			std::vector<int> frames;
-			int framesPerSecond;
+			float framesPerSecond;
 			int currentFrame;
 			bool isLooped;
 			int numberOfFrames;
@@ -58,7 +59,7 @@ namespace LevelUp
 		std::map<std::string, AnimationValues> m_animations;
 		float m_framesPerSecond;
 		LVLfloat2 m_frameSpecs;
-		AnimationValues* m_currentAnimation;
+		APT::WeakPointer<AnimationValues> m_currentAnimation;
 		bool m_isPlaying;
 		CountDown m_time;
 	};

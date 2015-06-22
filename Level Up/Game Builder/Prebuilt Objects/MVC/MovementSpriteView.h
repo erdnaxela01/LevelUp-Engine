@@ -3,6 +3,7 @@
 
 #include "../../../Developer/Engine/MVC/View.h"
 #include "../../../Developer/Graphics/AnimatedSprite.h"
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 
 #include <string>
 #include <vector>
@@ -12,7 +13,7 @@ namespace LevelUp
 	class MovementSpriteView : public View
 	{
 	public:
-		MovementSpriteView(std::wstring fName, MovementModel* sm, float z = 1.0f);
+		MovementSpriteView(std::wstring fName, APT::WeakPointer<MovementModel> sm, float z = 1.0f);
 		//Adds animations to the animated sprite
 		void addAnimation(std::vector<AnimationVals> values);
 		//Adds animations to the animated sprite
@@ -48,8 +49,8 @@ namespace LevelUp
         //set the scale of the sprite
 		void setScale(float x, float y);
 	private:
-		AnimatedSprite* m_sprite;
-		MovementModel* m_movementModel;
+		APT::StrongPointer<AnimatedSprite> m_sprite;
+		APT::WeakPointer<MovementModel> m_movementModel;
 
 	};
 }

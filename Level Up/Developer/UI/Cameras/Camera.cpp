@@ -5,7 +5,6 @@
 #include "../../Services/ServiceLocator.h"
 #include "../../Core/StandardTemplates.h"
 #include "../../Services/Math/LevelUpMath.h"
-#include "../../Engine/Command/CameraResizeCommand.h"
 
 #include <string>
 #include <map>
@@ -26,8 +25,8 @@ namespace LevelUp
         //set the cameras isd
 		m_ID = "Camera " + std::to_string(m_numberOfCameras);
         //set the camera to a scene or an engine
-		Scene* s = getEngine()->getSceneManager()->getActiveScene();
-		if (s != nullptr)
+		APT::WeakPointer<Scene> s = getEngine()->getSceneManager()->getActiveScene();
+		if (s.getPtr() != nullptr)
 		{
 			s->addCamera(this);
 			m_parentScene = s->sceneID();
@@ -44,7 +43,7 @@ namespace LevelUp
         m_screenPos = (LVLfloat2(0.0f, 0.0f));
 
         //get a viewport for the camera
-        m_viewport = ServiceLocator::getRenderService()->produceViewport();
+        m_viewport.setPtr(ServiceLocator::getRenderService()->produceViewport());
 
         //get the current screen size
         m_currentScreenSize = ServiceLocator::getScreenSizeService()->getScreenSize();
@@ -52,14 +51,14 @@ namespace LevelUp
 		m_viewPortIsDirty = true;
 	}
 
-	Camera::Camera(Scene* s) : m_canView(true), m_command(nullptr), m_zoom(1.0f)
+	Camera::Camera(APT::WeakPointer<Scene> s) : m_canView(true), m_command(nullptr), m_zoom(1.0f)
     {
         // add to the number of cameras
         m_numberOfCameras++;
         m_ID = "Camera " + std::to_string(m_numberOfCameras);
         //set the cameras isd
         //set the camera to a scene or an engine
-        if (s != nullptr)
+        if (s.getPtr() != nullptr)
         {
             s->addCamera(this);
             m_parentScene = s->sceneID();
@@ -75,7 +74,7 @@ namespace LevelUp
         m_y = 0.0f;
         m_screenPos = (LVLfloat2(0.0f, 0.0f));
         //get a viewport for the camera
-        m_viewport = ServiceLocator::getRenderService()->produceViewport();
+        m_viewport.setPtr(ServiceLocator::getRenderService()->produceViewport());
         //get the current screen size
         m_currentScreenSize = ServiceLocator::getScreenSizeService()->getScreenSize();
 		m_viewPortIsDirty = true;
@@ -84,8 +83,8 @@ namespace LevelUp
 	{
         if (m_parentScene != "")
         {
-            Scene* s = getEngine()->getSceneManager()->getScene(m_parentScene);
-            if (s != nullptr)
+            APT::WeakPointer<Scene> s = getEngine()->getSceneManager()->getScene(m_parentScene);
+            if (s.getPtr() != nullptr)
             {
                 s->removeCamera(this);
             }
@@ -95,17 +94,6 @@ namespace LevelUp
             getEngine()->removeCamera(this);
         }
         //delete the viewport
-		if (m_viewport != nullptr)
-		{
-			delete m_viewport;
-			m_viewport = nullptr;
-		}
-
-		if (m_command != nullptr)
-		{
-			delete m_command;
-			m_command = nullptr;
-		}
 	}
 	std::string Camera::CameraID()
 	{
@@ -128,7 +116,7 @@ namespace LevelUp
         }
 
         //get a sorted views for z sorting
-        std::vector<View*> sortedViews;
+		std::vector<APT::WeakPointer<View>> sortedViews;
 
         //if there is no parent scene get the engines view map else get the scene
         if (m_parentScene == "")
@@ -140,7 +128,7 @@ namespace LevelUp
             sortedViews = getEngine()->getSceneManager()->getScene(m_parentScene)->getContainer()->getViews();
         }
         //lambda function for sorting algorithm callback
-        std::sort(sortedViews.begin(), sortedViews.end(), [](View* a, View* b)->bool{return a->getZ() < b->getZ(); });
+		std::sort(sortedViews.begin(), sortedViews.end(), [](APT::WeakPointer<View> a, APT::WeakPointer<View> b)->bool{return a->getZ() < b->getZ(); });
         //renders the view list completely sorted by z value
         for (auto i : sortedViews)
         {
@@ -229,7 +217,7 @@ namespace LevelUp
         if (e == DispatchEvents::DISPATCHEVENTS_SCREENRESIZE)
         {
             ///if there is no callback for resizing go to default
-            if (m_command == nullptr)
+            if (m_command.getPtr() == nullptr)
             {
 				setW(ServiceLocator::getScreenSizeService()->getScreenSize().x);
 				setH(ServiceLocator::getScreenSizeService()->getScreenSize().y);
@@ -243,10 +231,10 @@ namespace LevelUp
 
 
     }
-    void Camera::setResizeMethod(CameraResizeCommand* c)
+	void Camera::setResizeMethod(APT::StrongPointer<CameraResizeCommand> c)
     {
         //set the resizing method
-        m_command = c;
+        m_command.setPtr(c.releasePtr());
     }
 	void Camera::setZoom(float zoom)
 	{

@@ -19,6 +19,15 @@ namespace LevelUp
 		virtual void update(double delta) = 0;
         //check if it can update
 		bool canUpdate() const;
+
+		bool operator==(const Model& rhs)
+		{
+			if (m_ID == rhs.m_ID)
+			{
+				return true;
+			}
+			return false;
+		}
 	protected:
 		virtual void addToMap();
         virtual void removeFromMap();

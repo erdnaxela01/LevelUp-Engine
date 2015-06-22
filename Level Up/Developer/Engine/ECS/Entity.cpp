@@ -12,35 +12,54 @@ namespace LevelUp
 	}
 	Entity::~Entity()
 	{
-        for (auto i : m_components)
-        {
-            //safely delete all the components
-			if (i != nullptr)
-			{
-				delete i;
-				i = nullptr;
-			}
-        }
+ 
 	}
-	std::vector<Component*> Entity::getAllComponentsOfType(std::string s)
+	std::vector<APT::WeakPointer<Component>> Entity::getAllComponentsOfType(std::string s)
 	{
         //loop through the components
-		std::vector<Component*> enty;
-		for (auto i : m_components)
+		std::vector<APT::WeakPointer<Component>> enty;
+		for (unsigned int i = 0; i < m_components.size(); i++)
 		{
-			if (i->isType(s))
+			if (m_components[i]->isType(s))
 			{
-				enty.push_back(i);
+				enty.push_back(m_components[i]);
 			}
             //if the component is also an entity look into it too
-			if (i->isECSType(ECSType::ECSTYPE_ENTITY))
+			if (m_components[i]->isECSType(ECSType::ECSTYPE_ENTITY))
 			{
-				std::vector<Component*> temp;
+				std::vector<APT::WeakPointer<Component>> temp;
                 //kindof recursion, we must go deeper
-				temp = ((Entity*)(i))->getAllComponentsOfType(s);
+				temp = ((Entity*)(m_components[i].getPtr()))->getAllComponentsOfType(s);
 				for (auto j : temp)
 				{
 					enty.push_back(j);
+				}
+			}
+
+		}
+		return enty;
+
+	}
+
+	std::vector<APT::StrongPointer<Component>> Entity::getAllComponentsOfTypeStrong(std::string s)
+	{
+		//loop through the components
+		std::vector<APT::StrongPointer<Component>> enty;
+		for (unsigned int i = 0; i < m_components.size(); i++)
+		{
+			if (m_components[i]->isType(s))
+			{
+				enty.push_back(m_components[i].releasePtr());
+			}
+			//if the component is also an entity look into it too
+			if (m_components[i]->isECSType(ECSType::ECSTYPE_ENTITY))
+			{
+				std::vector<APT::StrongPointer<Component>> temp;
+				//kindof recursion, we must go deeper
+				temp = ((Entity*)(m_components[i].getPtr()))->getAllComponentsOfTypeStrong(s);
+				for (unsigned int j = 0; j < temp.size(); j++)
+				{
+					enty.push_back(temp[j].releasePtr());
 				}
 			}
 
@@ -52,25 +71,20 @@ namespace LevelUp
 	{
 		return t == ECSType::ECSTYPE_ENTITY;
 	}
-    void Entity::addComponent(Component* c)
+	void Entity::addComponent(APT::WeakPointer<Component> c)
     {
-        m_components.push_back(c);
+        m_components.push_back(c.getPtr());
         getEngine()->getSystems()->addedComponent(this);
     }
     void Entity::removeAllComponentsOfType(std::string s)
     {
         //get all the components
-        std::vector<Component*> comp = getAllComponentsOfType(s);
+		std::vector<APT::StrongPointer<Component>> comp = getAllComponentsOfTypeStrong(s);
 
-        for (auto i : comp)
+		for (unsigned int i = 0; i < comp.size(); i++)
         {
             //safely delete all the components and remove them from the vector
-            m_components.erase(std::find(m_components.begin(), m_components.end(), i));
-			if (i != nullptr)
-			{
-				delete i;
-				i = nullptr;
-			}
+			m_components.erase(std::find(m_components.begin(), m_components.end(), comp[i]));
         }
         getEngine()->getSystems()->removedComponent(this);
     }
@@ -85,19 +99,19 @@ namespace LevelUp
     }
     bool Entity::hasComponent(std::string s)
     {
-        std::vector<Component*> enty;
-        for (auto i : m_components)
+        std::vector<APT::WeakPointer<Component>> enty;
+		for (unsigned int i = 0; i < m_components.size(); i++)
         {
-            if (i->isType(s))
+			if (m_components[i]->isType(s))
             {
                 return true;
             }
             //if the component is also an entity look into it too
-            if (i->isECSType(ECSType::ECSTYPE_ENTITY))
+			if (m_components[i]->isECSType(ECSType::ECSTYPE_ENTITY))
             {
-                std::vector<Component*> temp;
+				std::vector<APT::WeakPointer<Component>> temp;
                 //kindof recursion, we must go deeper
-				if (((Entity*)(i))->hasComponent(s))
+				if (((Entity*)(m_components[i].getPtr()))->hasComponent(s))
                 {
                     return true; 
                 }

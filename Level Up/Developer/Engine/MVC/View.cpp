@@ -33,8 +33,8 @@ namespace LevelUp
 	{
         //add the view to the current scene then the engine
 		m_ID = "View " + std::to_string(m_numberOfViews);
-		Scene* s = getEngine()->getSceneManager()->getActiveScene();
-		if (s != nullptr)
+		APT::WeakPointer<Scene> s = getEngine()->getSceneManager()->getActiveScene();
+		if (s.getPtr() != nullptr)
 		{
             m_parentScene = s->sceneID();
 			s->addView(this);
@@ -50,8 +50,8 @@ namespace LevelUp
         //remove the scene from the parent scene or the engine
         if (m_parentScene != "")
         {
-            Scene* s = getEngine()->getSceneManager()->getScene(m_parentScene);
-            if (s != nullptr)
+            APT::WeakPointer<Scene> s = getEngine()->getSceneManager()->getScene(m_parentScene);
+            if (s.getPtr() != nullptr)
             {
                 s->removeView(this);
             }
@@ -71,12 +71,12 @@ namespace LevelUp
 	{
 		return m_useCameraVector;
 	}
-	void View::addCamera(Camera* c)
+	void View::addCamera(APT::WeakPointer<Camera> c)
 	{
 		m_useCameraVector = true;
 		m_activeCameras.push_back(c);
 	}
-	void View::removeCamera(Camera* c)
+	void View::removeCamera(APT::WeakPointer<Camera> c)
 	{
 		m_activeCameras.erase(std::find(m_activeCameras.begin(), m_activeCameras.end(), c));
 	}

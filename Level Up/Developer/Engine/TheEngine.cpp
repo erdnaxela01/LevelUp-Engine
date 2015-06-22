@@ -14,7 +14,7 @@
 
 namespace LevelUp
 {
-	TheEngine* TheEngine::m_theEngine = nullptr;
+	APT::StrongPointer<TheEngine> TheEngine::m_theEngine = nullptr;
 
 
 
@@ -30,7 +30,7 @@ namespace LevelUp
 
 	LRESULT TheEngine::handleMessages(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	{
-        Scene* s;
+        APT::WeakPointer<Scene> s;
         LevelUpKeys downKey;
         LevelUpKeys upKey;
 		switch (msg)
@@ -49,7 +49,7 @@ namespace LevelUp
             downKey = convertToKey(wParam);
             m_container.keyDown(downKey);
 			s = m_scenes.getActiveScene();
-			if (s != nullptr)
+			if (s.getPtr() != nullptr)
 			{
                 s->getContainer()->keyDown(downKey);
 			}
@@ -64,7 +64,7 @@ namespace LevelUp
             upKey = convertToKey(wParam);
             m_container.keyUp(upKey);
 			s = m_scenes.getActiveScene();
-			if (s != nullptr)
+			if (s.getPtr() != nullptr)
 			{
                 s->getContainer()->keyUp(upKey);
 			}
@@ -73,13 +73,13 @@ namespace LevelUp
 		case WM_MOUSEMOVE:
 			m_container.mouseMove(getMousePos());
 			s = m_scenes.getActiveScene();
-			if (s != nullptr)
+			if (s.getPtr() != nullptr)
 			{
 				s->getContainer()->mouseMove(getMousePos());
 			}
 			break;
         case WM_SIZE:
-			if (m_screenSize != nullptr)
+			if (m_screenSize.getPtr() != nullptr)
 			{
 				ServiceLocator::getRenderService()->resizeBuffer(ServiceLocator::getScreenSizeService()->getScreenSize());
 			}
@@ -98,11 +98,6 @@ namespace LevelUp
 
 	TheEngine::~TheEngine()
 	{
-		if (m_screenSize != nullptr)
-		{
-			delete m_screenSize;
-			m_screenSize = nullptr;
-		}
 	}
 	bool TheEngine::initialize(HINSTANCE h, int showCmd)
 	{
@@ -147,8 +142,8 @@ namespace LevelUp
 		m_render.beginRender();
 
 		m_container.renderViewsWithCamera();
-		Scene* s = m_scenes.getActiveScene();
-		if (s != nullptr)
+		APT::WeakPointer<Scene> s = m_scenes.getActiveScene();
+		if (s.getPtr() != nullptr)
 		{
 			s->getContainer()->renderViewsWithCamera();
 			s->render();
@@ -162,8 +157,8 @@ namespace LevelUp
 		m_container.timeElapsed(m_delta);
 		m_container.updateModels(m_delta);
 
-		Scene* s = m_scenes.getActiveScene();
-		if (s != nullptr)
+		APT::WeakPointer<Scene> s = m_scenes.getActiveScene();
+		if (s.getPtr() != nullptr)
 		{
 			s->getContainer()->updateModels(m_delta);
 			s->update(m_delta);
@@ -177,20 +172,13 @@ namespace LevelUp
 		m_render.shutdown();
 
 
-		//this has to stay last
-		if (m_theEngine != nullptr)
-		{
-			delete m_theEngine;
-			m_theEngine = nullptr;
-		}
-
 	}
 
-	TheEngine* TheEngine::getInstance()
+	APT::WeakPointer<TheEngine> TheEngine::getInstance()
 	{
-		if (m_theEngine == nullptr)
+		if (m_theEngine.getPtr() == nullptr)
 		{
-			m_theEngine = new TheEngine();
+			m_theEngine.setPtr(new TheEngine());
 		}
 		return m_theEngine;
 	}
@@ -212,7 +200,7 @@ namespace LevelUp
 		wc.cbWndExtra = 0; //teh extra bytes to be allocated after the window instance, system sets it to 0
 		wc.hInstance = hInstance; //a handle to the instance that contains the window's wndProc
 		wc.hCursor = LoadCursor(0, IDC_ARROW); // cursor to use for the class
-		//wc.hbrBackground = CreateSolidBrush(0xFFFFFF); //used to determine the background's color, takes an HBRUSH
+		wc.hbrBackground = CreateSolidBrush(0x000000); //used to determine the background's color, takes an HBRUSH
 
 		wc.lpszMenuName = 0; // specifies the ressource menu associated with the window class 
 		wc.lpszClassName = L"Level Up window"; //specifies the window class' name registered with RegisterClass or Register Class EX for findinge later
@@ -284,7 +272,7 @@ namespace LevelUp
 		return m_windowHandle;
 	}
 
-	void TheEngine::addController(Controller* c)
+	void TheEngine::addController(APT::WeakPointer<Controller> c)
 	{
 		m_container.addToControllerMap(c);
 	}
@@ -294,7 +282,7 @@ namespace LevelUp
 		return m_delta;
 	}
 
-	MVCContainer* TheEngine::getContainer()
+	APT::WeakPointer<MVCContainer> TheEngine::getContainer()
 	{
 		return &m_container;
 	}
@@ -322,55 +310,55 @@ namespace LevelUp
 			MapWindowPoints(m_windowHandle, GetParent(m_windowHandle), (LPPOINT)&rect, 2);
 
 
-			float xOffSet = (p.x) - rect.left;
+			float xOffSet = static_cast<LONG>(p.x) - rect.left;
 			pos.x = xOffSet;
-			float yOffSet = (p.y) - rect.top;
+			float yOffSet = static_cast<LONG>(p.y) - rect.top;
 			pos.y = yOffSet;
 		}
 		return pos;
 	}
 
-	void TheEngine::addModel(Model* m)
+	void TheEngine::addModel(APT::WeakPointer<Model> m)
 	{
 		m_container.addToModelMap(m);
 	}
 
-	void TheEngine::addView(View* v)
+	void TheEngine::addView(APT::WeakPointer<View> v)
 	{
 		m_container.addToViewMap(v);
 	}
 
-	void TheEngine::addCamera(Camera* c)
+	void TheEngine::addCamera(APT::WeakPointer<Camera> c)
 	{
 		m_container.addToCameraMap(c);
 	}
-	SceneManager* TheEngine::getSceneManager()
+	APT::WeakPointer<SceneManager> TheEngine::getSceneManager()
 	{
 		return &m_scenes;
 	}
 
-    void TheEngine::removeController(Controller* c)
+	void TheEngine::removeController(APT::WeakPointer<Controller> c)
     {
         m_container.removeFromControllerMap(c);
     }
-    void TheEngine::removeModel(Model* m)
+	void TheEngine::removeModel(APT::WeakPointer<Model> m)
     {
         m_container.removeFromModelMap(m);
     }
-    void TheEngine::removeView(View* v)
+	void TheEngine::removeView(APT::WeakPointer<View> v)
     {
         m_container.removeFromViewMap(v);
     }
-    void TheEngine::removeCamera(Camera* c)
+	void TheEngine::removeCamera(APT::WeakPointer<Camera> c)
     {
         m_container.removeFromCameraMap(c);
     }
 
-    void TheEngine::addEventHandler(EventHandler* e)
+	void TheEngine::addEventHandler(APT::WeakPointer<EventHandler> e)
     {
         m_dispatcher.addHandler(e);
     }
-	void TheEngine::removeEventHandler(EventHandler* e)
+	void TheEngine::removeEventHandler(APT::WeakPointer<EventHandler> e)
 	{
 		m_dispatcher.removeHandler(e);
 	}
@@ -379,8 +367,8 @@ namespace LevelUp
         bool result = true;
         ServiceLocator::provideMathAdapter(&m_adapter);
 
-        m_screenSize = (new WindowScreen(m_windowHandle));
-        ServiceLocator::provideScreenSizeService(m_screenSize);
+        m_screenSize.setPtr(new WindowScreen(m_windowHandle));
+        ServiceLocator::provideScreenSizeService(m_screenSize.getPtr());
 
         result = m_render.initialize(h, m_windowHandle);
         ServiceLocator::provideRenderService(&m_render);
@@ -388,11 +376,11 @@ namespace LevelUp
         return result;
     }
 
-    SystemContainer* TheEngine::getSystems()
+	APT::WeakPointer<SystemContainer> TheEngine::getSystems()
     {
         return &m_systems;
     }
-	TheEngine* getEngine()
+	APT::WeakPointer<TheEngine> getEngine()
 	{
 		return TheEngine::getInstance();
 	}

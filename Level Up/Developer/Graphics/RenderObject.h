@@ -5,6 +5,7 @@
 #include "../Core/GameSprite.h"
 #include "VertexShader.h"
 #include "PixelShader.h"
+#include "../../Addons/AutomaticPointers/AutomaticPointers.h"
 
 namespace LevelUp
 {
@@ -29,12 +30,12 @@ namespace LevelUp
 		virtual void render() = 0;
 	protected:
 		GameSprite m_sprite;
-		ID3D11Buffer* m_vertexBuffer;
-		VertexShader* m_vertexShader;
-		PixelShader* m_pixelShader;
+		APT::StrongPointer<ID3D11Buffer> m_vertexBuffer;
+		APT::StrongPointer<VertexShader> m_vertexShader;
+		APT::StrongPointer<PixelShader> m_pixelShader;
 
-		ID3D11InputLayout* m_inputLayout;
-		ID3D11Buffer* m_mvpCB;
+		APT::StrongPointer<ID3D11InputLayout> m_inputLayout;
+		APT::StrongPointer<ID3D11Buffer> m_mvpCB;
 
 		void setMatrix();
 

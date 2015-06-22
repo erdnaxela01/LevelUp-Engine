@@ -13,9 +13,9 @@ namespace LevelUp
 
 	}
 
-	void BaseLevelObject::addAttribute(Attribute* a)
+	void BaseLevelObject::addAttribute(APT::StrongPointer<Attribute> a)
 	{
 		a->setParent(this);
-		m_attributes.push_back(a);
+		m_attributes.push_back(a.releasePtr());
 	}
 }

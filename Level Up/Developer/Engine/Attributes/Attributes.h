@@ -2,6 +2,7 @@
 #define __ATTRIBUTES_H
 
 #include <string>
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 
 namespace LevelUp
 {
@@ -23,21 +24,21 @@ namespace LevelUp
 		//check the type of the attribute
 		bool isType(std::string t);
 		//get the parent of the attribute
-		BaseLevelObject* getParent() const;
+		APT::WeakPointer<BaseLevelObject> getParent() const;
 
 		bool hasID(std::string ID);
 
 		//base level object is friend to access setParent and removeParent
 		friend BaseLevelObject;
 	protected:
-		BaseLevelObject* m_parent;
+		APT::WeakPointer<BaseLevelObject> m_parent;
 		std::string m_type;
 	private:
 		static int m_numberOfAttributes;
 		std::string m_ID;
 
 		//only base level objects should be able to add themselves to an attribute
-		void setParent(BaseLevelObject* blo);
+		void setParent(APT::WeakPointer<BaseLevelObject> blo);
 
 		//removes the parent, only base level objects can do this
 		void resetParent();

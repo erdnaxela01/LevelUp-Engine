@@ -46,7 +46,7 @@ namespace LevelUp
 		resourceData.pSysMem = vertices;
 		HRESULT d3dResult;
 		//create the buffer
-		d3dResult = ServiceLocator::getRenderService()->getDevice()->CreateBuffer(&vertexDesc, &resourceData, &m_vertexBuffer);
+		d3dResult = ServiceLocator::getRenderService()->getDevice()->CreateBuffer(&vertexDesc, &resourceData, &m_vertexBuffer.getPtrRef());
 
 		if (FAILED(d3dResult))
 		{

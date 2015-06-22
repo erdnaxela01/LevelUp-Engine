@@ -5,6 +5,7 @@
 #include "../../../Developer/Engine/Helper/CountDown.h"
 #include "../../../Developer/Graphics/Rectangle.h"
 #include "../../../Developer/Engine/MVC/View.h"
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 
 namespace LevelUp
 {
@@ -48,7 +49,7 @@ namespace LevelUp
 
         float m_angle;
         float m_speed;
-        Rectangle* m_rect;
+        APT::StrongPointer<Rectangle> m_rect;
         bool m_isActivated;
 
     };

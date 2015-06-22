@@ -8,7 +8,7 @@ namespace LevelUp
 {
     void Playground::SystemAdd()
     {
-        getEngine()->getSystems()->addSystem(new ParticleSystem);
+        getEngine()->getSystems()->addSystem(new ParticleSystem());
     }
 
     void Playground::SceneLayout()

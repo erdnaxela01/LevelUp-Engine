@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 
 /*
 Class meant to hold attributes
@@ -19,7 +20,7 @@ namespace LevelUp
 		Agent();
 		virtual ~Agent();
 		//get all the attributes of a specified type
-		std::vector<Attribute*> getAttributesOfType(std::string type) const;
+		std::vector<APT::WeakPointer<Attribute>> getAttributesOfType(std::string type) const;
 		//get a specific attribute
 		Attribute* getAttribute(std::string ID) const;
 		//remove a specific attribute
@@ -28,7 +29,7 @@ namespace LevelUp
 		void removeAllAttributesOfType(std::string type);
 
 	protected:
-		std::vector<Attribute*> m_attributes;
+		std::vector<APT::StrongPointer<Attribute>> m_attributes;
 	};
 }
 

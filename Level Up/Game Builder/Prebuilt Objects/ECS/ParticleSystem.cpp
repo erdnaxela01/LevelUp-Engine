@@ -9,7 +9,7 @@ namespace LevelUp
 	{
 	}
     //notify the system that someone has a new component check if he wants it
-    void ParticleSystem::notifyHasNewComponent(Entity* e)
+	void ParticleSystem::notifyHasNewComponent(APT::WeakPointer<Entity> e)
     {
         if (e->hasComponent(PARTICLE_COMPONENT_TYPE))
         {
@@ -17,11 +17,11 @@ namespace LevelUp
         }
     }
     //notify the system that someone lost a component, he decides what to do with that
-    void ParticleSystem::notifyHasLostComponent(Entity* e)
+	void ParticleSystem::notifyHasLostComponent(APT::WeakPointer<Entity> e)
     {
         for (auto i:m_entities)
         {
-            if (i == e)
+            if (i.getPtr() == e.getPtr())
             {
                 if (!e->hasComponent(PARTICLE_COMPONENT_TYPE))
                 {
@@ -33,13 +33,13 @@ namespace LevelUp
 
     void ParticleSystem::update(double delta)
     {
-        std::vector<ParticleComponent*> temp;
+        std::vector<APT::WeakPointer<ParticleComponent>> temp;
         for (auto i : m_entities)
         {
-            std::vector<Component*> temp2 = i->getAllComponentsOfType(PARTICLE_COMPONENT_TYPE);
+            std::vector<APT::WeakPointer<Component>> temp2 = i->getAllComponentsOfType(PARTICLE_COMPONENT_TYPE);
             for (auto j : temp2)
             {
-                temp.push_back(dynamic_cast<ParticleComponent*>(j));
+                temp.push_back(dynamic_cast<ParticleComponent*>(j.getPtr()));
             }
 
         }
@@ -49,7 +49,7 @@ namespace LevelUp
             updateComponent(delta, i);
         }
     }
-    void ParticleSystem::updateComponent(double delta, ParticleComponent* e)
+	void ParticleSystem::updateComponent(double delta, APT::WeakPointer<ParticleComponent> e)
     {
         if (e->m_paused)
         {
@@ -65,17 +65,22 @@ namespace LevelUp
 
             if (e->m_elapsed > e->m_frequency && e->m_frequency != 0.0)
             {
+				unsigned int numOfParticles = 1;
+				numOfParticles = std::ceil(e->m_elapsed / e->m_frequency);
                 for (unsigned int i = 0; i < e->m_particles.size(); i++)
                 {
                     if (e->m_particles[i]->isActive() == false)
                     {
                         //get a random angle between set paramteters
-                        float randomAngle = MathHelper::RandomRange(e->m_minAngle, e->m_maxAngle);
-                        float randomSpeed = MathHelper::RandomRange(e->m_minSpeed, e->m_maxSpeed);
+						float randomAngle = static_cast<unsigned int>(MathHelper::RandomRange(static_cast<unsigned int>(e->m_minAngle), static_cast<unsigned int>(e->m_maxAngle)));
+						float randomSpeed = static_cast<unsigned int>(MathHelper::RandomRange(static_cast<unsigned int>(e->m_minSpeed), static_cast<unsigned int>(e->m_maxSpeed)));
                         //emit the particles and reset the elapsed
-                        e->m_particles[i]->emit(randomSpeed, randomAngle, e->m_lifeSpan, e->m_position);
+                        e->m_particles[i]->emit(randomSpeed, randomAngle, static_cast<float>(e->m_lifeSpan), e->m_position);
                         e->m_elapsed = 0.0;
-                        break;
+						if (--numOfParticles == 0)
+						{
+							break;
+						}
                     }
                 }
             }

@@ -1,6 +1,7 @@
 #ifndef __BASEMVCOBJECT_H
 #define __BASEMVCOBJECT_H
 #include "BaseLevelObject.h"
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 namespace LevelUp
 {
 	//Basic model view controller object for the whole 
@@ -10,21 +11,21 @@ namespace LevelUp
 		BaseMVCObject();
 		virtual ~BaseMVCObject();
 		//get the model
-		Model* getModel();
+		APT::WeakPointer<Model> getModel();
 		//get the view
-		View* getView();
+		APT::WeakPointer<View> getView();
 		//get the controller
-		Controller* getController();
+		APT::WeakPointer<Controller> getController();
 
 		//sets the model, it will be deleted
-		void setModel(Model* m);
+		void setModel(APT::StrongPointer<Model> m);
 		//sets the view, it will be deleted
-		void setView(View* v);
+		void setView(APT::StrongPointer<View> v);
 		//sets the controller, it will be deleted
-		void setController(Controller* c);
+		void setController(APT::StrongPointer<Controller> c);
 
 		//initialize the object with all MVC components
-		void initialize(Model* m, View* v, Controller* c);
+		void initialize(APT::StrongPointer<Model> m, APT::StrongPointer<View> v, APT::StrongPointer<Controller> c);
 
 		void setPosition(float x, float y);
 		//set the position of the object
@@ -36,9 +37,9 @@ namespace LevelUp
 		void setZ(float z);
 	private:
 		//MVC components
-		Model* m_model;
-		View* m_view;
-		Controller* m_controller;
+		APT::StrongPointer<Model> m_model;
+		APT::StrongPointer<View> m_view;
+		APT::StrongPointer<Controller> m_controller;
 	};
 }
 

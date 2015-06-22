@@ -10,6 +10,17 @@ namespace LevelUp
 
 	RenderEngine::RenderEngine() : Renderer()
 	{
+		m_colorMapSampler.setDeleteFunc([](ID3D11SamplerState*& p)
+		{
+			if (p) p->Release();
+			p = nullptr;
+		});
+
+		m_alphaBlendState.setDeleteFunc([](ID3D11BlendState*& p)
+		{
+			if (p) p->Release();
+			p = nullptr;
+		});
 	}
 
 	bool RenderEngine::loadContent()
@@ -25,7 +36,7 @@ namespace LevelUp
 		colorMapDesc.MaxLOD = D3D11_FLOAT32_MAX;
 
         //create the sampler state using the color map dessc
-		HRESULT d3dResult = m_d3dDevice->CreateSamplerState(&colorMapDesc, &m_colorMapSampler);
+		HRESULT d3dResult = m_d3dDevice->CreateSamplerState(&colorMapDesc, &m_colorMapSampler.getPtrRef());
 
 		if (FAILED(d3dResult))
 		{
@@ -34,7 +45,7 @@ namespace LevelUp
 		}
 
         //set up the view projefction matrix for the first time
-		ScreenSize* window = ServiceLocator::getScreenSizeService();
+		APT::WeakPointer<ScreenSize> window = ServiceLocator::getScreenSizeService();
 		DirectX::XMMATRIX view = DirectX::XMMatrixIdentity();
 		DirectX::XMMATRIX projection = DirectX::XMMatrixOrthographicOffCenterLH(0.0f, window->getScreenSize().x, 0.0f, window->getScreenSize().y, 0.1f, 100.0f);
 
@@ -57,8 +68,8 @@ namespace LevelUp
 		float blendFactor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
 
         //create the blend state and set it to the output merger
-		m_d3dDevice->CreateBlendState(&blendDesc, &m_alphaBlendState);
-		m_d3dContext->OMSetBlendState(m_alphaBlendState, blendFactor, 0xFFFFFFFF);
+		m_d3dDevice->CreateBlendState(&blendDesc, &m_alphaBlendState.getPtrRef());
+		m_d3dContext->OMSetBlendState(m_alphaBlendState.getPtr(), blendFactor, 0xFFFFFFFF);
 
         //set up the intial viewport
 		D3D11_VIEWPORT viewport;
@@ -79,26 +90,21 @@ namespace LevelUp
 	void RenderEngine::unloadContent()
 	{
         //release all the pointers
-		if (m_colorMapSampler)m_colorMapSampler->Release();
-		if (m_alphaBlendState) m_alphaBlendState->Release();
-
-		m_colorMapSampler = nullptr;
-		m_alphaBlendState = nullptr;
 
 	}
 
 	void RenderEngine::beginRender()
 	{
         //tell the engine to start rendering and to draw the background
-		if (m_d3dContext == 0)
+		if (m_d3dContext.getPtr() == 0)
 		{
 			return;
 		}
 
-		float clearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
-		m_d3dContext->ClearRenderTargetView(m_backBufferTarget, clearColor);
+		float clearColor[4] = { m_bgColor.x, m_bgColor.y, m_bgColor.z, 1.0f };
+		m_d3dContext->ClearRenderTargetView(m_backBufferTarget.getPtr(), clearColor);
 
-		m_d3dContext->PSSetSamplers(0, 1, &m_colorMapSampler);
+		m_d3dContext->PSSetSamplers(0, 1, &m_colorMapSampler.getPtrRef());
 
 	}
 
@@ -114,14 +120,14 @@ namespace LevelUp
 		unloadContent();
 	}
 
-	ID3D11Device* RenderEngine::getDevice() const
+	APT::WeakPointer<ID3D11Device> RenderEngine::getDevice() const
 	{
-		return m_d3dDevice;
+		return m_d3dDevice.getPtr();
 	}
 
-	ID3D11DeviceContext* RenderEngine::getContext() const
+	APT::WeakPointer<ID3D11DeviceContext> RenderEngine::getContext() const
 	{
-		return m_d3dContext;
+		return (m_d3dContext.getPtr());
 	}
 
     LVL4X4matrix RenderEngine::getVPMatrix() const
@@ -145,31 +151,33 @@ namespace LevelUp
 		shaderFlags |= D3DCompile_DEBUG;
 #endif
 
-		ID3DBlob* errorBuffer = 0;
+		APT::StrongPointer<ID3DBlob> errorBuffer;
+		errorBuffer.setDeleteFunc([](ID3DBlob*& p)
+		{
+			if (p) p->Release();
+			p = nullptr;
+		});
 		HRESULT result;
 
         filePath = L"../Developer/Shaders/" + filePath;
 
         //use the compile from file function to load a shader into the buffer
-		result = D3DCompileFromFile(filePath.c_str(), 0, 0, entry.c_str(), shaderModel.c_str(), shaderFlags, 0, buffer, &errorBuffer);
+		result = D3DCompileFromFile(filePath.c_str(), 0, 0, entry.c_str(), shaderModel.c_str(), shaderFlags, 0, buffer, &errorBuffer.getPtrRef());
 		if (FAILED(result))
 		{
-			if (errorBuffer != 0)
+			if (errorBuffer.getPtr() != 0)
 			{
 				OutputDebugString((LPCWSTR)errorBuffer->GetBufferPointer());
-				errorBuffer->Release();
+				errorBuffer.clear();
 			}
 			return false;
 		}
 
-		if (errorBuffer != 0)
-		{
-			errorBuffer->Release();
-		}
+		errorBuffer.clear();
 		return true;
 	}
 
-    DirectXViewport* RenderEngine::produceViewport()
+	DirectXViewport* RenderEngine::produceViewport()
     {
         //factory to produce a viewport
         DirectXViewport* v = new DirectXViewport();
@@ -190,19 +198,23 @@ namespace LevelUp
 		con->ClearState();
 
 		//release the current buffer
-		if(m_backBufferTarget)m_backBufferTarget->Release();
+		m_backBufferTarget.clear();
 
 		//resize the buffer
-		result = m_swapChain->ResizeBuffers(2, size.x, size.y, DXGI_FORMAT_R8G8B8A8_UNORM, DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH);
+		result = m_swapChain->ResizeBuffers(2, static_cast<UINT>(size.x), static_cast<UINT>(size.y), DXGI_FORMAT_R8G8B8A8_UNORM, DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH);
 		if (FAILED(result))
 		{
 			throw(std::runtime_error("buffer resize fail"));
 		}
 
 		//set the texture of the swap chain
-		ID3D11Texture2D* backBufferTexture;
+		APT::StrongPointer<ID3D11Texture2D> backBufferTexture;
+		backBufferTexture.setDeleteFunc([](ID3D11Texture2D*& p) {
+			if (p) p->Release();
+			p = nullptr;
+		});
 		result = m_swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D),
-			(LPVOID*)&backBufferTexture);
+			(LPVOID*)&backBufferTexture.getPtrRef());
 
 		//error checking
 		if (FAILED(result))
@@ -210,11 +222,11 @@ namespace LevelUp
 			throw(std::runtime_error("buffer resize fail"));
 		}
 		//create a render target with the backbuffer
-		result = m_d3dDevice->CreateRenderTargetView(backBufferTexture, 0,
-			&m_backBufferTarget);
+		result = m_d3dDevice->CreateRenderTargetView(backBufferTexture.getPtr(), 0,
+			&m_backBufferTarget.getPtrRef());
 
 		//release the texture
-		if (backBufferTexture) backBufferTexture->Release();
+		backBufferTexture.clear();
 
 		//error checking
 		if (FAILED(result))
@@ -224,10 +236,19 @@ namespace LevelUp
 
 
 		////set the output merger's render targets
-		m_d3dContext->OMSetRenderTargets(1, &m_backBufferTarget, 0);
+		m_d3dContext->OMSetRenderTargets(1, &m_backBufferTarget.getPtrRef(), 0);
 
 		//set the alpha blending
-		float blendFactor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
-		m_d3dContext->OMSetBlendState(m_alphaBlendState, blendFactor, 0xFFFFFFFF);
+		float blendFactor[4] = { m_bgColor.x, m_bgColor.y, m_bgColor.z, 1.0f };
+		m_d3dContext->OMSetBlendState(m_alphaBlendState.getPtr(), blendFactor, 0xFFFFFFFF);
+	}
+
+	void RenderEngine::setBgColor(LVLfloat3 color)
+	{
+		m_bgColor = color;
+	}
+	LVLfloat3 RenderEngine::getBgColor()
+	{
+		return m_bgColor;
 	}
 }

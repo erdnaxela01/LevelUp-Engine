@@ -109,6 +109,7 @@
     <ClCompile Include="..\Developer\Engine\BasicLevelObject\GameObject.cpp" />
     <ClCompile Include="..\Developer\Engine\Command\CameraResizeCommand.cpp" />
     <ClCompile Include="..\Developer\Engine\Command\Command.cpp" />
+    <ClCompile Include="..\Developer\Engine\DevLog\DevLog.cpp" />
     <ClCompile Include="..\Developer\Engine\ECS\Component.cpp" />
     <ClCompile Include="..\Developer\Engine\ECS\Entity.cpp" />
     <ClCompile Include="..\Developer\Engine\ECS\System.cpp" />
@@ -139,7 +140,11 @@
     <ClCompile Include="..\Developer\Graphics\RenderObject.cpp" />
     <ClCompile Include="..\Developer\Graphics\Shape.cpp" />
     <ClCompile Include="..\Developer\Graphics\Sprite.cpp" />
+    <ClCompile Include="..\Developer\Graphics\TextureManager.cpp" />
     <ClCompile Include="..\Developer\Graphics\VertexShader.cpp" />
+    <ClCompile Include="..\Developer\Graphics\ViewShape.cpp" />
+    <ClCompile Include="..\Developer\Logging\Logger.cpp" />
+    <ClCompile Include="..\Developer\Services\Date\Date.cpp" />
     <ClCompile Include="..\Developer\Services\Math\DataTypes.cpp" />
     <ClCompile Include="..\Developer\Services\Math\MathAdapters\DirectXMathAdapter.cpp" />
     <ClCompile Include="..\Developer\Services\Math\MathFunctions.cpp" />
@@ -161,6 +166,12 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Addons\AutomaticPointers\AutomaticPointers.h" />
+    <ClInclude Include="..\Addons\AutomaticPointers\ChangePointer.h" />
+    <ClInclude Include="..\Addons\AutomaticPointers\MemoryTracker.h" />
+    <ClInclude Include="..\Addons\AutomaticPointers\ReferencePointer.h" />
+    <ClInclude Include="..\Addons\AutomaticPointers\StrongPointer.h" />
+    <ClInclude Include="..\Addons\AutomaticPointers\WeakPointer.h" />
     <ClInclude Include="..\Developer\Audio\Audio.h" />
     <ClInclude Include="..\Developer\Audio\AudioHeaders.h" />
     <ClInclude Include="..\Developer\Audio\Listener.h" />
@@ -181,6 +192,7 @@
     <ClInclude Include="..\Developer\Engine\BasicLevelObject\GameObject.h" />
     <ClInclude Include="..\Developer\Engine\Command\CameraResizeCommand.h" />
     <ClInclude Include="..\Developer\Engine\Command\Command.h" />
+    <ClInclude Include="..\Developer\Engine\DevLog\DevLog.h" />
     <ClInclude Include="..\Developer\Engine\ECS\Component.h" />
     <ClInclude Include="..\Developer\Engine\ECS\ECSTypes.h" />
     <ClInclude Include="..\Developer\Engine\ECS\Entity.h" />
@@ -218,7 +230,17 @@
     <ClInclude Include="..\Developer\Graphics\Shader.h" />
     <ClInclude Include="..\Developer\Graphics\Shape.h" />
     <ClInclude Include="..\Developer\Graphics\Sprite.h" />
+    <ClInclude Include="..\Developer\Graphics\TextureManager.h" />
     <ClInclude Include="..\Developer\Graphics\VertexShader.h" />
+    <ClInclude Include="..\Developer\Graphics\ViewShape.h" />
+    <ClInclude Include="..\Developer\Logging\Logger.h" />
+    <ClInclude Include="..\Developer\Pipeline\OmniSender.h" />
+    <ClInclude Include="..\Developer\Pipeline\Pipeline.h" />
+    <ClInclude Include="..\Developer\Pipeline\Receiver.h" />
+    <ClInclude Include="..\Developer\Pipeline\Sender.h" />
+    <ClInclude Include="..\Developer\Pipeline\TReceiver.h" />
+    <ClInclude Include="..\Developer\Pipeline\TSender.h" />
+    <ClInclude Include="..\Developer\Services\Date\Date.h" />
     <ClInclude Include="..\Developer\Services\Math\DataTypes.h" />
     <ClInclude Include="..\Developer\Services\Math\LevelUpMath.h" />
     <ClInclude Include="..\Developer\Services\Math\MathAdapters\DirectXMathAdapter.h" />

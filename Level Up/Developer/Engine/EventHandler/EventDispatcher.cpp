@@ -13,13 +13,13 @@ namespace LevelUp
 
     }
 
-    void EventDispatcher::addHandler(EventHandler* h)
+	void EventDispatcher::addHandler(APT::WeakPointer<EventHandler> h)
     {
         //add a handler
         m_handlers.push_back(h);
     }
 
-	void EventDispatcher::removeHandler(EventHandler* h)
+	void EventDispatcher::removeHandler(APT::WeakPointer<EventHandler> h)
 	{
 		m_handlers.erase(std::find(m_handlers.begin(), m_handlers.end(), h));
 	}

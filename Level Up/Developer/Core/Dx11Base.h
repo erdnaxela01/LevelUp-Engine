@@ -2,6 +2,8 @@
 #define __BASE_H
 #include <string>
 
+#include "../../Addons/AutomaticPointers/AutomaticPointers.h"
+
 namespace LevelUp
 {
     /*
@@ -38,13 +40,13 @@ namespace LevelUp
 		D3D_FEATURE_LEVEL m_featureLevel;
 
         //the kdirect x device
-		ID3D11Device* m_d3dDevice;
+		APT::StrongPointer<ID3D11Device> m_d3dDevice;
         //the direct x context
-		ID3D11DeviceContext* m_d3dContext;
+		APT::StrongPointer<ID3D11DeviceContext> m_d3dContext;
         //the directx swapchain
-		IDXGISwapChain* m_swapChain;
+		APT::StrongPointer<IDXGISwapChain> m_swapChain;
         //the secondary buffer
-		ID3D11RenderTargetView* m_backBufferTarget;
+		APT::StrongPointer<ID3D11RenderTargetView> m_backBufferTarget;
 
 
 

@@ -5,6 +5,7 @@
 #include <d3d11.h>
 #include <string>
 #include "Math\DataTypes.h"
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 
 namespace LevelUp
 {
@@ -21,9 +22,9 @@ namespace LevelUp
 		virtual void beginRender() = 0;
 		virtual void finishRender() = 0;
         //needs abstraction
-		virtual ID3D11Device* getDevice() const = 0;
+		virtual APT::WeakPointer<ID3D11Device> getDevice() const = 0;
         //needs abstraction
-		virtual ID3D11DeviceContext* getContext() const = 0;
+		virtual APT::WeakPointer<ID3D11DeviceContext> getContext() const = 0;
         //get a view point matrix
 		virtual LVL4X4matrix getVPMatrix() const = 0; //
         //set a view point matrix
@@ -36,6 +37,10 @@ namespace LevelUp
 		virtual void setFullScreenMode(bool b) = 0;
 		//resize buffer
 		virtual void resizeBuffer(LVLfloat2 size) = 0;
+		//set the background color
+		virtual void setBgColor(LVLfloat3 color) = 0;
+		//get the background color
+		virtual LVLfloat3 getBgColor() = 0;
 
 
 	};

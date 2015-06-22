@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 
 namespace LevelUp
 {
@@ -38,9 +39,9 @@ namespace LevelUp
         //can set which cameras its drawn on
 		bool usesCameraVector() const;
         //add a camera to the camera vector
-		void addCamera(Camera* c);
+		void addCamera(APT::WeakPointer<Camera> c);
         //remove the camera
-		void removeCamera(Camera* c);
+		void removeCamera(APT::WeakPointer<Camera> c);
         //set if it uses a camera vector
 		void setUseCameraVector(bool b);
         //checks if a specific camera is part of the vector
@@ -60,7 +61,7 @@ namespace LevelUp
 		static int m_numberOfViews;
 		bool m_canView;
 		bool m_useCameraVector;
-		std::vector<Camera*> m_activeCameras;
+		std::vector<APT::WeakPointer<Camera>> m_activeCameras;
         std::string m_parentScene;
 
 	};

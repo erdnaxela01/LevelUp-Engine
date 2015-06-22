@@ -4,7 +4,7 @@
 
 namespace LevelUp
 {
-	TrackingCamera::TrackingCamera(BaseLevelObject* go) :m_isTracking(false)
+	TrackingCamera::TrackingCamera(APT::WeakPointer<BaseLevelObject> go) :m_isTracking(false)
 	{
 		m_trackingObject = go;
         m_onScreenPos = LVLfloat2(0.5f, 0.5f);
@@ -13,7 +13,7 @@ namespace LevelUp
 	{
 
 	}
-	void TrackingCamera::setTrackingObject(BaseLevelObject* go)
+	void TrackingCamera::setTrackingObject(APT::WeakPointer<BaseLevelObject> go)
 	{
 		m_trackingObject = go;
 	}
@@ -27,7 +27,7 @@ namespace LevelUp
 	}
 	void TrackingCamera::update(double delta)
 	{
-		if (m_trackingObject == nullptr || m_isTracking == false)
+		if (m_trackingObject.getPtr() == nullptr || m_isTracking == false)
 		{
 			return;
 		}

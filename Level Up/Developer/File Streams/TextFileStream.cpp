@@ -5,7 +5,7 @@
 
 namespace LevelUp
 {
-	TextFileStream::TextFileStream(std::string fileName) : ITextFileStream(fileName), OTextFileStream(fileName)
+	TextFileStream::TextFileStream(std::string fileName, bool overrideDefaultPath) : ITextFileStream(fileName, overrideDefaultPath), OTextFileStream(fileName, overrideDefaultPath)
 	{
 	}
 

@@ -6,26 +6,17 @@ namespace LevelUp
 {
 	GameObject::GameObject(std::wstring fName, float widthOfFrame, float heightOfFrame) :Model(), View(), BaseLevelObject()
 	{
-		m_sprite = (new AnimatedSprite(fName, widthOfFrame, heightOfFrame));
+		m_sprite.setPtr(new AnimatedSprite(fName, widthOfFrame, heightOfFrame));
 	}
 	GameObject::~GameObject()
 	{
-		if (m_sprite != nullptr)
-		{
-			delete m_sprite;
-			m_sprite = nullptr;
-		}
 	}
 
 	void GameObject::setSprite(std::wstring fName, float widthOfFrame, float heightOfFrame)
 	{
 		//get a new sprite
-		if (m_sprite != nullptr)
-		{
-			delete m_sprite;
-			m_sprite = nullptr;
-		}
-		m_sprite = (new AnimatedSprite(fName, widthOfFrame, heightOfFrame));
+		m_sprite.clear();
+		m_sprite.setPtr(new AnimatedSprite(fName, widthOfFrame, heightOfFrame));
 	}
 
 	void GameObject::update(double delta)

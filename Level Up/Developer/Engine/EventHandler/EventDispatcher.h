@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "Events.h"
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 
 namespace LevelUp
 {
@@ -19,13 +20,13 @@ namespace LevelUp
         EventDispatcher();
         virtual ~EventDispatcher();
         //add an event handler
-		void addHandler(EventHandler* h);
+		void addHandler(APT::WeakPointer<EventHandler> h);
         //tell all handlers about an eventr
 		void dispatchEvent(DispatchEvents e);
 		//remove an event handler
-		void removeHandler(EventHandler* h);
+		void removeHandler(APT::WeakPointer<EventHandler> h);
 	private: 
-		std::vector<EventHandler*> m_handlers;
+		std::vector<APT::WeakPointer<EventHandler>> m_handlers;
 	};
 }
 

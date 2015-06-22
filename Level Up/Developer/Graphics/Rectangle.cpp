@@ -25,7 +25,7 @@ namespace LevelUp
 	bool Rectangle::loadContent()
 	{
         //get the device
-		ID3D11Device* device = ServiceLocator::getRenderService()->getDevice();
+		APT::WeakPointer<ID3D11Device> device = ServiceLocator::getRenderService()->getDevice();
 
         //set up the color layout
 		D3D11_INPUT_ELEMENT_DESC solidColorLayout[] =
@@ -33,9 +33,9 @@ namespace LevelUp
 			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 }
 		};
-		m_vertexShader = new VertexShader(L"SolidColorShader.fx", "VS_Main", "vs_4_0", solidColorLayout, ARRAYSIZE(solidColorLayout), &m_inputLayout);
+		m_vertexShader.setPtr(new VertexShader(L"SolidColorShader.fx", "VS_Main", "vs_4_0", solidColorLayout, ARRAYSIZE(solidColorLayout), &m_inputLayout.getPtrRef()));
 
-		m_pixelShader = new PixelShader(L"SolidColorShader.fx", "PS_Main", "ps_4_0");
+		m_pixelShader.setPtr(new PixelShader(L"SolidColorShader.fx", "PS_Main", "ps_4_0"));
 		
 
 
@@ -71,17 +71,17 @@ namespace LevelUp
 		unsigned int offset = 0;
 
         //get5 the device contexzt
-		ID3D11DeviceContext* context = ServiceLocator::getRenderService()->getContext();
+		APT::WeakPointer<ID3D11DeviceContext> context = ServiceLocator::getRenderService()->getContext();
 		//
   //      //set the shaders
 
 		m_vertexShader->setActiveShader();
 		m_pixelShader->setActiveShader();
 
-		context->IASetInputLayout(m_inputLayout);
+		context->IASetInputLayout(m_inputLayout.getPtr());
 
 		//sprite specific code
-		context->IASetVertexBuffers(0, 1, &m_vertexBuffer, &stride, &offset);
+		context->IASetVertexBuffers(0, 1, &m_vertexBuffer.getPtrRef(), &stride, &offset);
 		//
 		//sprite specific
 		//
@@ -94,7 +94,7 @@ namespace LevelUp
 
 	void Rectangle::resetVertices()
 	{
-		ID3D11DeviceContext* context = ServiceLocator::getRenderService()->getContext();
+		APT::WeakPointer<ID3D11DeviceContext> context = ServiceLocator::getRenderService()->getContext();
 		//create a vector of the vertecx
 
 		//set the vertec buffer
@@ -105,12 +105,12 @@ namespace LevelUp
 		D3D11_MAPPED_SUBRESOURCE mappedResource;
 		ColorVertexPos* p;
 
-		context->Map(m_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
+		context->Map(m_vertexBuffer.getPtr(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
 
 		p = (ColorVertexPos*)mappedResource.pData;
 
 		memcpy(p, (void*)vertices, (sizeof(ColorVertexPos) * 6));
-		context->Unmap(m_vertexBuffer, 0);
+		context->Unmap(m_vertexBuffer.getPtr(), 0);
 
 		delete[] vertices;
 

@@ -6,11 +6,21 @@ namespace LevelUp
 	PixelShader::PixelShader(std::wstring shaderName, std::string entryPoint, std::string level)
 	{
 
+		m_solidColorPS.setDeleteFunc([](ID3D11PixelShader*& p)
+		{
+			if (p) p->Release();
+			p = nullptr;
+		});
 		HRESULT d3dResult;
-		ID3DBlob* psBuffer = 0;
+		APT::StrongPointer<ID3DBlob> psBuffer = 0;
+		psBuffer.setDeleteFunc([](ID3DBlob*& p)
+		{
+			if (p) p->Release();
+			p = nullptr;
+		});
 
 		//compile the shader
-		bool compileResult = ServiceLocator::getRenderService()->CompileD3DShader(shaderName, entryPoint, level, &psBuffer);
+		bool compileResult = ServiceLocator::getRenderService()->CompileD3DShader(shaderName, entryPoint, level, &psBuffer.getPtrRef());
 
 		if (!compileResult)
 		{
@@ -18,9 +28,9 @@ namespace LevelUp
 		}
 
 		//create the pixel shader
-		d3dResult = ServiceLocator::getRenderService()->getDevice()->CreatePixelShader(psBuffer->GetBufferPointer(), psBuffer->GetBufferSize(), 0, &m_solidColorPS);
+		d3dResult = ServiceLocator::getRenderService()->getDevice()->CreatePixelShader(psBuffer->GetBufferPointer(), psBuffer->GetBufferSize(), 0, &m_solidColorPS.getPtrRef());
 
-		psBuffer->Release();
+		psBuffer.clear();
 
 		if (FAILED(d3dResult))
 		{
@@ -29,12 +39,10 @@ namespace LevelUp
 	}
 	PixelShader::~PixelShader()
 	{
-		if (m_solidColorPS) m_solidColorPS->Release();
-		m_solidColorPS = nullptr;
 	}
 	void PixelShader::setActiveShader()
 	{
-		ID3D11DeviceContext* context = ServiceLocator::getRenderService()->getContext();
-		context->PSSetShader(m_solidColorPS, 0, 0);
+		APT::WeakPointer<ID3D11DeviceContext> context = ServiceLocator::getRenderService()->getContext();
+		context->PSSetShader(m_solidColorPS.getPtr(), 0, 0);
 	}
 }

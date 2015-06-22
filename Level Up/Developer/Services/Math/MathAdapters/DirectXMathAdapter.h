@@ -3,6 +3,7 @@
 
 #include "MathAdapter.h"
 #include "../MatrixContainer/MatrixContainer.h"
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 #include <DirectXMath.h>
 
 namespace LevelUp
@@ -18,9 +19,9 @@ namespace LevelUp
 		DirectXMathAdapter() {};
 		virtual ~DirectXMathAdapter() {};
         //convert the LVL matrix to a specific matrix
-        void get4x4Matrix(LVL4X4matrix& m, MatrixContainer* con);
+        void get4x4Matrix(LVL4X4matrix& m, APT::WeakPointer<MatrixContainer> con);
         //convert the specifc matrix to a level matrix
-        void convertToLVLMatrix(LVL4X4matrix* mat, MatrixContainer* con);
+		void convertToLVLMatrix(APT::WeakPointer<LVL4X4matrix> mat, APT::WeakPointer<MatrixContainer> con);
 
     };
 }

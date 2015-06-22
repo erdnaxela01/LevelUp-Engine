@@ -2,7 +2,9 @@
 #define __SPRITE_H
 
 #include <d3d11.h>
+#include "../../Addons/AutomaticPointers/AutomaticPointers.h"
 #include "RenderObject.h"
+#include "TextureManager.h"
 
 namespace LevelUp
 {
@@ -43,15 +45,17 @@ namespace LevelUp
 		float m_height;
 		//set the vertext buffer
 		virtual bool setVertexBuffer(VertexPos vertices[]);
-
+		
 		//sets the vertices
 		virtual bool setVertices(float halfWidth, float halfHeight);
 
 		VertexPos* getUnalteredVertices(float width, float height);
 	private:
-		ID3D11ShaderResourceView* m_colorMap;
+		APT::ChangePointer<ID3D11ShaderResourceView> m_colorMap;
 		std::wstring m_fileName;
 		bool m_dds;
+
+		static TextureManager m_manager;
 	};
 }
 

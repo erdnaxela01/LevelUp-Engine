@@ -7,13 +7,15 @@
 #include "../../Engine/EventHandler/Events.h"
 #include "../../Services/Math/LevelUpMath.h"
 #include "../../Core/DirectXViewport.h"
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
+#include "../../Engine/Command/CameraResizeCommand.h"
+
 
 namespace LevelUp
 {
 	class View;
 	class GameObject;
     class Scene;
-    class CameraResizeCommand;
 
 
     //camera will draw on the screen all the objects that are on its parent scene and will draw them appropriatly
@@ -23,7 +25,7 @@ namespace LevelUp
 	public:
 		Camera();
         //create the camera for a scene
-        Camera(Scene* s);
+        Camera(APT::WeakPointer<Scene> s);
 		virtual ~Camera();
         //get the cameras id
 		std::string CameraID();
@@ -67,7 +69,7 @@ namespace LevelUp
         //its an event handler to handle screen size events
         void handleEvent(DispatchEvents e);
 
-        void setResizeMethod(CameraResizeCommand* c);
+		void setResizeMethod(APT::StrongPointer<CameraResizeCommand> c);
 
 
 	protected:
@@ -82,11 +84,11 @@ namespace LevelUp
         LVLfloat2 m_screenPos;
         LVLfloat2 m_currentScreenSize;
         bool m_viewPortIsDirty;
-        Viewport* m_viewport;
+		APT::StrongPointer<Viewport> m_viewport;
 
 		float m_zoom;
 
-        CameraResizeCommand* m_command;
+		APT::StrongPointer<CameraResizeCommand> m_command;
 	};
 }
 #endif

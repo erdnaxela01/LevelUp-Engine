@@ -10,26 +10,17 @@ namespace LevelUp
 	}
 	Agent::~Agent()
 	{
-		//delete all the attributes
-		for (auto i : m_attributes)
-		{
-			if (i != nullptr)
-			{
-				delete i;
-				i = nullptr;
-			};
-		}
 	}
 
-	std::vector<Attribute*> Agent::getAttributesOfType(std::string type) const
+	std::vector<APT::WeakPointer<Attribute>> Agent::getAttributesOfType(std::string type) const
 	{
 		//loop through all the attributes and push back all the attributes with a specified type
-		std::vector<Attribute*> attrib;
-		for (auto i : m_attributes)
+		std::vector<APT::WeakPointer<Attribute>> attrib;
+		for (unsigned int i = 0; i < m_attributes.size(); i++)
 		{
-			if (i->isType(type))
+			if ((m_attributes[i])->isType(type))
 			{
-				attrib.push_back(i);
+				attrib.push_back(m_attributes[i]);
 			}
 		}
 		return attrib;
@@ -37,11 +28,11 @@ namespace LevelUp
 	Attribute* Agent::getAttribute(std::string ID) const
 	{
 		//llop through all the attributes and check if it has the specified ID
-		for (auto i : m_attributes)
+		for (unsigned int i = 0; i < m_attributes.size(); i++)
 		{
-			if (i->hasID(ID))
+			if (m_attributes[i]->hasID(ID))
 			{
-				return i;
+				return m_attributes[i].getPtr();
 			}
 		}
 		return nullptr;
@@ -49,32 +40,24 @@ namespace LevelUp
 	void Agent::removeAttribute(std::string ID)
 	{
 		//find the attribute with the ID and remove it
-		for (auto i : m_attributes)
+		for (unsigned int i = 0; i < m_attributes.size(); i++)
 		{
-			if (i->hasID(ID))
+			if (m_attributes[i]->hasID(ID))
 			{
-				if (i != nullptr)
-				{
-					delete i;
-					i = nullptr;
-				}
-				m_attributes.erase(std::find(m_attributes.begin(), m_attributes.end(), i));
+				m_attributes[i].clear();
+				m_attributes.erase(std::find(m_attributes.begin(), m_attributes.end(), m_attributes[i]));
 			}
 		}
 	}
 	void Agent::removeAllAttributesOfType(std::string type)
 	{
 		//loop through all the attributes and push back all the attributes with a specified type
-		for (auto i : m_attributes)
+		for (unsigned int i = 0; i < m_attributes.size(); i++)
 		{
-			if (i->isType(type))
+			if (m_attributes[i]->isType(type))
 			{
-				if (i != nullptr)
-				{
-					delete i;
-					i = nullptr;
-				};
-				m_attributes.erase(std::find(m_attributes.begin(), m_attributes.end(), i));
+				m_attributes[i].clear();
+				m_attributes.erase(std::find(m_attributes.begin(), m_attributes.end(), m_attributes[i]));
 			}
 		}
 	}

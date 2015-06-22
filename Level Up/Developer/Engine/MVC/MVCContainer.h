@@ -8,6 +8,7 @@
 #include "Controller.h"
 #include "../../Services/Math/LevelUpMath.h"
 #include "../../Enums/Keys.h"
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 
 namespace LevelUp
 {
@@ -25,29 +26,29 @@ namespace LevelUp
 		MVCContainer();
 		virtual ~MVCContainer();
         //get all the controllers
-		std::map<controllerType, std::vector<Controller*>> getControllers() const;
+		std::map<controllerType, std::vector<APT::WeakPointer<Controller>>> getControllers() const;
         //get all the models
-		std::vector<Model*> getModels() const;
+		std::vector<APT::WeakPointer<Model>> getModels() const;
         //get all the views
-		std::vector<View*> getViews() const;
+		std::vector<APT::WeakPointer<View>> getViews() const;
 
         //add a controller to the map
-		void addToControllerMap(Controller* controller);
+		void addToControllerMap(APT::WeakPointer<Controller> controller);
         //add a model to the map
-		void addToModelMap(Model* model);
+		void addToModelMap(APT::WeakPointer<Model> model);
         //add a view to the map
-		void addToViewMap(View* view);
+		void addToViewMap(APT::WeakPointer<View> view);
         //add a camera to the map
-		void addToCameraMap(Camera* cam);
+		void addToCameraMap(APT::WeakPointer<Camera> cam);
 
         //remove a controller from the map
-        void removeFromControllerMap(Controller* c);
+		void removeFromControllerMap(APT::WeakPointer<Controller> c);
         //remove a model from the map
-        void removeFromModelMap(Model* m);
+		void removeFromModelMap(APT::WeakPointer<Model> m);
         //remove a view from the map
-        void removeFromViewMap(View* v);
+		void removeFromViewMap(APT::WeakPointer<View> v);
         //remove a camera from the map
-        void removeFromCameraMap(Camera* c);
+		void removeFromCameraMap(APT::WeakPointer<Camera> c);
 
         //update all the key controllers
 		void keyDown(LevelUpKeys key);
@@ -68,10 +69,10 @@ namespace LevelUp
 
 
 	private:
-		std::map<controllerType, std::vector<Controller*>> m_controllers;
-		std::vector<Model*> m_models;
-		std::vector<View*> m_views;
-		std::vector<Camera*> m_cameras;
+		std::map<controllerType, std::vector<APT::WeakPointer<Controller>>> m_controllers;
+		std::vector<APT::WeakPointer<Model>> m_models;
+		std::vector<APT::WeakPointer<View>> m_views;
+		std::vector<APT::WeakPointer<Camera>> m_cameras;
 
 	};
 }

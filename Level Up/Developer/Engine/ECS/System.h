@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "ECSTypes.h"
-
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 namespace LevelUp
 {
     class Entity;
@@ -19,17 +19,17 @@ namespace LevelUp
 		System() {};
 		virtual ~System() {};
         //add an entity to the vector
-        void addEntity(Entity* e);
+		void addEntity(APT::WeakPointer<Entity> e);
         //notify the system that someone has a new component check if he wants it
-        virtual void notifyHasNewComponent(Entity* e) = 0;
+		virtual void notifyHasNewComponent(APT::WeakPointer<Entity> e) = 0;
         //notify the system that someone lost a component, he decides what to do with that
-        virtual void notifyHasLostComponent(Entity* e) = 0;
+		virtual void notifyHasLostComponent(APT::WeakPointer<Entity> e) = 0;
         //remove an entity from the vecotr
-        void removeEntity(Entity* e);
+        void removeEntity(APT::WeakPointer<Entity> e);
 
         virtual bool isECSType(ECSType t) const;
     protected:
-        std::vector<Entity*> m_entities;
+		std::vector<APT::WeakPointer<Entity>> m_entities;
 
     };
 

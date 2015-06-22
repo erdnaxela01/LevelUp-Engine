@@ -82,14 +82,14 @@ namespace LevelUp
 
     LVLfloat MathHelper::factorial(unsigned int digit)
     {
-        LVLfloat total = digit;
+        LVLfloat total = static_cast<float>(digit);
         if (digit == 1)
         {
             return 1;
         }
         for (int i = digit - 1; i > 1; i--)
         {
-            total *= i;
+            total *= static_cast<float>(i);
         }
         return total;
     }
@@ -113,13 +113,13 @@ namespace LevelUp
     }
     float MathHelper::DegreesToRadians(float degrees)
     {
-        return degrees * std::_Pi / 180.0f;
+        return degrees * static_cast<float>(std::_Pi) / 180.0f;
 
     }
 
     float MathHelper::RadiansToDegrees(float radians)
     {
-        return radians * 180.0f / std::_Pi;
+		return radians * 180.0f / static_cast<float>(std::_Pi);
     }
 
     float MathHelper::IncreaseAngle(float angle, float increment)
@@ -144,7 +144,7 @@ namespace LevelUp
 
     float MathHelper::SineAmplitudeForX(float x, float wavelength, float peakAmplitude, float period)
     {
-        return sinf(period * (std::_Pi * 2.0f) + (x / wavelength)) * peakAmplitude;
+        return static_cast<float>(sinf(period * (std::_Pi * 2.0f) + (x / wavelength)) * peakAmplitude);
     }
 
     float MathHelper::Clamp(float value, float min, float max)
@@ -161,7 +161,7 @@ namespace LevelUp
         float d = acceleration != 0.0f ? (acceleration - (acceleration * drag)) / acceleration : -drag;
 
         //Apply the acceleration
-        return speed + acceleration + (speed * d) * powf(delta, 0.5f);
+		return speed + acceleration + (speed * d) * powf(static_cast<float>(delta), 0.5f);
     }
 
     LVLfloat2 MathHelper::CalculateVelocity(float angle, float speed)
@@ -175,7 +175,7 @@ namespace LevelUp
 	void MathHelper::Translate(BaseLevelObject* gameObject, LVLfloat2 velocity, double delta)
     {
         LVLfloat2 position = gameObject->getPosition();
-        position += LVLfloat2(velocity.x * delta, velocity.y * delta);
+		position += LVLfloat2(velocity.x * static_cast<float>(delta), velocity.y * static_cast<float>(delta));
         gameObject->setPosition(position);
     }
 

@@ -4,6 +4,7 @@
 #include "Shader.h"
 #include <d3d11.h>
 #include <string>
+#include "../../Addons/AutomaticPointers/AutomaticPointers.h"
 namespace LevelUp
 {
 	class PixelShader
@@ -13,7 +14,7 @@ namespace LevelUp
 		virtual ~PixelShader();
 		void setActiveShader();
 	private:
-		ID3D11PixelShader* m_solidColorPS;
+		APT::StrongPointer<ID3D11PixelShader> m_solidColorPS;
 	};
 }
 

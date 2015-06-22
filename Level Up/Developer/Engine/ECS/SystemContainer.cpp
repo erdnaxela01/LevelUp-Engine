@@ -5,33 +5,30 @@
 
 namespace LevelUp
 {
+
+	SystemContainer::SystemContainer()
+	{
+		m_systems = {};
+	}
     SystemContainer::~SystemContainer()
     {
-        for (auto i : m_systems)
+    }
+	void SystemContainer::removedComponent(APT::WeakPointer<Entity> e)
+    {
+		for (unsigned int i = 0; i < m_systems.size(); i++)
         {
-			if (i != nullptr)
-			{
-				delete i;
-				i = nullptr;
-			}
+			m_systems[i]->notifyHasLostComponent(e);
         }
     }
-    void SystemContainer::removedComponent(Entity* e)
+	void SystemContainer::addedComponent(APT::WeakPointer<Entity> e)
     {
-        for (auto i : m_systems)
-        {
-            i->notifyHasLostComponent(e);
+		for (unsigned int i = 0; i < m_systems.size(); i++)
+		{
+			m_systems[i]->notifyHasNewComponent(e);
         }
     }
-    void SystemContainer::addedComponent(Entity* e)
+	void SystemContainer::addSystem(APT::StrongPointer<System> s)
     {
-        for (auto i : m_systems)
-        {
-            i->notifyHasNewComponent(e);
-        }
-    }
-    void SystemContainer::addSystem(System* s)
-    {
-        m_systems.push_back(s);
+        m_systems.push_back(s.releasePtr());
     }
 }

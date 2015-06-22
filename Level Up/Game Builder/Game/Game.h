@@ -9,6 +9,7 @@ namespace LevelUp
 	class TrackingCamera;
 	class MovementLevelObject;
 	class SoundEffect;
+	class ViewShape;
 	class Game : public Scene
 	{
 	public:
@@ -23,6 +24,7 @@ namespace LevelUp
 		MovementLevelObject* mlo2;
 		TrackingCamera* t;
 		SoundEffect* mus;
+		ViewShape* c;
 		
 	};
 }

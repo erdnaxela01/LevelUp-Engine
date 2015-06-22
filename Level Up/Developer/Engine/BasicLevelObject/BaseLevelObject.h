@@ -3,6 +3,7 @@
 #include "../ECS/Entity.h"
 #include "../Attributes/Agent.h"
 #include "../../Services/Math/LevelUpMath.h"
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 
 namespace LevelUp
 {
@@ -32,7 +33,7 @@ namespace LevelUp
 		virtual void setZ(float z) = 0;
 
 		//adds attributes to its vector of attributes base level object adds the attribute so it can set the parent as itself
-		void addAttribute(Attribute* a);
+		void addAttribute(APT::StrongPointer<Attribute> a);
 
 	};
 }

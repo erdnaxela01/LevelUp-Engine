@@ -4,6 +4,7 @@
 #include "../../../Developer/Engine/ECS/System.h"
 #include "../../../Developer/Engine/MVC/Model.h"
 #include "../../../Developer/Engine/MVC/View.h"
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 
 namespace LevelUp
 {
@@ -15,13 +16,13 @@ namespace LevelUp
 
 		virtual ~ParticleSystem();
         //notify the system that someone has a new component check if he wants it
-        void notifyHasNewComponent(Entity* e);
+        void notifyHasNewComponent(APT::WeakPointer<Entity> e);
         //notify the system that someone lost a component, he decides what to do with that
-        void notifyHasLostComponent(Entity* e);
+        void notifyHasLostComponent(APT::WeakPointer<Entity> e);
 
         void update(double delta);
 
-        void updateComponent(double delta, ParticleComponent* e);
+		void updateComponent(double delta, APT::WeakPointer<ParticleComponent> e);
     private:
 
 

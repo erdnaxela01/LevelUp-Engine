@@ -8,24 +8,14 @@ namespace LevelUp
 {
 	Scene::Scene(std::string sceneID)
 	{
-		m_mvc = new MVCContainer();
+		m_mvc.setPtr(new MVCContainer());
 		m_ID = sceneID;
-        m_initialCamera = (new Camera(this));
+        m_initialCamera.setPtr(new Camera(this));
 	}
 	Scene::~Scene()
 	{
-		if (m_initialCamera != nullptr)
-		{
-			delete m_initialCamera;
-			m_initialCamera = nullptr;
-		}
-		if (m_mvc != nullptr)
-		{
-			delete m_mvc;
-			m_mvc = nullptr;
-		}
 	}
-	MVCContainer* Scene::getContainer() const
+	APT::WeakPointer<MVCContainer> Scene::getContainer() const
 	{
 		return m_mvc;
 	}
@@ -34,49 +24,45 @@ namespace LevelUp
 		return m_ID;
 	}
 
-	void Scene::addController(Controller* c)
+	void Scene::addController(APT::WeakPointer<Controller> c)
 	{
 		m_mvc->addToControllerMap(c);
 	}
-	void Scene::addModel(Model* m)
+	void Scene::addModel(APT::WeakPointer<Model> m)
 	{
 		m_mvc->addToModelMap(m);
 	}
-	void Scene::addView(View* v)
+	void Scene::addView(APT::WeakPointer<View> v)
 	{
 		m_mvc->addToViewMap(v);
 	}
-	void Scene::addCamera(Camera* c)
+	void Scene::addCamera(APT::WeakPointer<Camera> c)
 	{
 		m_mvc->addToCameraMap(c);
 	}
 
 
-    void Scene::removeController(Controller* c)
+	void Scene::removeController(APT::WeakPointer<Controller> c)
     {
         m_mvc->removeFromControllerMap(c);
     }
-    void Scene::removeModel(Model* m)
+	void Scene::removeModel(APT::WeakPointer<Model> m)
     {
         m_mvc->removeFromModelMap(m);
     }
-    void Scene::removeView(View* v)
+	void Scene::removeView(APT::WeakPointer<View> v)
     {
         m_mvc->removeFromViewMap(v);
     }
-    void Scene::removeCamera(Camera* c)
+	void Scene::removeCamera(APT::WeakPointer<Camera> c)
     {
         m_mvc->removeFromCameraMap(c);
     }
     void Scene::removeInitialCamera()
     {
-		if (m_initialCamera != nullptr)
-		{
-			delete m_initialCamera;
-			m_initialCamera = nullptr;
-		}
+		m_initialCamera.clear();
     }
-	Camera* Scene::getInitialCamera()
+	APT::WeakPointer<Camera> Scene::getInitialCamera()
 	{
 		return m_initialCamera;
 	}

@@ -3,6 +3,7 @@
 
 #include "../../../Developer/Engine/ECS/Component.h"
 #include "../../../Developer/Services/Math/DataTypes.h"
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 #include "Particle.h"
 #include <vector>
 #include <string>
@@ -22,8 +23,8 @@ namespace LevelUp
         void activate(double lifespan = 2.0, double frequency = 0.1, float minAngle = 0.0f, float maxAngle = 360.0f, float minSpeed = 10.0f, float maxSpeed = 300.0f);
         void deactivate();
         void setPosition(LVLfloat2 pos);
-        std::vector <Particle*> getParticles();
-        void trackObject(BaseLevelObject* object);
+		std::vector <APT::WeakPointer<Particle>> getParticles();
+        void trackObject(APT::WeakPointer<BaseLevelObject> object);
         void setColor(LVLfloat3 c);
         void setMultipleColors(std::vector<LVLfloat3> colors);
 
@@ -43,7 +44,7 @@ namespace LevelUp
         double getElapsed();
         void setElapsed(double elapsed);
 
-		BaseLevelObject* getBLO();
+		APT::WeakPointer<BaseLevelObject> getBLO();
 
         void pause();
         //restart emiting
@@ -60,10 +61,10 @@ namespace LevelUp
  
         bool m_tracking;
         bool m_paused;
-        std::vector <Particle*> m_particles;
+		std::vector <APT::StrongPointer<Particle>> m_particles;
 
         LVLfloat2 m_position;
-		BaseLevelObject* m_trackingObject;
+		APT::WeakPointer<BaseLevelObject> m_trackingObject;
 
     };
 }

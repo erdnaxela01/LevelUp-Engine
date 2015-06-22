@@ -6,12 +6,12 @@
 
 namespace LevelUp
 {
-	MovementSpriteView::MovementSpriteView(std::wstring fName, MovementModel* mm, float z) : View(z)
+	MovementSpriteView::MovementSpriteView(std::wstring fName, APT::WeakPointer<MovementModel> mm, float z) : View(z)
 	{
-		m_sprite = new AnimatedSprite(fName);
+		m_sprite.setPtr(new AnimatedSprite(fName));
         //initialize the sprite
 		m_movementModel = mm;
-		if (m_movementModel != nullptr)
+		if (m_movementModel.getPtr() != nullptr)
 		{
             //set the width and height if a model was passed
 			m_movementModel->setHeight(m_sprite->getHeight());
@@ -39,12 +39,7 @@ namespace LevelUp
 	void MovementSpriteView::setSprite(std::wstring fName)
 	{
         //get a new sprite
-		if (m_sprite != nullptr)
-		{
-			delete m_sprite;
-			m_sprite = nullptr;
-		}
-		m_sprite = new AnimatedSprite(fName, 75 / 2, 99);
+		m_sprite.setPtr(new AnimatedSprite(fName, 75 / 2, 99));
 		m_sprite->setSpriteSheet(75 / 2, 99);
 		m_sprite->addAnimation("animation", { 0, 1 }, 2, true);
 		m_sprite->play("animation", true);
@@ -52,17 +47,12 @@ namespace LevelUp
 
 	MovementSpriteView::~MovementSpriteView()
 	{
-        //delete the sprite
-		if (m_sprite != nullptr)
-		{
-			delete m_sprite;
-			m_sprite = nullptr;
-		}
+
 	}
 	void MovementSpriteView::render()
 	{
         //render the sprite
-		if (m_movementModel != nullptr)
+		if (m_movementModel.getPtr() != nullptr)
 		{
             //if there is a model rotate the sprite according to the angle
 			m_sprite->rotate(m_movementModel->getAngle());
@@ -75,7 +65,7 @@ namespace LevelUp
 	float MovementSpriteView::getX() const
 	{
         //if thre is a movement model then get that x if not get the sprites x
-		if (m_movementModel != nullptr)
+		if (m_movementModel.getPtr() != nullptr)
 		{
 			return m_movementModel->getX();
 		}
@@ -84,7 +74,7 @@ namespace LevelUp
 	float MovementSpriteView::getY() const
 	{
         //if thre is a movement model then get that y if not get the sprites y
-		if (m_movementModel != nullptr)
+		if (m_movementModel.getPtr() != nullptr)
 		{
 			return m_movementModel->getY();
 		}
@@ -114,7 +104,7 @@ namespace LevelUp
 	void  MovementSpriteView::setX(float x)
 	{
         //set the x if there is ammovement model set that x
-		if (m_movementModel != nullptr)
+		if (m_movementModel.getPtr() != nullptr)
 		{
 			m_movementModel->setX(x);
 		}
@@ -123,7 +113,7 @@ namespace LevelUp
 	void  MovementSpriteView::setY(float y)
 	{
         //set the y if there is ammovement model set that y
-		if (m_movementModel != nullptr)
+		if (m_movementModel.getPtr() != nullptr)
 		{
 			m_movementModel->setY(y);
 		}

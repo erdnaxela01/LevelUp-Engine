@@ -15,6 +15,31 @@ namespace LevelUp
 			throw (std::runtime_error("could not co initialize"));
 		}
 		m_errorMessage = "";
+
+		m_d3dDevice.setDeleteFunc([](ID3D11Device*& p){
+			if (p) p->Release();
+			p = nullptr;
+		});
+
+		m_d3dContext.setDeleteFunc([](ID3D11DeviceContext*& p){
+			if (p) p->Release();
+			p = nullptr;
+		});
+
+		m_swapChain.setDeleteFunc([](IDXGISwapChain*& p){
+			if (p) p->Release();
+			p = nullptr;
+		});
+
+		m_backBufferTarget.setDeleteFunc([](ID3D11RenderTargetView*& p){
+			if (p) p->Release();
+			p = nullptr;
+		});
+
+
+
+
+
 	}
 
 
@@ -41,14 +66,6 @@ namespace LevelUp
         //unload all the content and release all the COMs
 		unloadContent();
 
-		if (m_backBufferTarget) m_backBufferTarget->Release();
-		if (m_swapChain) m_swapChain->Release();
-		if (m_d3dContext) m_d3dContext->Release();
-		if (m_d3dDevice) m_d3dDevice->Release();
-		m_d3dDevice = nullptr;
-		m_d3dContext = nullptr;
-		m_swapChain = nullptr;
-		m_backBufferTarget = nullptr;
 	}
 
 	bool Dx11Base::initialize(HINSTANCE hInstance, HWND hWnd)
@@ -60,8 +77,8 @@ namespace LevelUp
 		m_hWnd = hWnd;
 
         //get the width and the height of the screen
-		unsigned int width = ServiceLocator::getScreenSizeService()->getScreenSize().x;
-		unsigned int height = ServiceLocator::getScreenSizeService()->getScreenSize().y;
+		unsigned int width = static_cast<unsigned int>(ServiceLocator::getScreenSizeService()->getScreenSize().x);
+		unsigned int height = static_cast<unsigned int>(ServiceLocator::getScreenSizeService()->getScreenSize().y);
 
         //determine all the driver types
 		D3D_DRIVER_TYPE driverTypes[] =
@@ -117,8 +134,8 @@ namespace LevelUp
 		{
 			result = D3D11CreateDeviceAndSwapChain(0, driverTypes[driver], 0,
 				creationFlags, featureLevels, totalFeatureLevels,
-				D3D11_SDK_VERSION, &swapChainDesc, &m_swapChain,
-				&m_d3dDevice, &m_featureLevel, &m_d3dContext);
+				D3D11_SDK_VERSION, &swapChainDesc, &m_swapChain.getPtrRef(),
+				&(m_d3dDevice.getPtrRef()), &m_featureLevel, &m_d3dContext.getPtrRef());
 			if (SUCCEEDED(result))
 			{
 				m_driverType = driverTypes[driver];
@@ -132,9 +149,13 @@ namespace LevelUp
 			return false;
 		}
         //set the texture of the swap chain
-		ID3D11Texture2D* backBufferTexture;
+		APT::StrongPointer<ID3D11Texture2D> backBufferTexture;
+		backBufferTexture.setDeleteFunc([](ID3D11Texture2D*& p) {
+			if (p) p->Release();
+			p = nullptr;
+		});
 		result = m_swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D),
-			(LPVOID*)&backBufferTexture);
+			(LPVOID*)&backBufferTexture.getPtrRef());
 
         //error checking
 		if (FAILED(result))
@@ -143,11 +164,11 @@ namespace LevelUp
 			return false;
 		}
         //create a render target with the backbuffer
-		result = m_d3dDevice->CreateRenderTargetView(backBufferTexture, 0,
-			&m_backBufferTarget);
+		result = m_d3dDevice->CreateRenderTargetView(backBufferTexture.getPtr(), 0,
+			&m_backBufferTarget.getPtrRef());
 
         //release the texture
-		if (backBufferTexture) backBufferTexture->Release();
+		backBufferTexture.clear();
 
         //error checking
 		if (FAILED(result))
@@ -158,7 +179,7 @@ namespace LevelUp
 
 
         //set the output merger's render targets
-		m_d3dContext->OMSetRenderTargets(1, &m_backBufferTarget, 0);
+		m_d3dContext->OMSetRenderTargets(1, &m_backBufferTarget.getPtrRef(), 0);
 
 
 		return loadContent();

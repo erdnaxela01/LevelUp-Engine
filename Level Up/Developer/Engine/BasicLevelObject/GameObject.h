@@ -4,8 +4,8 @@
 #include "../MVC/MVC.h"
 #include "BaseLevelObject.h"
 #include "../../Graphics/AnimatedSprite.h"
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 #include <string>
-#include <memory>
 
 namespace LevelUp
 {
@@ -50,7 +50,7 @@ namespace LevelUp
 		virtual void setSprite(std::wstring fName, float widthOfFrame = 0.0f, float heightOfFrame = 0.0f);
 		friend Camera;
 	private:
-		AnimatedSprite* m_sprite;
+		APT::StrongPointer<AnimatedSprite> m_sprite;
 	};
 }
 

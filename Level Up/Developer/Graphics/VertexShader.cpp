@@ -5,11 +5,21 @@ namespace LevelUp
 {
 	VertexShader::VertexShader(std::wstring shaderName, std::string entryPoint, std::string level, D3D11_INPUT_ELEMENT_DESC solidColorLayout[],int arraySize, ID3D11InputLayout** inputLayout)
 	{
+		m_solidColorVS.setDeleteFunc([](ID3D11VertexShader*& p)
+		{
+			if (p) p->Release();
+			p = nullptr;
+		});
 		HRESULT d3dResult;
 		//create the vertex buffer
-		ID3DBlob* vsBuffer = 0;
+		APT::StrongPointer<ID3DBlob> vsBuffer = 0;
+		vsBuffer.setDeleteFunc([](ID3DBlob*& p)
+		{
+			if (p) p->Release();
+			p = nullptr;
+		});
 		bool compileResult;
-		compileResult = ServiceLocator::getRenderService()->CompileD3DShader(shaderName, entryPoint, level, &vsBuffer);
+		compileResult = ServiceLocator::getRenderService()->CompileD3DShader(shaderName, entryPoint, level, &vsBuffer.getPtrRef());
 		if (!compileResult)
 		{
 			throw std::runtime_error("Couldn't load shader");
@@ -17,15 +27,11 @@ namespace LevelUp
 
 
 		//create the vertex shader
-		d3dResult = ServiceLocator::getRenderService()->getDevice()->CreateVertexShader(vsBuffer->GetBufferPointer(), vsBuffer->GetBufferSize(), 0, &m_solidColorVS);
+		d3dResult = ServiceLocator::getRenderService()->getDevice()->CreateVertexShader(vsBuffer->GetBufferPointer(), vsBuffer->GetBufferSize(), 0, &m_solidColorVS.getPtrRef());
 
 		if (FAILED(d3dResult))
 		{
-			if (vsBuffer)
-			{
-				vsBuffer->Release();
-
-			}
+			vsBuffer.clear();
 			throw std::runtime_error("Failes to load vertex buffer");
 		}
 
@@ -42,16 +48,14 @@ namespace LevelUp
 		{
 			throw std::runtime_error("failed to create input layout");
 		}
-		vsBuffer->Release();
+		vsBuffer.clear();
 	}
 	VertexShader::~VertexShader()
 	{
-		if (m_solidColorVS) m_solidColorVS->Release();
-		m_solidColorVS = nullptr;
 	}
 	void VertexShader::setActiveShader()
 	{
-		ID3D11DeviceContext* context = ServiceLocator::getRenderService()->getContext();
-		context->VSSetShader(m_solidColorVS, 0, 0);
+		APT::WeakPointer<ID3D11DeviceContext> context = ServiceLocator::getRenderService()->getContext();
+		context->VSSetShader(m_solidColorVS.getPtr(), 0, 0);
 	}
 }

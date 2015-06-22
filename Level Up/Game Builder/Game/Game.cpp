@@ -6,6 +6,7 @@
 #include "../Prebuilt Objects/ECS/ParticleComponent.h"
 #include "../../Developer/Graphics/Color.h"
 #include "../../Developer/Graphics/Circle.h"
+#include "../../Developer/Graphics/ViewShape.h"
 #include "../../Developer/UI/Cameras/Special Cameras/TrackingCamera.h"
 #include "../../Developer/Engine/TheEngine.h"
 #include "../Prebuilt Objects/Attributes/CollisionAttribute.h"
@@ -16,7 +17,10 @@
 #include "../../Developer/Graphics/Sprite.h"
 #include "../../Developer/Engine/BasicLevelObject/GameObject.h"
 #include "../../Developer/Engine/Command/CameraResizeCommand.h"
-
+#include "../../Developer/Pipeline/TReceiver.h"
+#include "../../Developer/Pipeline/TSender.h"
+#include "../../Developer/Pipeline/OmniSender.h"
+#include "../../Developer/Logging/Logger.h"
 
 namespace LevelUp
 {
@@ -53,9 +57,9 @@ namespace LevelUp
 	{
         //if created with MVC you dont need to update or render your objects, thats taken care of
 		std::vector<CollisionAttribute*> box1;
-		box1.push_back((CollisionAttribute*)(mlo->getAttributesOfType("CollisionAttribute")[0]));
+		box1.push_back((CollisionAttribute*)(mlo->getAttributesOfType("CollisionAttribute")[0].getPtr()));
 		std::vector<CollisionAttribute*> box2;
-		box2.push_back((CollisionAttribute*)(mlo2->getAttributesOfType("CollisionAttribute")[0]));
+		box2.push_back((CollisionAttribute*)(mlo2->getAttributesOfType("CollisionAttribute")[0].getPtr()));
 
 
 		for (auto i : box1)
@@ -71,17 +75,15 @@ namespace LevelUp
 		{
 			mlo->getView()->setZ(mlo->getView()->getZ() * -1);
 		}
+
+		c->setX(mlo->getPosition().x);
+		c->setY(mlo->getPosition().y);
 	}
 
 	void Game::render()
 	{
         //focus more on making a game
         //go go go!
-
-		Circle c(LVLfloat4(1.0f, 0.0f, 1.0f, 1.0f), 100.0f);
-		c.setPosition(mlo->getPosition().x, mlo->getPosition().y);
-		c.setAlpha(0.5f);
-		c.render();
 		
 	}
 
@@ -95,18 +97,20 @@ namespace LevelUp
 		mlo->setPosition(200.0f, 200.0f);
         mlo->getView()->setZ(1.5f);
 
-		mlo2 = new MovementLevelObject(L"HatShip.png");
+		//ServiceLocator::getRenderService()->setBgColor(Color::getGold());
+
+		mlo2 = new MovementLevelObject(L"Ship.png");
 		mlo2->getController()->stopControl();
         ParticleComponent* p = new ParticleComponent(200, Color::getForestGreen());
-		p->setMultipleColors({ Color::getAqua(), Color::getDeepPink(), Color::getMagenta(), Color::getChocolate(), Color::getForestGreen() });
+		p->setMultipleColors({ Color::getAqua(), Color::getDeepPink(), Color::getMagenta(), Color::getChocolate(), Color::getGreen() });
         p->trackObject(mlo);
-        p->activate(1.0, 0.001);
+        p->activate(1.0, 0.003, 0.0f, 360.0f, 200.0f);
         mlo->addComponent(p);
 		p->setCanFade(true);
 		mlo->addAttribute(new CollisionAttribute(mlo->getView()->getW(), mlo->getView()->getH()));
 		mlo2->addAttribute(new CollisionAttribute(mlo2->getView()->getW(), mlo2->getView()->getH()));
 		t = new TrackingCamera(mlo);
-		t->setIsTracking(false);
+		t->setIsTracking(true);
 		removeInitialCamera();
 		//t->setZoom(2.0f);
 
@@ -125,6 +129,38 @@ namespace LevelUp
 
 		OTextFileStream ostream("Tuxt.txt");
 		ostream.writeToFile("11 \n");
+
+		c = new ViewShape (new Circle(LVLfloat4(1.0f, 0.0f, 1.0f, 1.0f), 100.0f));
+		c->getShape()->setAlpha(0.5f);
+		c->setZ(10.0f);
+
+		TReceiver<int> r;
+		TSender<int> s;
+		r.slot(&s);
+		s.send(5);
+		for (int i = 0; i < 100; i++)
+		{
+			s.send(i);
+		}
+		TSender<int> s2;
+		r.slot(&s2);
+
+		s2.send(10);
+
+		s2.getBack();
+		r.back();
+		r.front();
+		s.getFront();
+
+		TReceiver<int> r1;
+		TReceiver<int> r2;
+
+		OmniSender<int> s3;
+		r1.slot(&s3);
+		r2.slot(&s3);
+
+		s3.send(5000);
+
 		return result;
 	}
 }

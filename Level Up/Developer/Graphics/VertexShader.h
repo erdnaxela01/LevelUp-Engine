@@ -4,6 +4,7 @@
 #include "Shader.h"
 #include <d3d11.h>
 #include <string>
+#include "../../Addons/AutomaticPointers/AutomaticPointers.h"
 namespace LevelUp
 {
 	class VertexShader : public Shader
@@ -13,7 +14,7 @@ namespace LevelUp
 		virtual ~VertexShader();
 		void setActiveShader();
 	private:
-		ID3D11VertexShader* m_solidColorVS;
+		APT::StrongPointer<ID3D11VertexShader> m_solidColorVS;
 	};
 }
 #endif

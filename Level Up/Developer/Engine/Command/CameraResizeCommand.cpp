@@ -2,7 +2,7 @@
 
 namespace LevelUp
 {
-	CameraResizeCommand::CameraResizeCommand(Camera* c)
+	CameraResizeCommand::CameraResizeCommand(APT::WeakPointer<Camera> c)
 	{
 		m_cam = c;
 	}

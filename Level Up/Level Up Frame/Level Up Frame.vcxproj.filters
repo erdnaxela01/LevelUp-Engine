@@ -183,27 +183,6 @@
     <Filter Include="Developer\UI\Cameras\Special Cameras\Source">
       <UniqueIdentifier>{92b3bb31-2bfe-4ae5-8a12-de5103dad0b1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Developer\Services">
-      <UniqueIdentifier>{c47c1254-d873-4b78-8f50-c01933ba39d1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Developer\Services\Service Locator">
-      <UniqueIdentifier>{42e2af38-29f7-4e7f-8884-69c90ffee334}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Developer\Services\Math">
-      <UniqueIdentifier>{10acb5bf-bb2b-4526-9659-bc6e733f6c2c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Developer\Services\Math\Headers">
-      <UniqueIdentifier>{1ebab386-3bfb-4923-bbd4-6c059b193c27}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Developer\Services\Math\Source">
-      <UniqueIdentifier>{ee4c3548-60e0-4e3b-8e5e-142fadef2dd7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Developer\Services\Math\MathAdapters">
-      <UniqueIdentifier>{a21c4a32-f838-44d7-b0d1-4e44b8acead6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Developer\Services\Math\MatrixContainer">
-      <UniqueIdentifier>{abe754fa-29de-4126-ae9c-2b75d4c7b812}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game Builder\Scene Builder">
       <UniqueIdentifier>{ea4f5775-c8bf-407f-b3ac-b3662c6de20e}</UniqueIdentifier>
     </Filter>
@@ -275,6 +254,57 @@
     </Filter>
     <Filter Include="Developer\Graphics\Headers\Sprites">
       <UniqueIdentifier>{f3b805c6-7515-4f6d-85d6-d3407ff69ac7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Addons">
+      <UniqueIdentifier>{693d36e5-50be-49b0-9212-f8a31d252ec5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Addons\Automatic Pointers">
+      <UniqueIdentifier>{0e74995e-28f8-4774-a2d8-29d41825255f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Pipeline">
+      <UniqueIdentifier>{a34c2330-5808-4d1d-8643-5385f87db013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Pipeline\Headers">
+      <UniqueIdentifier>{58be6486-0137-435c-bdc6-fc90e057d0f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Pipeline\Source">
+      <UniqueIdentifier>{55682230-628c-498f-8486-e00f2309976a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Services">
+      <UniqueIdentifier>{c47c1254-d873-4b78-8f50-c01933ba39d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Services\Service Locator">
+      <UniqueIdentifier>{42e2af38-29f7-4e7f-8884-69c90ffee334}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Services\Math">
+      <UniqueIdentifier>{10acb5bf-bb2b-4526-9659-bc6e733f6c2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Services\Math\Headers">
+      <UniqueIdentifier>{1ebab386-3bfb-4923-bbd4-6c059b193c27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Services\Math\Source">
+      <UniqueIdentifier>{ee4c3548-60e0-4e3b-8e5e-142fadef2dd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Services\Math\MathAdapters">
+      <UniqueIdentifier>{a21c4a32-f838-44d7-b0d1-4e44b8acead6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Services\Math\MatrixContainer">
+      <UniqueIdentifier>{abe754fa-29de-4126-ae9c-2b75d4c7b812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Graphics\Headers\TextureManager">
+      <UniqueIdentifier>{d4ae6c5e-8226-474d-8d33-14b6813174cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Graphics\Source\TextureManager">
+      <UniqueIdentifier>{0662f00a-69a7-44af-a7dc-f462cb62e3a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Logging">
+      <UniqueIdentifier>{fcf47b2c-048c-48a2-a6b0-70e5d4422f86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Services\Date">
+      <UniqueIdentifier>{eb6da2b5-9bd6-430c-9b50-302749105c22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Developer\Engine\DevLog">
+      <UniqueIdentifier>{ca1fe124-ea7d-402f-85cb-25970601c1d8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -479,6 +509,21 @@
     <ClCompile Include="..\Developer\Graphics\Circle.cpp">
       <Filter>Developer\Graphics\Source\Primitives</Filter>
     </ClCompile>
+    <ClCompile Include="..\Developer\Graphics\ViewShape.cpp">
+      <Filter>Developer\Graphics\Source\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Graphics\TextureManager.cpp">
+      <Filter>Developer\Graphics\Source\TextureManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Logging\Logger.cpp">
+      <Filter>Developer\Logging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Services\Date\Date.cpp">
+      <Filter>Developer\Services\Date</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Developer\Engine\DevLog\DevLog.cpp">
+      <Filter>Developer\Engine\DevLog</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Game Builder\Scene Builder\Playground.h">
@@ -556,9 +601,6 @@
     <ClInclude Include="..\Developer\Engine\MVC\KeyController.h">
       <Filter>Developer\Engine\MVC\Headers\Controllers</Filter>
     </ClInclude>
-    <ClInclude Include="..\Developer\Engine\MVC\Model.h">
-      <Filter>Developer\Engine\MVC\Headers\Models</Filter>
-    </ClInclude>
     <ClInclude Include="..\Developer\Engine\MVC\MouseController.h">
       <Filter>Developer\Engine\MVC\Headers\Controllers</Filter>
     </ClInclude>
@@ -582,9 +624,6 @@
     </ClInclude>
     <ClInclude Include="..\Developer\Enums\Keys.h">
       <Filter>Developer\Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Developer\Services\Renderer.h">
-      <Filter>Developer\Services</Filter>
     </ClInclude>
     <ClInclude Include="..\Developer\Services\ScreenSize.h">
       <Filter>Developer\Services</Filter>
@@ -723,6 +762,63 @@
     </ClInclude>
     <ClInclude Include="..\Developer\Graphics\Circle.h">
       <Filter>Developer\Graphics\Headers\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Graphics\ViewShape.h">
+      <Filter>Developer\Graphics\Headers\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Addons\AutomaticPointers\ChangePointer.h">
+      <Filter>Addons\Automatic Pointers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Addons\AutomaticPointers\ReferencePointer.h">
+      <Filter>Addons\Automatic Pointers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Addons\AutomaticPointers\StrongPointer.h">
+      <Filter>Addons\Automatic Pointers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Addons\AutomaticPointers\WeakPointer.h">
+      <Filter>Addons\Automatic Pointers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Addons\AutomaticPointers\AutomaticPointers.h">
+      <Filter>Addons\Automatic Pointers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Services\Renderer.h">
+      <Filter>Developer\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Engine\MVC\Model.h">
+      <Filter>Developer\Engine\MVC\Headers\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Pipeline\Receiver.h">
+      <Filter>Developer\Pipeline\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Pipeline\TReceiver.h">
+      <Filter>Developer\Pipeline\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Pipeline\TSender.h">
+      <Filter>Developer\Pipeline\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Pipeline\Sender.h">
+      <Filter>Developer\Pipeline\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Pipeline\Pipeline.h">
+      <Filter>Developer\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Pipeline\OmniSender.h">
+      <Filter>Developer\Pipeline\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Addons\AutomaticPointers\MemoryTracker.h">
+      <Filter>Addons\Automatic Pointers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Graphics\TextureManager.h">
+      <Filter>Developer\Graphics\Headers\TextureManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Logging\Logger.h">
+      <Filter>Developer\Logging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Services\Date\Date.h">
+      <Filter>Developer\Services\Date</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Developer\Engine\DevLog\DevLog.h">
+      <Filter>Developer\Engine\DevLog</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

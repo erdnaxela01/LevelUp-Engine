@@ -2,7 +2,7 @@
 #define __CAMERARESIZECOMMAND_H
 
 #include "Command.h"
-
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 namespace LevelUp
 {
     /*
@@ -13,11 +13,11 @@ namespace LevelUp
     class CameraResizeCommand :public Command
     {
     public:
-		CameraResizeCommand(Camera* c);
+		CameraResizeCommand(APT::WeakPointer<Camera> c);
 		virtual ~CameraResizeCommand() {};
         virtual void execute() = 0;
 	private:
-		Camera* m_cam;
+		APT::WeakPointer<Camera> m_cam;
     };
 
 }

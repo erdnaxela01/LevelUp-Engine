@@ -10,52 +10,43 @@ namespace LevelUp
 	}
 	BaseMVCObject::~BaseMVCObject()
 	{
-		//deletes all the objects
-		if (m_controller != nullptr)
-		{
-			delete m_controller;
-			m_controller = nullptr;
-		}
-		if (m_model != nullptr)
-		{
-			delete m_model;
-			m_model = nullptr;
-		}
-		if (m_view != nullptr)
-		{
-			delete m_view;
-			m_view = nullptr;
-		}
+		
 	}
-	Model* BaseMVCObject::getModel()
+	APT::WeakPointer<Model> BaseMVCObject::getModel()
 	{
 		return m_model;
 	}
-	View* BaseMVCObject::getView()
+	APT::WeakPointer<View> BaseMVCObject::getView()
 	{
 		return m_view;
 	}
-	Controller* BaseMVCObject::getController()
+	APT::WeakPointer<Controller> BaseMVCObject::getController()
 	{
 		return m_controller;
 	}
-	void BaseMVCObject::setModel(Model* m)
+	void BaseMVCObject::setModel(APT::StrongPointer<Model> m)
 	{
-		m_model = m;
+		m_model.setPtr(m.getPtr());
+		m.releasePtr();
 	}
-	void BaseMVCObject::setView(View* v)
+	void BaseMVCObject::setView(APT::StrongPointer<View> v)
 	{
-		m_view = v;
+		m_view.setPtr(v.getPtr());
+		v.releasePtr();
 	}
-	void BaseMVCObject::setController(Controller* c)
+	void BaseMVCObject::setController(APT::StrongPointer<Controller> c)
 	{
-		m_controller = c;
+		m_controller.setPtr(c.getPtr());
+		c.releasePtr();
 	}
-	void BaseMVCObject::initialize(Model* m, View* v, Controller* c)
+	void BaseMVCObject::initialize(APT::StrongPointer<Model> m, APT::StrongPointer<View> v, APT::StrongPointer<Controller> c)
 	{
-		m_model = m;
-		m_view = v;
-		m_controller = c;
+		m_model.setPtr(m.getPtr());
+		m.releasePtr();
+		m_view.setPtr(v.getPtr());
+		v.releasePtr();
+		m_controller.setPtr(c.getPtr());
+		c.releasePtr();
 	}
 	void BaseMVCObject::setPosition(float x, float y)
 	{

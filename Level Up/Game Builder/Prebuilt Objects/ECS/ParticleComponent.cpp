@@ -20,14 +20,6 @@ namespace LevelUp
 
     ParticleComponent::~ParticleComponent()
     {
-        for (auto i : m_particles)
-        {
-			if (i != nullptr)
-			{
-				delete i;
-				i = nullptr;
-			}
-        }
     }
 
     void ParticleComponent::activate(double lifespan, double frequency, float minAngle, float maxAngle, float minSpeed, float maxSpeed)
@@ -51,11 +43,16 @@ namespace LevelUp
     {
         m_position = pos;
     }
-    std::vector <Particle*> ParticleComponent::getParticles()
+	std::vector <APT::WeakPointer<Particle>> ParticleComponent::getParticles()
     {
-        return m_particles;
+		std::vector<APT::WeakPointer<Particle>> p;
+		for (unsigned int i = 0; i < m_particles.size(); i++)
+		{
+			p.push_back(m_particles[i]);
+		}
+        return p;
     }
-	void ParticleComponent::trackObject(BaseLevelObject* object)
+	void ParticleComponent::trackObject(APT::WeakPointer<BaseLevelObject> object)
     {
         m_tracking = true;
         m_trackingObject = object;
@@ -146,7 +143,7 @@ namespace LevelUp
         m_elapsed = elapsed;
     }
 
-    BaseLevelObject* ParticleComponent::getBLO()
+	APT::WeakPointer<BaseLevelObject> ParticleComponent::getBLO()
     {
         return m_trackingObject;
     }

@@ -92,7 +92,7 @@ namespace LevelUp
 
 	bool AnimatedSprite::setVertices(float halfWidth, float halfHeight, float positionX, float positionY)
 	{
-		ID3D11DeviceContext* context = ServiceLocator::getRenderService()->getContext();
+		APT::WeakPointer<ID3D11DeviceContext> context = ServiceLocator::getRenderService()->getContext();
 		//set the vertices
 		float percentageX = (halfWidth * 2) / m_width;
 		float percentageY = (halfHeight * 2) / m_height;
@@ -110,12 +110,12 @@ namespace LevelUp
 		D3D11_MAPPED_SUBRESOURCE mappedResource;
 		VertexPos* p;
 
-		context->Map(m_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
+		context->Map(m_vertexBuffer.getPtr(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
 
 		p = (VertexPos*)mappedResource.pData;
 
 		memcpy(p, (void*)vertices, (sizeof(VertexPos) * 6));
-		context->Unmap(m_vertexBuffer, 0);
+		context->Unmap(m_vertexBuffer.getPtr(), 0);
 
 		return true;
 	}
@@ -134,7 +134,7 @@ namespace LevelUp
 		resourceData.pSysMem = vertices;
 		HRESULT d3dResult;
 		//create the constant buffer
-		d3dResult = ServiceLocator::getRenderService()->getDevice()->CreateBuffer(&vertexDesc, &resourceData, &m_vertexBuffer);
+		d3dResult = ServiceLocator::getRenderService()->getDevice()->CreateBuffer(&vertexDesc, &resourceData, &m_vertexBuffer.getPtrRef());
 
 		if (FAILED(d3dResult))
 		{

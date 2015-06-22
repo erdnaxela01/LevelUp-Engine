@@ -4,6 +4,7 @@
 #include <string>
 #include <stack>
 #include <map>
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 
 namespace LevelUp
 {
@@ -14,23 +15,23 @@ namespace LevelUp
 	{
 	public:
         //get a scene compared to the name
-		Scene* getScene(std::string s);
+		APT::WeakPointer<Scene> getScene(std::string s);
         //add a scene this scene gets deleted by the scene manager
-		void addSceneToMap(Scene* s);
+		void addSceneToMap(APT::StrongPointer<Scene> s);
         //make this the active scene
 		void pushScene(std::string s);
         //go back a scene
 		void popScene();
         //get the current scene
-		Scene* getActiveScene();
+		APT::WeakPointer<Scene> getActiveScene();
         //set the scene to this scene
 		void resetTo(std::string s);
 		SceneManager();
 		virtual ~SceneManager();
 	private:
-		Scene* m_activeScene;
-		std::stack<Scene*> m_activeScenes;
-		std::map<std::string, Scene*> m_allScenes;
+		APT::WeakPointer<Scene> m_activeScene;
+		std::stack<APT::WeakPointer<Scene>> m_activeScenes;
+		std::map<std::string, APT::StrongPointer<Scene>> m_allScenes;
 
 
 

@@ -4,9 +4,9 @@
 namespace LevelUp
 {
 
-	Renderer* ServiceLocator::m_renderService = nullptr;
-	ScreenSize* ServiceLocator::m_screenSizeService = nullptr;
-    MathAdapter* ServiceLocator::m_mathAdapter = nullptr;
+	APT::WeakPointer<Renderer> ServiceLocator::m_renderService = nullptr;
+	APT::WeakPointer<ScreenSize> ServiceLocator::m_screenSizeService = nullptr;
+	APT::WeakPointer<MathAdapter> ServiceLocator::m_mathAdapter = nullptr;
 
 	ServiceLocator::ServiceLocator()
 	{
@@ -17,36 +17,36 @@ namespace LevelUp
 
 	}
 
-	void ServiceLocator::provideRenderService(Renderer* render)
+	void ServiceLocator::provideRenderService(APT::WeakPointer<Renderer> render)
 	{
-        assert(render != nullptr);
+        assert(render.getPtr() != nullptr);
 		m_renderService = render;
 	}
-	Renderer* ServiceLocator::getRenderService()
+	APT::WeakPointer<Renderer> ServiceLocator::getRenderService()
 	{
-        assert(m_renderService != nullptr);
+        assert(m_renderService.getPtr() != nullptr);
 		return m_renderService;
 	}
 
-	void  ServiceLocator::provideScreenSizeService(ScreenSize* size)
+	void  ServiceLocator::provideScreenSizeService(APT::WeakPointer<ScreenSize> size)
 	{
-        assert(size != nullptr);
+        assert(size.getPtr() != nullptr);
 		m_screenSizeService = size;
 	}
-	ScreenSize*  ServiceLocator::getScreenSizeService()
+	APT::WeakPointer<ScreenSize>  ServiceLocator::getScreenSizeService()
 	{
-        assert(m_screenSizeService != nullptr);
+        assert(m_screenSizeService.getPtr() != nullptr);
 		return m_screenSizeService;
 	}
 
-    void ServiceLocator::provideMathAdapter(MathAdapter* ada)
+	void ServiceLocator::provideMathAdapter(APT::WeakPointer<MathAdapter> ada)
     {
-        assert(ada != nullptr);
+        assert(ada.getPtr() != nullptr);
         m_mathAdapter = ada;
     }
-    MathAdapter* ServiceLocator::getMathAdapter()
+	APT::WeakPointer<MathAdapter> ServiceLocator::getMathAdapter()
     {
-        assert(m_mathAdapter != nullptr);
+        assert(m_mathAdapter.getPtr() != nullptr);
         return m_mathAdapter;
     }
 }

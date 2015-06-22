@@ -3,6 +3,7 @@
 
 #include "../../../Developer/Engine/MVC/KeyController.h"
 #include "../../../Developer/Enums/Keys.h"
+#include "../../../Addons/AutomaticPointers/AutomaticPointers.h"
 namespace LevelUp
 {
 	class MovementModel;
@@ -11,7 +12,7 @@ namespace LevelUp
 	class MovementKeyController : public KeyController
 	{
 	public:
-		MovementKeyController(MovementModel* m);
+		MovementKeyController(APT::WeakPointer<MovementModel> m);
 		virtual ~MovementKeyController();
         //handle key down events
         void handleKeyDown(LevelUpKeys key);
@@ -22,7 +23,7 @@ namespace LevelUp
         //you can change the keys
         void setMovementKeys(LevelUpKeys left = LevelUpKeys::KEY_A, LevelUpKeys down = LevelUpKeys::KEY_S, LevelUpKeys right = LevelUpKeys::KEY_D, LevelUpKeys up = LevelUpKeys::KEY_W);
 	private:
-		MovementModel* m_model;
+		APT::WeakPointer<MovementModel> m_model;
         LevelUpKeys m_movementKeys[4];
 	};
 }

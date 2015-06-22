@@ -28,8 +28,8 @@ namespace LevelUp
 	{
         //add the map to the current scene or the engine
 		m_ID = "Model " + std::to_string(m_numberOfModels);
-		Scene* s = getEngine()->getSceneManager()->getActiveScene();
-		if (s != nullptr)
+		APT::WeakPointer<Scene> s = getEngine()->getSceneManager()->getActiveScene();
+		if (s.getPtr() != nullptr)
 		{
             m_parentScene = s->sceneID();
 			s->addModel(this);
@@ -45,8 +45,8 @@ namespace LevelUp
         //remove the map from the current scene or the engine
         if (m_parentScene != "")
         {
-            Scene* s = getEngine()->getSceneManager()->getScene(m_parentScene);
-            if (s != nullptr)
+            APT::WeakPointer<Scene> s = getEngine()->getSceneManager()->getScene(m_parentScene);
+            if (s.getPtr() != nullptr)
             {
                 s->removeModel(this);
             }
