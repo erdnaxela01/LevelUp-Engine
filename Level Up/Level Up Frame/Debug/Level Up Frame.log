@@ -1,22 +1,7 @@
-﻿  Game.cpp
+﻿  DevLog.cpp
+  Generating Code...
+  Compiling...
+  Game.cpp
   Logger.cpp
   Generating Code...
-sfml-audio-s-d.lib(ALCheck.cpp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'sfml-audio-s-d.lib(ALCheck.cpp.obj)' or at 'C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\vc120.pdb'; linking object as if no debug info
-sfml-audio-s-d.lib(AudioDevice.cpp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'sfml-audio-s-d.lib(AudioDevice.cpp.obj)' or at 'C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\vc120.pdb'; linking object as if no debug info
-sfml-audio-s-d.lib(Listener.cpp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'sfml-audio-s-d.lib(Listener.cpp.obj)' or at 'C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\vc120.pdb'; linking object as if no debug info
-sfml-audio-s-d.lib(Music.cpp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'sfml-audio-s-d.lib(Music.cpp.obj)' or at 'C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\vc120.pdb'; linking object as if no debug info
-sfml-audio-s-d.lib(Sound.cpp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'sfml-audio-s-d.lib(Sound.cpp.obj)' or at 'C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\vc120.pdb'; linking object as if no debug info
-sfml-audio-s-d.lib(SoundBuffer.cpp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'sfml-audio-s-d.lib(SoundBuffer.cpp.obj)' or at 'C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\vc120.pdb'; linking object as if no debug info
-sfml-audio-s-d.lib(SoundFile.cpp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'sfml-audio-s-d.lib(SoundFile.cpp.obj)' or at 'C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\vc120.pdb'; linking object as if no debug info
-sfml-audio-s-d.lib(SoundSource.cpp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'sfml-audio-s-d.lib(SoundSource.cpp.obj)' or at 'C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\vc120.pdb'; linking object as if no debug info
-sfml-audio-s-d.lib(SoundStream.cpp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'sfml-audio-s-d.lib(SoundStream.cpp.obj)' or at 'C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\vc120.pdb'; linking object as if no debug info
-sfml-system-s-d.lib(Err.cpp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'sfml-system-s-d.lib(Err.cpp.obj)' or at 'C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\vc120.pdb'; linking object as if no debug info
-sfml-system-s-d.lib(Lock.cpp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'sfml-system-s-d.lib(Lock.cpp.obj)' or at 'C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\vc120.pdb'; linking object as if no debug info
-sfml-system-s-d.lib(Mutex.cpp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'sfml-system-s-d.lib(Mutex.cpp.obj)' or at 'C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\vc120.pdb'; linking object as if no debug info
-sfml-system-s-d.lib(Sleep.cpp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'sfml-system-s-d.lib(Sleep.cpp.obj)' or at 'C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\vc120.pdb'; linking object as if no debug info
-sfml-system-s-d.lib(Thread.cpp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'sfml-system-s-d.lib(Thread.cpp.obj)' or at 'C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\vc120.pdb'; linking object as if no debug info
-sfml-system-s-d.lib(Time.cpp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'sfml-system-s-d.lib(Time.cpp.obj)' or at 'C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\vc120.pdb'; linking object as if no debug info
-sfml-system-s-d.lib(MutexImpl.cpp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'sfml-system-s-d.lib(MutexImpl.cpp.obj)' or at 'C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\vc120.pdb'; linking object as if no debug info
-sfml-system-s-d.lib(SleepImpl.cpp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'sfml-system-s-d.lib(SleepImpl.cpp.obj)' or at 'C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\vc120.pdb'; linking object as if no debug info
-sfml-system-s-d.lib(ThreadImpl.cpp.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'sfml-system-s-d.lib(ThreadImpl.cpp.obj)' or at 'C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\vc120.pdb'; linking object as if no debug info
   Level Up Frame.vcxproj -> C:\Users\Alex\Documents\Alex\Programming\C++\LevelUp Engine\Branch Version\Level Up\Debug\Level Up Frame.exe

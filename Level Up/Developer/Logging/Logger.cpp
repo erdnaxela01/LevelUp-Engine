@@ -4,12 +4,12 @@
 namespace LevelUp
 {
 
-	Logger LOGGER = Logger();
+	Logger LOGGER;
 
-	Logger::Logger():m_autoFlush(true)
+	Logger::Logger(std::string fileName) :m_autoFlush(true)
 	{
 		DateStamp d = Date::getDate();
-		m_fileStream.setPtr(new OTextFileStream(LOG_PATH + DEFAULT_LOG_FILE_NAME + " " + d.date() + ".log", true));
+		m_fileStream.setPtr(new OTextFileStream(fileName + d.date() + ".log", true));
 		std::string s;
 		s = "LEVEL UP ENGINE LOG START\n";
 		s += "Date: " + d.date() + '\n';

@@ -10,16 +10,20 @@ namespace LevelUp
 		if (overrideDefaultPath)
 		{
 			m_file.open(fileName);
+			if (!m_file.is_open())
+			{
+				throw (std::runtime_error("Could not open " + fileName + " for writing"));
+			}
 		}
 		else
 		{
 			m_file.open("../Assets/Files/" + fileName);
+			if (!m_file.is_open())
+			{
+				throw (std::runtime_error("Could not open ../Assets/Files/" + fileName + " for reading"));
+			}
 		}
 		//if the file didnt open throw and exception
-		if (!m_file.is_open())
-		{
-			throw (std::runtime_error("Could not open ../Assets/Files/" + fileName +  " for reading"));
-		}
 	}
 
 	ITextFileStream::~ITextFileStream()

@@ -10,16 +10,20 @@ namespace LevelUp
 		if (overrideDefaultPath)
 		{
 			m_file.open(fileName, std::ios_base::app);
+			if (!m_file.is_open())
+			{
+				throw (std::runtime_error("Could not open "+ fileName + " for writing"));
+			}
 		}
 		else
 		{
 			m_file.open("../Assets/Files/" + fileName, std::ios_base::app);
+			if (!m_file.is_open())
+			{
+				throw (std::runtime_error("Could not open ../Assets/Files/" + fileName + " for writing"));
+			}
 		}
 		//if the file didnt open throw and exception
-		if (!m_file.is_open())
-		{
-			throw (std::runtime_error("Could not open ../Assets/Files/" + fileName + " for writing"));
-		}
 	}
 
 	OTextFileStream::~OTextFileStream()

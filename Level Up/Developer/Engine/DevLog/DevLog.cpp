@@ -2,5 +2,5 @@
 
 namespace LevelUp
 {
-	Logger DEV_LOGGER = Logger();
+	Logger DEV_LOGGER("../Developer/Engine/DevLog/LogFiles/DevLog ");
 }

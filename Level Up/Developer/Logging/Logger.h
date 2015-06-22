@@ -11,12 +11,11 @@
 
 namespace LevelUp
 {
-	const std::string DEFAULT_LOG_FILE_NAME = "LogFile";
-	const std::string LOG_PATH = "../Assets/Logs/";
+	const std::string LOG_PATH = "../Assets/Logs/LogFile ";
 	class Logger
 	{
 	public:
-		Logger();
+		Logger(std::string fileName = LOG_PATH);
 		~Logger();
 		template <typename Output>
 		void log(Output& obj);
